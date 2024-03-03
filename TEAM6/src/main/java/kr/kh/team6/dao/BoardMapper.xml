@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.kh.team6.dao.BoardDAO">
+	<!-- rusultMap은 클래스 멤버 이름과 테이블의 속성 이름이 다른 경우 맵핑하기위해 사용 property는 클래스 멤버 
+		변수이름, column은 테이블 속성 이름 -->
+	<resultMap type="kr.kh.team6.model.vo.BoardVO" id="BoardMap">
+		<id property="bo_num" column="bo_num" />
+		<result property="bo_co_num" column="bo_co_num" />
+		<result property="bo_me_id" column="bo_me_id" />
+		<result property="bo_title" column="bo_title" />
+		<result property="bo_content" column="bo_content" />
+		<result property="bo_view" column="bo_view" />
+		<collection property="category"
+			ofType="kr.kh.team6.model.vo.CategoryVO" column="bo_ca_num"
+			select="selectCategory" />
+
+	</resultMap>
+
+	<insert id="insertBoard">
+		INSERT INTO BOARD(bo_title, bo_content, bo_ca_num,
+		bo_me_id)
+		VALUES (#{board.bo_title}, #{board.bo_content},
+		#{board.bo_ca_num},
+		#{board.bo_me_id})
+	</insert>
+
+	<select id="selectCategoryList"
+		resultType="kr.kh.team6.model.vo.CategoryVO">
+		SELECT * FROM COMMUNITY
+	</select>
+
+	<select id="selectBoardList" resultMap="BoardMap">
+		SELECT * FROM BOARD ORDER
+		BY BO_NUM DESC
+	</select>
+
+	<select id="selectCategory"
+		resultType="kr.kh.team6.model.vo.CategoryVO">
+		select * from category where co_num = #{bo_ca_num}
+	</select>
+</mapper>
