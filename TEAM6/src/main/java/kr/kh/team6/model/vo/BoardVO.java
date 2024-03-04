@@ -1,5 +1,6 @@
 package kr.kh.team6.model.vo;
 
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,10 +15,12 @@ public class BoardVO {
 	private int bo_view;
 	private CategoryVO category;
 	
-	public BoardVO(int ca_num,String bo_title, String bo_content, String bo_me_id) {
+	public BoardVO(String title, String content, String writer, int ca_num) {
+		this.bo_title = title;
+		this.bo_content = content;
+		this.bo_me_id = writer;
 		this.bo_ca_num = ca_num;
-		this.bo_title = bo_title;
-		this.bo_content = bo_content;
-		this.bo_me_id = bo_me_id;
 	}
+	
+	
 }

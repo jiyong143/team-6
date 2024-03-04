@@ -47,7 +47,7 @@
 				<c:forEach items="${list}" var="board">
 					<tr>
 						<td>${board.bo_num }</td>
-						<td>${board.community.co_name}</td>
+						<td>${board.category.ca_title}</td>
 						<td><a href="">${board.bo_title}</a></td>
 						<td><a href="">${board.bo_me_id}</a></td>
 						<td>${board.bo_view }</td>

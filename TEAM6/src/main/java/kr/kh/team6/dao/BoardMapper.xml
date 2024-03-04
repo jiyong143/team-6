@@ -7,7 +7,7 @@
 		변수이름, column은 테이블 속성 이름 -->
 	<resultMap type="kr.kh.team6.model.vo.BoardVO" id="BoardMap">
 		<id property="bo_num" column="bo_num" />
-		<result property="bo_co_num" column="bo_co_num" />
+		<result property="bo_ca_num" column="bo_ca_num" />
 		<result property="bo_me_id" column="bo_me_id" />
 		<result property="bo_title" column="bo_title" />
 		<result property="bo_content" column="bo_content" />
@@ -19,16 +19,15 @@
 	</resultMap>
 
 	<insert id="insertBoard">
-		INSERT INTO BOARD(bo_title, bo_content, bo_ca_num,
+		insert into board(bo_title, bo_content, bo_ca_num,
 		bo_me_id)
-		VALUES (#{board.bo_title}, #{board.bo_content},
-		#{board.bo_ca_num},
-		#{board.bo_me_id})
+		VALUES (#{board.bo_title},#{board.bo_content},
+		#{board.bo_ca_num},#{board.bo_me_id})
 	</insert>
 
 	<select id="selectCategoryList"
 		resultType="kr.kh.team6.model.vo.CategoryVO">
-		SELECT * FROM COMMUNITY
+		SELECT * FROM CATEGORY
 	</select>
 
 	<select id="selectBoardList" resultMap="BoardMap">
@@ -38,6 +37,6 @@
 
 	<select id="selectCategory"
 		resultType="kr.kh.team6.model.vo.CategoryVO">
-		select * from category where co_num = #{bo_ca_num}
+		select * from category where ca_num = #{bo_ca_num}
 	</select>
 </mapper>

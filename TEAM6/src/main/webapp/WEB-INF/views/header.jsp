@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,33 +8,32 @@
 <title>header</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="<c:url value="/"/>">Main</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="collapsibleNavbar">
-			<ul class="navbar-nav">
-				<c:if test="${user == null}">
-					 <li class="nav-item">
-						<a class="nav-link" href="<c:url value="/signup"/>">회원가입</a>
-					 </li>
-					 <li class="nav-item">
-						<a class="nav-link" href="<c:url value="/login"/>">로그인</a>
-					 </li>
-				</c:if>
-					 <li class="nav-item">
-						<a class="nav-link" href="<c:url value="/board/list"/>">게시글</a>
-					 </li>
-				<c:if test="${user != null}">
-					 <li class="nav-item">
-						<a class="nav-link" href="<c:url value="/logout"/>">로그아웃</a>
-					 </li>
-				</c:if>
-			</ul>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="<c:url value="/"/>">Main</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class="navbar-nav">
+					<c:if test="${user == null}">
+						<li class="nav-item"><a class="nav-link"
+							href="<c:url value="/signup"/>">회원가입</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="<c:url value="/login"/>">로그인</a></li>
+					</c:if>
+					<li class="nav-item"><a class="nav-link"
+						href="<c:url value="/board/list"/>">게시글</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="<c:url value="/category"/>">카테고리</a></li>
+					<c:if test="${user != null}">
+						<li class="nav-item"><a class="nav-link"
+							href="<c:url value="/logout"/>">로그아웃</a></li>
+					</c:if>
+				</ul>
+			</div>
 		</div>
-	</div>
-</nav>
+	</nav>
 </body>
 </html>

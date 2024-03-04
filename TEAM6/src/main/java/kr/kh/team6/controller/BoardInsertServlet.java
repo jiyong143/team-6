@@ -32,7 +32,6 @@ public class BoardInsertServlet extends HttpServlet {
 	      
 	      // 게시판 전체
 	      ArrayList<CategoryVO> list = boardService.getCategoryList();
-	      System.out.println(list);
 	      request.setAttribute("list", list);
 	      request.getRequestDispatcher("/WEB-INF/views/board/insert.jsp").forward(request, response);
 	      
@@ -54,7 +53,7 @@ public class BoardInsertServlet extends HttpServlet {
 	      String writer = user.getMe_id();
 	      int ca_num = Integer.parseInt(request.getParameter("category"));
 	      
-	      BoardVO board = new BoardVO(ca_num, title, content, writer);
+	      BoardVO board = new BoardVO(title,content,writer,ca_num);
 	      
 	      if(boardService.insertBoard(board)) {
 	         response.sendRedirect(request.getContextPath() + "/board/list");
