@@ -23,10 +23,12 @@
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value="/login"/>">로그인</a></li>
 					</c:if>
+					<c:if test="${admin == null }">
 						<li class="nav-item"><a class="nav-link"
-						href="<c:url value="/category"/>">카테고리</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="<c:url value="/board/list"/>">게시판</a></li>
+							href="<c:url value="/category"/>">카테고리</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="<c:url value="/board/list"/>">게시판</a></li>
+					</c:if>
 					<c:if test="${user != null}">
 						<li class="nav-item"><a class="nav-link"
 							href="<c:url value="/logout"/>">로그아웃</a></li>

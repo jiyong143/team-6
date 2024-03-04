@@ -1,5 +1,7 @@
 package kr.kh.team6.model.vo;
 
+import java.util.Objects;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,7 +21,6 @@ public class MemberVO {
 	
 	//회원가입 시
 	public MemberVO(String me_id, String me_pw, String me_phone, String me_address, String me_name, String me_email, int me_birth) {
-		super();
 		this.me_id = me_id;
 		this.me_pw = me_pw;
 		this.me_phone = me_phone;
@@ -27,6 +28,28 @@ public class MemberVO {
 		this.me_name = me_name;
 		this.me_email = me_email;
 		this.me_birth = me_birth;
+	}
+
+	public boolean getMe_autority(String admin) {
+		this.me_autority = admin;
+		return true;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MemberVO other = (MemberVO) obj;
+		return Objects.equals(me_autority, other.me_autority);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(me_autority);
 	}
 	
 }

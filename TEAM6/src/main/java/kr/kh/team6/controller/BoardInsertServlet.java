@@ -45,7 +45,7 @@ public class BoardInsertServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO) session.getAttribute("user");
 
-		if (user == null) {
+		if (user == null ||!user.getMe_autority("admin")) {
 			response.sendRedirect(request.getContextPath() + "/board/list");
 			return;
 		}

@@ -14,6 +14,12 @@ public interface BoardDAO {
 	ArrayList<BoardVO> selectBoardList();
 
 	ArrayList<CategoryVO> selectCategoryList();
+
+	BoardVO selectBoard(@Param("num")int num);
+
+	boolean deleteBoard(@Param("num")int num);
+
+	boolean updateBoard(@Param("board")BoardVO board);
 	
 
 	
