@@ -1,12 +1,14 @@
 package kr.kh.team6.model.vo;
 
-import java.util.Objects;
 
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class MemberVO {
 
 	private String me_id;
@@ -15,7 +17,7 @@ public class MemberVO {
 	private String me_address;
 	private String me_name;
 	private String me_email;
-	private String me_autority;
+	private String me_authority;
 	private String me_ms_state;
 	private int me_birth;
 	
@@ -30,26 +32,20 @@ public class MemberVO {
 		this.me_birth = me_birth;
 	}
 
-	public boolean getMe_autority(String admin) {
-		this.me_autority = admin;
+	public boolean getMe_authority(String admin) {
+		this.me_authority = admin;
 		return true;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MemberVO other = (MemberVO) obj;
-		return Objects.equals(me_autority, other.me_autority);
+	public boolean equals(String me_autority, String admin) {
+		this.me_authority = admin;
+		this.me_authority = me_autority;
+		
+		return true;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(me_autority);
-	}
+ 
+
+
 	
 }

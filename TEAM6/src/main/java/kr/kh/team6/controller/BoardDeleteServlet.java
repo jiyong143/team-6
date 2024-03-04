@@ -29,7 +29,7 @@ public class BoardDeleteServlet extends HttpServlet {
 			num = 0;
 		}
 		boolean res = boardService.deleteBoard(num, user);
-		if (res ||!user.getMe_autority("admin")) {
+		if (res ||!user.getMe_authority("admin")) {
 			request.setAttribute("msg", "게시글을 삭제했습니다.");
 			request.setAttribute("url", "board/list");
 		}

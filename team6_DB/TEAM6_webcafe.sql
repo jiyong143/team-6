@@ -106,4 +106,7 @@ ALTER TABLE `member` ADD CONSTRAINT `FK_memberState_TO_member_1` FOREIGN KEY (
 REFERENCES `memberState` (
 	`ms_state`
 );
+INSERT INTO MEMBERSTATE VALUES('이용중'), ('기간정지'), ('영구정지'), ('탈퇴');
+insert into member values('admin',970307,'wkdrn002@naver.com',01044071418,'admin','서울시','정경호','이용중','admin');
+insert into member values('ssss224',970307,'wkdrn002@naver.com',01044071418,'asd154','서울시','정경호','이용중','user');
 

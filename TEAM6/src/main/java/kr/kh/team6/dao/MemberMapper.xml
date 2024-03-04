@@ -5,9 +5,13 @@
 <mapper namespace="kr.kh.team6.dao.MemberDAO">
 	<insert id="insertMember">
 		insert into member(me_id, me_pw, me_email, me_phone, me_address, me_name, me_birth)
-		values(#{memberVO.me_id}, #{memberVO.me_pw}, #{memberVO.me_email}, #{memberVO.me_phone}, #{memberVO.me_address},#{member.me_name}, #{member.me_birth})
+		values(#{member.me_id}, #{member.me_pw}, #{member.me_email}, #{member.me_phone}, #{member.me_address},#{member.me_name}, #{member.me_birth})
 	</insert>
 	<select id="selectMember" resultType="kr.kh.team6.model.vo.MemberVO">
 		select * from member where me_id = #{me_id}
+	</select>
+	
+	<select id="selectAuthority" resultType="kr.kh.team6.model.vo.MemberVO">
+			select * from member where me_authority = #{admin}
 	</select>
 </mapper>

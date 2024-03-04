@@ -33,7 +33,7 @@ public class BoardUpdateServlet extends HttpServlet {
 		request.setAttribute("board", board);
 
 		MemberVO user = (MemberVO) request.getSession().getAttribute("user");
-		if (board == null ||!user.getMe_autority("admin")) {
+		if (board == null ||!user.getMe_authority("admin")) {
 			request.setAttribute("msg", "관리자자가 아닙니다");
 			request.setAttribute("url", "board/list?num=" + num);
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);

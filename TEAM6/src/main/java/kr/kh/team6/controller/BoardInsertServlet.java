@@ -15,6 +15,8 @@ import kr.kh.team6.model.vo.CategoryVO;
 import kr.kh.team6.model.vo.MemberVO;
 import kr.kh.team6.service.BoardService;
 import kr.kh.team6.service.BoardServiceImp;
+import kr.kh.team6.service.MemberService;
+import kr.kh.team6.service.MemberServiceImp;
 
 @WebServlet("/board/insert")
 public class BoardInsertServlet extends HttpServlet {
@@ -26,9 +28,9 @@ public class BoardInsertServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO) session.getAttribute("user");
 
-		if (user == null) {
-			request.setAttribute("msg", "로그인이 필요한 서비스입니다. 로그인 창으로 이동합니다.");
-			request.setAttribute("url", "/login");
+		if (user == null || !"admin".equals(user.getMe_authority())) {
+			request.setAttribute("msg", "관리자 권한이 필요합니다. 관리자로 로그인 후 다시 시도하세요");
+			request.setAttribute("url", "/board/list");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}
 
@@ -45,7 +47,7 @@ public class BoardInsertServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO) session.getAttribute("user");
 
-		if (user == null ||!user.getMe_autority("admin")) {
+		if (user == null) {
 			response.sendRedirect(request.getContextPath() + "/board/list");
 			return;
 		}
@@ -54,16 +56,18 @@ public class BoardInsertServlet extends HttpServlet {
 		int ca_num = Integer.parseInt(request.getParameter("category"));
 
 		BoardVO board = new BoardVO(title, ca_num);
-
-		if (boardService.insertBoard(board)) {
-			request.setAttribute("msg", "게시판을 추가 했습니다.");
-			request.setAttribute("url", "/board/list");
-		} else {
-			request.setAttribute("msg", "게시판 추가에 실패 했습니다.");
-			request.setAttribute("url", "/board/insert");
+		try {
+			if (boardService.insertBoard(board)) {
+				request.setAttribute("msg", "게시판을 추가 했습니다.");
+				request.setAttribute("url", "/board/list");
+			} else {
+				request.setAttribute("msg", "게시판 추가에 실패 했습니다.");
+				request.setAttribute("url", "/board/insert");
+			}
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
-
 	}
 
 }
