@@ -4,7 +4,8 @@ import kr.kh.team6.model.vo.CategoryVO;
 
 public interface CategoryService {
 
-	boolean insertCategory(CategoryVO category);
+	boolean insertCategory(String ca_title);
+
 
 	
 	

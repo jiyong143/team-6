@@ -37,12 +37,7 @@ public class BoardServiceImp implements BoardService{
 			board.getBo_title().length() == 0) {
 			return false;
 		}
-		if(board.getBo_me_id() == null) {
-			return false;
-		}
-		if(board.getBo_content() == null) {
-			return false;
-		}
+	
 		return boardDao.insertBoard(board);
 	}
 

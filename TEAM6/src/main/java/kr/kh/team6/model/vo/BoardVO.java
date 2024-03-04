@@ -15,11 +15,12 @@ public class BoardVO {
 	private int bo_view;
 	private CategoryVO category;
 	
-	public BoardVO(String title, String content, String writer, int ca_num) {
-		this.bo_title = title;
-		this.bo_content = content;
-		this.bo_me_id = writer;
+
+
+	public BoardVO(String title, int ca_num) {
+		this.bo_title = title;	
 		this.bo_ca_num = ca_num;
+		
 	}
 	
 	

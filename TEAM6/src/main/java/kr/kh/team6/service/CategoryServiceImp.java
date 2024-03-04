@@ -29,11 +29,11 @@ public class CategoryServiceImp implements CategoryService{
 	}
 
 	@Override
-	public boolean insertCategory(CategoryVO category) {
-		if(category == null || category.getCa_title().length() == 0) {
+	public boolean insertCategory(String ca_title) {
+		if(ca_title == null || ca_title.length() == 0) {
 			return false;
 		}
-		return categoryDAO.insertCategory(category);
+		return categoryDAO.insertCategory(ca_title);
 	}
 	
 

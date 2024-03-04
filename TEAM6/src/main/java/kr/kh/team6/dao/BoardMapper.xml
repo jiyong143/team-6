@@ -8,10 +8,7 @@
 	<resultMap type="kr.kh.team6.model.vo.BoardVO" id="BoardMap">
 		<id property="bo_num" column="bo_num" />
 		<result property="bo_ca_num" column="bo_ca_num" />
-		<result property="bo_me_id" column="bo_me_id" />
 		<result property="bo_title" column="bo_title" />
-		<result property="bo_content" column="bo_content" />
-		<result property="bo_view" column="bo_view" />
 		<collection property="category"
 			ofType="kr.kh.team6.model.vo.CategoryVO" column="bo_ca_num"
 			select="selectCategory" />
@@ -19,10 +16,8 @@
 	</resultMap>
 
 	<insert id="insertBoard">
-		insert into board(bo_title, bo_content, bo_ca_num,
-		bo_me_id)
-		VALUES (#{board.bo_title},#{board.bo_content},
-		#{board.bo_ca_num},#{board.bo_me_id})
+		insert into board(bo_title,bo_ca_num)
+		VALUES (#{board.bo_title},#{board.bo_ca_num})
 	</insert>
 
 	<select id="selectCategoryList"

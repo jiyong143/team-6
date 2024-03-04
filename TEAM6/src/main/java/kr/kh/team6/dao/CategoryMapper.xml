@@ -5,8 +5,8 @@
 <mapper namespace="kr.kh.team6.dao.CategoryDAO">
 	
 	<insert id="insertCategory">
-		INSERT INTO CATEGORY(ca_num,ca_title)
-		VALUES (#{category.ca_num}, #{category.ca_title}
+		INSERT INTO category(ca_title)
+		VALUES (#{ca_title})
 	</insert>
 <!-- 
 	<select id="selectCategoryList"
