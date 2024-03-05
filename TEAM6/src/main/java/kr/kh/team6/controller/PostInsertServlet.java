@@ -37,7 +37,7 @@ public class PostInsertServlet extends HttpServlet {
 			ArrayList <BoardVO> boardList = boardService.getBoardList();
 		// 화면에 게시판 리스트를 보냄 
 			request.setAttribute("boardList", boardList);
-		    request.getRequestDispatcher("/WEB-INF/views/board/insert.jsp").forward(request, response);
+		    request.getRequestDispatcher("/WEB-INF/views/post/insert.jsp").forward(request, response);
 	}
 	}
 

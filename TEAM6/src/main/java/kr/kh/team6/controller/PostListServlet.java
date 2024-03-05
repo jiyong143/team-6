@@ -36,7 +36,7 @@ public class PostListServlet extends HttpServlet {
 		    
 		    // 화면에 게시글 리스트를 전송... 화면에서 사용할 이름은 postList 로 하자
 		    request.setAttribute("postList", postList);
-			request.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/post/list.jsp").forward(request, response);
 		}
 			
 	}

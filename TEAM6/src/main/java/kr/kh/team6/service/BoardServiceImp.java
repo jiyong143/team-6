@@ -10,7 +10,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.team6.dao.BoardDAO;
-import kr.kh.team6.dao.MemberDAO;
 import kr.kh.team6.model.vo.BoardVO;
 
 public class BoardServiceImp implements BoardService {

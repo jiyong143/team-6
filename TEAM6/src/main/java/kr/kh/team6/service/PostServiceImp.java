@@ -3,16 +3,13 @@ package kr.kh.team6.service;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import kr.kh.team6.dao.MemberDAO;
 import kr.kh.team6.dao.PostDAO;
-import kr.kh.team6.model.vo.BoardVO;
 import kr.kh.team6.model.vo.PostVO;
 
 public class PostServiceImp implements PostService{
