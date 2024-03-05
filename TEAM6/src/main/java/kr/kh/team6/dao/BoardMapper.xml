@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.kh.team6.dao.BoardDAO">
+	<!-- rusultMap은 클래스 멤버 이름과 테이블의 속성 이름이 다른 경우 맵핑하기위해 사용 property는 클래스 멤버 
+		변수이름, column은 테이블 속성 이름 -->
+	<resultMap type="kr.kh.team6.model.vo.BoardVO" id="BoardMap">
+		<id property="bo_num" column="bo_num" />
+		<result property="bo_ca_num" column="bo_ca_num" />
+		<result property="bo_title" column="bo_title" />
+		<collection property="category"
+			ofType="kr.kh.team6.model.vo.CategoryVO" column="bo_ca_num"
+			select="selectCategory" />
+
+	</resultMap>
+
+	<insert id="insertBoard">
+		insert into board(bo_title,bo_ca_num)
+		VALUES (#{board.bo_title},#{board.bo_ca_num})
+	</insert>
+
+	<select id="selectCategoryList"
+		resultType="kr.kh.team6.model.vo.CategoryVO">
+		SELECT * FROM CATEGORY
+	</select>
+
+	<select id="selectBoardList" resultMap="BoardMap">
+		SELECT * FROM BOARD ORDER
+		BY BO_NUM DESC
+	</select>
+
+	<select id="selectCategory"
+		resultType="kr.kh.team6.model.vo.CategoryVO">
+		select * from category where ca_num = #{bo_ca_num}
+	</select>
+	
+	<delete id="deleteBoard">
+		delete from board where bo_num = #{num}
+	</delete>
+	
+	<select id="selectBoard" resultMap="BoardMap">
+		select * from board where bo_num = #{num}
+	</select>
+	
+	<update id="updateBoard">
+		update board set
+			bo_title = #{board.bo_title},
+			bo_content = #{board.bo_content},
+			bo_co_num = #{board.bo_co_num}
+		where
+			bo_num = #{board.bo_num}
+	</update>
+</mapper>

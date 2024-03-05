@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.kh.team6.dao.CategoryDAO">
+	
+	<insert id="insertCategory">
+		INSERT INTO category(ca_title)
+		VALUES (#{ca_title})
+	</insert>
+<!-- 
+	<select id="selectCategoryList"
+		resultType="kr.kh.team6.model.vo.CategoryVO">
+		SELECT * FROM COMMUNITY
+	</select>
+
+	<select id="selectBoardList" resultMap="BoardMap">
+		SELECT * FROM BOARD ORDER
+		BY BO_NUM DESC
+	</select>
+ -->
+	
+</mapper>

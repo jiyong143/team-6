@@ -8,6 +8,10 @@ public interface MemberService {
 	MemberVO login(LoginDTO loginDTO);
 
 	boolean signup(MemberVO memberVO);
+
+//	MemberVO getAuthority(String admin);
+
+	boolean getAuthority(boolean admin);
 	
 	
 

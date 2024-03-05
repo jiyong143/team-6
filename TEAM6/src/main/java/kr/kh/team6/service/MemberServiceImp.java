@@ -31,7 +31,6 @@ public class MemberServiceImp implements MemberService {
 		}
 
 	}
-
 	@Override
 	public MemberVO login(LoginDTO loginDTO) {
 		if(loginDTO == null) {
@@ -179,5 +178,10 @@ public class MemberServiceImp implements MemberService {
 		}
 		return Pattern.matches(regexId, me_id);
 	}
-	
+
+	@Override
+	public boolean getAuthority(boolean admin) {
+		return memberDao.selectAuthority(admin);
+	}
+
 }
