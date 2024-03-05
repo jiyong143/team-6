@@ -40,14 +40,14 @@
 	</delete>
 	
 	<select id="selectBoard" resultMap="BoardMap">
-		select * from board where bo_num = #{num}
+		select * from board where bo_num = #{bo_num}
 	</select>
+	
 	
 	<update id="updateBoard">
 		update board set
 			bo_title = #{board.bo_title},
-			bo_content = #{board.bo_content},
-			bo_co_num = #{board.bo_co_num}
+			bo_ca_num = #{board.bo_ca_num}
 		where
 			bo_num = #{board.bo_num}
 	</update>
