@@ -17,5 +17,7 @@ public interface PostDAO {
 
 	int selectTotalCount(@Param("cri")Criteria cri , @Param("bo_num")int bo_num);
 
+	ArrayList<BoardVO> selectBoard();
+
 
 }
