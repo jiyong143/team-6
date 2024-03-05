@@ -12,18 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 import kr.kh.team6.model.vo.BoardVO;
 import kr.kh.team6.model.vo.CategoryVO;
 import kr.kh.team6.model.vo.MemberVO;
-import kr.kh.team6.service.BoardService;
-import kr.kh.team6.service.BoardServiceImp;
+import kr.kh.team6.service.CategoryService;
+import kr.kh.team6.service.CategoryServiceImp;
 
-@WebServlet("/board/update")
-public class BoardUpdateServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	private BoardService boardService = new BoardServiceImp();
+/**
+ * Servlet implementation class CategoryUpdateServlet
+ */
+@WebServlet("/category/update")
+public class CategoryUpdateServlet extends HttpServlet {
+
+	CategoryService categoryService = new CategoryServiceImp();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-	
+
 		MemberVO user = (MemberVO) request.getSession().getAttribute("admin");
 		if (user == null || !user.getMe_authority().equals("admin")) {
 			request.setAttribute("msg", "관리자 권한이 필요합니다. 관리자로 로그인 후 다시 시도하세요");
@@ -31,18 +33,20 @@ public class BoardUpdateServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}
 
-		int bo_num;
+		int ca_num;
 		try {
-			bo_num = Integer.parseInt(request.getParameter("bo_num"));
+			ca_num = Integer.parseInt(request.getParameter("ca_num"));
 		} catch (Exception e) {
-			bo_num = 0;
+			ca_num = 0;
 		}
-		BoardVO board = boardService.getBoard(bo_num);
-		request.setAttribute("board", board);
+		CategoryVO category = categoryService.getCategory(ca_num);
+		System.out.println(category + "두겟");
+		System.out.println(user + "두겟");
+		request.setAttribute("category", category);
 
-		ArrayList<CategoryVO> list = boardService.getCategoryList();
+		ArrayList<CategoryVO> list = categoryService.getCategoryList();
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/WEB-INF/views/board/update.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/category/update.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -50,23 +54,23 @@ public class BoardUpdateServlet extends HttpServlet {
 
 		MemberVO admin = (MemberVO) request.getSession().getAttribute("admin");
 
-		int bo_num,bo_ca_num;
+		int num;
 		try {
-			bo_num = Integer.parseInt(request.getParameter("bo_num"));
-			bo_ca_num = Integer.parseInt(request.getParameter("bo_ca_num"));
+			num = Integer.parseInt(request.getParameter("ca_num"));
 		} catch (Exception e) {
-			bo_num = 0;
-			bo_ca_num = 0;
+			num = 0;
 		}
-		String bo_title = request.getParameter("bo_title");
-		BoardVO board = new BoardVO(bo_num, bo_title, bo_ca_num);
-		boolean res = boardService.updateBoard(board, admin);
+		String ca_title = request.getParameter("bo_title");
+		CategoryVO category = new CategoryVO(num, ca_title);
+		boolean res = categoryService.updateCategory(category, admin);
+		System.out.println(category + "두포");
+		System.out.println(admin + "두포");
 		if (res) {
-			request.setAttribute("msg", "게시판을 수정했습니다.");
+			request.setAttribute("msg", "카테고리를 수정했습니다.");
 		} else {
-			request.setAttribute("msg", "게시판을 수정하지 못했습니다.");
+			request.setAttribute("msg", "카테고리를 수정하지 못했습니다.");
 		}
-		request.setAttribute("url", "board/list?bo_num=" + bo_num);
+		request.setAttribute("url", "category/list?num=" + num);
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 
 	}
