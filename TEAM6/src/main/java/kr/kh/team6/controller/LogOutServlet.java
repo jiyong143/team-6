@@ -7,22 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/")
-public class MainServlet extends HttpServlet {
+@WebServlet("/logout")
+public class LogOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
-    public MainServlet() {
-        
-    }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
+		request.getSession().removeAttribute("user"); //세션에 있는 "user"의 정보를 removeAttribute
+		request.setAttribute("msg", "로그아웃 되었습니다.");
+		request.setAttribute("url", "");
+		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}
-
-	
 
 }

@@ -6,8 +6,12 @@ import kr.kh.team6.model.vo.MemberVO;
 
 public interface MemberDAO {
 
-	MemberVO selectMember(@Param("id")String id);
-
 	boolean insertMember(@Param("member")MemberVO memberVO);
+
+	MemberVO selectAuthority(@Param("admin")String admin);
+
+	boolean selectAuthority(boolean admin);
+
+	MemberVO selectMember(@Param("me_id")String id);
 
 }

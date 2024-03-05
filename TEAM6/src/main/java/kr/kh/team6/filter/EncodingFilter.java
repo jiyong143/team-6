@@ -13,13 +13,12 @@ public class EncodingFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		// 화면에서 서버로 전송할 때 인코딩 설정 : UTF-8
+		//화면에서 서버로 전송할 때
 		request.setCharacterEncoding("UTF-8");
-		//서버에서 화면으로 전송할 때 인코딩 설정 : UTF-8
-		request.setCharacterEncoding("UTF-8");
-		// 다른 필터가 있는 경우 필터 적용을 위한 코드 
+		//서버에서 화면으로 전달할 때
+		response.setCharacterEncoding("UTF-8");
+		//필터가 여러 개인 경우 다음 필터에 적용하기 위한 작업
 		chain.doFilter(request, response);
-		
 	}
 
 }

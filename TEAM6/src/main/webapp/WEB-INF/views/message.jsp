@@ -5,20 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>message</title> <!-- 알림창으로 팝업 후 원하는 페이지로 이동 -->
 </head>
 <body>
-    <script type="text/javascript">
-        let msg = '${msg}'; // 서버에서 보낸 msg값을 변수에 저장 
-        if(msg!=''){
-        	alert(msg);
-        }
-        let redirectURL = '${url}'; // 서버에서 보낸 url을 변수에 저장
-        if(redirectURL!=''){
-        	location.href='<c:url value="/${url}"/>'; // 실패했으니 다시 회원가입으로
-        }else{
-        	location.href='<c:url value="/"/>'; // 성공했으니 메인으로 
-        }
-    </script>
+	<script type="text/javascript">
+		let msg = '${msg}'; //서버에서 보낸 msg값을 변수에 저장
+		if(msg != '') {
+			alert(msg);
+		}
+		location.href = '<c:url value="/${url}"/>';
+
+	</script>
 </body>
 </html>
