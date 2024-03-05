@@ -14,8 +14,10 @@ import kr.kh.team6.model.dto.LoginDTO;
 import kr.kh.team6.model.vo.MemberVO;
 
 public class MemberServiceImp implements MemberService {
-
+	
 	private MemberDAO memberDao;
+	InputStream inputStream;
+	SqlSession session;
 	
 	public MemberServiceImp() {
 		String resource = "kr/kh/team6/config/mybatis-config.xml";
@@ -29,7 +31,6 @@ public class MemberServiceImp implements MemberService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 	@Override
 	public MemberVO login(LoginDTO loginDTO) {
@@ -189,5 +190,24 @@ public class MemberServiceImp implements MemberService {
 	public boolean getAuthority(boolean admin) {
 		return memberDao.selectAuthority(admin);
 	}
+
+	// 아이디, 비밀번호 객체에 대응하는 회원을 가져오는 메서드 
+	@Override
+	public MemberVO getMember(LoginDTO loginDTO) {
+		if(loginDTO==null||
+		   loginDTO.getId()==null||
+		   loginDTO.getPw()==null) {
+			return null;
+		}
+		MemberVO member = memberDao.selectMember(loginDTO.getId());
+		if(member==null) {
+			return null; 
+		}
+		// 비번은 회원가입시 암호화 관리돼 db에서 직접 비교할 수 없기에 서버쪽에서 한다
+		if(member.getMe_pw().equals(loginDTO.getPw())) {
+			return member;
+		}
+		return null;
+	} 
 
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.kh.team6.dao.PostDAO">
+    <resultMap type="kr.kh.team6.model.vo.PostVO" id="PostMap">
+        <id property="po_num" column="po_num"/>
+        <result property="po_bo_num" column="po_bo_num"/>
+        <result property="po_me_id" column="po_me_id"/>
+        <result property="po_title" column="po_title"/>
+        <result property="po_content" column="po_content"/>
+        <result property="po_views" column="po_views"/>
+        <result property="po_date" column="po_date"/>
+        <collection property="board" ofType="kr.kh.team6.model.vo.BoardVO" 
+        			column="po_bo_num" select="selectBoard"/>
+    </resultMap>
+    
+    <!-- 조회 -->
+	<select id="selectPostList" resultMap="PostMap">
+		<!-- type과 검색어를 이용하여 쿼리를 구성, if태그를 활용 -->
+		select * from post 
+		<choose>
+			<!-- 전체 검색 -->
+			<when test='cri.type == "all"'>
+				where 
+					(po_title like concat('%',#{cri.search},'%') or
+					po_me_id like concat('%',#{cri.search},'%'))
+					and po_bo_num=#{bo_num}
+			</when>
+			<!-- 제목 또는 작성자 검색 -->
+			<otherwise>
+				where
+					${cri.type} like concat('%',#{cri.search},'%') and
+					po_bo_num=#{bo_num}
+			</otherwise>
+		</choose>
+		order by po_num desc
+		<!-- 현재 페이지 정보에 맞는 게시글을 위한 limit절 작성 -->
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	
+	
+	<!-- 추가 -->
+	<insert id="insertPost">
+	   insert into post(po_title,po_content,po_date,po_views,po_bo_num,po_me_id) 
+	   values(#{post.po_title},#{post.po_content},now(),0,#{post.po_bo_num},#{post.po_me_id})
+	</insert>
+	
+	<!-- 조회 -->
+	<select id="selectTotalCount" resultType="int">
+	   select count(*) from post
+	   <if test='cri.type=="title"'>
+	       where po_title like concat('%', #{cri.search},'%') and po_bo_num= #{bo_num}
+	   </if>
+	   <if test='cri.type=="writer"'>
+	       where po_me_id= #{cri.search} and po_bo_num= #{bo_num}
+	   </if>
+	</select>
+	
+	
+	<!-- 조회-->
+	<select id="selectboard" resultType="kr.kh.team6.model.vo.BoardVO">
+		select * from board where bo_num = #{po_bo_num}
+	</select>
+	
+	
+</mapper>
