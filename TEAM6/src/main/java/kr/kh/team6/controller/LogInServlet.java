@@ -19,11 +19,6 @@ import kr.kh.team6.service.MemberServiceImp;
 public class LogInServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private MemberService memberService = new MemberServiceImp();
-   
-    public LogInServlet() {
-        
-    }
-
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
