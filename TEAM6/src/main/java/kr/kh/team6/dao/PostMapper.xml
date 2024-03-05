@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.kh.team6.dao.PostDAO">
+    <resultMap type="kr.kh.team6.model.vo.PostVO" id="PostMap">
+        <id property="po_num" column="po_num"/>
+        <result property="po_bo_num" column="po_bo_num"/>
+        <result property="po_me_id" column="po_me_id"/>
+        <result property="po_title" column="po_title"/>
+        <result property="po_content" column="po_content"/>
+        <result property="po_views" column="po_views"/>
+        <result property="po_date" column="po_date"/>
+        <collection property="board" ofType="kr.kh.team6.model.vo.BoardVO" column="po_bo_num" select="selectBoard"/>
+    </resultMap>
+	<select id="selectPostList" resultMap="PostMap">
+	    select * from post where po_bo_num=#{bo_num} order by po_num desc
+	</select>
+	
+	<!-- 필요 없음 -->
+	<select id="selectBoard" resultType="kr.kh.team6.model.vo.PostVO">
+	   select * from board where bo_num=#{po_bo_num}
+	</select>
+	
+	<insert id="insertPost">
+	   insert into post(po_title,po_content,po_date,po_views,po_bo_num,po_me_id) 
+	   values(#{post.po_title},#{post.po_content},now(),0,#{post.po_bo_num},#{post.po_me_id})
+	</insert>
+</mapper>
