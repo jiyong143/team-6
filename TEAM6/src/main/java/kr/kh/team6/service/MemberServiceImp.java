@@ -180,6 +180,12 @@ public class MemberServiceImp implements MemberService {
 		return Pattern.matches(regexId, me_id);
 	}
 
+//	@Override
+//	public MemberVO getAuthority(String admin) {
+//		return memberDao.selectAuthority(admin);
+//		
+//	}
+
 	@Override
 	public boolean getAuthority(boolean admin) {
 		return memberDao.selectAuthority(admin);
