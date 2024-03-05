@@ -56,29 +56,120 @@ public class MemberServiceImp implements MemberService {
 		if(memberVO == null) {
 			return false;
 		}
-		//정규표현식 체크 코드
-		if(!checkIdRegex(memberVO.getMe_id()) || !checkPwRegex(memberVO.getMe_pw())) {
+		
+		//아이디 정규표현식 체크
+		if(!checkIdRegex(memberVO.getMe_id())) {
+			System.out.println("영문 대·소문자, 숫자 6~8자만 사용가능합니다.");
 			return false;
 		}
 		
 		//아이디 중복
 		MemberVO dbMember = memberDao.selectMember(memberVO.getMe_id());
 		if(dbMember != null) {
+			System.out.println("중복된 아이디입니다.");
 			return false;
 		}
-
+		
+		//비번 정규표현식 체크
+		if(!checkPwRegex(memberVO.getMe_pw())) {
+			System.out.println("영문 대·소문자, 숫자, 특수기호(!@#$) 8~14자만 사용가능합니다.");
+			return false;
+		}
+		
+		//비번 확인
+		if(!memberVO.getMe_pw().equals(memberVO.getMe_pw())) {
+			System.out.println("입력한 비번과 다릅니다.");
+			return false;
+		}
+		
+		//생년월일은 6자 고정 INT
+		if(!checkBirthRegex(memberVO.getMe_birth())) {
+			System.out.println("생년월일은 주민번호 앞 6자리를 입력하세요.");
+			return false;
+		}
+		
+		//이름은 TEXT인데, 최대 5글자
+		if(!checkNameRegex(memberVO.getMe_name())) {
+			System.out.println("이름은 한글로 최대 5자 까지 가능합니다.");
+			return false;
+		}
+		
+		//전화번호 11자 고정 CHAR(11)
+		if(!checkPhoneRegex(memberVO.getMe_phone())) {
+			System.out.println("전화번호는 -를 제외한 11자리를 입력하세요.");
+			return false;
+		}
+		
+		//이메일은 이메일 형식으로만 가능 최대 30자 VARCAHR(30)
+		if(!checkEmailRegex(memberVO.getMe_email())) {
+			System.out.println("이메일은 최대 30자 까지 가능합니다.");
+			return false;
+		}
+		
+		//주소는 TEXT인데, 최대 50글자/ ex) 양식 : OO시 OO구 OO동
+		if(!checkAddressRegex(memberVO.getMe_address())) {
+			System.out.println("주소를 올바르게 입력하세요. 예시) 양식 : OO시 OO구 OO동");
+			return false;
+		}
+		
+		//모두 올바르게 적으면 등록
 		return memberDao.insertMember(memberVO);
 	}
 	
+	//주소 정규표현식
+	private boolean checkAddressRegex(String me_address) {
+		String regexAddress = "([가-힣])+(시) +([가-힣])+(구) +([가-힣])+(동)";
+		if(me_address == null) {
+			return false;			
+		}
+		return Pattern.matches(regexAddress, me_address);
+	}
+
+	//이메일 정규표현식
+	private boolean checkEmailRegex(String me_email) {
+		String regexEmail = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
+		if(me_email == null) {			
+			return false;
+		}
+		return Pattern.matches(regexEmail, me_email);
+	}
+
+	//휴대폰번호 정규표현식
+	private boolean checkPhoneRegex(String me_phone) {
+		String regexPhone = "^[0-9]{11}$";
+		if(me_phone == null) {			
+			return false;
+		}
+		return Pattern.matches(regexPhone, me_phone);
+	}
+
+	//이름 정규표현식
+	private boolean checkNameRegex(String me_name) {
+		String regexName = "^[ㄱ-힣]{1,5}$";
+		if(me_name == null) {
+			return false;
+		}
+		return Pattern.matches(regexName, me_name);
+	}
+
+	//생일 정규표현식
+	private boolean checkBirthRegex(String me_birth) {
+		String regexBirth = "^[0-9]{6}$";
+		if(me_birth == null) {
+			return false;
+		}
+		return Pattern.matches(regexBirth, me_birth);
+	}
+
 	//비번 정규표현식
 	private boolean checkPwRegex(String me_pw) {
-		String regexPw = "$[a-zA-Z0-9!@#$]{8,14}^";
+		String regexPw = "^[a-zA-Z0-9!@#$]{8,14}$";
 		if(me_pw == null) {
 			return false;
 		}
 		return Pattern.matches(regexPw, me_pw);
 	}
-
+	
 	//아이디 정규표현식
 	private boolean checkIdRegex(String me_id) {
 		String regexId = "^[a-zA-Z0-9]{6,8}$";
@@ -87,12 +178,6 @@ public class MemberServiceImp implements MemberService {
 		}
 		return Pattern.matches(regexId, me_id);
 	}
-
-//	@Override
-//	public MemberVO getAuthority(String admin) {
-//		return memberDao.selectAuthority(admin);
-//		
-//	}
 
 	@Override
 	public boolean getAuthority(boolean admin) {
