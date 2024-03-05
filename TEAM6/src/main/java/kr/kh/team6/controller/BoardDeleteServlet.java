@@ -22,6 +22,15 @@ public class BoardDeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		MemberVO user = (MemberVO) request.getSession().getAttribute("user");
+		
+
+		if (user == null || !"admin".equals(user.getMe_authority())) {
+			request.setAttribute("msg", "관리자 권한이 필요합니다. 관리자로 로그인 후 다시 시도하세요");
+			request.setAttribute("url", "/");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+		}
+		
+		
 		int num;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));

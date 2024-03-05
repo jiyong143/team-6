@@ -31,7 +31,6 @@ public class MemberServiceImp implements MemberService {
 		}
 
 	}
-
 	@Override
 	public MemberVO login(LoginDTO loginDTO) {
 		if(loginDTO == null) {

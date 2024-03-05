@@ -26,8 +26,8 @@ public class CategoryServlet extends HttpServlet {
 		MemberVO user = (MemberVO) session.getAttribute("user");
 
 		if (user == null) {
-			request.setAttribute("msg", "로그인이 필요한 서비스입니다. 로그인 창으로 이동합니다.");
-			request.setAttribute("url", "/login");
+			request.setAttribute("msg", "관리자 권한이 필요합니다. 관리자로 로그인 후 다시 시도하세요");
+			request.setAttribute("url", "/");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}
 
