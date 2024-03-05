@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.team6.dao.PostDAO;
 import kr.kh.team6.model.vo.PostVO;
+import kr.kh.team6.pagination.Criteria;
 
 public class PostServiceImp implements PostService{
 	
@@ -31,8 +32,8 @@ public class PostServiceImp implements PostService{
 	}
  
 	@Override
-	public ArrayList <PostVO> getPostList(int bo_num) {
-		return postDao.selectPostList(bo_num);
+	public ArrayList <PostVO> getPostList(Criteria cri, int bo_num) {
+		return postDao.selectPostList(cri, bo_num);
 		
 	}
 
@@ -52,6 +53,14 @@ public class PostServiceImp implements PostService{
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public int getTotalCount(Criteria cri, int bo_num) {
+		if(cri==null) {
+			cri= new Criteria();
+		}
+		return postDao.selectTotalCount(cri, bo_num);
 	}
 
 	
