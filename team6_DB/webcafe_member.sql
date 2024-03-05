@@ -28,13 +28,12 @@ CREATE TABLE `member` (
   `me_email` varchar(30) NOT NULL,
   `me_phone` char(11) NOT NULL,
   `me_pw` varchar(14) NOT NULL,
-  `me_address` varchar(50) NOT NULL,
-  `me_name` varchar(5) NOT NULL,
-  `me_ms_state` varchar(10) NOT NULL,
-  `me_authority` varchar(5) NOT NULL,
+  `me_address` text NOT NULL,
+  `me_name` text NOT NULL,
+  `me_ms_state` varchar(10) NOT NULL DEFAULT '이용중',
+  `me_authority` varchar(5) NOT NULL DEFAULT 'user',
   PRIMARY KEY (`me_id`),
-  KEY `FK_memberState_TO_member_1` (`me_ms_state`),
-  CONSTRAINT `FK_memberState_TO_member_1` FOREIGN KEY (`me_ms_state`) REFERENCES `memberstate` (`ms_state`)
+  KEY `FK_memberState_TO_member_1` (`me_ms_state`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -44,6 +43,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
+INSERT INTO `member` VALUES ('admin123',111111,'admin123@naver.com','01011112222','admin123','서울시 강남구 역삼동','관리자','이용중','admin'),('qwer1234',981009,'qwer1234@naver.com','01021083194','qwer1234','서울시 관악구 신림동','양선진','이용중','user');
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-27 17:40:23
+-- Dump completed on 2024-03-06  8:50:46
