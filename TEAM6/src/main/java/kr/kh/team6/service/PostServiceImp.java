@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.team6.dao.PostDAO;
+import kr.kh.team6.model.vo.BoardVO;
 import kr.kh.team6.model.vo.PostVO;
 import kr.kh.team6.pagination.Criteria;
 
@@ -61,6 +62,11 @@ public class PostServiceImp implements PostService{
 			cri= new Criteria();
 		}
 		return postDao.selectTotalCount(cri, bo_num);
+	}
+
+	@Override
+	public ArrayList<BoardVO> boardList() {
+		return postDao.selectboard();
 	}
 
 	

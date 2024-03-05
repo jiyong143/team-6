@@ -15,10 +15,16 @@
     <form action="<c:url value="/post/insert"/>" method="post">
          <h1>게시글 등록</h1>
          <div class="mb-3 mt-3">
+			<label for="category" class="form-label">카테고리</label>
+			<select class="form-control" id="category" name="category">
+			    <c:forEach items="${list}" var="category">
+			        <option value="${board.bo_num}">${board.bo_title}</option>
+			    </c:forEach>
+			 </select>
 			<label for="board" class="form-label">게시판</label>
 			<select class="form-control" id="board" name="board">
 			    <c:forEach items="${boardList}" var="board">
-			        <option value="${board.bo_num}">${board.bo_title}</option>
+			        <option value="${category.ca_num }">${category.ca_title}</option>
 			    </c:forEach>
 			</select>
 		</div>
