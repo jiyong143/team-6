@@ -19,10 +19,11 @@ public class MemberVO {
 	private String me_email;
 	private String me_authority;
 	private String me_ms_state;
-	private int me_birth;
+	private String me_birth;
 	
 	//회원가입 시
-	public MemberVO(String me_id, String me_pw, String me_phone, String me_address, String me_name, String me_email, int me_birth) {
+	public MemberVO(String me_id, String me_pw, String me_phone, String me_address,
+					String me_name, String me_email, String me_birth) {
 		this.me_id = me_id;
 		this.me_pw = me_pw;
 		this.me_phone = me_phone;
