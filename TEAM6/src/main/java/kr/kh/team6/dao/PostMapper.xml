@@ -11,7 +11,8 @@
         <result property="po_content" column="po_content"/>
         <result property="po_views" column="po_views"/>
         <result property="po_date" column="po_date"/>
-        <collection property="board" ofType="kr.kh.team6.model.vo.BoardVO" column="po_bo_num" select="selectBoard"/>
+        <collection property="board" ofType="kr.kh.team6.model.vo.BoardVO" 
+        			column="po_bo_num" select="selectBoard"/>
     </resultMap>
     
     <!-- 조회 -->
@@ -59,7 +60,7 @@
 	
 	<!-- 조회-->
 	<select id="selectboard" resultType="kr.kh.team6.model.vo.BoardVO">
-		select * from board 
+		select * from board where bo_num = #{po_bo_num}
 	</select>
 	
 	

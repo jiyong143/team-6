@@ -66,7 +66,7 @@ public class PostServiceImp implements PostService{
 
 	@Override
 	public ArrayList<BoardVO> boardList() {
-		return postDao.selectboard();
+		return postDao.selectBoard();
 	}
 
 	
