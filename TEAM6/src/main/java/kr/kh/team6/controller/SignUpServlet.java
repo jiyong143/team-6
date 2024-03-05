@@ -29,7 +29,7 @@ public class SignUpServlet extends HttpServlet {
 		String address = request.getParameter("address");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
-		int birth = Integer.parseInt(request.getParameter("birth"));
+		String birth = request.getParameter("birth");
 
 		MemberVO member = new MemberVO(id, pw, phone, address, name, email, birth);
 		

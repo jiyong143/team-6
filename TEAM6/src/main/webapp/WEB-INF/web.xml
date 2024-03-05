@@ -11,7 +11,7 @@
   </welcome-file-list>
     <filter>
   	<filter-name>EncodingFilter</filter-name>
-  	<filter-class>kr.kh.app.filter.EncodingFilter</filter-class>
+  	<filter-class>kr.kh.team6.filter.EncodingFilter</filter-class>
   </filter>
   <filter-mapping>
   	<filter-name>EncodingFilter</filter-name>

@@ -27,7 +27,7 @@
 			<input type="password" class="form-control" id="pw2" placeholder="Enter pw2" name="pw2">
 		</div>
 		<div class="mb-3 mt-3">
-			<label for="birth" class="form-label">생년월일:</label>
+			<label for="birth" class="form-label">생년월일(주민등록 앞 6자리):</label>
 			<input type="text" class="form-control" id="birth" placeholder="Enter birth" name="birth">
 		</div>
 		<div class="mb-3 mt-3">
@@ -35,7 +35,7 @@
 			<input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
 		</div>
 		<div class="mb-3 mt-3">
-			<label for="phone" class="form-label">전화번호:</label>
+			<label for="phone" class="form-label">전화번호("-"제외한 번호):</label>
 			<input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone">
 		</div>
 		<div class="mb-3 mt-3">
@@ -43,7 +43,7 @@
 			<input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
 		</div>
 		<div class="mb-3 mt-3">
-			<label for="address" class="form-label">주소:</label>
+			<label for="address" class="form-label">주소(양식 : OO시 OO구 OO동):</label>
 			<input type="text" class="form-control" id="address" placeholder="Enter address" name="address">
 		</div>
 		<button type="submit" class="btn btn-outline-success col-12">Sign up</button>
