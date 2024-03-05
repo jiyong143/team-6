@@ -22,6 +22,6 @@
 	<mapper resource="kr/kh/team6/dao/MemberMapper.xml"/>
 	<mapper resource="kr/kh/team6/dao/BoardMapper.xml"/>
 	<mapper resource="kr/kh/team6/dao/CategoryMapper.xml"/>
-  <mapper resource="kr/kh/team6/dao/PostMapper.xml"/>
+	<mapper resource="kr/kh/team6/dao/PostMapper.xml"/>
   </mappers>
 </configuration>

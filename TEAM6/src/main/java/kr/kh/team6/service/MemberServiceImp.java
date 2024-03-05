@@ -204,31 +204,4 @@ public class MemberServiceImp implements MemberService {
 		return null;
 	} 
 
-	// 회원가입 시 입력한 정보로 이루어진 객체를 문제 유무 판단해서 알려주는 메서드 ( 문제 없을 시 추가)
-	@Override
-	public boolean signup(MemberVO memberVO) {
-		if(memberVO==null||
-		   memberVO.getMe_id()==null||
-		   memberVO.getMe_pw()==null||
-		   memberVO.getMe_email()==null||
-		   memberVO.getMe_name()==null||
-		   memberVO.getMe_birth()==null||
-		   memberVO.getMe_phone()==null||
-		   memberVO.getMe_address()==null) {
-		return false;
-	}
-		
-		// 아이디, 이메일 닉네임 전화번호가 중복되면 안되게 하고싶다
-		
-		// 각 항목 유효성 검사
-		
-		// 아래 예외 처리는 아이디 중복 체크등을 검사 안해서 발생하는 예외를 임시 처리 하기 위한 방법 
-		try {
-		return memberDao.insertMember(memberVO); 
-		}catch(Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-
-}
 }
