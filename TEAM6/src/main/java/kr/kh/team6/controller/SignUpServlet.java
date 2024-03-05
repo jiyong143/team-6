@@ -15,9 +15,6 @@ import kr.kh.team6.service.MemberServiceImp;
 public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberService memberService = new MemberServiceImp();
-	
-    public SignUpServlet() {
-    }
 
     //1. 서블릿 생성 후 doGet에 request.getRequestDispatcher 구현
     //지금까지한건 화면에서 서버로 정보를 보낸 것
@@ -33,16 +30,20 @@ public class SignUpServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		int birth = Integer.parseInt(request.getParameter("birth"));
+
+		MemberVO member = new MemberVO(id, pw, phone, address, name, email, birth);
 		
-		//id가 중복일 때
-		if(memberService.signup(new MemberVO(id, pw, phone, address, name, email, birth))) {
+		if(memberService.signup(member)) {
 			//회원가입에 성공하면 메인 페이지로 이동
-			response.sendRedirect(request.getContextPath()+"/"); // "/" : 메인페이지			
+			request.setAttribute("msg", "회원가입에 성공했습니다.");
+			request.setAttribute("url", "");
 		}
 		else {
 			//실패하면 회원가입 페이지 유지
-			doGet(request, response);
+			request.setAttribute("msg", "회원가입에 실패했습니다.");
+			request.setAttribute("url", "signup");
 		}
+		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 
 	}
 

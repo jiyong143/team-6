@@ -18,8 +18,8 @@ public class MemberVO {
 	private int me_birth;
 	
 	//회원가입 시
-	public MemberVO(String me_id, String me_pw, String me_phone, String me_address, String me_name, String me_email, int me_birth) {
-		super();
+	public MemberVO(String me_id, String me_pw, String me_phone, String me_address,
+					String me_name, String me_email, int me_birth) {
 		this.me_id = me_id;
 		this.me_pw = me_pw;
 		this.me_phone = me_phone;

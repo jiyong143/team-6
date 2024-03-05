@@ -58,7 +58,12 @@ public class MemberServiceImp implements MemberService {
 			return false;
 		}
 		//정규표현식 체크 코드
-		if(!checkIdRegex(memberVO.getMe_id()) || !checkPwRegex(memberVO.getMe_pw())) {
+		if(!checkIdRegex(memberVO.getMe_id())) {
+			System.out.println("영문 대·소문자, 숫자 6~8자만 사용가능합니다.");
+			return false;
+		}
+		if(!checkPwRegex(memberVO.getMe_pw())) {
+			System.out.println("영문 대·소문자, 숫자, 특수기호(!@#$) 8~14자만 사용가능합니다.");
 			return false;
 		}
 		
@@ -73,7 +78,7 @@ public class MemberServiceImp implements MemberService {
 	
 	//비번 정규표현식
 	private boolean checkPwRegex(String me_pw) {
-		String regexPw = "$[a-zA-Z0-9!@#$]{8,14}^";
+		String regexPw = "^[a-zA-Z0-9!@#$]{8,14}$";
 		if(me_pw == null) {
 			return false;
 		}
