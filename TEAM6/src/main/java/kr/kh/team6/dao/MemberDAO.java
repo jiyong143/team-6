@@ -11,7 +11,6 @@ public interface MemberDAO {
 	MemberVO selectAuthority(@Param("admin")String admin);
 
 	boolean selectAuthority(boolean admin);
-
+	
 	MemberVO selectMember(@Param("me_id")String id);
-
 }
