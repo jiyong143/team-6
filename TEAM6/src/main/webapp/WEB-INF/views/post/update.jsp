@@ -17,10 +17,10 @@
 		<input type="hidden" name="num" value="${post.po_num}">
 		<div class="mb-3 mt-3">
 		<!-- community 뭐로 바뀌는지 보기 board? -->
-		    <label for="community" class="form-label">게시판:</label>
-		    <select class="form-control" id="community" name="community">
-		    	<c:forEach items="${list}" var="community">
-			    	<option value="${community.co_num}">${community.co_name}</option>
+		    <label for="board" class="form-label">게시판:</label>
+		    <select class="form-control" id="board" name="board">
+		    	<c:forEach items="${list}" var="board">
+			    	<option value="${board.bo_num}">${board.bo_name}</option>
 		    	</c:forEach>
 		    </select>
 		</div>

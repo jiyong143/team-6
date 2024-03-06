@@ -30,5 +30,7 @@ public interface PostDAO {
 
 	ArrayList<BoardVO> selectBoardList();
 
+	boolean updatePost(@Param("post")PostVO post);
+
 
 }

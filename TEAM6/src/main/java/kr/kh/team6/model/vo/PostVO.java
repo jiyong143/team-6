@@ -32,5 +32,13 @@ public class PostVO {
 		this.po_bo_num = po_bo_num;
 		this.po_me_id = po_me_id;
 	}
+
+	//수정 메서드
+	public PostVO(int num, String title, String content, int bo_num) {
+		po_num = num;
+		po_title = title;
+		po_content = content;
+		po_bo_num = bo_num;
+	}
 	
 }

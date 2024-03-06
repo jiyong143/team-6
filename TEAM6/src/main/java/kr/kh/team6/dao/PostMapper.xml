@@ -84,4 +84,12 @@
 		select * from board
 	</select>
 	
+	<update id="updatePost">
+		update post 
+		set po_title = #{post.po_title},
+			po_content = #{post.bo_content},
+			po_bo_num = #{post.po_bo_num}
+		where
+			po_num = #{post.po_num}
+	</update>
 </mapper>
