@@ -3,21 +3,41 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.team6.dao.CategoryDAO">
-	
+
 	<insert id="insertCategory">
 		INSERT INTO category(ca_title)
 		VALUES (#{ca_title})
 	</insert>
-<!-- 
-	<select id="selectCategoryList"
+
+	<select id="seleteCategoryList"
 		resultType="kr.kh.team6.model.vo.CategoryVO">
-		SELECT * FROM COMMUNITY
+		SELECT * FROM category
 	</select>
 
-	<select id="selectBoardList" resultMap="BoardMap">
-		SELECT * FROM BOARD ORDER
-		BY BO_NUM DESC
+	<select id="seleteCategory"
+		resultType="kr.kh.team6.model.vo.CategoryVO">
+		SELECT * FROM category where ca_num = #{num} and ca_title = #{ca_title}
 	</select>
- -->
-	
+
+	<delete id="deleteCategory">
+		delete from category where ca_num = #{num}
+	</delete>
+
+	<select id="selectGetCategory"
+		resultType="kr.kh.team6.model.vo.CategoryVO">
+		SELECT * FROM category where ca_num = #{ca_num}
+	</select>
+
+	<select id="seleteCategorydel"
+		resultType="kr.kh.team6.model.vo.CategoryVO">
+		SELECT * FROM category where ca_num = #{num}
+	</select>
+
+	<update id="updateCategory">
+		update category set
+		ca_title = #{category.ca_title}
+		where
+		ca_num = #{category.ca_num}
+		
+	</update>
 </mapper>

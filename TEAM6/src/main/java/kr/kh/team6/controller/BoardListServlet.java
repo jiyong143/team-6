@@ -24,9 +24,9 @@ public class BoardListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		MemberVO user = (MemberVO) session.getAttribute("user");
+		MemberVO user = (MemberVO) session.getAttribute("admin");
 
-		if (user == null || !"admin".equals(user.getMe_authority())) {
+		if (user == null ||!user.getMe_authority().equals("admin")) {
 			request.setAttribute("msg", "관리자 권한이 필요합니다. 관리자로 로그인 후 다시 시도하세요");
 			request.setAttribute("url", "/");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);

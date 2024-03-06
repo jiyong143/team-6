@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>카테고리</title>
+<title>카테고리 삭제</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -14,14 +14,11 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
-	<div class="container">
-	<form action="<c:url value="/category"/>" method="post">
-		<div class="mb-3 mt-3">
-		    <label for="ca_title" class="form-label">카테고리 명:</label>
-		    <input type="text" class="form-control" id="ca_title" placeholder="카테고리명을 입력하세요..." name="ca_title">
-	  	</div>
-	  	<button class="btn btn-outline-warning col-12">카테고리 등록</button>
-	</form>
-</div>
+
+
+
+
+
+	
 </body>
 </html>

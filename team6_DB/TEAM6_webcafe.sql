@@ -18,12 +18,7 @@ CREATE TABLE `board` (
 	`bo_title`	VARCHAR(20) 	NOT NULL UNIQUE,
 	`bo_ca_num`	INT	NOT NULL
 );
-
---  17:18:55	DROP TABLE IF EXISTS `board`	
--- Error Code: 3730. Cannot drop table 'board' referenced by a foreign key constraint 
--- 'FK_board_TO_file_1' on table 'file'.	0.015 sec
  
-
 DROP TABLE IF EXISTS `post`;
 
 CREATE TABLE `post` (
@@ -106,6 +101,7 @@ ALTER TABLE `member` ADD CONSTRAINT `FK_memberState_TO_member_1` FOREIGN KEY (
 REFERENCES `memberState` (
 	`ms_state`
 );
+
 INSERT INTO MEMBERSTATE VALUES('이용중'), ('기간정지'), ('영구정지'), ('탈퇴');
 insert into member values('admin',970307,'wkdrn002@naver.com',01044071418,'admin','서울시','정경호','이용중','admin');
 insert into member values('ssss224',970307,'wkdrn002@naver.com',01044071418,'asd154','서울시','정경호','이용중','user');
