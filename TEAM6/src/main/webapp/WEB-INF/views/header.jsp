@@ -6,6 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>header</title>
+<style type="text/css">
+a {
+  text-decoration: none;
+  color: black;
+}
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">

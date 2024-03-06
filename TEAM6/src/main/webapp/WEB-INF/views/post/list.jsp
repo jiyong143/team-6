@@ -8,6 +8,9 @@
 <title>게시판1</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<style type="text/css">
+
+</style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
