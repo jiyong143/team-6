@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.team6.dao.PostDAO;
 import kr.kh.team6.model.vo.BoardVO;
+import kr.kh.team6.model.vo.MemberVO;
 import kr.kh.team6.model.vo.PostVO;
 import kr.kh.team6.pagination.Criteria;
 
@@ -69,6 +70,18 @@ public class PostServiceImp implements PostService{
 	@Override
 	public ArrayList<BoardVO> boardList() {
 		return postDao.selectBoard();
+	}
+
+	@Override
+	public PostVO getPost(int num) {
+		return postDao.selectPost(num);
+		
+	}
+
+	@Override
+	public MemberVO getPostMemberName(PostVO post) {
+		
+		return postDao.selectPostMemberName(post);
 	}
 
 	

@@ -40,7 +40,10 @@
       <tr>
         <td>${post.po_num}</td>
         <td>
-           <a href="<c:url value=""/>">${post.po_title}</a>  
+           <c:url var="url" value="/post/detail">
+               <c:param name="num" value="${post.po_num }"/>
+           </c:url>
+           <a href="${url}">${post.po_title}</a>  
         </td> 
         <td>
            <a href="<c:url value=""/>">${post.po_me_id}</a>  
@@ -49,6 +52,13 @@
         <td>${post.po_views}</td>
       </tr>
        </c:forEach>
+       <c:if test="${postList.size() == 0 }">
+				<tr>
+					<th colspan="5">
+						<h3 class="text-center">등록된 게시글이 없습니다.</h3>
+					</th>
+				</tr>
+	   </c:if>
     </tbody>
   </table>
   <!-- 서버에서 보낸 PageMaker객체를 이용하여 페이지네이션 구성  -->
