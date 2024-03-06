@@ -28,5 +28,9 @@ public interface PostDAO {
 
 	boolean deletePost(@Param("num")int num, @Param("user")MemberVO user);
 
+	ArrayList<BoardVO> selectBoardList();
+
+	boolean updatePost(@Param("post")PostVO post);
+
 
 }
