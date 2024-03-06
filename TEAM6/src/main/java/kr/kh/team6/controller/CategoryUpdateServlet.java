@@ -40,8 +40,6 @@ public class CategoryUpdateServlet extends HttpServlet {
 		
 		String ca_title = request.getParameter("ca_title");
 		CategoryVO category = categoryService.getCategory(num,ca_title);
-		System.out.println(category + "두겟");
-		System.out.println(user + "두겟");
 		request.setAttribute("category", category);
 
 		ArrayList<CategoryVO> list = categoryService.getCategoryList();
@@ -63,8 +61,6 @@ public class CategoryUpdateServlet extends HttpServlet {
 		String ca_title = request.getParameter("ca_title");
 		CategoryVO category = new CategoryVO(num, ca_title);
 		boolean res = categoryService.updateCategory(category, admin);
-		System.out.println(category + "두포");
-		System.out.println(admin + "두포");
 		if (res) {
 			request.setAttribute("msg", "카테고리를 수정했습니다.");
 		} else {

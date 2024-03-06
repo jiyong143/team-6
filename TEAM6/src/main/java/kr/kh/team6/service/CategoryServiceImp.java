@@ -63,8 +63,6 @@ public class CategoryServiceImp implements CategoryService {
 
 	@Override
 	public boolean updateCategory(CategoryVO category, MemberVO admin) {
-		System.out.println(category + "임프");
-		System.out.println(admin + "임프");
 		if (admin == null || category == null) {
 			return false;
 		}
