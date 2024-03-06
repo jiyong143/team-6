@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.team6.model.vo.BoardVO;
+import kr.kh.team6.model.vo.CategoryVO;
 import kr.kh.team6.model.vo.MemberVO;
 import kr.kh.team6.model.vo.PostVO;
 import kr.kh.team6.service.BoardService;
@@ -32,7 +33,11 @@ public class PostInsertServlet extends HttpServlet {
 			request.setAttribute("url", "login");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}else {
-		
+			
+		// 서비스에게 카테고리 리스트를 가져오라고 함 : getCategoryList
+			ArrayList<CategoryVO> categoryList = boardService.getCategoryList();
+		// 화면에 카테고리 리스트를 보냄 
+			request.setAttribute("categoryList", categoryList);
 		// 서비스에게 게시판 리스트를 가져오라고 함 : getBoardList
 			ArrayList <BoardVO> boardList = boardService.getBoardList();
 		// 화면에 게시판 리스트를 보냄 
@@ -41,7 +46,6 @@ public class PostInsertServlet extends HttpServlet {
 	}
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String title =request.getParameter("title");
 		String content = request.getParameter("content");
@@ -53,10 +57,11 @@ public class PostInsertServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 			return;
 		}
-		// 선택한 게시판의 번호 가져오기 
+		// 선택한 카테고리와 게시판의 번호 가져오기(사실 카테고리 번호 없어도 된다)
+		int ca_num=Integer.parseInt(request.getParameter("category"));
 		int bo_num= Integer.parseInt(request.getParameter("board"));
-		String writer = user.getMe_id();
-		PostVO post = new PostVO(title,content,bo_num,writer);
+		String writer = user.getMe_id(); // 게시글 작성자 아이디
+		PostVO post = new PostVO(title,content,bo_num,writer); // 추가할 게시글 객체 
 		if(postService.insertPost(post)) {
 			request.setAttribute("msg", "게시글을 등록했습니다.");
 		}else {

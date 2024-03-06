@@ -16,7 +16,7 @@
     </resultMap>
     
     <!-- 조회 -->
-	<select id="selectPostList" resultMap="PostMap">
+	<select id="selectPostList" resultType="kr.kh.team6.model.vo.PostVO">
 		<!-- type과 검색어를 이용하여 쿼리를 구성, if태그를 활용 -->
 		select * from post 
 		<choose>
@@ -63,5 +63,21 @@
 		select * from board where bo_num = #{po_bo_num}
 	</select>
 	
+	
+	<select id="selectPost" resultType="kr.kh.team6.model.vo.PostVO">
+	    select * from post where po_num=#{num}
+	</select>
+	
+	<select id="selectPostMemberName" resultType="kr.kh.team6.model.vo.MemberVO">
+	    select * from member where me_id=#{post.po_me_id}
+	</select>
+	
+	<update id="updateView">
+	    update post set po_views = po_views+1 where po_num=#{num}
+	</update>
+	
+	<delete id="deletePost">
+	    delete from post where po_me_id=#{user.me_id} and po_num=#{num}
+	</delete>
 	
 </mapper>

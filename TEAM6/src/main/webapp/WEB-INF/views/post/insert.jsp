@@ -17,14 +17,14 @@
          <div class="mb-3 mt-3">
 			<label for="category" class="form-label">카테고리</label>
 			<select class="form-control" id="category" name="category">
-			    <c:forEach items="${list}" var="category">
-			        <option value="${board.bo_num}">${board.bo_title}</option>
+			    <c:forEach items="${categoryList}" var="category">
+			        <option value="${category.ca_num }">${category.ca_title}</option>
 			    </c:forEach>
 			 </select>
 			<label for="board" class="form-label">게시판</label>
 			<select class="form-control" id="board" name="board">
 			    <c:forEach items="${boardList}" var="board">
-			        <option value="${category.ca_num }">${category.ca_title}</option>
+			        <option value="${board.bo_num}">${board.bo_title}</option>
 			    </c:forEach>
 			</select>
 		</div>
@@ -38,7 +38,7 @@
 		</div>
 		<br>
 		<button type="submit" class="btn btn-outline-success col-12">등록하기</button>
-    </form>
+    </form> 
 </div>
 </body>
 </html>

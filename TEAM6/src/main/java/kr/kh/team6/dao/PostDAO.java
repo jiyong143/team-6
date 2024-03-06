@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import kr.kh.team6.model.vo.BoardVO;
+import kr.kh.team6.model.vo.MemberVO;
 import kr.kh.team6.model.vo.PostVO;
 import kr.kh.team6.pagination.Criteria;
 
@@ -18,6 +19,14 @@ public interface PostDAO {
 	int selectTotalCount(@Param("cri")Criteria cri , @Param("bo_num")int bo_num);
 
 	ArrayList<BoardVO> selectBoard();
+
+	PostVO selectPost(@Param("num")int num);
+
+	MemberVO selectPostMemberName(@Param("post")PostVO post);
+
+	void updateView(@Param("num")int num);
+
+	boolean deletePost(@Param("num")int num, @Param("user")MemberVO user);
 
 
 }

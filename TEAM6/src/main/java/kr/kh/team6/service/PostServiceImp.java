@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.team6.dao.PostDAO;
 import kr.kh.team6.model.vo.BoardVO;
+import kr.kh.team6.model.vo.MemberVO;
 import kr.kh.team6.model.vo.PostVO;
 import kr.kh.team6.pagination.Criteria;
 
@@ -42,10 +43,12 @@ public class PostServiceImp implements PostService{
 	public boolean insertPost(PostVO post) {
 		if(post==null||
 		   !checkString(post.getPo_title())||
-		   !checkString(post.getPo_content())) { 
+		   !checkString(post.getPo_content())||
+		    // 게시판 선택하지 않은 경우 생각
+		    post.getPo_bo_num()==0) { 
 			return false;   
 		} 
-		return postDao.insertPost(post);
+		return postDao.insertPost(post); 
 	}
 	
 	// 문자열이 null 또는 빈 문자열인지 확인해주는 메서드
@@ -67,6 +70,30 @@ public class PostServiceImp implements PostService{
 	@Override
 	public ArrayList<BoardVO> boardList() {
 		return postDao.selectBoard();
+	}
+
+	@Override
+	public PostVO getPost(int num) {
+		return postDao.selectPost(num);
+		
+	}
+
+	@Override
+	public MemberVO getPostMemberName(PostVO post) {
+		
+		return postDao.selectPostMemberName(post);
+	}
+
+	@Override
+	public void updateView(int num) {
+		postDao.updateView(num);
+		
+	}
+
+	@Override
+	public boolean deletePost(int num, MemberVO user) {
+		
+		return postDao.deletePost(num,user);
 	}
 
 	
