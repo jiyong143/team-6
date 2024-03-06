@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.team6.model.vo.BoardVO;
+import kr.kh.team6.model.vo.CategoryVO;
 import kr.kh.team6.model.vo.MemberVO;
 import kr.kh.team6.model.vo.PostVO;
 import kr.kh.team6.service.BoardService;
@@ -32,7 +33,11 @@ public class PostInsertServlet extends HttpServlet {
 			request.setAttribute("url", "login");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}else {
-		
+			
+		// 서비스에게 카테고리 리스트를 가져오라고 함 : getCategoryList
+			ArrayList<CategoryVO> categoryList = boardService.getCategoryList();
+		// 화면에 카테고리 리스트를 보냄 
+			request.setAttribute("categoryList", categoryList);
 		// 서비스에게 게시판 리스트를 가져오라고 함 : getBoardList
 			ArrayList <BoardVO> boardList = boardService.getBoardList();
 		// 화면에 게시판 리스트를 보냄 

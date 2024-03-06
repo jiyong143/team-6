@@ -16,8 +16,8 @@
     </resultMap>
     
     <!-- 조회 -->
-	  <select id="selectPostList" resultMap="PostMap">
-		<!--type과 검색어를 이용하여 쿼리를 구성, if태그를 활용-->
+	<select id="selectPostList" resultMap="PostMap">
+		<!-- type과 검색어를 이용하여 쿼리를 구성, if태그를 활용 -->
 		select * from post 
 		<choose>
 			<!-- 전체 검색 -->
@@ -39,6 +39,7 @@
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	
+	
 	<!-- 추가 -->
 	<insert id="insertPost">
 	   insert into post(po_title,po_content,po_date,po_views,po_bo_num,po_me_id) 
@@ -46,7 +47,7 @@
 	</insert>
 	
 	<!-- 조회 -->
-	<select id="selectTotalCount" resultMap="PostMap">
+	<select id="selectTotalCount" resultType="int">
 	   select count(*) from post
 	   <if test='cri.type=="title"'>
 	       where po_title like concat('%', #{cri.search},'%') and po_bo_num= #{bo_num}
@@ -55,6 +56,7 @@
 	       where po_me_id= #{cri.search} and po_bo_num= #{bo_num}
 	   </if>
 	</select>
+	
 	
 	<!-- 조회-->
 	<select id="selectboard" resultType="kr.kh.team6.model.vo.BoardVO">
