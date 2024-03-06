@@ -1,6 +1,7 @@
 package kr.kh.team6.controller;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -9,18 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.kh.team6.model.vo.BoardVO;
 import kr.kh.team6.model.vo.CategoryVO;
 import kr.kh.team6.model.vo.MemberVO;
 import kr.kh.team6.service.CategoryService;
 import kr.kh.team6.service.CategoryServiceImp;
 
-/**
- * Servlet implementation class CategoryUpdateServlet
- */
 @WebServlet("/category/update")
 public class CategoryUpdateServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 	CategoryService categoryService = new CategoryServiceImp();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,13 +31,15 @@ public class CategoryUpdateServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}
 
-		int ca_num;
+		int num;
 		try {
-			ca_num = Integer.parseInt(request.getParameter("ca_num"));
+			num = Integer.parseInt(request.getParameter("ca_num"));
 		} catch (Exception e) {
-			ca_num = 0;
+			num = 0;
 		}
-		CategoryVO category = categoryService.getCategory(ca_num);
+		
+		String ca_title = request.getParameter("ca_title");
+		CategoryVO category = categoryService.getCategory(num,ca_title);
 		System.out.println(category + "두겟");
 		System.out.println(user + "두겟");
 		request.setAttribute("category", category);
@@ -60,7 +60,7 @@ public class CategoryUpdateServlet extends HttpServlet {
 		} catch (Exception e) {
 			num = 0;
 		}
-		String ca_title = request.getParameter("bo_title");
+		String ca_title = request.getParameter("ca_title");
 		CategoryVO category = new CategoryVO(num, ca_title);
 		boolean res = categoryService.updateCategory(category, admin);
 		System.out.println(category + "두포");
