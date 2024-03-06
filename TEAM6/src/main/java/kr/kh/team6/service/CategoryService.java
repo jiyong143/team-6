@@ -13,7 +13,7 @@ public interface CategoryService {
 
 	boolean deleteCategory(int num, MemberVO user);
 
-	CategoryVO getCategory(int ca_num);
+	CategoryVO getCategory(int num, String ca_title);
 
 	boolean updateCategory(CategoryVO category, MemberVO admin);
 

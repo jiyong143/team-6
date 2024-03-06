@@ -49,7 +49,7 @@ public class CategoryServiceImp implements CategoryService {
 		if (user == null) {
 			return false;
 		}
-		CategoryVO category = categoryDAO.seleteCategory(num);
+		CategoryVO category = categoryDAO.seleteCategorydel(num);
 		if (category == null || !user.getMe_authority("admin")) {
 			return false;
 		}
@@ -57,8 +57,8 @@ public class CategoryServiceImp implements CategoryService {
 	}
 
 	@Override
-	public CategoryVO getCategory(int ca_num) {
-		return categoryDAO.seleteCategory(ca_num);
+	public CategoryVO getCategory(int num, String ca_title) {
+		return categoryDAO.seleteCategory(num,ca_title);
 	}
 
 	@Override

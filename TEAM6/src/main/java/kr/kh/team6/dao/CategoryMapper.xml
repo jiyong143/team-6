@@ -16,7 +16,7 @@
 
 	<select id="seleteCategory"
 		resultType="kr.kh.team6.model.vo.CategoryVO">
-		SELECT * FROM category where ca_num = #{ca_num}
+		SELECT * FROM category where ca_num = #{num} and ca_title = #{ca_title}
 	</select>
 
 	<delete id="deleteCategory">
@@ -28,10 +28,16 @@
 		SELECT * FROM category where ca_num = #{ca_num}
 	</select>
 
+	<select id="seleteCategorydel"
+		resultType="kr.kh.team6.model.vo.CategoryVO">
+		SELECT * FROM category where ca_num = #{num}
+	</select>
+
 	<update id="updateCategory">
 		update category set
-		ca_title = #{category.ca_title},
+		ca_title = #{category.ca_title}
 		where
 		ca_num = #{category.ca_num}
+		
 	</update>
 </mapper>

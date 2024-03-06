@@ -25,9 +25,9 @@
 				</c:forEach>
 			</select>
 			<div class="mb-3 mt-3">
-				<label for="ca_num" class="form-label">카테고리 명</label> <input
-					type="text" class="form-control" id="ca_num"
-					placeholder="카테고리 명을 입력하세요 . . ."name="ca_num"
+				<label for="ca_title" class="form-label">카테고리 명</label> <input
+					type="text" class="form-control" id="ca_title"
+					placeholder="카테고리 명을 입력하세요 . . ."name="ca_title"
 					value="${category.ca_title}">
 			</div>
 			<button class="btn btn-outline-warning col-12">카테고리 수정</button>

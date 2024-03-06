@@ -13,12 +13,14 @@ public interface CategoryDAO {
 
 	ArrayList<CategoryVO> seleteCategoryList();
 
-	CategoryVO seleteCategory(@Param("ca_num")int ca_num);
+	CategoryVO seleteCategory(@Param("num")int num,@Param("ca_title")String ca_title);
 
 	boolean deleteCategory(@Param("num")int num);
 
 	CategoryVO selectGetCategory(@Param("ca_num")int ca_num);
 
 	boolean updateCategory(@Param("category")CategoryVO category);
+
+	CategoryVO seleteCategorydel(@Param("num")int num);
 
 }
