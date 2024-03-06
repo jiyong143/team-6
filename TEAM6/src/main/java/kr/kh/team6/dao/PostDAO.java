@@ -26,5 +26,7 @@ public interface PostDAO {
 
 	void updateView(@Param("num")int num);
 
+	boolean deletePost(@Param("num")int num, @Param("user")MemberVO user);
+
 
 }

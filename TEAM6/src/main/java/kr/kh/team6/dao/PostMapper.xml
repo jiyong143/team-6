@@ -76,4 +76,8 @@
 	    update post set po_views = po_views+1 where po_num=#{num}
 	</update>
 	
+	<delete id="deletePost">
+	    delete from post where po_me_id=#{user.me_id} and po_num=#{num}
+	</delete>
+	
 </mapper>

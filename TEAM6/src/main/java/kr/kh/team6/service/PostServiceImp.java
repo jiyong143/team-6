@@ -90,6 +90,12 @@ public class PostServiceImp implements PostService{
 		
 	}
 
+	@Override
+	public boolean deletePost(int num, MemberVO user) {
+		
+		return postDao.deletePost(num,user);
+	}
+
 	
 
 }
