@@ -84,6 +84,12 @@ public class PostServiceImp implements PostService{
 		return postDao.selectPostMemberName(post);
 	}
 
+	@Override
+	public void updateView(int num) {
+		postDao.updateView(num);
+		
+	}
+
 	
 
 }

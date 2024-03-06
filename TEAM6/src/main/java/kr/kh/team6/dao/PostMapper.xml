@@ -72,4 +72,8 @@
 	    select * from member where me_id=#{post.po_me_id}
 	</select>
 	
+	<update id="updateView">
+	    update post set po_views = po_views+1 where po_num=#{num}
+	</update>
+	
 </mapper>

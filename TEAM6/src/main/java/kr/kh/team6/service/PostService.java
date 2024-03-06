@@ -21,4 +21,6 @@ public interface PostService {
 
 	MemberVO getPostMemberName(PostVO post);
 
+	void updateView(int num);
+
 }

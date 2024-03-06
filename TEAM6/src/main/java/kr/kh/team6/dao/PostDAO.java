@@ -24,5 +24,7 @@ public interface PostDAO {
 
 	MemberVO selectPostMemberName(@Param("post")PostVO post);
 
+	void updateView(@Param("num")int num);
+
 
 }
