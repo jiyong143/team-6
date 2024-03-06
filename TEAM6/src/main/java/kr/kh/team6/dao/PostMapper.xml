@@ -16,7 +16,7 @@
     </resultMap>
     
     <!-- 조회 -->
-	<select id="selectPostList" resultMap="PostMap">
+	<select id="selectPostList" resultType="kr.kh.team6.model.vo.PostVO">
 		<!-- type과 검색어를 이용하여 쿼리를 구성, if태그를 활용 -->
 		select * from post 
 		<choose>

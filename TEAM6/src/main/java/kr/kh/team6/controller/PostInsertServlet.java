@@ -46,7 +46,6 @@ public class PostInsertServlet extends HttpServlet {
 	}
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String title =request.getParameter("title");
 		String content = request.getParameter("content");
@@ -58,10 +57,11 @@ public class PostInsertServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 			return;
 		}
-		// 선택한 게시판의 번호 가져오기 
+		// 선택한 카테고리와 게시판의 번호 가져오기(사실 카테고리 번호 없어도 된다)
+		int ca_num=Integer.parseInt(request.getParameter("category"));
 		int bo_num= Integer.parseInt(request.getParameter("board"));
-		String writer = user.getMe_id();
-		PostVO post = new PostVO(title,content,bo_num,writer);
+		String writer = user.getMe_id(); // 게시글 작성자 아이디
+		PostVO post = new PostVO(title,content,bo_num,writer); // 추가할 게시글 객체 
 		if(postService.insertPost(post)) {
 			request.setAttribute("msg", "게시글을 등록했습니다.");
 		}else {

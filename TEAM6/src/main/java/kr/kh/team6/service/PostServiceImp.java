@@ -42,10 +42,12 @@ public class PostServiceImp implements PostService{
 	public boolean insertPost(PostVO post) {
 		if(post==null||
 		   !checkString(post.getPo_title())||
-		   !checkString(post.getPo_content())) { 
+		   !checkString(post.getPo_content())||
+		    // 게시판 선택하지 않은 경우 생각
+		    post.getPo_bo_num()==0) { 
 			return false;   
 		} 
-		return postDao.insertPost(post);
+		return postDao.insertPost(post); 
 	}
 	
 	// 문자열이 null 또는 빈 문자열인지 확인해주는 메서드

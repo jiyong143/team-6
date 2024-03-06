@@ -41,8 +41,10 @@
         <td>${post.po_num}</td>
         <td>
            <a href="<c:url value=""/>">${post.po_title}</a>  
-        </td>          
-        <td>${post.po_me_id}</td>     
+        </td> 
+        <td>
+           <a href="<c:url value=""/>">${post.po_me_id}</a>  
+        </td>              
         <td>${post.po_date}</td>    
         <td>${post.po_views}</td>
       </tr>
@@ -50,38 +52,33 @@
     </tbody>
   </table>
   <!-- 서버에서 보낸 PageMaker객체를 이용하여 페이지네이션 구성  -->
-	<ul class="pagination justify-content-center">
-		<c:if test="${pm.prev}">
-			<li class="page-item">
-				<c:url var="url" value="/board/list">
-					<c:param name="page" value="${pm.startPage-1 }"/>
-					<c:param name="search" value="${pm.cri.search }"/>
-					<c:param name="type" value="${pm.cri.type }"/>
-				</c:url>
-				<a class="page-link" href="${url}">이전</a>
-			</li>
-		</c:if>
-		<c:forEach begin="${pm.startPage}" end="${pm.endPage }" var="i">
-			<li class="page-item <c:if test="${pm.cri.page == i}">active</c:if>">
-				<c:url var="url" value="/board/list">
-					<c:param name="page" value="${i}"/>
-					<c:param name="search" value="${pm.cri.search }"/>
-					<c:param name="type" value="${pm.cri.type }"/>
-				</c:url>
-				<a class="page-link" href="${url}">${i}</a>
-			</li>
-		</c:forEach>
-		<c:if test="${pm.next }">
-			<li class="page-item">
-				<c:url var="url" value="/board/list">
-					<c:param name="page" value="${pm.endPage+1 }"/>
-					<c:param name="search" value="${pm.cri.search }"/>
-					<c:param name="type" value="${pm.cri.type }"/>
-				</c:url>
-				<a class="page-link" href="${url}">다음</a>
-			</li>
-		</c:if>
-	</ul>
+  <ul class="pagination justify-content-center">
+      <c:if test="${pm.prev}">
+        <li class="page-item">
+            <c:url var="prevUrl" value="/post/list">
+                <c:param name="type" value="${pm.cri.type}" />
+                <c:param name="search" value="${pm.cri.search}" />
+                <c:param name="page" value="${pm.startPage-1}" />
+            </c:url>
+            <a class="page-link" href="prevUrl">이전</a>
+       </li>
+      </c:if>
+      <c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
+        <li class="page-item <c:if test="${pm.cri.page==i }">active</c:if>">
+            <a class="page-link" href="javascript:void(0);">${i}</a>
+        </li>
+      </c:forEach>
+     <c:if test="${pm.next}">
+        <li class="page-item">
+            <c:url var="nextUrl" value="/post/list">
+                    <c:param name="type" value="${pm.cri.type}" />
+                    <c:param name="search" value="${pm.cri.search}" />
+                    <c:param name="page" value="${pm.endPage+1}" />
+            </c:url>
+            <a class="page-link" href="${nextUrl}">다음</a>
+        </li>
+     </c:if>
+  </ul>
   <a href="<c:url value="/post/insert"/>" class="btn btn-outline-primary">게시글 등록</a>
 </div>
 </body>
