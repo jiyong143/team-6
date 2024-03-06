@@ -96,6 +96,11 @@ public class PostServiceImp implements PostService{
 		return postDao.deletePost(num,user);
 	}
 
+	@Override
+	public ArrayList<BoardVO> getBoardList() {
+		return postDao.selectBoardList();
+	}
+
 	
 
 }

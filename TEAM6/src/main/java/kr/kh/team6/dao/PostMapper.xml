@@ -80,4 +80,8 @@
 	    delete from post where po_me_id=#{user.me_id} and po_num=#{num}
 	</delete>
 	
+	<select id="selectBoardList" resultType="kr.kh.team6.model.vo.BoardVO">
+		select * from board
+	</select>
+	
 </mapper>
