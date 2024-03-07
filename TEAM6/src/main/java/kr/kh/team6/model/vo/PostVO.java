@@ -1,5 +1,6 @@
 package kr.kh.team6.model.vo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import lombok.Data;
@@ -20,10 +21,10 @@ public class PostVO {
 	
 	
 	
-	// 날짜 바꿔주는 메서드 
-	public String toString2(PostVO post) {
-	
-		return null;
+	// 게시글의 날짜를 이쁘게 반환하는 메서드
+	public String changeDate() {	
+		SimpleDateFormat format = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초");
+		return  format.format(this.po_date);	
 	}
 
 	public PostVO(String po_title, String po_content, int po_bo_num, String po_me_id) {

@@ -43,8 +43,7 @@ public class CommentInsertServlet extends HttpServlet {
 		 String content = request.getParameter("content"); // 댓글 작성한 내용
 		 // 댓글 작성자의 아이디 가져오기
 		 MemberVO user =(MemberVO) request.getSession().getAttribute("user");
-		 String id = user.getMe_id();
-			
+		 String id = user.getMe_id(); 	
 		 // 댓글 객체 만들기	
 		 CommentVO comment = new CommentVO(content,num,id);
 		 // 서비스에게 댓글을 달라고 시키고 성공 여부를 판단
@@ -53,7 +52,7 @@ public class CommentInsertServlet extends HttpServlet {
 			}else {
 			 request.setAttribute("msg", "댓글을 등록 못했습니다.");
 			}
-		     request.setAttribute("url", ""); 
+		     request.setAttribute("url", ""); // 이거 post/detail인데 게시글 번호가 num이게 수정
 			 request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);	
 	}
 }

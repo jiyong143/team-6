@@ -28,7 +28,7 @@
 	   </div>
 	   <div class="mb-3 mt-3">
 			<label for="date" class="form-label">작성일자:</label>
-			<input type="text" class="form-control" id="date" name="date" readonly value="${post.po_date }">
+			<input type="text" class="form-control" id="date" name="date" readonly value="${post.changeDate()}">
 	   </div>
 	   <div class="mb-3 mt-3">
 			<label for="view" class="form-label">조회수:</label>
@@ -45,6 +45,35 @@
 	   </c:if>
 	   <a href = "<c:url value="/comment/insert?num=${num}"/>" class= "btn btn-outline-danger">댓글 작성</a>
      </div>
+     <!-- 댓글 시작 -->
+     <br>
+     <h4>댓글</h4>
+     <br>
+     <table class="table table-hover">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>내용</th>
+				<th>작성자 아이디</th>
+			</tr>
+		</thead>
+		<tbody>
+            <c:forEach items="${comments}" var="comment">
+				<tr>
+					<td>${comment.co_num}</td>
+					<td>${comment.co_content}</td>
+					<td>${comment.co_me_id}</td>
+				</tr>
+			</c:forEach>
+			<c:if test="${comments.size() == 0 }">
+				<tr>
+					<th colspan="3">
+						<h4 class="text-center">등록된 댓글이 없습니다.</h4>
+					</th>
+				</tr>
+			</c:if>
+		</tbody>
+	</table>
 </div>
 </body>
 </html>

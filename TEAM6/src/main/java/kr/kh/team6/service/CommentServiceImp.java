@@ -2,6 +2,7 @@ package kr.kh.team6.service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -37,6 +38,12 @@ public class CommentServiceImp implements CommentService {
 			return false;
 		}		
 		return commentDao.insertComment(comment);
+	}
+
+	@Override
+	public ArrayList<CommentVO> getComments(int num) {
+		return commentDao.selectComments(num);
+		
 	}
 
 }

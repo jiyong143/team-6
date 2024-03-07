@@ -25,4 +25,5 @@ public interface PostService {
 
 	boolean deletePost(int num, MemberVO user);
 
+
 }

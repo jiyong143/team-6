@@ -39,11 +39,11 @@
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	
-	
+
 	<!-- 추가 -->
 	<insert id="insertPost">
-	   insert into post(po_title,po_content,po_date,po_views,po_bo_num,po_me_id) 
-	   values(#{post.po_title},#{post.po_content},now(),0,#{post.po_bo_num},#{post.po_me_id})
+	   insert into post(po_title,po_content,po_views,po_bo_num,po_me_id) 
+	   values(#{post.po_title},#{post.po_content},0,#{post.po_bo_num},#{post.po_me_id})
 	</insert>
 	
 	<!-- 조회 -->
