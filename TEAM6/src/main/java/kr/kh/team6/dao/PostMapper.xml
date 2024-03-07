@@ -11,10 +11,15 @@
         <result property="po_views" column="po_views"/>
         <result property="po_bo_num" column="po_bo_num"/>
         <result property="po_me_id" column="po_me_id"/>
-        <result property="po_me_name" column="po_me_name"/>
+        <collection property="member" ofType="kr.kh.team6.model.vo.MemberVO" 
+        			column="po_me_name" select="selectMemberName"/>	
         <collection property="board" ofType="kr.kh.team6.model.vo.BoardVO" 
         			column="po_bo_num" select="selectBoard"/>
     </resultMap>
+    
+    <select id="selectMemberName" resultType="kr.kh.team6.model.vo.MemberVO">
+    	select * from member where me_name = #{po_me_name}
+    </select>
     
     <!-- 조회 -->
 	<select id="selectPostList" resultType="kr.kh.team6.model.vo.PostVO">
@@ -43,8 +48,8 @@
 
 	<!-- 추가 -->
 	<insert id="insertPost">
-	   insert into post(po_title,po_content,po_views,po_bo_num,po_me_id) 
-	   values(#{post.po_title},#{post.po_content},0,#{post.po_bo_num},#{post.po_me_id})
+	   insert into post(po_title,po_content,po_bo_num,po_me_id) 
+	   values(#{post.po_title},#{post.po_content},#{post.po_bo_num},#{post.po_me_id})
 	</insert>
 	
 	<!-- 조회 -->

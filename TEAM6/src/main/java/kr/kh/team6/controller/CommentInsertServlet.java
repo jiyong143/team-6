@@ -52,7 +52,7 @@ public class CommentInsertServlet extends HttpServlet {
 			}else {
 			 request.setAttribute("msg", "댓글을 등록 못했습니다.");
 			}
-		     request.setAttribute("url", ""); // 이거 post/detail인데 게시글 번호가 num이게 수정
+		     request.setAttribute("url", "post/detail?num="+num); // 이거 post/detail인데 게시글 번호가 num이게 수정
 			 request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);	
 	}
 }
