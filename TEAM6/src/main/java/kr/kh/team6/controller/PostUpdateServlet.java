@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,8 +36,9 @@ public class PostUpdateServlet extends HttpServlet {
 		} catch(Exception e) {
 			num = 0;
 		}
-		//서비스에게 게시글 번호를 주면서 게시글을 가져오라고 명령(이미 구현)
+		//서비스에게 게시글 번호를 주면서 게시글을 가져오라고 명령
 		PostVO post = postService.getPost(num);
+		
 		//가져온 게시글을 화면에 전송
 		request.setAttribute("post", post);
 		
@@ -73,9 +75,11 @@ public class PostUpdateServlet extends HttpServlet {
 		
 		//화면에서 전송한 번호, 제목, 내용, 게시판을 가져옴
 		int num, board;
+		
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
 			board = Integer.parseInt(request.getParameter("board"));
+			
 		}catch(Exception e) {
 			num = 0;
 			board = 0;
@@ -85,6 +89,17 @@ public class PostUpdateServlet extends HttpServlet {
 		
 		//게시글 객체로 생성
 		PostVO post = new PostVO(num, title, content, board);
+		
+		//포스트서비스에게 게시글과 회원정보를 주면서 게시글을 수정하라고 명령
+		boolean res = postService.updatePost(post, user);
+		if(res) {
+			request.setAttribute("msg", "수정을 성공했습니다.");
+		}
+		else {
+			request.setAttribute("msg", "수정을 실패했습니다.");
+		}
+		request.setAttribute("url", "post/detail?num="+num);			
+		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		
 		/* ERD cloud에서 첨부파일(file) 구현 시 주석 해제
 		//새로 추가된 첨부파일 정보 가져옴
@@ -106,16 +121,6 @@ public class PostUpdateServlet extends HttpServlet {
 		}
 		*/
 		
-		//포스트서비스에게 게시글과 회원정보를 주면서 게시글을 수정하라고 명령
-		boolean res = postService.updatePost(post, user);
-		if(res) {
-			request.setAttribute("msg", "수정을 성공했습니다.");
-		}
-		else {
-			request.setAttribute("msg", "수정을 실패했습니다.");
-		}
-		request.setAttribute("url", "post/detail?num="+num);			
-		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}
 
 }

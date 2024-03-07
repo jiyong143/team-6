@@ -107,22 +107,17 @@ public class PostServiceImp implements PostService{
 	public boolean updatePost(PostVO post, MemberVO user) {
 		//게시글 null
 		if(post == null
-				|| !checkString(post.getPo_title())
-				|| !checkString(post.getPo_content())) {
+		|| !checkString(post.getPo_title())
+		|| !checkString(post.getPo_content())) {
 			return false;
 		}
 		//사용자 null
 		if(user == null
-		|| user.getMe_id() == null) {
+		|| user.getMe_id() == null
+		|| user.getMe_name() == null) {
 			return false;
 		}
-		//작성자(dbPost)와 현재 로그인된 사용자가 다를 때
-		PostVO dbPost = postDao.selectPost(post.getPo_num());
-		if(dbPost == null
-		|| !dbPost.getPo_me_id().equals(post.getPo_me_id())) {
-			return false;
-		}
-		
+
 		//모두 통과되면 수정
 		return postDao.updatePost(post);
 	}

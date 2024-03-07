@@ -35,7 +35,7 @@ public class PostDetailServlet extends HttpServlet {
 		// 서비스에게 게시글 번호를 주면서 게시글을 가져온다
 		PostVO post = postService.getPost(num);
 		MemberVO member = postService.getPostMemberName(post); 
-		String name = member.getMe_name(); // 클릭한 게시글의 작성자 이름 
+		String name= member.getMe_name(); // 클릭한 게시글의 작성자 이름 
 		
 		// 화면에 게시글을 전송 
 		request.setAttribute("post", post);

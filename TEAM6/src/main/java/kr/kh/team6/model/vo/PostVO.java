@@ -2,11 +2,13 @@ package kr.kh.team6.model.vo;
 
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class PostVO {
 
 	private int po_num;
@@ -29,6 +31,15 @@ public class PostVO {
 
 	public PostVO(String po_title, String po_content, int po_bo_num, String po_me_id) {
 		this.po_title = po_title;
+		this.po_content = po_content;
+		this.po_bo_num = po_bo_num;
+		this.po_me_id = po_me_id;
+	}
+	
+	//이름 추가
+	public PostVO(String po_title, String po_me_name, String po_content, int po_bo_num, String po_me_id) {
+		this.po_title = po_title;
+		this.po_me_name = po_me_name;
 		this.po_content = po_content;
 		this.po_bo_num = po_bo_num;
 		this.po_me_id = po_me_id;
