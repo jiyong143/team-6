@@ -43,7 +43,7 @@
 	      <a href = "" class= "btn btn-outline-danger">게시글 수정</a>
 	      <a href = "<c:url value="/post/delete?num=${post.po_num}"/>" class= "btn btn-outline-danger">게시글 삭제</a>
 	   </c:if>
-	   <a href = "<c:url value="/comment/insert"/>" class= "btn btn-outline-danger">댓글 작성</a>
+	   <a href = "<c:url value="/comment/insert?num=${num}"/>" class= "btn btn-outline-danger">댓글 작성</a>
      </div>
 </div>
 </body>

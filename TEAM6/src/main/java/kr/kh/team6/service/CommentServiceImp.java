@@ -35,7 +35,7 @@ public class CommentServiceImp implements CommentService {
 		   comment.getCo_me_id()==null||
 		   comment.getCo_po_num()==0) {
 			return false;
-		}
+		}		
 		return commentDao.insertComment(comment);
 	}
 

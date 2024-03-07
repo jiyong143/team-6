@@ -11,10 +11,11 @@
 </head>
 <body>
    <form action="<c:url value="/comment/insert"/>" method="post">
-   <h1>게시글 등록</h1>
+   <input type="hidden" name=num value="${num}">
+   <h1>댓글 등록</h1>
    <div class="mb-3 mt-3">
 			<label for="content" class="form-label">댓글</label>
-			<textarea rows="20" class="form-control" id="content" placeholder="댓글" name="content"></textarea>
+			<textarea rows="10" class="form-control" id="content" placeholder="댓글" name="content" ></textarea>
    </div>
    <br>
 		<button type="submit" class="btn btn-outline-success col-12">등록하기</button>
