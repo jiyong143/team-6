@@ -46,4 +46,12 @@ public class CommentServiceImp implements CommentService {
 		
 	}
 
+	@Override
+	public boolean deleteComment(int cNum) {
+		if(cNum==0) {
+			return false;
+		}
+		return commentDao.deleteComment(cNum);
+	}
+
 }

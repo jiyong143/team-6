@@ -10,4 +10,6 @@ public interface CommentService {
 
 	ArrayList<CommentVO> getComments(int num);
 
+	boolean deleteComment(int cNum);
+
 }
