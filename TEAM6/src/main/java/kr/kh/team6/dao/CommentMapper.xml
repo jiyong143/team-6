@@ -11,4 +11,8 @@
   <select id="selectComments" resultType="kr.kh.team6.model.vo.CommentVO">
      select * from comment where co_po_num=#{num}
   </select>
+  
+  <delete id="deleteComment">
+     delete from comment where co_num=#{cNum}
+  </delete>
 </mapper>
