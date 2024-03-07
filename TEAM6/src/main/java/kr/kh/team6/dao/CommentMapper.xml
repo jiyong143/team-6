@@ -7,7 +7,6 @@
      insert into comment (co_content, co_po_num, co_me_id)
      values(#{comment.co_content},#{comment.co_po_num},#{comment.co_me_id})
   </insert>
-  
   <select id="selectComments" resultType="kr.kh.team6.model.vo.CommentVO">
      select * from comment where co_po_num=#{num}
   </select>
