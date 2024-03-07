@@ -4,12 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 import kr.kh.team6.model.vo.BoardVO;
 import kr.kh.team6.model.vo.MemberVO;
@@ -17,12 +15,13 @@ import kr.kh.team6.model.vo.PostVO;
 import kr.kh.team6.service.PostService;
 import kr.kh.team6.service.PostServiceImp;
 
+//첨부파일(file) 구현 시 주석해제
+//@MultipartConfig(
+//		maxFileSize = 1024 * 1024 * 10, 
+//		maxRequestSize = 1024 * 1024 * 10 * 3, 
+//		fileSizeThreshold = 1024 * 1024
+//	)
 @WebServlet("/post/update")
-@MultipartConfig(
-	maxFileSize = 1024 * 1024 * 10, 
-	maxRequestSize = 1024 * 1024 * 10 * 3, 
-	fileSizeThreshold = 1024 * 1024
-)
 public class PostUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PostService postService = new PostServiceImp();

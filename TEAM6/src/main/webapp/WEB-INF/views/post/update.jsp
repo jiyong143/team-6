@@ -16,11 +16,10 @@
 		<h1>게시글 수정</h1>
 		<input type="hidden" name="num" value="${post.po_num}">
 		<div class="mb-3 mt-3">
-		<!-- community 뭐로 바뀌는지 보기 board? -->
 		    <label for="board" class="form-label">게시판:</label>
 		    <select class="form-control" id="board" name="board">
 		    	<c:forEach items="${list}" var="board">
-			    	<option value="${board.bo_num}">${board.bo_name}</option>
+			    	<option value="${board.bo_num}">${board.bo_title}</option>
 		    	</c:forEach>
 		    </select>
 		</div>

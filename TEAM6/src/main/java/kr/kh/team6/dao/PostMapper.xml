@@ -64,8 +64,8 @@
 	</select>
 	
 	
-	<select id="selectPost" resultType="kr.kh.team6.model.vo.PostVO">
-	    select * from post where po_num=#{num}
+	<select id="selectPost" resultMap="PostMap">
+	    select * from post where po_num = #{num}
 	</select>
 	
 	<select id="selectPostMemberName" resultType="kr.kh.team6.model.vo.MemberVO">
