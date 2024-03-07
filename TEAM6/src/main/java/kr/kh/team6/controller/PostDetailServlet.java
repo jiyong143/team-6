@@ -29,17 +29,18 @@ public class PostDetailServlet extends HttpServlet {
 		// 화면에서 보낸 게시글 번호를 가져옴 
 		int num;
 		try {
-		num=Integer.parseInt(request.getParameter("num"));
+			num = Integer.parseInt(request.getParameter("num"));
 		}catch(Exception e) {
 			num=0;
 		}
 		request.setAttribute("num", num);
+
 		// 서비스에게 게시글 번호를 주면서 게시글 조회수를 증가하라고 시킴 
 		postService.updateView(num);
 		// 서비스에게 게시글 번호를 주면서 게시글을 가져온다
 		PostVO post = postService.getPost(num);
 		MemberVO member = postService.getPostMemberName(post); 
-		String name = member.getMe_name(); // 클릭한 게시글의 작성자 이름 
+		String name= member.getMe_name(); // 클릭한 게시글의 작성자 이름 
 		
 		// 게시글에 딸린 댓글들을 가져온다
 		ArrayList <CommentVO> comments = commentService.getComments(num);

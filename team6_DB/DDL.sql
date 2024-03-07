@@ -19,11 +19,6 @@ CREATE TABLE `board` (
 	`bo_ca_num`	INT	NOT NULL
 );
 
---  17:18:55	DROP TABLE IF EXISTS `board`	
--- Error Code: 3730. Cannot drop table 'board' referenced by a foreign key constraint 
--- 'FK_board_TO_file_1' on table 'file'.	0.015 sec
- 
-
 DROP TABLE IF EXISTS `post`;
 
 CREATE TABLE `post` (
