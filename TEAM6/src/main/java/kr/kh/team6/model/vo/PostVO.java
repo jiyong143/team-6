@@ -16,6 +16,7 @@ public class PostVO {
 	private int po_views;
 	private int po_bo_num;
 	private String  po_me_id;
+	private String po_me_name;
 	private BoardVO board;
 	
 	

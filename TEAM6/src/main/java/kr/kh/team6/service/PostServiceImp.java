@@ -80,7 +80,9 @@ public class PostServiceImp implements PostService{
 
 	@Override
 	public MemberVO getPostMemberName(PostVO post) {
-		
+		if(post == null) {
+			return null;
+		}
 		return postDao.selectPostMemberName(post);
 	}
 
