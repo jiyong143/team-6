@@ -55,6 +55,7 @@
 				<th>번호</th>
 				<th>내용</th>
 				<th>작성자 아이디</th>
+				<th>비고</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -63,6 +64,12 @@
 					<td>${comment.co_num}</td>
 					<td>${comment.co_content}</td>
 					<td>${comment.co_me_id}</td>
+					<td>
+					<c:if test="${user.me_id==comment.co_me_id}">
+			             <a href = "<c:url value="/comment/delete?cNum=${comment.co_num}"/>" class= "btn btn-outline-danger">댓글 삭제</a>
+			             <a href = "<c:url value="/comment/update?cNum=${comment.co_num}"/>" class= "btn btn-outline-danger">댓글 수정</a>
+					</c:if>
+					</td>
 				</tr>
 			</c:forEach>
 			<c:if test="${comments.size() == 0 }">
