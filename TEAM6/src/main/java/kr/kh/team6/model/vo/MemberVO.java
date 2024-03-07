@@ -30,6 +30,7 @@ public class MemberVO {
 		this.me_email = me_email;
 		this.me_birth = me_birth;
 	}
+	
 
 	public boolean getMe_authority(String admin) {
 		this.me_authority = admin;

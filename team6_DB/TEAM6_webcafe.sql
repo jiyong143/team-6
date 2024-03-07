@@ -81,12 +81,14 @@ REFERENCES `member` (
 	`me_id`
 );
 
+
 ALTER TABLE `comment` ADD CONSTRAINT `FK_post_TO_comment_1` FOREIGN KEY (
 	`co_po_num`
 )
 REFERENCES `post` (
 	`po_num`
 );
+
 
 ALTER TABLE `comment` ADD CONSTRAINT `FK_member_TO_comment_1` FOREIGN KEY (
 	`co_me_id`
