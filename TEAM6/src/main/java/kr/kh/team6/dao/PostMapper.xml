@@ -64,7 +64,7 @@
 	</select>
 	
 	
-	<select id="selectPost" resultMap="PostMap">
+	<select id="selectPost" resultType="kr.kh.team6.model.vo.PostVO">
 	    select * from post where po_num = #{num}
 	</select>
 	
@@ -87,7 +87,7 @@
 	<update id="updatePost">
 		update post 
 		set po_title = #{post.po_title},
-			po_content = #{post.bo_content},
+			po_content = #{post.po_content},
 			po_bo_num = #{post.po_bo_num}
 		where
 			po_num = #{post.po_num}
