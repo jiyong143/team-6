@@ -12,15 +12,14 @@
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
-	<form action="<c:url value="/post/update"/>" method="post" enctype="multipart/form-data">
+	<form action="<c:url value="/post/update"/>" method="post">
 		<h1>게시글 수정</h1>
 		<input type="hidden" name="num" value="${post.po_num}">
 		<div class="mb-3 mt-3">
-		<!-- community 뭐로 바뀌는지 보기 board? -->
 		    <label for="board" class="form-label">게시판:</label>
 		    <select class="form-control" id="board" name="board">
 		    	<c:forEach items="${list}" var="board">
-			    	<option value="${board.bo_num}">${board.bo_name}</option>
+			    	<option value="${board.bo_num}">${board.bo_title}</option>
 		    	</c:forEach>
 		    </select>
 		</div>
@@ -29,9 +28,13 @@
 		    <input type="text" class="form-control" id="title" name="title" value="${post.po_title}" placeholder="제목을 입력하세요.">
 		</div>
 		<div class="mb-3 mt-3">
-		    <label for="writer" class="form-label">작성자:</label>
+		    <label for="writer" class="form-label">작성자 아이디:</label>
 		    <input type="text" class="form-control" id="writer" name="writer" value="${user.me_id}" readonly>
 		</div>
+		<div class="mb-3 mt-3">
+			<label for="name" class="form-label">작성자 닉네임:</label>
+			<input type="text" class="form-control" id="name" name="name" value="${user.me_name}" readonly>
+	   </div>
 		<div class="mb-3 mt-3">
 		    <label for="content" class="form-label">내용:</label>
 		    <textarea rows="10" class="form-control" id="content" name="content" placeholder="내용을 입력하세요.">${post.po_content}</textarea>
@@ -47,7 +50,7 @@
 		    </c:forEach>
 		</div>
 		 -->
-		<button class="btn btn-outline-success col-12">글 수정</button>
+		<button type="submit" class="btn btn-outline-success col-12">글 수정</button>
 	</form>
 </div>
 <!-- 첨부파일 ERD cloud에 첨부파일(file) 추가하면 주석해제

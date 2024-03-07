@@ -40,7 +40,7 @@
 	   </div>
 	   <a href = "<c:url value="/post/list"/>" class="btn btn-outline-dark">목록으로</a>
 	   <c:if test="${post.po_me_id == user.me_id}"> <!-- 내가 작성한 게시글일 때만 삭제 버튼과 수정 버튼이 생기도록 -->
-	      <a href="<c:url value="/board/update?num=${post.po_num}"/>" class="btn btn-outline-success">게시글 수정</a>
+	      <a href="<c:url value="/post/update?num=${post.po_num}"/>" class="btn btn-outline-success">게시글 수정</a>
 	      <a href = "<c:url value="/post/delete?num=${post.po_num}"/>" class= "btn btn-outline-danger">게시글 삭제</a>
 	   </c:if>
      </div>
