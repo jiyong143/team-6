@@ -13,6 +13,7 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
     <form action="<c:url value="/post/insert"/>" method="post">
+    <input type="hidden" name="date" value="now()">
          <h1>게시글 등록</h1>
          <div class="mb-3 mt-3">
 			<label for="category" class="form-label">카테고리</label>

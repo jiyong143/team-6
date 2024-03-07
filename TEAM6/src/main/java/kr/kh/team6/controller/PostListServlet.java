@@ -44,7 +44,7 @@ public class PostListServlet extends HttpServlet {
 			Criteria cri = new Criteria(page,2,type,search);
 			int bo_num =1;
 			// 화면에 게시글 리스트를 전송... 화면에서 사용할 이름은 postList 로 하자
-			ArrayList <PostVO> postList = postService.getPostList(cri, bo_num); 
+			ArrayList <PostVO> postList = postService.getPostList(cri, bo_num);
 			request.setAttribute("postList", postList);
 			// 검색어, 검색타입에 맞는 전체 게시글 개수를 가져오는 과정
 			int totalCount = postService.getTotalCount(cri, bo_num);

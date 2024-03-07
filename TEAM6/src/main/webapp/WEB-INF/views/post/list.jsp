@@ -48,7 +48,7 @@
         <td>
            <a href="<c:url value=""/>">${post.po_me_id}</a>  
         </td>              
-        <td>${post.po_date}</td>    
+        <td>${post.changeDate()}</td>    
         <td>${post.po_views}</td>
       </tr>
        </c:forEach>
