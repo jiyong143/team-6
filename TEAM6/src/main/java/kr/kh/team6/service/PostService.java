@@ -25,10 +25,8 @@ public interface PostService {
 
 	boolean deletePost(int num, MemberVO user);
 
-	// 정경호 게시글 조회
 	ArrayList<BoardVO> getBoardList();
 
-	// 정경호 게시글 수정
-	boolean updatePost(BoardVO board, MemberVO user);
+	boolean updatePost(PostVO post, MemberVO user);
 
 }

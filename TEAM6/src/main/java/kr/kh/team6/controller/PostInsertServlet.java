@@ -2,6 +2,7 @@ package kr.kh.team6.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -61,7 +62,7 @@ public class PostInsertServlet extends HttpServlet {
 		int ca_num=Integer.parseInt(request.getParameter("category"));
 		int bo_num= Integer.parseInt(request.getParameter("board"));
 		String writer = user.getMe_id(); // 게시글 작성자 아이디
-		PostVO post = new PostVO(title,content,bo_num,writer); // 추가할 게시글 객체 
+		PostVO post = new PostVO(title,content,bo_num,writer); // 추가할 게시글 객체
 		if(postService.insertPost(post)) {
 			request.setAttribute("msg", "게시글을 등록했습니다.");
 		}else {

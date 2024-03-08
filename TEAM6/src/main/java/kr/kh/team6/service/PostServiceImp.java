@@ -80,7 +80,9 @@ public class PostServiceImp implements PostService{
 
 	@Override
 	public MemberVO getPostMemberName(PostVO post) {
-		
+		if(post == null) {
+			return null;
+		}
 		return postDao.selectPostMemberName(post);
 	}
 
@@ -98,21 +100,27 @@ public class PostServiceImp implements PostService{
 
 	@Override
 	public ArrayList<BoardVO> getBoardList() {
-		return postDao.selectPostAll();
+		return postDao.selectBoardList();
 	}
 
 	@Override
-	public boolean updatePost(BoardVO board, MemberVO user) {
-		if(user == null) {
+	public boolean updatePost(PostVO post, MemberVO user) {
+		//게시글 null
+		if(post == null
+		|| !checkString(post.getPo_title())
+		|| !checkString(post.getPo_content())) {
 			return false;
 		}
-		if(board == null || board.getBo_title().length() == 0 || board.get) {
+		//사용자 null
+		if(user == null
+		|| user.getMe_id() == null
+		|| user.getMe_name() == null) {
 			return false;
 		}
-		
-		return postDao.updatePost(board);
+
+		//모두 통과되면 수정
+		return postDao.updatePost(post);
 	}
 
 	
-
 }

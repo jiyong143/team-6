@@ -26,7 +26,6 @@
 		    <label for="title" class="form-label">게시판 명</label>
 		    <input type="text" class="form-control" id="title" placeholder="게시판 명을 입력하세요 . . ." name="title">
 	  	</div>
-	 
 	  	<button class="btn btn-outline-warning col-12">게시판 등록</button>
 	</form>
 </div>
