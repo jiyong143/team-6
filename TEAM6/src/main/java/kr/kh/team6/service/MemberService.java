@@ -14,5 +14,12 @@ public interface MemberService {
 	boolean getAuthority(boolean admin);
 
 	MemberVO getMember(LoginDTO loginDTO);
+	
+	boolean checkPwRegex(String me_pw);
+	
+	boolean checkNameRegex(String me_name);
 
+	int compareName(String id, String name);
+
+	
 }

@@ -13,4 +13,7 @@ public interface MemberDAO {
 	boolean selectAuthority(boolean admin);
 	
 	MemberVO selectMember(@Param("me_id")String id);
+
+	int countName(@Param("id")String id, @Param("name")String name);
+
 }
