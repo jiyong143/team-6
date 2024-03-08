@@ -52,7 +52,4 @@ public class PostDetailServlet extends HttpServlet {
 		// 화면을 전송 
 		request.getRequestDispatcher("/WEB-INF/views/post/detail.jsp").forward(request, response);
 	}
-
-	
-
 }
