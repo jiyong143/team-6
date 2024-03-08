@@ -16,5 +16,7 @@ public interface CommentService {
 
 	boolean updateComment(int cNum, String content);
 
+	CommentVO getComment(int cNum);
+
 
 }

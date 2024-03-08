@@ -22,5 +22,9 @@
   <update id="updateComment">
     update comment set co_content=#{content} where co_num=#{cNum}
   </update>
+  
+  <select id="selectComment" resultType="kr.kh.team6.model.vo.CommentVO">
+    select * from comment where co_num=#{cNum}
+  </select>
 </mapper>
 

@@ -70,4 +70,13 @@ public class CommentServiceImp implements CommentService {
 			return commentDao.updateComment(cNum,content); 
 	}
 
+	@Override
+	public CommentVO getComment(int cNum) {
+		if(cNum==0) {
+			return null;
+		}
+		return commentDao.selectComment(cNum);
+		
+	}
+
 }
