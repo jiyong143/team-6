@@ -14,7 +14,7 @@ public interface PostService {
 	boolean insertPost(PostVO post);
 
 	int getTotalCount(Criteria cri, int bo_num);
-	
+
 	ArrayList<BoardVO> boardList();
 
 	PostVO getPost(int num);
