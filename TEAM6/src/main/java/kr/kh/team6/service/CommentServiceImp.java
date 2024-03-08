@@ -54,4 +54,20 @@ public class CommentServiceImp implements CommentService {
 		return commentDao.deleteComment(cNum);
 	}
 
+	@Override
+	public CommentVO getContent(int cNum) {
+		if(cNum==0) { 
+			return null;
+		}
+		return commentDao.selectContent(cNum);
+	}
+
+	@Override
+	public boolean updateComment(int cNum, String content) {
+		if(cNum==0||content==null) {
+			return false;
+		}
+			return commentDao.updateComment(cNum,content); 
+	}
+
 }

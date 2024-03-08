@@ -11,5 +11,10 @@ public interface CommentService {
 	ArrayList<CommentVO> getComments(int num);
 
 	boolean deleteComment(int cNum);
+	
+	CommentVO getContent(int cNum);
+
+	boolean updateComment(int cNum, String content);
+
 
 }
