@@ -49,7 +49,7 @@
 		<c:otherwise>권한 : 회원 (${user.me_ms_state})</c:otherwise>
 	  </c:choose>
       </p>
-      <a href="#" class="card-link">개인 정보 수정</a>
+      <a href="<c:url value="/member/update"/>" class="card-link">개인 정보 수정</a>
       <a href="<c:url value="/logout"/>" class="card-link">로그아웃</a>
     </div>
   </div>
