@@ -42,23 +42,7 @@ public class PostUpdateServlet extends HttpServlet {
 		//가져온 게시글을 화면에 전송
 		request.setAttribute("post", post);
 		
-		//2. 작성자가 맞는지 확인
-		//세션에 회원 정보를 가져옴
-		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-		//게시글 작성자와 회원아이디가 같은지 확인
-		if(post == null
-		|| !post.getPo_me_id().equals(user.getMe_id())) {
-			//다르면 게시글 상세로 보내고, 작성자가 아닙니다라고 메세지를 띄움
-			request.setAttribute("msg", "작성자가 아닙니다.");
-			request.setAttribute("url", "post/detail?num="+num);
-			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
-			return; //return을 쓰면 else할 필요없이 바로 상세화면으로 이동
-		}
-		/* 첨부파일(file) ERD cloud 구현 후 주석 해제
-		//게시글의 첨부파일을 가져와서 화면에 전송
-		ArrayList<FileVO> fileList = postService.getFile(num);
-		request.setAttribute("fileList", fileList);
-		*/
+		//서비스 보드VO로 잘못써서 수정 잘 해야함d
 		
 		//같으면
 		//3. 게시판을 가져와서 화면에 전달 : postService의 getBoardList()
