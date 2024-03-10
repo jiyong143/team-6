@@ -12,7 +12,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
-<form class="d-flex" action="<c:url value="/post/list"/>">
+<form class="d-flex" action="<c:url value="/"/>">
 	<input class="form-control me-5" type="text"  value="${pm.cri.search}" placeholder="What do you want to ask?">
 	<button class="btn btn-primary" type="button">search</button>
 </form>

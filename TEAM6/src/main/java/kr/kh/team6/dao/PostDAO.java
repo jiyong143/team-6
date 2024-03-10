@@ -1,7 +1,6 @@
 package kr.kh.team6.dao;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -31,6 +30,10 @@ public interface PostDAO {
 	ArrayList<BoardVO> selectBoardList();
 
 	boolean updatePost(@Param("post")PostVO post);
+
+	int selectCount(@Param("cri")Criteria cri);
+
+	ArrayList<PostVO> selectPostList(@Param("cri")Criteria cri);
 
 
 }

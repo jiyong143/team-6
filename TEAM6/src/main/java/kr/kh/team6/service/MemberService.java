@@ -15,4 +15,6 @@ public interface MemberService {
 
 	MemberVO getMember(LoginDTO loginDTO);
 
+	boolean idCheck(String id);
+
 }
