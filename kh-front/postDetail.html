@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KyungHo's Community</title>
+    <title>게시판</title>
     <style>
-
-        a{
-            color: black;
+        a {
+            color: #333;
             text-decoration: none;
         }
+
         h1 {
-            margin-top: 10%;
+
             text-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
             /* 그림자 추가 */
         }
@@ -24,12 +25,18 @@
 
         }
 
+        .body-group {
+            padding: 100px;
+            margin-left: 150px;
+            margin-right: 150px;
+            padding-bottom: 150px;
+        }
+
         nav a {
             color: #333;
             text-decoration: none;
             padding: 10px 20px;
             margin: 0 5px;
-            text-shadow: 1px 1px 1px 1px black;
         }
 
         nav a:hover {
@@ -40,26 +47,33 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            position: fixed;
+            position: relative;
         }
 
         .category {
-            position: fixed;
+            position: absolute;
             top: 70px;
+            /* 카테고리 박스가 나타날 위치 조정 */
             left: -400px;
+            /* 왼쪽에서 시작 */
             width: 200px;
+            /* 카테고리 칸 크기 수정 */
             background-color: white;
             border: 1px solid #ddd;
             border-top-right-radius: 15px;
             border-bottom-right-radius: 15px;
             padding: 20px;
+            /* 내부 여백 수정 */
             transition: left 0.3s ease;
+            /* 왼쪽으로 이동하는 애니메이션 효과 */
             z-index: 1;
+            /* 카테고리 박스가 버튼 위에 보이도록 설정 */
             box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
         }
 
         .category.open {
             left: 0;
+            /* 왼쪽으로 이동하여 나타남 */
         }
 
         .category ul {
@@ -70,6 +84,7 @@
 
         .category ul li {
             padding: 10px 0;
+            /* 내부 여백 수정 */
             border-bottom: 1px solid #ddd;
         }
 
@@ -82,7 +97,7 @@
         }
 
         .category-toggle {
-            position: fixed;
+            position: absolute;
             top: 20px;
             left: 20px;
             cursor: pointer;
@@ -115,34 +130,41 @@
         }
 
         .logo {
+
             text-align: center;
-            margin-bottom: 20px;
         }
 
         .logo a {
             color: inherit;
+            /* 상속된 텍스트 색상 사용 */
             text-decoration: none;
+            /* 밑줄 제거 */
             font-size: 36px;
+            /* 로고 텍스트 크기 늘리기 */
         }
 
         .login {
-            position: fixed;
+            position: absolute;
             top: 20px;
             right: 20px;
         }
 
         .login a {
+            color: inherit;
+            /* 기본 텍스트 색으로 설정 */
             text-decoration: none;
+            /* 밑줄 제거 */
         }
 
         .search-container {
             border: 1px solid black;
-            position: fixed;
+            position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             display: flex;
             align-items: center;
+            /* 세로 가운데 정렬 */
             border-radius: 30px;
             overflow: hidden;
 
@@ -153,12 +175,16 @@
             padding: 15px;
             border: none;
             width: 400px;
+            /* 검색창 너비 조정 */
             box-sizing: border-box;
             font-size: 26px;
+            /* 검색창 폰트 크기 조정 */
             border-top-left-radius: 30px;
             border-bottom-left-radius: 30px;
             display: inline;
             outline: none;
+
+
 
         }
 
@@ -175,31 +201,12 @@
             background-repeat: no-repeat;
             background-position: center;
 
+
         }
 
-        .copyright {
-            background-color: #ffffff;
-            text-align: center;
-            margin-top: 20px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
 
-        .ad-container {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background-color: white;
-            padding: 10px;
-            border-top-left-radius: 20px;
-            box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
 
-        /* 추가된 스타일 */
+
         .recent-posts {
             width: calc(20% + 50px);
             position: absolute;
@@ -234,7 +241,7 @@
 
         }
 
-        .right-boxgroup{
+        .right-boxgroup {
             position: fixed;
             top: 30%;
             right: 0;
@@ -264,13 +271,104 @@
             width: 30px;
             height: auto;
         }
-       
-        .right-box a{
-            
-            color: black;
-            text-decoration: none;
-            border: 1px solid black;
 
+        .board-box {
+            border: 1px solid #ddd;
+            transition: left 0.3s ease;
+            box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
+            z-index: 1;
+            width: 150px;
+            padding-left: 20px;
+        }
+
+        .board-postList table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .board-postList th {
+            text-align: center;
+            background-color: rgba(141, 102, 18, 0.5);
+        }
+
+        .copyright {
+            background-color: #ffffff;
+            text-align: center;
+            margin-top: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+
+
+        .board-postList th,
+        .board-postList td {
+            padding: 8px;
+            border: 1px solid rgb(167, 159, 133);
+        }
+
+        /*------------me------------*/
+        .board-postList {
+            border-radius: 10px;
+            height: calc(100% - 50px);
+            border: 1px solid #ddd;
+            transition: left 0.3s ease;
+            box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
+            box-sizing: border-box;
+        }
+
+        .hr {
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+
+        .board-postList {
+            padding-right: 20px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .board-postList button {
+            padding: 5px;
+            background-color: rgba(141, 102, 18, 0.5);
+            float: right;
+            width: 100px;
+            height: 50%;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        .post-insert .title,
+        .post-insert .content,
+        .comment-insert .comment {
+            text-decoration: none;
+            width: 100%;
+            border: 1px solid rgba(141, 102, 18, 0.5);
+            border-radius: 5px;
+
+        }
+        .comment-insert .comment{
+            height: 100%;
+        }
+        .btn-button{
+            width: 100%;
+            display: flex;
+            height: 50px;
+        }
+        .btn-button button{
+             box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
+            height: 100%;
+        }
+        .comment-list{
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
+        }
+        .comment-list span{
+            box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -281,16 +379,53 @@
     </div>
     <nav class="category-container">
         <div class="category-toggle" onclick="toggleCategory()"><span></span><span></span><span></span></div>
+
         <div class="category" id="category">
-           <hr>
-           <h3><span>카테고리</span></h3>
-           <hr>
-           <ul>
-            <li><a href="/Test/board.html">게시판</a></li>
-           </ul>
+            <hr>
+            <h3><span>카테고리</span></h3>
+            <hr>
+            <ul>
+                <li><a href="/Test/board.html">게시판</a></li>
+            </ul>
         </div>
     </nav>
-   
+    <div class="body-group">
+
+        <div class="board-box">
+            <h2><a href="/Test/board.html">게시판이름</a></h2>
+        </div>
+        <br>
+        <form action="/Test/post.html"> <!-- 여기에  댓글 등록 하는 링크 -->
+            <div class="board-postList">
+                <h3>***게시판</h3>
+                <table>
+                    <div class="hr"></div>
+                    <div class="post-insert">
+                        <label for="#">제목</label>
+                        <input type="text" id="title" name="title" class="title" readonly>
+                    </div>
+                    <div class="post-insert">
+                        <label for="#">내용</label>
+                        <textarea rows="15" id="content" name="content" class="content" readonly></textarea>
+                    </div>
+                    <div class="comment-insert">
+                        <label for="#">댓글</label>
+                        <div class="btn-button">
+                            <input type="text" id="comment" name="comment" class="comment">
+                            <button>등록하기</button>
+                        </div>
+                        <br>
+                        <div class="hr"></div>
+                        <div class="comment-list">
+                            <span class="writer">작성자</span>
+                            <p>댓글내용입니다</p>
+                        </div>
+                    </div>
+                </table>
+            </div>
+        </form>
+    </div>
+
 
     <button class="close-button">
         <img src="data:image/png;base64,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"
@@ -303,7 +438,7 @@
             <p>날짜 / 없어도 됨.</p>
             <a href="/mypage.html">내정보 관리</a>
             <a href="#">로그아웃</a>
-          
+
         </c:if>
     </div>
 
@@ -312,35 +447,24 @@
             <a href="/Test/login.html">로그인</a> | <a href="/Test/signup.html">회원가입</a>
         </c:if>
     </div>
-    <div class="search-container">
-        <input type="text" placeholder="검색...">
-        <button type="submit"></button>
-    </div>
-    <div class="recent-posts">
-        <h2>최근 게시글</h2>
-        <ul>
-            <li><a href="/Test/post.html">게시글 입니다</a></li>
-            <li><a href="/Test/post.html">게시글을 누르면 링크로 이동</a></li>
-            <li><a href="/Test/post.html">게시글 1</a></li>
-            <li><a href="/Test/post.html">게시글 1</a></li>
 
-        </ul>
-    </div>
+
+
+
+
+
     <!-- 저작권 -->
     <div class="copyright">
         <p>© 2024 정경호. All rights reserved. | 광고 문의 010-4407-1418 | 이메일 : wkdrn002@naver.com | TEAM6</p>
     </div>
-     
-    <!-- 왼쪽,오른쪽 박스 / 검색창 / 검색창 호버시 게시글 나옴 -->
+
     <script>
         function toggleCategory() {
             var category = document.getElementById("category");
             category.classList.toggle("open");
         }
-        
 
-        // 검색창 요소를 가져옴
-        var searchInput = document.querySelector('.search-container input[type=text]');
+
 
         // 카테고리 토글 버튼 요소 가져오기
         var categoryToggle = document.querySelector('.category-toggle');
@@ -351,21 +475,9 @@
             this.classList.toggle('clicked');
         });
 
-        // 검색창 요소 가져오기
-        var searchContainer = document.querySelector('.search-container');
 
         // 최근 게시글 리스트 요소 가져오기
         var recentPosts = document.querySelector('.recent-posts');
-
-        // 검색창에 마우스를 올리면 최근 게시글 리스트를 표시
-        searchContainer.addEventListener('mouseenter', function () {
-            recentPosts.style.display = 'block';
-        });
-
-        // 최근 게시글 리스트에서 마우스가 벗어나면 숨김
-        recentPosts.addEventListener('mouseleave', function () {
-            recentPosts.style.display = 'none';
-        });
 
         var rightBox = document.querySelector('.right-boxgroup');
 
@@ -375,7 +487,7 @@
         // 닫기 버튼 가져오기
         var closeButton = document.querySelector('.close-button');
 
-      
+
 
         // 오른쪽 박스가 숨겨져 있는지 여부를 저장하는 변수
         var isHidden = true;
@@ -399,11 +511,14 @@
             isHidden = !isHidden;
         });
 
-        const categoryItems = document.querySelectorAll('.category li');
-
-
-
     </script>
+</body>
+
+</html>
+</head>
+
+<body>
+
 </body>
 
 </html>

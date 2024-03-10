@@ -36,11 +36,11 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            position: relative;
+            position: fixed;
         }
 
         .category {
-            position: absolute;
+            position: fixed;
             top: 70px;
             /* 카테고리 박스가 나타날 위치 조정 */
             left: -400px;
@@ -86,7 +86,7 @@
         }
 
         .category-toggle {
-            position: absolute;
+            position: fixed;
             top: 20px;
             left: 20px;
             cursor: pointer;
@@ -134,7 +134,7 @@
         }
 
         .join {
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 20px;
         }
@@ -145,15 +145,14 @@
             text-decoration: none;
             /* 밑줄 제거 */
         }
-
         .copyright {
+            background-color: #ffffff;
             text-align: center;
             margin-top: 20px;
-            position: absolute;
-            bottom: 20px;
+            position: fixed;
+            bottom: 0;
             width: 100%;
         }
-
         .ad-container {
             position: fixed;
             bottom: 10px;
@@ -191,38 +190,15 @@
 
         }
 
-        .right-box {
-            position: fixed;
-            /* 화면에 고정 */
-            top: 20%;
-            right: 0;
-            /* 화면 오른쪽에서 20px 떨어진 위치 */
-            transform: translateY(-50%);
-            /* 세로 방향으로 중앙 정렬 */
-            width: 200px;
-            /* 너비 설정 */
-            background-color: white;
-            /* 배경색 지정 */
-            padding: 20px;
-            /* 내부 여백 설정 */
-            border: 1px solid #ddd;
-            border-top-left-radius: 15px;
-            border-bottom-left-radius: 15px;
-            box-shadow: -2px 1px 4px 1px rgba(141, 102, 18, 0.5);
-            /* 왼쪽으로 그림자 생성 */
-            z-index: 1;
-            display: none;
-        }
-
         .right-box-container {
-            position: relative;
+            position: fixed;
             /* 오른쪽 박스와 버튼의 상대적인 위치 설정 */
         }
 
         .right-box {
             position: fixed;
             /* 화면에 고정 */
-            top: 20%;
+            top: 30%;
             right: 0;
             /* 화면 오른쪽에서 0px 떨어진 위치 */
             transform: translateY(-50%);
@@ -243,7 +219,7 @@
         }
 
         .close-button {
-            position: absolute;
+            position: fixed;
             top: 2%;
             right: 200px;
             cursor: pointer;
@@ -270,9 +246,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             max-width: 400px;
-            /* 최대 너비 설정 */
-            margin: 0 auto;
-            /* 가운데 정렬 */
+            margin: 0 auto 100px;
 
         }
 
@@ -302,7 +276,7 @@
             width: 200px;
             padding: 10px;
             border: none;
-            background-color: #229726;
+            background-color: rgb(191, 150, 75);
             color: white;
             font-size: 16px;
             border-radius: 5px;
@@ -311,7 +285,7 @@
         }
 
         .login-group button:hover {
-            background-color: #45a049;
+            background-color: rgba(141, 102, 18, 0.5);
         }
     </style>
 </head>
