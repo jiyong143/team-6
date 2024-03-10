@@ -312,9 +312,14 @@
             height: 30px;
         }
         .comment-insert .comment{
+            width: 85%;
             height: 100%;
         }
+        .comment-insert button{
+            width: 10%;
+        }
         .btn-button{
+            justify-content: space-between;
             width: 100%;
             display: flex;
             height: 50px;
@@ -333,6 +338,19 @@
             border: 1px solid #ddd;
             margin-bottom: 10px;
         }
+        .post-insert textarea{
+            min-width: 100%;
+            max-width: 100%;
+            min-height: 250px;
+            max-height: 250px;
+        }
+        .comment-insert textarea{
+            min-width: 85%;
+            max-width: 85%;
+            min-height: 50px;
+            max-height: 50px;
+        }
+
     </style>
 </head>
 
@@ -374,7 +392,7 @@
                     <div class="comment-insert">
                         <label for="#">댓글</label>
                         <div class="btn-button">
-                            <input type="text" id="comment" name="comment" class="comment">
+                            <textarea id="comment" name="comment" class="comment"></textarea>
                             <button>등록하기</button>
                         </div>
                         <br>

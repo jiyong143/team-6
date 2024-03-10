@@ -266,7 +266,7 @@
         }
 
         .signup input {
-            width: calc(100% + 10px);
+            width: 100%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
@@ -278,7 +278,7 @@
             width: 200px;
             padding: 10px;
             border: none;
-            background-color: rgb(191, 150, 75);
+            background-color:rgba(141, 102, 18, 0.5);
             color: white;
             font-size: 16px;
             border-radius: 5px;
@@ -287,7 +287,8 @@
         }
 
         .signup-group button:hover {
-            background-color: rgba(141, 102, 18, 0.5);
+            background-color: 
+            rgb(191, 150, 75);
         }
     </style>
 </head>
@@ -389,20 +390,7 @@
             this.classList.toggle('clicked');
         });
 
-        // 검색창 요소 가져오기
-        var searchContainer = document.querySelector('.search-container');
-        // 최근 게시글 리스트 요소 가져오기
-        var recentPosts = document.querySelector('.recent-posts');
 
-        // 검색창에 마우스를 올리면 최근 게시글 리스트를 표시
-        searchContainer.addEventListener('mouseenter', function () {
-            recentPosts.style.display = 'block';
-        });
-
-        // 최근 게시글 리스트에서 마우스가 벗어나면 숨김
-        recentPosts.addEventListener('mouseleave', function () {
-            recentPosts.style.display = 'none';
-        });
 
         var rightBox = document.querySelector('.right-box');
 
