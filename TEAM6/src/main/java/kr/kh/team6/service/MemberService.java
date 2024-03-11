@@ -21,4 +21,7 @@ public interface MemberService {
 
 	boolean idCheck(String id);
 
+	int compareName(String id, String name);
+
+	
 }

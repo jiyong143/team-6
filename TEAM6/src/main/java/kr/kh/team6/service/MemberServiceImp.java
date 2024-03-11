@@ -202,6 +202,34 @@ public class MemberServiceImp implements MemberService {
 		MemberVO member = memberDao.selectIdCheck(id);
 		return member == null;
 	} 
+	//비번 정규표현식
+	@Override
+	public boolean checkPwRegex(String me_pw) {
+		String regexPw = "^[a-zA-Z0-9!@#$]{8,14}$";
+		if(me_pw == null) {
+			return false;
+		}
+		return Pattern.matches(regexPw, me_pw);
+	}
+	
+	
+	@Override
+	public boolean checkNameRegex(String me_name) {
+		String regexName = "^[ㄱ-힣]{1,5}$";
+		if(me_name == null) {
+			return false;
+		}
+		return Pattern.matches(regexName, me_name);
+	}
+	
+	@Override
+	public int compareName(String id, String name) {
+		if(id==null||name==null) {
+			return 1;
+		}
+		return memberDao.countName(id,name);
+	}
+	
 
 	
 }
