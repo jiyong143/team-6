@@ -144,14 +144,7 @@ public class MemberServiceImp implements MemberService {
 		return Pattern.matches(regexPhone, me_phone);
 	}
 
-	//이름 정규표현식
-	private boolean checkNameRegex(String me_name) {
-		String regexName = "^[ㄱ-힣]{1,5}$";
-		if(me_name == null) {
-			return false;
-		}
-		return Pattern.matches(regexName, me_name);
-	}
+	
 
 	//생일 정규표현식
 	private boolean checkBirthRegex(String me_birth) {
@@ -162,14 +155,7 @@ public class MemberServiceImp implements MemberService {
 		return Pattern.matches(regexBirth, me_birth);
 	}
 
-	//비번 정규표현식
-	private boolean checkPwRegex(String me_pw) {
-		String regexPw = "^[a-zA-Z0-9!@#$]{8,14}$";
-		if(me_pw == null) {
-			return false;
-		}
-		return Pattern.matches(regexPw, me_pw);
-	}
+	
 	
 	//아이디 정규표현식
 	private boolean checkIdRegex(String me_id) {
@@ -208,6 +194,14 @@ public class MemberServiceImp implements MemberService {
 			return member;
 		}
 		return null;
+	}
+	
+	//아이디 중복 체크
+	@Override
+	public boolean idCheck(String id) {
+		MemberVO member = memberDao.selectIdCheck(id);
+		return member == null;
 	} 
 
+	
 }

@@ -26,5 +26,9 @@
   <select id="selectComment" resultType="kr.kh.team6.model.vo.CommentVO">
     select * from comment where co_num=#{cNum}
   </select>
+  
+  <delete id="deleteComments">
+    delete from comment where co_po_num=#{num}
+  </delete>
 </mapper>
 
