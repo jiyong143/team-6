@@ -56,10 +56,10 @@
 			</c:if>	
 		 		<br>
 		 		<br>
-	 		<c:if test='${user.me_authority ne "admin"}${user != null }'>
+	 		<c:if test='${user != null && user.me_authority ne "admin" }'>
 					<a href="<c:url value="/내정보 url"/>">내정보 관리</a>
 			</c:if>
-	 		<c:if test='${user.me_authority eq "admin" }'>
+	 		<c:if test='${admin != null && user.me_authority eq "admin" }'>
 					<a href="<c:url value="/관리자 url"/>">관리자 페이지</a>
 			</c:if>
 			<c:if test="${user != null }">
@@ -69,7 +69,7 @@
 
 	<div class="login">
 		<c:if test="${user == null }">
-			<a href="/Test/login.html">로그인</a> | <a href="/Test/signup.html">회원가입</a>
+			<a href="<c:url value="/login"/>">로그인</a> | <a href="/Test/signup.html">회원가입</a>
 		</c:if>
 	</div>
 	<form action="<c:url value="/post/list"/>">
