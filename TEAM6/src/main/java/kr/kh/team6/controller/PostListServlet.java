@@ -49,7 +49,6 @@ public class PostListServlet extends HttpServlet {
 			// 게시판 자체를 가져온다 
 			BoardVO board = boardService.getBoard(bo_num);
 			request.setAttribute("board", board);
-			
 			request.setAttribute("bo_num", bo_num);
 			// 화면에 게시글 리스트를 전송... 화면에서 사용할 이름은 postList 로 하자
 			ArrayList <PostVO> postList = postService.getPostList(cri, bo_num);

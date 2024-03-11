@@ -97,7 +97,7 @@
         </li>
      </c:if>
   </ul>
-  <a href="<c:url value="/post/insert"/>" class="btn btn-outline-primary">게시글 등록</a>
+  <a href="<c:url value="/post/insert?bNum=${board.bo_num}&bName=${board.bo_title}"/>" class="btn btn-outline-primary">게시글 등록</a>
 </div>
 </body>
 </html>
