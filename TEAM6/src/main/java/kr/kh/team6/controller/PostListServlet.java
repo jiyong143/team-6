@@ -9,10 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.kh.team6.model.vo.BoardVO;
 import kr.kh.team6.model.vo.MemberVO;
 import kr.kh.team6.model.vo.PostVO;
 import kr.kh.team6.pagination.Criteria;
 import kr.kh.team6.pagination.PageMaker;
+import kr.kh.team6.service.BoardService;
+import kr.kh.team6.service.BoardServiceImp;
 import kr.kh.team6.service.PostService;
 import kr.kh.team6.service.PostServiceImp;
 
@@ -21,7 +24,7 @@ import kr.kh.team6.service.PostServiceImp;
 public class PostListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PostService postService = new PostServiceImp(); 
-       
+	BoardService boardService = new BoardServiceImp();
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
@@ -43,8 +46,10 @@ public class PostListServlet extends HttpServlet {
 			}
 			Criteria cri = new Criteria(page,2,type,search);
 			int bo_num =Integer.parseInt(request.getParameter("bNum"));
-			String bName = request.getParameter("bName");
-			request.setAttribute("bName", bName);
+			// 게시판 자체를 가져온다 
+			BoardVO board = boardService.getBoard(bo_num);
+			request.setAttribute("board", board);
+			
 			request.setAttribute("bo_num", bo_num);
 			// 화면에 게시글 리스트를 전송... 화면에서 사용할 이름은 postList 로 하자
 			ArrayList <PostVO> postList = postService.getPostList(cri, bo_num);

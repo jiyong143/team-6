@@ -16,7 +16,7 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 
 <div class="container">
-    <h4>게시판 이름 : ${bName}</h4>
+    <h4>게시판 이름 : ${board.bo_title}</h4>
   <form action="<c:url value="/post/list"/>">
 		<div class="input-group">
 			<select class="form-control" name="type">
