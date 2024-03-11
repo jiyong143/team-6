@@ -100,4 +100,16 @@
 		where
 			po_num = #{post.po_num}
 	</update>
+	
+	<select id="selectCount" resultType="int">
+		select count(*) from post 
+		where po_title like concat('%', #{cri.search},'%')
+	</select>
+	
+	<select id="selectSearchPostList" resultMap="PostMap">
+		select * from post 
+		where po_title like concat('%', #{cri.search}, '%') 
+		order by po_num desc 
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
 </mapper>

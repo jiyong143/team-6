@@ -14,6 +14,5 @@ public interface MemberDAO {
 	
 	MemberVO selectMember(@Param("me_id")String id);
 
-	int countName(@Param("id")String id, @Param("name")String name);
-
+	MemberVO selectIdCheck(@Param("me_id")String id);
 }
