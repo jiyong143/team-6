@@ -15,11 +15,11 @@
 	<h1>Sign up</h1>
 	<form action="<c:url value="/signup"/>" method="post">
 		<div class="mb-3 mt-3">
-			<label for="id" class="form-label">아이디:</label>
+			<label for="id" class="form-label">아이디(영문,숫자 조합 최소6자~최대8자):</label>
 			<input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
 		</div>
 		<div class="mb-3 mt-3">
-			<label for="pw" class="form-label">비번:</label>
+			<label for="pw" class="form-label">비번(특수문자(!@#$)와 영어,숫자 조합 최소8자~최대 14자) :</label>
 			<input type="password" class="form-control" id="pw" placeholder="Enter pw" name="pw">
 		</div>
 		<div class="mb-3 mt-3">
@@ -31,15 +31,15 @@
 			<input type="text" class="form-control" id="birth" placeholder="Enter birth" name="birth">
 		</div>
 		<div class="mb-3 mt-3">
-			<label for="name" class="form-label">이름:</label>
+			<label for="name" class="form-label">닉네임(최대 5글자):</label>
 			<input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
 		</div>
 		<div class="mb-3 mt-3">
-			<label for="phone" class="form-label">전화번호("-"제외한 번호):</label>
+			<label for="phone" class="form-label">전화번호("-"제외한 번호 형식):</label>
 			<input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone">
 		</div>
 		<div class="mb-3 mt-3">
-			<label for="email" class="form-label">이메일:</label>
+			<label for="email" class="form-label">이메일(이메일 형식):</label>
 			<input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
 		</div>
 		<div class="mb-3 mt-3">
