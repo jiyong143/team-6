@@ -32,17 +32,25 @@ public class MemberUpdateServlet extends HttpServlet {
 		String Phone = request.getParameter("phone");
 		String email = request.getParameter("email");
 		String address = request.getParameter("address");
-		
-		// 바뀌지 않는 아이디
 		String id = request.getParameter("id");
-		
-		if(!pw.equals(pw2)) {
-			
+		String oName = request.getParameter("oName");
+		String oPhone = request.getParameter("oPhone");
+		String oEmail = request.getParameter("oEmail");
+
+		// 비번이 비번확인과 다르거나 정규표현식 안맞을 때
+		if(!pw.equals(pw2)||!memberService.checkPwRegex(pw)) {
+			request.setAttribute("mag", "비번과 비번 확인이 다르거나 형식에 맞지 않는 비번입니다.");
+			request.setAttribute("url", "member/update");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}
+		// 닉네임이 정규표현식에 맞지 않거나 나의 닉네임을 제외한 다른 회원들의 닉네임들 중 중복이 있을 때
+		if(!memberService.checkNameRegex(name)||
+		    memberService.compareName(id,name)==1){	
+			request.setAttribute("msg", "닉네임이 다른 사람과 겹치거나 형식에 맞지 않는 닉네임입니다.");
+			request.setAttribute("url", "member/update");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+		}	
 		
-		
-		
-		doGet(request, response);
 	}
 
 }

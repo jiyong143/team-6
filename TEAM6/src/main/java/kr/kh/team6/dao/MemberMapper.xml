@@ -14,4 +14,7 @@
 	<select id="selectAuthority" resultType="kr.kh.team6.model.vo.MemberVO">
 			select * from member where me_authority = #{admin}
 	</select>
+	<select id="countName" resultType="int">
+	   select count(*) from member where me_id!=#{id} and me_name=#{name}
+	</select>
 </mapper>

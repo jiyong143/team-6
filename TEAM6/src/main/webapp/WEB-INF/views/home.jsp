@@ -11,13 +11,13 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
+<a href="<c:url value="/choice"/>">#</a>
+<jsp:include page="/WEB-INF/views/choice.jsp"/>
 <div class="container">
 <form action="<c:url value="/post/list"/>">
 		<div class="input-group">
 			<select class="form-control" name="type">
-				<option value="all" <c:if test='${pm.cri.type == "all"}'>selected</c:if>>전체</option>
 				<option value="po_title" <c:if test='${pm.cri.type == "po_title"}'>selected</c:if>>제목</option>
-				<option value="po_me_id" <c:if test='${pm.cri.type == "po_me_id"}'>selected</c:if>>작성자</option>
 			</select>
 			<input type="text" class="form-control" placeholder="검색어" name="search" value="${pm.cri.search}">
 			<button class="btn btn-outline-success">검색</button>

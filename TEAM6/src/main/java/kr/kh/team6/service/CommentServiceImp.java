@@ -79,4 +79,10 @@ public class CommentServiceImp implements CommentService {
 		
 	}
 
+	@Override
+	public void deleteComments(int num) {
+		commentDao.deleteComments(num);
+		
+	}
+
 }
