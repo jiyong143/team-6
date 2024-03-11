@@ -226,22 +226,33 @@ nav a:hover {
 
 }
 
-.right-boxgroup{
+.right-box-container {
+    position: relative;
+    /* 오른쪽 박스와 버튼의 상대적인 위치 설정 */
+}
+
+.right-box {
     position: fixed;
+    /* 화면에 고정 */
     top: 30%;
-    right: 0;
+    right: -300px;
+    /* 화면 오른쪽에서 0px 떨어진 위치 */
     transform: translateY(-50%);
+    /* 세로 방향으로 중앙 정렬 */
     width: 200px;
+    /* 너비 설정 */
     background-color: white;
+    /* 배경색 지정 */
     padding: 20px;
+    /* 내부 여백 설정 */
     border: 1px solid #ddd;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     box-shadow: -2px 1px 4px 1px rgba(141, 102, 18, 0.5);
+    /* 왼쪽으로 그림자 생성 */
     z-index: 1;
-    
+    /* 다른 요소 위에 표시되도록 설정 */
 }
-
 .close-button {
     position: absolute;
     top: 2%;

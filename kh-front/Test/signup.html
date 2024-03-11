@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인</title>
+    <title>회원가입</title>
     <style>
         h1 {
             text-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
@@ -165,8 +165,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        
-            
+
+
         }
 
         .ad-container img {
@@ -203,7 +203,7 @@
             position: fixed;
             /* 화면에 고정 */
             top: 30%;
-            right: 0;
+            right: -300px;
             /* 화면 오른쪽에서 0px 떨어진 위치 */
             transform: translateY(-50%);
             /* 세로 방향으로 중앙 정렬 */
@@ -242,15 +242,18 @@
             /* 이미지 높이 자동 조정 */
 
         }
+
         .signup-group {
             background-color: #ffffff;
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            max-width: 400px; /* 최대 너비 설정 */
-            margin: 0 auto 100px; /* 가운데 정렬 */
-         
+            max-width: 400px;
+            /* 최대 너비 설정 */
+            margin: 0 auto 100px;
+            /* 가운데 정렬 */
+
         }
 
         .signup {
@@ -274,11 +277,11 @@
             box-sizing: border-box;
         }
 
-       .signup-group button {
+        .signup-group button {
             width: 200px;
             padding: 10px;
             border: none;
-            background-color:rgba(141, 102, 18, 0.5);
+            background-color: rgba(141, 102, 18, 0.5);
             color: white;
             font-size: 16px;
             border-radius: 5px;
@@ -287,9 +290,38 @@
         }
 
         .signup-group button:hover {
-            background-color: 
-            rgb(191, 150, 75);
+            background-color:
+                rgb(191, 150, 75);
         }
+
+        .error-border {
+            border: 1px solid red !important;
+        }
+        .error-text {
+            color: red;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-5px);
+            }
+            75% {
+                transform: translateX(5px);
+            }
+        }
+
+        .shake {
+        animation: shake 0.1s;
+        }
+
+        input:focus{outline: unset !important;}
     </style>
 </head>
 
@@ -334,50 +366,121 @@
     </div>
     <div class="signup-group">
         <h2>회원가입</h2>
-        <form action="/Test/home.html">
-        <div class="signup">
-            <label for="name">이름</label>
-            <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
-        </div>
-        <div class="signup">
-            <label for="id">아이디</label>
-            <input type="text" id="id" name="id" placeholder="아이디를 입력하세요">
-        </div>
-        <div class="signup">
-            <label for="pw">비밀번호</label>
-            <input type="password" id="pw" name="pw" placeholder="비밀번호를 입력하세요">
-        </div>
-        <div class="signup">
-            <label for="pw2">비밀번호</label>
-            <input type="password" id="pw2" name="pw2" placeholder="비밀번호 확인">
-        </div>
-        <div class="signup">
-            <label for="email">이메일</label>
-            <input type="email" id="email" name="email" placeholder="이메일을 입력하세요">
-        </div>
-        <div class="signup">
-            <label for="phone">핸드폰 번호</label>
-            <input type="number" id="phone" name="phone" placeholder="핸드폰 번호를 입력하세요">
-        </div>
-        <div class="signup">
-            <label for="address">주소</label>
-            <input type="text" id="address" name="address" placeholder="주소를 입력하세요">
-        </div>
-        <button>회원가입</button>
+        <form name="join_form" id="join_form" method="post" action="/Test/home.html">
+            <div class="signup">
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+            </div>
+            <div class="signup">
+                <label for="id">아이디</label>
+                <input type="text" id="id" name="id" placeholder="아이디를 입력하세요">
+            </div>
+            <div class="signup">
+                <label for="pw">비밀번호</label>
+                <input type="password" id="pw" name="pw" placeholder="비밀번호를 입력하세요">
+            </div>
+            <div class="signup">
+                <label for="pw2">비밀번호</label>
+                <input type="password" id="pw2" name="pw2" placeholder="비밀번호 확인">
+            </div>
+            <div class="signup">
+                <label for="email">이메일</label>
+                <input type="email" id="email" name="email" placeholder="이메일을 입력하세요">
+            </div>
+            <div class="signup">
+                <label for="phone">핸드폰 번호</label>
+                <input type="number" id="phone" name="phone" placeholder="핸드폰 번호를 입력하세요">
+            </div>
+            <div class="signup">
+                <label for="address">주소</label>
+                <input type="text" id="address" name="address" placeholder="주소를 입력하세요">
+            </div>
+            <button>회원가입</button>
         </form>
-    
+
     </div>
 
     <div class="copyright">
         <p>© 2024 정경호. All rights reserved. | 광고 문의 010-4407-1418 | 이메일 : wkdrn002@naver.com | TEAM6</p>
     </div>
-     
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
     <script>
+        $(document).ready(function () {
+            jQuery.validator.addMethod("pwcheck", function (value, element) {
+                return this.optional(element) || $('#pw').val() === $('#pw2').val();
+            }, "비밀번호가 일치하지 않습니다.");
+
+            $("#join_form").validate({
+                rules: {
+                    name: "required",
+                    id: "required",
+                    pw: {
+                        required: true,
+                        minlength: 5
+                    },
+                    pw2: {
+                        required: true,
+                        minlength: 5,
+                        pwcheck: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    phone: "required",
+                    address: "required"
+                },
+                messages: {
+                    name: "이름을 입력하세요",
+                    id: "아이디를 입력하세요",
+                    pw: {
+                        required: "비밀번호를 입력하세요",
+                        minlength: "비밀번호는 5자 이상이어야 합니다"
+                    },
+                    pw2: {
+                        required: "비밀번호 확인을 입력하세요",
+                        minlength: "비밀번호는 5자 이상이어야 합니다",
+                        pwcheck: "비밀번호가 일치하지 않습니다"
+                    },
+                    email: {
+                        required: "이메일 주소를 입력하세요",
+                        email: "유효한 이메일 주소를 입력하세요"
+                    },
+                    phone: "핸드폰 번호를 입력하세요",
+                    address: "주소를 입력하세요"
+                },
+                errorElement: "div",
+                errorClass: "error-message",
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass("error-border shake");
+                    $(`label[for=${element.id}]`).addClass("error-text");
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass("error-border shake");
+                    $(`label[for=${element.id}]`).removeClass("error-text");
+                },
+                errorPlacement: function(error, element) {
+                    error.insertAfter(element);
+                },
+                submitHandler: function(form) {
+                    if (confirm('가입하시겠습니까?')) {
+                        form.submit();
+                    } else {
+                        // 아무것도 실행 안함
+                    }
+                }
+            });
+        });
+
+
         function toggleCategory() {
             var category = document.getElementById("category");
             category.classList.toggle("open");
         }
-        
+
         // 검색창 요소를 가져옴
         var searchInput = document.querySelector('.search-container input[type=text]');
 
@@ -393,43 +496,15 @@
 
 
         var rightBox = document.querySelector('.right-box');
-
-        // 닫기 버튼 가져오기
         var closeButton = document.querySelector('.close-button');
-
-        // 오른쪽 박스 가져오기
-        var rightBox = document.querySelector('.right-box');
-
-        // 오른쪽 박스가 숨겨져 있는지 여부를 저장하는 변수
         var isHidden = true;
 
-        // 버튼 클릭 이벤트에 함수 연결
         closeButton.addEventListener('click', function () {
-            // 오른쪽 박스가 숨겨져 있다면
-            if (isHidden) {
-                // 오른쪽으로 이동하여 보이는 애니메이션 효과 추가
-                rightBox.style.transition = 'right 0.3s ease';
-                // 오른쪽으로 이동하여 보임
-                rightBox.style.right = '0';
-            } else {
-                // 오른쪽으로 이동하여 사라지는 애니메이션 효과 추가
-                rightBox.style.transition = 'right 0.3s ease';
-                // 오른쪽으로 이동하여 사라짐
-                rightBox.style.right = '-300px'; // 오른쪽 박스의 너비만큼 이동
-            }
-
-            // 숨겨져 있는 상태에서는 보이는 상태로, 보이는 상태에서는 숨겨져 있는 상태로
+            rightBox.style.transition = 'right 0.3s ease';
+            rightBox.style.right = isHidden ? '0' : '-300px';
             isHidden = !isHidden;
         });
 
     </script>
 </body>
-
-</html>
-</head>
-
-<body>
-
-</body>
-
 </html>
