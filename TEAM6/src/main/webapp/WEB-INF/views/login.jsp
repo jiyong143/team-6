@@ -377,8 +377,8 @@
 
                 // AJAX
                 $.ajax({
-                    url: '/login',
-                    type: 'POST',
+                    url: "<c:url value='/login'/>",
+                    type: 'post',
                     dataType: 'json',
                     data: {
                         id: id,
@@ -388,7 +388,7 @@
                         // 로그인 성공
                         if (response.success) {
                             alert('로그인 성공');
-                            window.location.href = '/home';
+                            window.location.href = "<c:url value='/home'/>";
                         } else {
                             alert('로그인 실패: ' + response.message);
                         }
