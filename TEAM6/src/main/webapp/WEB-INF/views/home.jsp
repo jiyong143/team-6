@@ -14,7 +14,7 @@
 <div class="container">
 <form class="d-flex mb-3 mt-3" action="<c:url value="/post/list"/>">
 	<input class="form-control me-5" type="text" value="${pm.cri.search}" placeholder="What do you want to ask?">
-	<button class="btn btn-primary" id="search-btn" type="button">search</button>
+	<button class="btn btn-primary" id="search-btn" type="submit">search</button>
 </form>
 <script src="//code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
