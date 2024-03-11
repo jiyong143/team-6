@@ -15,9 +15,8 @@
    <c:forEach items="${category.getBoardInCategory()}" var="board">
    <c:url var="url" value="/post/list">
                <c:param name="bNum" value="${board.bo_num }"/>
-               
            </c:url>
-   <a href="${url}">${board.bo_title}</a>
+   <a href="${url}">${board.bo_title}</a> 
    </c:forEach>
 </c:forEach>
 </body>

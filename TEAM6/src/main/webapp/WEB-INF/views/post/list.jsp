@@ -18,6 +18,7 @@
 <div class="container">
     <h4>게시판 이름 : ${board.bo_title}</h4>
   <form action="<c:url value="/post/list"/>">
+  	<input type="hidden" name="bNum" value="${board.bo_num}">
 		<div class="input-group">
 			<select class="form-control" name="type">
 				<option value="all" <c:if test='${pm.cri.type == "all"}'>selected</c:if>>전체</option>
