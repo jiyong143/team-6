@@ -20,5 +20,7 @@ public interface CommentDAO {
 
 	CommentVO selectComment(@Param("cNum")int cNum);
 
+	void deleteComments(@Param("num")int num);
+
 	
 }
