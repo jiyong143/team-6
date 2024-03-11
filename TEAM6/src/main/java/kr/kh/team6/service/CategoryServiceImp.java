@@ -84,4 +84,17 @@ public class CategoryServiceImp implements CategoryService {
 		return true;
 	}
 
+	@Override
+	public CategoryVO getCategory(int cNum) {
+		return categoryDAO.selectCategory(cNum); 
+	}
+
+	@Override
+	public ArrayList<BoardVO> getBoardInCategory(int ca_num) {
+		if(ca_num==0) {
+			return null;
+		}
+		return categoryDAO.selectBoardInCategory(ca_num);
+	}
+
 }
