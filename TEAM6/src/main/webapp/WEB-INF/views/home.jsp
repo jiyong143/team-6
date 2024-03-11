@@ -12,17 +12,11 @@
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
-<form action="<c:url value="/post/list"/>">
-		<div class="input-group">
-			<select class="form-control" name="type">
-				<option value="all" <c:if test='${pm.cri.type == "all"}'>selected</c:if>>전체</option>
-				<option value="po_title" <c:if test='${pm.cri.type == "po_title"}'>selected</c:if>>제목</option>
-				<option value="po_me_id" <c:if test='${pm.cri.type == "po_me_id"}'>selected</c:if>>작성자</option>
-			</select>
-			<input type="text" class="form-control" placeholder="검색어" name="search" value="${pm.cri.search}">
-			<button class="btn btn-outline-success">검색</button>
-		</div>
-	</form>
+<form class="d-flex" action="<c:url value="/"/>">
+	<input class="form-control me-5" type="text"  value="${pm.cri.search}" placeholder="What do you want to ask?">
+	<button class="btn btn-primary" type="button">search</button>
+</form>
+
 	<h1>메인 페이지입니다.</h1>
 	<c:forEach begin="1" end="4" var="i" step="2">
 	${i },
