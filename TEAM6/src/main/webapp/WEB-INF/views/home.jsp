@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>국민의 힘!</title>
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 </head>
 
@@ -21,13 +22,13 @@
 			<span></span><span></span><span></span>
 		</div>
 		<div class="category" id="category">
-			<hr>
 			<h3>
-				<span>카테고리</span>
+				<hr>
+				<span>${category.ca_title}</span>
 			</h3>
-			<hr>
+				<hr>
 			<ul>
-				<li><a href="/Test/board.html">게시판</a></li>
+				<li><a href="<c:url value="/post/list"/>">게시판</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -69,7 +70,7 @@
 
 	<div class="login">
 		<c:if test="${user == null }">
-			<a href="<c:url value="/login"/>">로그인</a> | <a href="/Test/signup.html">회원가입</a>
+			<a href="<c:url value="/login"/>">로그인</a> | <a href='/<c:url value="/signup"/>'>회원가입</a>
 		</c:if>
 	</div>
 	<form action="<c:url value="/post/list"/>">
@@ -80,8 +81,11 @@
 		</div>
 	</form>
 	<div class="recent-posts">
+		<c:if test="${post == null }">
+			<h2>게시글이 없습니다</h2>
+		</c:if>
 		<c:if test="${post != null }">
-		<h2>최근 게시글</h2>
+			<h2>최근 게시글</h2>
 		<ul>
 			<li><a href="${url}">${post.po_title}</a></li>
 		</ul>

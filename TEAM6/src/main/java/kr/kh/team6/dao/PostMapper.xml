@@ -3,76 +3,91 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.team6.dao.PostDAO">
-    <resultMap type="kr.kh.team6.model.vo.PostVO" id="PostMap">
-        <id property="po_num" column="po_num"/>
-        <result property="po_title" column="po_title"/>
-        <result property="po_content" column="po_content"/>
-        <result property="po_date" column="po_date"/>
-        <result property="po_views" column="po_views"/>
-        <result property="po_bo_num" column="po_bo_num"/>
-        <result property="po_me_id" column="po_me_id"/>
-        <collection property="member" ofType="kr.kh.team6.model.vo.MemberVO" 
-        			column="po_me_name" select="selectMemberName"/>	
-        <collection property="board" ofType="kr.kh.team6.model.vo.BoardVO" 
-        			column="po_bo_num" select="selectBoard"/>
-    </resultMap>
-    
-    <select id="selectMemberName" resultType="kr.kh.team6.model.vo.MemberVO">
-    	select * from member where me_name = #{po_me_name}
-    </select>
-    
-    <!-- 조회 -->
-	<select id="selectPostList" resultType="kr.kh.team6.model.vo.PostVO">
-		<!-- type과 검색어를 이용하여 쿼리를 구성, if태그를 활용 -->
-		select * from post
-		<choose>
-			<!-- 전체 검색 -->
-			<when test='cri.type == "all"'>
-				where
-				(po_title like concat('%',#{cri.search},'%') or
-				po_me_id like concat('%',#{cri.search},'%'))
-				and po_bo_num=#{bo_num}
-			</when>
-			<!-- 제목 또는 작성자 검색 -->
-			<otherwise>
-				where
-				${cri.type} like concat('%',#{cri.search},'%') and
-				po_bo_num=#{bo_num}
-			</otherwise>
-		</choose>
-		order by po_num desc
-		<!-- 현재 페이지 정보에 맞는 게시글을 위한 limit절 작성 -->
-		limit #{cri.pageStart}, #{cri.perPageNum}
+	<resultMap type="kr.kh.team6.model.vo.PostVO" id="PostMap">
+		<id property="po_num" column="po_num" />
+		<result property="po_title" column="po_title" />
+		<result property="po_content" column="po_content" />
+		<result property="po_date" column="po_date" />
+		<result property="po_views" column="po_views" />
+		<result property="po_bo_num" column="po_bo_num" />
+		<result property="po_me_id" column="po_me_id" />
+		<collection property="member"
+			ofType="kr.kh.team6.model.vo.MemberVO" column="po_me_name"
+			select="selectMemberName" />
+		<collection property="board"
+			ofType="kr.kh.team6.model.vo.BoardVO" column="po_bo_num"
+			select="selectBoard" />
+	</resultMap>
+
+	<select id="selectMemberName"
+		resultType="kr.kh.team6.model.vo.MemberVO">
+		select * from member where me_name = #{po_me_name}
 	</select>
-	
+
+	<!-- 조회 -->
+	<select id="selectPostList"
+		resultType="kr.kh.team6.model.vo.PostVO">
+		<!-- type과 검색어를 이용하여 쿼리를 구성, if태그를 활용 -->
+		SELECT *
+		FROM post
+		<where>
+			<choose>
+				<!-- 전체 검색 -->
+				<when test='cri.type == "all"'>
+					<if test="cri.search != null and cri.search != ''">
+						AND (po_title LIKE CONCAT('%', #{cri.search}, '%') OR
+						po_me_id LIKE CONCAT('%', #{cri.search}, '%'))
+					</if>
+					AND po_bo_num = #{bo_num}
+				</when>
+				<!-- 제목 또는 작성자 검색 -->
+				<otherwise>
+					<if test="cri.search != null and cri.search != ''">
+						AND ${cri.type} LIKE CONCAT('%', #{cri.search}, '%')
+					</if>
+					AND po_bo_num = #{bo_num}
+				</otherwise>
+			</choose>
+		</where>
+		ORDER BY po_num DESC
+		<!-- 현재 페이지 정보에 맞는 게시글을 위한 limit절 작성 -->
+		LIMIT #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+
 
 	<!-- 추가 -->
 	<insert id="insertPost">
-	   insert into post(po_title,po_content,po_bo_num,po_me_id) 
-	   values(#{post.po_title},#{post.po_content},#{post.po_bo_num},#{post.po_me_id})
+		<!-- insert into
+		post(po_title,po_content,po_bo_num,po_me_id)
+		values(#{post.po_title},#{post.po_content},#{post.po_bo_num},#{post.po_me_id}) -->
+		 insert into post(po_title, po_content, po_bo_num, po_me_id)
+    values(#{post.po_title}, #{post.po_content}, #{post.po_bo_num}, #{post.po_me_id})
 	</insert>
 
 	<!-- 조회 -->
 	<select id="selectTotalCount" resultType="int">
 		select count(*) from post
 		<if test='cri.type=="title"'>
-			where po_title like concat('%', #{cri.search},'%') and po_bo_num=
+			where po_title like concat('%', #{cri.search},'%') and
+			po_bo_num=
 			#{bo_num}
 		</if>
 		<if test='cri.type=="writer"'>
 			where po_me_id= #{cri.search} and po_bo_num= #{bo_num}
 		</if>
 	</select>
-	
-	
-	<!-- 조회-->
-	<select id="selectBoard" resultType="kr.kh.team6.model.vo.BoardVO">
+
+
+	<!-- 조회 -->
+	<select id="selectBoard"
+		resultType="kr.kh.team6.model.vo.BoardVO">
 		select * from board where bo_num = #{po_bo_num}
 	</select>
-	
-	
+
+
 	<select id="selectPost" resultMap="PostMap">
-	    select * from post where po_num = #{num}
+		select * from post where
+		po_num = #{num}
 	</select>
 
 	<select id="selectPostMemberName"
@@ -81,35 +96,39 @@
 	</select>
 
 	<update id="updateView">
-		update post set po_views = po_views+1 where po_num=#{num}
+		update post set po_views = po_views+1 where
+		po_num=#{num}
 	</update>
 
 	<delete id="deletePost">
-		delete from post where po_me_id=#{user.me_id} and po_num=#{num}
+		delete from post where po_me_id=#{user.me_id} and
+		po_num=#{num}
 	</delete>
-	
-	<select id="selectBoardList" resultType="kr.kh.team6.model.vo.BoardVO">
+
+	<select id="selectBoardList"
+		resultType="kr.kh.team6.model.vo.BoardVO">
 		select * from board
 	</select>
-	
+
 	<update id="updatePost">
-		update post 
+		update post
 		set po_title = #{post.po_title},
-			po_content = #{post.po_content},
-			po_bo_num = #{post.po_bo_num}
+		po_content = #{post.po_content},
+		po_bo_num = #{post.po_bo_num}
 		where
-			po_num = #{post.po_num}
+		po_num = #{post.po_num}
 	</update>
-	
+
 	<select id="selectCount" resultType="int">
-		select count(*) from post 
+		select count(*) from post
 		where po_title like concat('%', #{cri.search},'%')
 	</select>
-	
+
 	<select id="selectSearchPostList" resultMap="PostMap">
-		select * from post 
-		where po_title like concat('%', #{cri.search}, '%') 
-		order by po_num desc 
+		select * from post
+		where po_title like concat('%', #{cri.search}, '%')
+		order by po_num
+		desc
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 </mapper>

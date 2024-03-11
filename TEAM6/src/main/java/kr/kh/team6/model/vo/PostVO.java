@@ -53,5 +53,8 @@ public class PostVO {
 		po_content = content;
 		po_bo_num = bo_num;
 	}
+	 public void setPo_date(Date po_date) {
+	        this.po_date = po_date;
+	    }
 	
 }
