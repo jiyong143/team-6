@@ -5,12 +5,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판</title>
-    <link rel="stylesheet" href="/header.css">
     <style>
-      .body-group {
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        h1 {
+
+            text-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
+            /* 그림자 추가 */
+        }
+
+        header,
+        nav,
+        body {
+            background-color: white;
+            padding: 20px;
+
+        }
+
+        .body-group {
             padding: 100px;
             margin-left: 150px;
             margin-right: 150px;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .category {
+            position: fixed;
+            top: 70px;
+            /* 카테고리 박스가 나타날 위치 조정 */
+            left: -400px;
+            /* 왼쪽에서 시작 */
+            width: 200px;
+            /* 카테고리 칸 크기 수정 */
+            background-color: white;
+            border: 1px solid #ddd;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            padding: 20px;
+            /* 내부 여백 수정 */
+            transition: left 0.3s ease;
+            /* 왼쪽으로 이동하는 애니메이션 효과 */
+            z-index: 1;
+            /* 카테고리 박스가 버튼 위에 보이도록 설정 */
+            box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
+        }
+
+        .category.open {
+            left: 0;
+            /* 왼쪽으로 이동하여 나타남 */
+        }
+
+        .category ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .category ul li {
+            padding: 10px 0;
+            /* 내부 여백 수정 */
+            border-bottom: 1px solid #ddd;
+        }
+
+        .category ul li:last-child {
+            border-bottom: none;
+        }
+
+        .category-toggle.clicked {
+            box-shadow: inset 1px 1px 1px 1px black;
+        }
+
+        .category-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 999;
+            background-color: white;
+            border-radius: 5px;
+            padding: 5px;
+
+        }
+
+        .category-toggle span {
+            display: block;
+            width: 30px;
+            height: 5px;
+            background-color: black;
+            margin-bottom: 5px;
+            transition: transform 0.3s ease;
         }
 
         .category-toggle.open span:nth-child(1) {
@@ -255,52 +358,116 @@
                 </tr>
                 <tr>
                     <td colspan="2">1</td>
-                    <td colspan="8"><a href="/Test/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
                     <td colspan="2">정경호</td>
                     <td colspan="4">2024-03-09</td>
                     <td colspan="2">99</td>
                 </tr>
-               
                 <tr>
                     <td colspan="2">1</td>
-                    <td colspan="8"><a href="/Test/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
                     <td colspan="2">정경호</td>
                     <td colspan="4">2024-03-09</td>
                     <td colspan="2">99</td>
                 </tr>
-               
                 <tr>
                     <td colspan="2">1</td>
-                    <td colspan="8"><a href="/Test/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
                     <td colspan="2">정경호</td>
                     <td colspan="4">2024-03-09</td>
                     <td colspan="2">99</td>
                 </tr>
-               
                 <tr>
                     <td colspan="2">1</td>
-                    <td colspan="8"><a href="/Test/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
                     <td colspan="2">정경호</td>
                     <td colspan="4">2024-03-09</td>
                     <td colspan="2">99</td>
                 </tr>
-               
                 <tr>
                     <td colspan="2">1</td>
-                    <td colspan="8"><a href="/Test/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
                     <td colspan="2">정경호</td>
                     <td colspan="4">2024-03-09</td>
                     <td colspan="2">99</td>
                 </tr>
-               
                 <tr>
                     <td colspan="2">1</td>
-                    <td colspan="8"><a href="/Test/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
                     <td colspan="2">정경호</td>
                     <td colspan="4">2024-03-09</td>
                     <td colspan="2">99</td>
                 </tr>
-               
+                <tr>
+                    <td colspan="2">1</td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="2">정경호</td>
+                    <td colspan="4">2024-03-09</td>
+                    <td colspan="2">99</td>
+                </tr>
+                <tr>
+                    <td colspan="2">1</td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="2">정경호</td>
+                    <td colspan="4">2024-03-09</td>
+                    <td colspan="2">99</td>
+                </tr>
+                <tr>
+                    <td colspan="2">1</td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="2">정경호</td>
+                    <td colspan="4">2024-03-09</td>
+                    <td colspan="2">99</td>
+                </tr>
+                <tr>
+                    <td colspan="2">1</td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="2">정경호</td>
+                    <td colspan="4">2024-03-09</td>
+                    <td colspan="2">99</td>
+                </tr>
+                <tr>
+                    <td colspan="2">1</td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="2">정경호</td>
+                    <td colspan="4">2024-03-09</td>
+                    <td colspan="2">99</td>
+                </tr>
+                <tr>
+                    <td colspan="2">1</td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="2">정경호</td>
+                    <td colspan="4">2024-03-09</td>
+                    <td colspan="2">99</td>
+                </tr>
+                <tr>
+                    <td colspan="2">1</td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="2">정경호</td>
+                    <td colspan="4">2024-03-09</td>
+                    <td colspan="2">99</td>
+                </tr>
+                <tr>
+                    <td colspan="2">1</td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="2">정경호</td>
+                    <td colspan="4">2024-03-09</td>
+                    <td colspan="2">99</td>
+                </tr>
+                <tr>
+                    <td colspan="2">1</td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="2">정경호</td>
+                    <td colspan="4">2024-03-09</td>
+                    <td colspan="2">99</td>
+                </tr>
+                <tr>
+                    <td colspan="2">1</td>
+                    <td colspan="8"><a href="/postDetail.html">게시글 이름입니다 누르면 게시글로 이동</a></td>
+                    <td colspan="2">정경호</td>
+                    <td colspan="4">2024-03-09</td>
+                    <td colspan="2">99</td>
+                </tr>
                 
             </table>
         </div>
