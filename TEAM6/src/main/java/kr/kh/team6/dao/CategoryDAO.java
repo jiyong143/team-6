@@ -23,4 +23,8 @@ public interface CategoryDAO {
 
 	CategoryVO seleteCategorydel(@Param("num")int num);
 
+	CategoryVO selectCategory(@Param("cNum")int cNum);
+
+	ArrayList<BoardVO> selectBoardInCategory(@Param("ca_num")int ca_num);
+
 }

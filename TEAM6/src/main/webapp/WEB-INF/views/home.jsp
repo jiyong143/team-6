@@ -11,6 +11,8 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
+<a href="<c:url value="/choice"/>">#</a>
+<jsp:include page="/WEB-INF/views/choice.jsp"/>
 <div class="container">
 <form action="<c:url value="/post/list"/>">
 		<div class="input-group">

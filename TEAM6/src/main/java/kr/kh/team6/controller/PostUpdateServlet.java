@@ -57,22 +57,22 @@ public class PostUpdateServlet extends HttpServlet {
 		
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		
-		//화면에서 전송한 번호, 제목, 내용, 게시판을 가져옴
-		int num, board;
+		//화면에서 전송한 게시글 번호, 제목, 내용을 가져옴
+		int num;
 		
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
-			board = Integer.parseInt(request.getParameter("board"));
 			
 		}catch(Exception e) {
 			num = 0;
-			board = 0;
 		}
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
+		int bNum = Integer.parseInt(request.getParameter("bNum"));
+		
 		
 		//게시글 객체로 생성
-		PostVO post = new PostVO(num, title, content, board);
+		PostVO post = new PostVO(num, title, content,bNum);
 		
 		//포스트서비스에게 게시글과 회원정보를 주면서 게시글을 수정하라고 명령
 		boolean res = postService.updatePost(post, user);
