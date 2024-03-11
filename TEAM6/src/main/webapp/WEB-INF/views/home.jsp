@@ -16,9 +16,6 @@
 <div class="container">
 <form action="<c:url value="/post/list"/>">
 		<div class="input-group">
-			<select class="form-control" name="type">
-				<option value="po_title" <c:if test='${pm.cri.type == "po_title"}'>selected</c:if>>제목</option>
-			</select>
 			<input type="text" class="form-control" placeholder="검색어" name="search" value="${pm.cri.search}">
 			<button class="btn btn-outline-success">검색</button>
 		</div>
