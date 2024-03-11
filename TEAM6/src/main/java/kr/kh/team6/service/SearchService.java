@@ -9,6 +9,6 @@ public interface SearchService {
 
 	int getCount(Criteria cri);
 
-	ArrayList<PostVO> getPostList(Criteria cri);
+	ArrayList<PostVO> getSearchPostList(Criteria cri);
 
 }

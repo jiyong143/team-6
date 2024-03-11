@@ -38,7 +38,7 @@ public class MainServlet extends HttpServlet {
 		PageMaker pm = new PageMaker(3, cri, totalCount);
 		request.setAttribute("pm", pm);
 		//현재 페이지 정보에 맞는 게시글 리스트를 가져오는 코드
-		ArrayList<PostVO> list = searchService.getPostList(cri);
+		ArrayList<PostVO> list = searchService.getSearchPostList(cri);
 		request.setAttribute("list", list); //화면에 전송
 		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
 	}

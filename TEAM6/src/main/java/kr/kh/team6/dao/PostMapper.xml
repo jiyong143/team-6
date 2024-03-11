@@ -106,7 +106,7 @@
 		where po_title like concat('%', #{cri.search},'%')
 	</select>
 	
-	<select id="selectPostList" resultMap="PostMap">
+	<select id="selectSearchPostList" resultMap="PostMap">
 		select * from post 
 		where po_title like concat('%', #{cri.search}, '%') 
 		order by po_num desc 

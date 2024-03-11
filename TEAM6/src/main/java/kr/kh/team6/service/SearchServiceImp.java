@@ -38,11 +38,11 @@ public class SearchServiceImp implements SearchService {
 	}
 
 	@Override
-	public ArrayList<PostVO> getPostList(Criteria cri) {
+	public ArrayList<PostVO> getSearchPostList(Criteria cri) {
 		if(cri == null) {
 			cri = new Criteria();
 		}
-		return postDao.selectPostList(cri);
+		return postDao.selectSearchPostList(cri);
 	}
 
 }
