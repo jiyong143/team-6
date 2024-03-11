@@ -47,7 +47,7 @@
 <div class="container mt-3">
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title"><내 정보></h4>
+      <h4 class="card-title">내 정보</h4>
       <p class="card-text">아이디 : ${user.me_id}</p>
       <p class="card-text">닉네임 : ${user.me_name}</p>
       <p class="card-text">

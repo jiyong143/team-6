@@ -35,6 +35,7 @@ public class PostListServlet extends HttpServlet {
 			String search = request.getParameter("search");
 			String type = request.getParameter("type");
 			int page;
+			
 			try {
 				page = Integer.parseInt(request.getParameter("page"));
 			} catch (Exception e) {
