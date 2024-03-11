@@ -18,5 +18,7 @@ public interface CommentService {
 
 	CommentVO getComment(int cNum);
 
+	void deleteComments(int num);
+
 
 }
