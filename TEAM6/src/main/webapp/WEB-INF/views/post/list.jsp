@@ -73,6 +73,7 @@
                 <c:param name="type" value="${pm.cri.type}" />
                 <c:param name="search" value="${pm.cri.search}" />
                 <c:param name="page" value="${pm.startPage-1}" />
+                <c:param name="bNum" value="${board.bo_num}"/>
             </c:url>
             <a class="page-link" href="${prevUrl}">이전</a>
        </li>
@@ -83,6 +84,7 @@
                     <c:param name="type" value="${pm.cri.type}" />
                     <c:param name="search" value="${pm.cri.search}" />
                     <c:param name="page" value="${i}" />
+                    <c:param name="bNum" value="${board.bo_num}"/>
             </c:url>
             <a class="page-link" href="${page}">${i}</a>
         </li>
@@ -93,6 +95,7 @@
                     <c:param name="type" value="${pm.cri.type}" />
                     <c:param name="search" value="${pm.cri.search}" />
                     <c:param name="page" value="${pm.endPage+1}" />
+                    <c:param name="bNum" value="${board.bo_num}"/>
             </c:url>
             <a class="page-link" href="${nextUrl}">다음</a>
         </li>

@@ -35,6 +35,8 @@ public class PostServiceImp implements PostService{
  
 	@Override
 	public ArrayList <PostVO> getPostList(Criteria cri, int bo_num) {
+		System.out.println(bo_num + "서블릿");
+		System.out.println(cri + "서블릿");
 		return postDao.selectPostList(cri, bo_num);
 		
 	}
