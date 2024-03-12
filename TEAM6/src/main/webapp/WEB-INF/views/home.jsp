@@ -6,14 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>국민의 힘!</title>
+<title>What do you want to ask?</title>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 </head>
 
 <body>
 	<div class="logo">
 		<h1>
-			<a href="<c:url value="/"/>">국민의 힘</a>
+			<a href="<c:url value="/"/>">What do you want to ask?</a>
 		</h1>
 	</div>
 	<nav class="category-container">
@@ -27,7 +27,7 @@
 			</h3>
 			<hr>
 			<ul>
-				<li><a href="/Test/board.html">게시판</a></li>
+				<li><a href="<c:url value="/post/list"/>">게시판</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -39,32 +39,32 @@
 			alt="버튼이미지">
 	</button>
 	<div class="right-box">
-			<c:if test="${user == null }">
+		<c:if test="${user == null }">
 			<h2>환영합니다!</h2>
 			<h3>로그인을 해주세요.</h3>
-			</c:if>	
-			<c:if test="${user != null }">
-				<h2>아이디 : ${user.me_id}</h2>
-				<p>이름 : ${user.me_name}</p>
-				<p>이메일 : ${user.me_email}</p>
-			</c:if>	
-			<c:if test="${user != null }">
-				<c:choose>
-					<c:when test='${user.me_authority eq "admin"}'>권한 : 관리자</c:when>
-					<c:otherwise>권한 : 회원 (${user.me_ms_state})</c:otherwise>
-		 		</c:choose>
-			</c:if>	
-		 		<br>
-		 		<br>
-	 		<c:if test='${user != null && user.me_authority ne "admin" }'>
-					<a href="<c:url value="/내정보 url"/>">내정보 관리</a>
-			</c:if>
-	 		<c:if test='${admin != null && user.me_authority eq "admin" }'>
-					<a href="<c:url value="/관리자 url"/>">관리자 페이지</a>
-			</c:if>
-			<c:if test="${user != null }">
-					<a href="<c:url value="/logout"/>">로그아웃</a>
-			</c:if>
+		</c:if>	
+		<c:if test="${user != null }">
+			<h2>아이디 : ${user.me_id}</h2>
+			<p>이름 : ${user.me_name}</p>
+			<p>이메일 : ${user.me_email}</p>
+		</c:if>	
+		<c:if test="${user != null }">
+			<c:choose>
+				<c:when test='${user.me_authority eq "admin"}'>권한 : 관리자</c:when>
+				<c:otherwise>권한 : 회원 (${user.me_ms_state})</c:otherwise>
+				</c:choose>
+		</c:if>	
+		<br>
+		<br>
+		<c:if test='${user != null && user.me_authority ne "admin" }'>
+			<a href="<c:url value="/내정보 url"/>">내정보 관리</a>
+		</c:if>
+		<c:if test='${admin != null && user.me_authority eq "admin" }'>
+			<a href="<c:url value="/관리자 url"/>">관리자 페이지</a>
+		</c:if>
+		<c:if test="${user != null }">
+			<a href="<c:url value="/logout"/>">로그아웃</a>
+		</c:if>
 	</div>
 
 	<div class="login">

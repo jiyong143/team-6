@@ -42,8 +42,16 @@ public class PostListServlet extends HttpServlet {
 				page = 1;
 			}
 			Criteria cri = new Criteria(page, 2, type, search);
-			int bo_num = Integer.parseInt(request.getParameter("bNum"));
-			String bName = request.getParameter("bName");
+			int bo_num;
+			String bName;
+			try {				
+				bo_num = Integer.parseInt(request.getParameter("bNum"));
+				bName = request.getParameter("bName");
+			}catch(Exception e) {
+				bo_num = 0;
+				bName = "";
+			}
+			
 			request.setAttribute("bName", bName);
 			request.setAttribute("bo_num", bo_num);
 			// 화면에 게시글 리스트를 전송... 화면에서 사용할 이름은 postList 로 하자
