@@ -106,7 +106,7 @@
 	
 	<select id="selectCount" resultType="int">
 		select count(*) from post 
-		where po_title like concat('%', #{cri.search},'%')
+		where po_title like concat('%', #{cri.search},'%') and po_title = #{cri.search}
 	</select>
 	
 	<select id="selectSearchPostList" resultMap="PostMap">
