@@ -17,22 +17,9 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
     <form action="<c:url value="/post/insert"/>" method="post">
-    <input type="hidden" name="date" value="now()">
-         <h1>게시글 등록</h1>
-         <div class="mb-3 mt-3">
-			<label for="category" class="form-label">카테고리</label>
-			<select class="form-control" id="category" name="category">
-			    <c:forEach items="${categoryList}" var="category">
-			        <option value="${category.ca_num }">${category.ca_title}</option>
-			    </c:forEach>
-			 </select>
-			<label for="board" class="form-label">게시판</label>
-			<select class="form-control" id="board" name="board">
-			    <c:forEach items="${boardList}" var="board">
-			        <option value="${board.bo_num}">${board.bo_title}</option>
-			    </c:forEach>
-			</select>
-		</div>
+    <input type="hidden" name="bNum" value="${bNum}">
+    <input type="hidden" name="bName" value="${bName}">
+         <h1>"${bName}" 게시판에 게시글 등록</h1>
          <div class="mb-3 mt-3">
 			<label for="title" class="form-label">제목</label>
 			<input type="text" class="form-control" id="title" placeholder="제목" name="title">

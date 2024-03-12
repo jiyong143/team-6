@@ -16,7 +16,7 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 
 <div class="container">
-    <h4>게시판 이름 : ${bName}</h4>
+    <h4>게시판 이름 : ${board.bo_title}</h4>
   <form action="<c:url value="/post/list"/>">
 		<div class="input-group">
 			<select class="form-control" name="type">
@@ -97,7 +97,7 @@
         </li>
      </c:if>
   </ul>
-  <a href="<c:url value="/post/insert"/>" class="btn btn-outline-primary">게시글 등록</a>
+  <a href="<c:url value="/post/insert?bNum=${board.bo_num}&bName=${board.bo_title}"/>" class="btn btn-outline-primary">게시글 등록</a>
 </div>
 </body>
 </html>
