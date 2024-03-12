@@ -20,6 +20,12 @@ import kr.kh.team6.service.SearchServiceImp;
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private SearchService searchService = new SearchServiceImp();
+    
+	   
+    public MainServlet() {
+        
+    }
+
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//검색어를 가져옴, 현재 페이지 정보도 가져옴
@@ -40,7 +46,10 @@ public class MainServlet extends HttpServlet {
 		//현재 페이지 정보에 맞는 게시글 리스트를 가져오는 코드
 		ArrayList<PostVO> list = searchService.getSearchPostList(cri);
 		request.setAttribute("list", list); //화면에 전송
+
 		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
 	}
+
+	
 
 }

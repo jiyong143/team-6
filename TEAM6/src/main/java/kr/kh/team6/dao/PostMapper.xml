@@ -25,21 +25,23 @@
 	<select id="selectPostList" resultType="kr.kh.team6.model.vo.PostVO">
 		<!-- type과 검색어를 이용하여 쿼리를 구성, if태그를 활용 -->
 		select * from post
-		<choose>
-			<!-- 전체 검색 -->
-			<when test='cri.type == "all"'>
+		  <!-- 전체 검색 -->
+			<if test='cri.type=="all"'>
 				where
 				(po_title like concat('%',#{cri.search},'%') or
-				po_me_id like concat('%',#{cri.search},'%'))
+				po_me_id =#{cri.search})
 				and po_bo_num=#{bo_num}
-			</when>
+			</if>
 			<!-- 제목 또는 작성자 검색 -->
-			<otherwise>
+			<if test='cri.type=="title"'>
 				where
-				${cri.type} like concat('%',#{cri.search},'%') and
+				po_title like concat('%',#{cri.search},'%') and
 				po_bo_num=#{bo_num}
-			</otherwise>
-		</choose>
+			</if>
+		    <if test='cri.type=="writer"'>
+		        where po_me_id =#{cri.search} and
+		        po_bo_num=#{bo_num}
+		    </if>
 		order by po_num desc
 		<!-- 현재 페이지 정보에 맞는 게시글을 위한 limit절 작성 -->
 		limit #{cri.pageStart}, #{cri.perPageNum}
@@ -47,10 +49,10 @@
 	
 
 	<!-- 추가 -->
-	<insert id="insertPost">
-	   insert into post(po_title,po_content,po_bo_num,po_me_id) 
-	   values(#{post.po_title},#{post.po_content},#{post.po_bo_num},#{post.po_me_id})
-	</insert>
+   <insert id="insertPost">
+      insert into post(po_title,po_content,po_date,po_bo_num,po_me_id) 
+      values(#{post.po_title},#{post.po_content},now(),#{post.po_bo_num},#{post.po_me_id})
+   </insert>
 
 	<!-- 조회 -->
 	<select id="selectTotalCount" resultType="int">
@@ -100,6 +102,7 @@
 		where
 			po_num = #{post.po_num}
 	</update>
+	
 	
 	<select id="selectCount" resultType="int">
 		select count(*) from post 

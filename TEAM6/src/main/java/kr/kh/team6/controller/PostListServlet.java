@@ -13,6 +13,8 @@ import kr.kh.team6.model.vo.MemberVO;
 import kr.kh.team6.model.vo.PostVO;
 import kr.kh.team6.pagination.Criteria;
 import kr.kh.team6.pagination.PageMaker;
+import kr.kh.team6.service.BoardService;
+import kr.kh.team6.service.BoardServiceImp;
 import kr.kh.team6.service.PostService;
 import kr.kh.team6.service.PostServiceImp;
 
@@ -20,6 +22,7 @@ import kr.kh.team6.service.PostServiceImp;
 public class PostListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PostService postService = new PostServiceImp();
+	BoardService boardService = new BoardServiceImp();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -35,7 +38,6 @@ public class PostListServlet extends HttpServlet {
 			String search = request.getParameter("search");
 			String type = request.getParameter("type");
 			int page;
-			
 			try {
 				page = Integer.parseInt(request.getParameter("page"));
 			} catch (Exception e) {

@@ -20,18 +20,19 @@ public class Criteria {
 		this.page=page;
 		this.perPageNum=perPageNum;
 	}
+
+	//메인 검색창 생성자
+	public Criteria(int page, String search, int perPageNum) {
+		this(page,perPageNum);
+		this.search=search==null ? "": search;
+	}
+	
 	
 	public Criteria(int page, int perPageNum, String type, String search) {
 		this(page,perPageNum);
 		this.type=type==null ? "all" : type;
 		this.search=search==null ? "": search;
 	}
-	
-	public Criteria(int page, String search, int perPageNum) {
-		this(page,perPageNum);
-		this.search=search==null ? "": search;
-	}
-	
 	public int getPageStart() {
 		return (page-1)*perPageNum;
 	}
