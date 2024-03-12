@@ -1,8 +1,6 @@
 package kr.kh.team6.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,12 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.kh.team6.model.vo.BoardVO;
-import kr.kh.team6.model.vo.CategoryVO;
 import kr.kh.team6.model.vo.MemberVO;
 import kr.kh.team6.model.vo.PostVO;
-import kr.kh.team6.service.BoardService;
-import kr.kh.team6.service.BoardServiceImp;
 import kr.kh.team6.service.PostService;
 import kr.kh.team6.service.PostServiceImp;
 

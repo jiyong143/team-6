@@ -29,7 +29,7 @@ public class MemberUpdateServlet extends HttpServlet {
 		String pw = request.getParameter("pw");
 		String pw2 = request.getParameter("pw2");
 		String name = request.getParameter("name");
-		String Phone = request.getParameter("phone");
+		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
 		String address = request.getParameter("address");
 		String id = request.getParameter("id");
