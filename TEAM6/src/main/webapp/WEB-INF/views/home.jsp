@@ -9,7 +9,11 @@
 <title>국민의 힘!</title>
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
-</head>
+<div class="container">
+<form class="d-flex" action="<c:url value="/post/detail"/>">
+	<input class="form-control me-5" type="text"  value="${pm.cri.search}" placeholder="What do you want to ask?">
+	<button class="btn btn-primary" type="submit">search</button>
+</form>
 
 <body>
 	<div class="logo">
