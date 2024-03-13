@@ -16,9 +16,9 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 
 <div class="container">
-    <h4>게시판 이름 : ${board.bo_title}</h4>
-  <form action="<c:url value="/post/list"/>">
-  	<input type="hidden" name="bNum" value="${board.bo_num}">
+    <h4>게시판 이름 : ${boardList.bo_title}</h4>
+  <form action="<c:url value="/post/list"/>" method="get">
+  	<input type="hidden" name="bNum" value="${boardList.bo_num}">
 		<div class="input-group">
 			<select class="form-control" name="type">
 				<option value="all" <c:if test='${pm.cri.type == "all"}'>selected</c:if>>전체</option>
@@ -101,7 +101,7 @@
         </li>
      </c:if>
   </ul>
-  <a href="<c:url value="/post/insert?bNum=${board.bo_num}&bName=${board.bo_title}"/>" class="btn btn-outline-primary">게시글 등록</a>
+  <a href='<c:url value="/post/insert?bNum=${boardList.bo_num}&bName=${boardList.bo_title}"/>' class="btn btn-outline-primary">게시글 등록</a>
 </div>
 </body>
 </html>

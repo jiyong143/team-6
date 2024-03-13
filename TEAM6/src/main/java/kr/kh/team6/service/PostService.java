@@ -25,7 +25,7 @@ public interface PostService {
 
 	boolean deletePost(int num, MemberVO user);
 
-	ArrayList<BoardVO> getBoardList();
+	ArrayList<BoardVO> getBoardList(Criteria cri);
 
 	boolean updatePost(PostVO post, MemberVO user);
 

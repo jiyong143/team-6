@@ -13,6 +13,7 @@
         <result property="po_me_id" column="po_me_id"/>
         <collection property="member" ofType="kr.kh.team6.model.vo.MemberVO" 
         			column="po_me_name" select="selectMemberName"/>	
+        			
         <collection property="board" ofType="kr.kh.team6.model.vo.BoardVO" 
         			column="po_bo_num" select="selectBoard"/>
     </resultMap>
@@ -49,7 +50,7 @@
 	
 
 	<!-- 추가 -->
-   <insert id="insertPost">
+   <insert id="insertPost" useGeneratedKeys="true" keyProperty="board.bo_num">
       insert into post(po_title,po_content,po_date,po_bo_num,po_me_id) 
       values(#{post.po_title},#{post.po_content},now(),#{post.po_bo_num},#{post.po_me_id})
    </insert>
@@ -68,7 +69,7 @@
 	
 	
 	<!-- 조회-->
-	<select id="selectBoard" resultType="kr.kh.team6.model.vo.BoardVO">
+	<select id="selectBoard" resultMap="PostMap">
 		select * from board where bo_num = #{po_bo_num}
 	</select>
 	
@@ -90,8 +91,10 @@
 		delete from post where po_me_id=#{user.me_id} and po_num=#{num}
 	</delete>
 	
-	<select id="selectBoardList" resultType="kr.kh.team6.model.vo.BoardVO">
+	<select id="selectBoardList" resultMap="PostMap">
 		select * from board
+		order by bo_num desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	
 	<update id="updatePost">

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.kh.team6.model.vo.BoardVO;
 import kr.kh.team6.model.vo.MemberVO;
 import kr.kh.team6.model.vo.PostVO;
 import kr.kh.team6.pagination.Criteria;
@@ -37,6 +38,8 @@ public class PostListServlet extends HttpServlet {
 			// 선택한 게시판 번호 가져오는 부분 추가
 			String search = request.getParameter("search");
 			String type = request.getParameter("type");
+			String bo_title =request.getParameter("bo_title");
+
 			int page;
 			try {
 				page = Integer.parseInt(request.getParameter("page"));
@@ -45,19 +48,18 @@ public class PostListServlet extends HttpServlet {
 			}
 			Criteria cri = new Criteria(page, 2, type, search);
 			int bo_num;
-			String bName;
 			try {				
-				bo_num = Integer.parseInt(request.getParameter("bNum"));
-				bName = request.getParameter("bName");
+				bo_num = Integer.parseInt(request.getParameter("bo_num"));
 			}catch(Exception e) {
 				bo_num = 0;
-				bName = "";
 			}
 			
-			request.setAttribute("bName", bName);
+			request.setAttribute("bo_title", bo_title);
 			request.setAttribute("bo_num", bo_num);
 			// 화면에 게시글 리스트를 전송... 화면에서 사용할 이름은 postList 로 하자
+			ArrayList<BoardVO> boardList = postService.getBoardList(cri);
 			ArrayList<PostVO> postList = postService.getPostList(cri, bo_num);
+			request.setAttribute("boardList", boardList);
 			request.setAttribute("postList", postList);
 			// 검색어, 검색타입에 맞는 전체 게시글 개수를 가져오는 과정
 			int totalCount = postService.getTotalCount(cri, bo_num);

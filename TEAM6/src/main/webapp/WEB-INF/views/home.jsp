@@ -22,7 +22,7 @@
 	</form>
 	<c:choose>
 		<c:when test="${list.size() != 0}">
-			<c:forEach items="list" var="post">
+			<c:forEach items="${list}" var="post">
 				<table class="table table-hover">
 					<tr>
 						<td>
@@ -32,12 +32,27 @@
 					        <a href="${url}">${post.getBoard().bo_title}</a>
 						</td>
 						<td>
-						
+							<c:url var="url" value="/post/detail">
+			               		<c:param name="num" value="${post.po_num}"/>
+			               	</c:url>
+			               	<a href="${url}">${post.po_title}</a>   <!-- 로그인한 사람만 클릭해서 상세 화면 이동 가능 -->
 						</td>
+						<td>${post.po_title}</td>
+				        <td>${post.po_me_id}</td>
+				        <td>${post.changeDate()}</td>
 					</tr>
 				</table>
 			</c:forEach>
 		</c:when>
+		
+		<c:otherwise>
+		<tr>
+			<th>
+				<h4 class="text-center">해당되는 게시글이 없습니다.</h4>
+			</th>
+		</tr>
+		</c:otherwise>
+
 	</c:choose>
 </div>
 

@@ -101,8 +101,8 @@ public class PostServiceImp implements PostService{
 	}
 
 	@Override
-	public ArrayList<BoardVO> getBoardList() {
-		return postDao.selectBoardList();
+	public ArrayList<BoardVO> getBoardList(Criteria cri) {
+		return postDao.selectBoardList(cri);
 	}
 
 	@Override
