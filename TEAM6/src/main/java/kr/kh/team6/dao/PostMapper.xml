@@ -103,16 +103,14 @@
 			po_num = #{post.po_num}
 	</update>
 	
-	
 	<select id="selectCount" resultType="int">
 		select count(*) from post 
-		where po_title like concat('%', #{cri.search},'%') and po_title = #{cri.search}
+		where po_title like concat('%', #{search},'%')
 	</select>
 	
-	<select id="selectSearchPostList" resultMap="PostMap">
+	<select id="selectSearchPostList" resultType="kr.kh.team6.model.vo.PostVO">
 		select * from post 
-		where po_title like concat('%', #{cri.search}, '%') 
+		where po_title like concat('%', #{search}, '%') 
 		order by po_num desc 
-		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 </mapper>

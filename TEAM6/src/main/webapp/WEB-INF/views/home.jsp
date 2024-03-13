@@ -14,38 +14,31 @@
 <a href="<c:url value="/choice"/>">#</a>
 <jsp:include page="/WEB-INF/views/choice.jsp"/>
 <div class="container">
-<form action="<c:url value="/post/list"/>">
+	<form action="<c:url value="/"/>">
 		<div class="input-group">
-			<select class="form-control" name="type">
-				<option value="po_title" <c:if test='${pm.cri.type == "po_title"}'>selected</c:if>>제목</option>
-			</select>
-			<input type="text" class="form-control" placeholder="검색어" name="search" value="${pm.cri.search}">
-			<input type="hidden" name="search" value="${po_title}">
+			<input type="text" class="form-control" placeholder="검색어" name="search" value="${search}">
 			<button class="btn btn-outline-success">검색</button>
 		</div>
 	</form>
-	<h1>메인 페이지입니다.</h1>
-	<c:forEach begin="1" end="4" var="i" step="2">
-	${i },
-	</c:forEach>
-	<c:set var="name" value="홍길동1"/>
-	${name}
-	<c:if test='${name eq "홍길동" }'>홍길동입니다.</c:if>
 	<c:choose>
-		<c:when test='${name eq "홍길동" }'>홍길동입니다.</c:when>
-		<c:otherwise>홍길동이 아닙니다.</c:otherwise>
+		<c:when test="${list.size() != 0}">
+			<c:forEach items="list" var="post">
+				<table class="table table-hover">
+					<tr>
+						<td>
+							<c:url var="url" value="/post/list">
+					               <c:param name="bNum" value="${post.getBoard().bo_num}"/>
+					        </c:url>  	
+					        <a href="${url}">${post.getBoard().bo_title}</a>
+						</td>
+						<td>
+						
+						</td>
+					</tr>
+				</table>
+			</c:forEach>
+		</c:when>
 	</c:choose>
-	
-	<!-- 서버에서 보낸 id가 "abc"로 되어 있으면  -->
-	<input type="text" value="${id }">
-	<br>
-	<c:forTokens items="a|b|c|d" delims="|" var="ch">${ch }</c:forTokens>
-	<br>
-	<c:url value="/" var="url">
-		<c:param name="name" value="홍길동"/>
-		<c:param name="age" value="30"/>
-	</c:url>
-	${url}
 </div>
 
 <c:if test="${user ne null}">
