@@ -10,16 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.team6.model.vo.PostVO;
-import kr.kh.team6.pagination.Criteria;
-import kr.kh.team6.pagination.PageMaker;
-import kr.kh.team6.service.SearchService;
-import kr.kh.team6.service.SearchServiceImp;
+import kr.kh.team6.service.PostService;
+import kr.kh.team6.service.PostServiceImp;
 
 
 @WebServlet("/")
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private SearchService searchService = new SearchServiceImp();
+	private PostService postService = new PostServiceImp();
     
 	   
     public MainServlet() {
@@ -32,7 +30,7 @@ public class MainServlet extends HttpServlet {
 		String search = request.getParameter("search");
 
 		//검색어를 주고 게시글 리스트를 가져옴
-		ArrayList<PostVO> list = searchService.getSearchPostList(search);
+		ArrayList<PostVO> list = postService.getSearchPostList(search);
 		request.setAttribute("list", list); //화면에 전송
 
 		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);

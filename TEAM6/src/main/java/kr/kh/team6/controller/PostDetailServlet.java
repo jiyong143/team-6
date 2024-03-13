@@ -26,6 +26,14 @@ public class PostDetailServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// 로그인 안된 사람인지 확인 
+		MemberVO user = (MemberVO) request.getSession().getAttribute("user");
+		if (user == null) {
+			request.setAttribute("msg", "로그인이 필요한 서비스입니다.");
+			request.setAttribute("url", "login");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+		} else {
+		
 		// 화면에서 보낸 게시글 번호를 가져옴 
 		int num;
 		try {
@@ -51,5 +59,6 @@ public class PostDetailServlet extends HttpServlet {
 		request.setAttribute("name", name);
 		// 화면을 전송 
 		request.getRequestDispatcher("/WEB-INF/views/post/detail.jsp").forward(request, response);
+	}
 	}
 }

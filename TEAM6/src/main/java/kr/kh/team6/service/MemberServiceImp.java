@@ -117,32 +117,9 @@ public class MemberServiceImp implements MemberService {
 		return memberDao.insertMember(memberVO);
 	}
 	
-	//주소 정규표현식
-	private boolean checkAddressRegex(String me_address) {
-		String regexAddress = "([가-힣])+(시) +([가-힣])+(구) +([가-힣])+(동)";
-		if(me_address == null) {
-			return false;			
-		}
-		return Pattern.matches(regexAddress, me_address);
-	}
+	
+	
 
-	//이메일 정규표현식
-	private boolean checkEmailRegex(String me_email) {
-		String regexEmail = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
-		if(me_email == null) {			
-			return false;
-		}
-		return Pattern.matches(regexEmail, me_email);
-	}
-
-	//휴대폰번호 정규표현식
-	private boolean checkPhoneRegex(String me_phone) {
-		String regexPhone = "^[0-9]{11}$";
-		if(me_phone == null) {			
-			return false;
-		}
-		return Pattern.matches(regexPhone, me_phone);
-	}
 
 	
 
@@ -224,6 +201,58 @@ public class MemberServiceImp implements MemberService {
 		return memberDao.countName(id,name);
 	}
 	
-
+	//휴대폰번호 정규표현식
+	@Override
+	public boolean checkPhoneRegex(String phone) {
+		String regexPhone = "^[0-9]{11}$";
+		if(phone == null) {			
+			return false;
+		}
+		return Pattern.matches(regexPhone, phone);
+	}
 	
+	@Override
+	public int comparePhone(String id, String phone) {
+		if(id==null||phone==null) {
+			return  1 ;
+		}
+		return memberDao.countPhone(id,phone);
+	}
+	
+	//이메일 정규표현식
+	@Override
+	public boolean checkEmailRegex(String email) {
+		String regexEmail = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
+		if(email == null) {			
+			return false;
+		}
+		return Pattern.matches(regexEmail, email);
+	}
+	
+	@Override
+	public int compareEmail(String id, String email) {
+		if(id==null||email==null) {
+			return 1;
+		}
+		return memberDao.countEmail(id,email);
+		
+	}
+	//주소 정규표현식
+	@Override
+	public boolean checkAddressRegex(String address) {
+		String regexAddress = "([가-힣])+(시) +([가-힣])+(구) +([가-힣])+(동)";
+		if(address == null) {
+			return false;			
+		}
+		return Pattern.matches(regexAddress, address);
+	}
+	@Override
+	public boolean updateMember(String id, String pw, String phone, String address, String name, String email) {
+		if(id==null||pw==null||phone==null||address==null||name==null||email==null) {
+			return false;
+		}
+		return memberDao.updateMember(id,pw,phone,address,name,email);
+	}
+	
+
 }

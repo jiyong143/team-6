@@ -25,8 +25,12 @@ public interface PostService {
 
 	boolean deletePost(int num, MemberVO user);
 
-	ArrayList<BoardVO> getBoardList(Criteria cri);
+	ArrayList<BoardVO> getBoardList();
 
 	boolean updatePost(PostVO post, MemberVO user);
+
+	ArrayList<PostVO> getPostsInSearch(String search);
+
+	ArrayList<PostVO> getSearchPostList(String search);
 
 }

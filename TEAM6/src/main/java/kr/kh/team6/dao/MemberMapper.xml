@@ -17,4 +17,13 @@
 	<select id="countName" resultType="int">
 	   select count(*) from member where me_id!=#{id} and me_name=#{name}
 	</select>
+	<select id="countPhone" resultType="int">
+	   select count(*) from member where me_id!=#{id} and me_phone=#{phone}
+	</select>
+	<select id="countEmail" resultType="int">
+	  select count(*) from member where me_id!=#{id} and me_email=#{email}
+	</select>
+	<update id="updateMember">
+	  update member set me_pw =#{pw}, me_phone = #{phone} , me_address=#{address}, me_name=#{name}, me_email=#{email} where me_id=#{id}
+	</update>
 </mapper>

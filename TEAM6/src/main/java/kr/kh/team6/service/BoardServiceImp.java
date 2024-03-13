@@ -93,6 +93,8 @@ public class BoardServiceImp implements BoardService {
 		// 같으면 게시글 수정
 		return boardDao.updateBoard(board);
 	}
+
+	
 	
 	
 }

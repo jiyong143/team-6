@@ -101,8 +101,8 @@ public class PostServiceImp implements PostService{
 	}
 
 	@Override
-	public ArrayList<BoardVO> getBoardList(Criteria cri) {
-		return postDao.selectBoardList(cri);
+	public ArrayList<BoardVO> getBoardList() {
+		return postDao.selectBoardList();
 	}
 
 	@Override
@@ -122,6 +122,20 @@ public class PostServiceImp implements PostService{
 
 		//모두 통과되면 수정
 		return postDao.updatePost(post);
+	}
+
+	@Override
+	public ArrayList<PostVO> getPostsInSearch(String search) {
+		if(search==null) {
+			return null; 
+		}
+		return postDao.selectPostsInSearch(search);
+		
+	}
+
+	@Override
+	public ArrayList<PostVO> getSearchPostList(String search) {
+		return postDao.selectSearchPostList(search);
 	}
 
 	

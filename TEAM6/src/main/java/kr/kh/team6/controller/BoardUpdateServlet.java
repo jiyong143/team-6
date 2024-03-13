@@ -22,23 +22,23 @@ public class BoardUpdateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-	
-		MemberVO user = (MemberVO) request.getSession().getAttribute("admin");
-		if (user == null || !user.getMe_authority().equals("admin")) {
+
+		int num;
+		try {
+			num = Integer.parseInt(request.getParameter("num"));
+		} catch (Exception e) {
+			num = 0;
+		}
+		BoardVO board = boardService.getBoard(num);
+		request.setAttribute("board", board);
+
+		MemberVO user = (MemberVO) request.getSession().getAttribute("user");
+		if (board == null ||!user.getMe_authority("admin")) {
 			request.setAttribute("msg", "관리자 권한이 필요합니다. 관리자로 로그인 후 다시 시도하세요");
 			request.setAttribute("url", "/");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+			return;
 		}
-
-		int bo_num;
-		try {
-			bo_num = Integer.parseInt(request.getParameter("bo_num"));
-		} catch (Exception e) {
-			bo_num = 0;
-		}
-		BoardVO board = boardService.getBoard(bo_num);
-		request.setAttribute("board", board);
 
 		ArrayList<CategoryVO> list = boardService.getCategoryList();
 		request.setAttribute("list", list);
@@ -48,25 +48,25 @@ public class BoardUpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		MemberVO admin = (MemberVO) request.getSession().getAttribute("admin");
+		MemberVO user = (MemberVO) request.getSession().getAttribute("user");
 
-		int bo_num,bo_ca_num;
+		int num, category;
 		try {
-			bo_num = Integer.parseInt(request.getParameter("bo_num"));
-			bo_ca_num = Integer.parseInt(request.getParameter("bo_ca_num"));
+			num = Integer.parseInt(request.getParameter("num"));
+			category = Integer.parseInt(request.getParameter("category"));
 		} catch (Exception e) {
-			bo_num = 0;
-			bo_ca_num = 0;
+			num = 0;
+			category = 0;
 		}
-		String bo_title = request.getParameter("bo_title");
-		BoardVO board = new BoardVO(bo_num, bo_title, bo_ca_num);
-		boolean res = boardService.updateBoard(board, admin);
+		String title = request.getParameter("title");
+		BoardVO board = new BoardVO(num, title, category);
+		boolean res = boardService.updateBoard(board, user);
 		if (res) {
 			request.setAttribute("msg", "게시판을 수정했습니다.");
 		} else {
 			request.setAttribute("msg", "게시판을 수정하지 못했습니다.");
 		}
-		request.setAttribute("url", "board/list?bo_num=" + bo_num);
+		request.setAttribute("url", "board/list?num=" + num);
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 
 	}

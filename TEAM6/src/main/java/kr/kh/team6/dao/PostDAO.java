@@ -28,15 +28,13 @@ public interface PostDAO {
 
 	boolean deletePost(@Param("num")int num, @Param("user")MemberVO user);
 
-	ArrayList<BoardVO> selectBoardList(@Param("cri")Criteria cri);
+	ArrayList<BoardVO> selectBoardList();
 
 	boolean updatePost(@Param("post")PostVO post);
 
-	int selectCount(@Param("cri")Criteria cri);
+	ArrayList<PostVO> selectPostsInSearch(@Param("search")String search);
 
 	ArrayList<PostVO> selectSearchPostList(@Param("search")String search);
-	
-	
 
 
 }

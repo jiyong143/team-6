@@ -16,4 +16,10 @@ public interface MemberDAO {
 
 	int countName(@Param("id")String id, @Param("name")String name);
 
+	int countPhone(@Param("id")String id,@Param("phone") String phone);
+
+	int countEmail(@Param("id")String id, @Param("email")String email);
+
+	boolean updateMember(@Param("id")String id, @Param("pw")String pw, @Param("phone") String phone,  @Param("address")String address, @Param("name") String name,  @Param("email")String email);
+
 }
