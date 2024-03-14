@@ -11,10 +11,7 @@
 </head>
 <body>
    <div class="container">
-	<form action="<c:url value="/post/update"/>" method="post">
-	<input type="hidden" name = "oName" value="${user.me_name}">
-	<input type="hidden" name = "oPhone" value="${user.me_phone}">
-	<input type="hidden" name = "oEmail" value="${user.me_email}">
+	<form action="<c:url value="/member/update"/>" method="post">
 		<h1>개인 정보 수정</h1>
 		<div class="mb-3 mt-3">
 		    <label for="id" class="form-label">아이디 :</label>
