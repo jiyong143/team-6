@@ -155,8 +155,15 @@ insert into member values('admin',970307,'wkdrn002@naver.com',01044071418,'admin
 insert into member values('ssss224',970307,'wkdrn002@naver.com',01044071418,'asd154','서울시','정경호','이용중','user');
  
 INSERT INTO category (ca_title) VALUES ('카테고리1');
+INSERT INTO category (ca_title) VALUES ('카테고리2');
+INSERT INTO category (ca_title) VALUES ('카테고리3');
 INSERT INTO board (bo_title, bo_ca_num) VALUES ('게시판1', 1);
+INSERT INTO board (bo_title, bo_ca_num) VALUES ('게시판2', 2);
+INSERT INTO board (bo_title, bo_ca_num) VALUES ('게시판3', 3);
 INSERT INTO `post` (`po_title`, `po_content`,`po_date`, `po_bo_num`, `po_me_id`) VALUES ('새로운 게시글 제목', '새로운 게시글 내용입니다.',NOW() ,1, 'admin');
+INSERT INTO `post` (`po_title`, `po_content`,`po_date`, `po_bo_num`, `po_me_id`) VALUES ('갑자기 무슨 스프링..', 'ㅋㅋ이게모야.',NOW() ,3, 'admin');
+INSERT INTO `post` (`po_title`, `po_content`,`po_date`, `po_bo_num`, `po_me_id`) VALUES ('자바..', '자바 너무 어렵네요...',NOW() ,3, 'ssss224');
+INSERT INTO `post` (`po_title`, `po_content`,`po_date`, `po_bo_num`, `po_me_id`) VALUES ('앜ㅋ', '님들 그거 봄?.',NOW() ,2, 'ssss224');
 
 select * from post;
 

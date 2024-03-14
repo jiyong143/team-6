@@ -31,7 +31,7 @@ public class PostVO {
 	
 	// 게시글의 날짜를 이쁘게 반환하는 메서드
 	public String changeDate() {	
-		SimpleDateFormat format = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy년 MM월 dd일");
 		return  format.format(this.po_date);	
 	}
 
