@@ -124,13 +124,13 @@ nav a:hover {
 	font-size: 36px;
 }
 
-.login {
+.login-box {
 	position: fixed;
 	top: 20px;
 	right: 20px;
 }
 
-.login a {
+.login-box a {
 	text-decoration: none;
 }
 
@@ -338,7 +338,7 @@ nav a:hover {
 		</c:if>
 	</div>
 
-	<div class="login">
+	<div class="login-box">
 		<c:if test="${user == null }">
 			<a href='<c:url value="/login" />'>로그인</a> | <a
 				href='<c:url value="/signup" />'>회원가입</a>
