@@ -25,7 +25,7 @@ CREATE TABLE `post` (
 	`po_num`	INT	primary key auto_increment,
 	`po_title`	VARCHAR(30)	NOT NULL,
 	`po_content`	TEXT	NOT NULL,
-	`po_date`	DATE	 DEFAULT NULL,
+	`po_date`	DATE	 NOT NULL,
 	`po_views`	INT	NOT NULL default 0,
 	`po_bo_num`	INT	NOT NULL,
 	`po_me_id`	VARCHAR(8)	NOT NULL
@@ -149,13 +149,14 @@ ADD CONSTRAINT `FK_member_TO_comment_1`
   REFERENCES `community`.`member` (`me_id`)
   ON DELETE CASCADE
   ON UPDATE CASCADE;
-
-select * from post;
-INSERT INTO category (ca_title) VALUES ('카테고리1');
-INSERT INTO board (bo_title, bo_ca_num) VALUES ('게시판1', 1);
-INSERT INTO `post` (`po_title`, `po_content`, `po_bo_num`, `po_me_id`) VALUES ('새로운 게시글 제목', '새로운 게시글 내용입니다.', 1, 'admin');
-
-INSERT INTO MEMBERSTATE VALUES('이용중'), ('기간정지'), ('영구정지'), ('탈퇴');
+ 
+ INSERT INTO MEMBERSTATE VALUES('이용중'), ('기간정지'), ('영구정지'), ('탈퇴');
 insert into member values('admin',970307,'wkdrn002@naver.com',01044071418,'admin','서울시','정경호','이용중','admin');
 insert into member values('ssss224',970307,'wkdrn002@naver.com',01044071418,'asd154','서울시','정경호','이용중','user');
+ 
+INSERT INTO category (ca_title) VALUES ('카테고리1');
+INSERT INTO board (bo_title, bo_ca_num) VALUES ('게시판1', 1);
+INSERT INTO `post` (`po_title`, `po_content`,`po_date`, `po_bo_num`, `po_me_id`) VALUES ('새로운 게시글 제목', '새로운 게시글 내용입니다.',NOW() ,1, 'admin');
+
+select * from post;
 

@@ -31,4 +31,3 @@
     delete from comment where co_po_num=#{num}
   </delete>
 </mapper>
-

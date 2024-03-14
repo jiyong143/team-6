@@ -1,6 +1,7 @@
 package kr.kh.team6.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -31,9 +32,9 @@ public interface PostDAO {
 
 	boolean updatePost(@Param("post")PostVO post);
 
-	int selectCount(@Param("cri")Criteria cri);
+	ArrayList<PostVO> selectPostsInSearch(@Param("search")String search);
 
-	ArrayList<PostVO> selectSearchPostList(@Param("cri")Criteria cri);
+	ArrayList<PostVO> selectSearchPostList(@Param("search")String search);
 
 
 }

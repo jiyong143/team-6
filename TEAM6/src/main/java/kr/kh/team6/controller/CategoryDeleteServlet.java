@@ -8,14 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.team6.model.vo.MemberVO;
-import kr.kh.team6.service.BoardService;
-import kr.kh.team6.service.BoardServiceImp;
 import kr.kh.team6.service.CategoryService;
 import kr.kh.team6.service.CategoryServiceImp;
 
-/**
- * Servlet implementation class CategoryDeleteServlet
- */
+
 @WebServlet("/category/delete")
 public class CategoryDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

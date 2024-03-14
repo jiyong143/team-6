@@ -1,4 +1,4 @@
-	package kr.kh.team6.service;
+package kr.kh.team6.service;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -93,6 +93,8 @@ public class BoardServiceImp implements BoardService {
 		// 같으면 게시글 수정
 		return boardDao.updateBoard(board);
 	}
+
+	
 	
 	
 }

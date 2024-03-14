@@ -35,6 +35,8 @@ public class PostServiceImp implements PostService{
  
 	@Override
 	public ArrayList <PostVO> getPostList(Criteria cri, int bo_num) {
+		System.out.println(bo_num + "서블릿");
+		System.out.println(cri + "서블릿");
 		return postDao.selectPostList(cri, bo_num);
 		
 	}
@@ -120,6 +122,20 @@ public class PostServiceImp implements PostService{
 
 		//모두 통과되면 수정
 		return postDao.updatePost(post);
+	}
+
+	@Override
+	public ArrayList<PostVO> getPostsInSearch(String search) {
+		if(search==null) {
+			return null; 
+		}
+		return postDao.selectPostsInSearch(search);
+		
+	}
+
+	@Override
+	public ArrayList<PostVO> getSearchPostList(String search) {
+		return postDao.selectSearchPostList(search);
 	}
 
 	
