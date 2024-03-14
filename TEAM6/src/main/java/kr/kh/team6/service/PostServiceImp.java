@@ -124,5 +124,13 @@ public class PostServiceImp implements PostService{
 		return postDao.updatePost(post);
 	}
 
+	@Override
+	public ArrayList<PostVO> getPostsInSearch(String search) {
+		if(search==null) {
+			return null; 
+		}
+		return postDao.selectPostsInSearch(search);
+	}
+
 	
 }
