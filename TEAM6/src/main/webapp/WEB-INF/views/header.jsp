@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>header</title>
 <style type="text/css">
-
 a {
 	color: black;
 	text-decoration: none;
@@ -159,7 +158,7 @@ nav a:hover {
 }
 
 .search-container button {
-	position:relative;
+	position: relative;
 	padding: 20px 25px;
 	background-color: white;
 	color: #fff;
