@@ -7,6 +7,15 @@
 <meta charset="UTF-8">
 <title>게시판</title>
 <style type="text/css">
+.search-container{
+	margin-bottom: 10px;
+}
+.select-box{
+padding: 10px;
+ background-color: white;
+ border: 1px solid white;
+}
+
 .body-group {
 	padding: 100px;
 	margin-left: 150px;
@@ -324,7 +333,7 @@
 	<form action="<c:url value="/post/list"/>">
 			<input type="hidden" name="bNum" value="${board.bo_num}">
 			<div class="search-container">
-				<select name="type">
+				<select name="type" class="select-box">
 					<option value="all"
 						<c:if test='${pm.cri.type == "all"}'>selected</c:if>>전체</option>
 					<option value="title"

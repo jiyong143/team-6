@@ -167,3 +167,4 @@ INSERT INTO `post` (`po_title`, `po_content`,`po_date`, `po_bo_num`, `po_me_id`)
 
 select * from post;
 
+
