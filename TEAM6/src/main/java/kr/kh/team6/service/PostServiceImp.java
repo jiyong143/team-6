@@ -130,5 +130,11 @@ public class PostServiceImp implements PostService{
 		return postDao.selectSearchPostList(search);
 	}
 
+	@Override
+	public ArrayList<PostVO> getPostsInSearch(String search) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
