@@ -7,6 +7,14 @@
 <meta charset="UTF-8">
 <title>header</title>
 <style type="text/css">
+
+.select-box{
+	outline-style:none;
+	padding: 10px;
+	background-color: white;
+	border: 1px solid white;
+}
+
 a {
    color: black;
    text-decoration: none;
