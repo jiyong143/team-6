@@ -60,5 +60,4 @@ public class PostDetailServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/views/post/detail.jsp").forward(request, response);
 	}
 	}
-	
 }

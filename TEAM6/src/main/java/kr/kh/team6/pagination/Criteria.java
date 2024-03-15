@@ -26,12 +26,6 @@ public class Criteria {
 		this.type=type==null ? "all" : type;
 		this.search=search==null ? "": search;
 	}
-	
-	public Criteria(int page, String search, int perPageNum) {
-		this(page,perPageNum);
-		this.search=search==null ? "": search;
-	}
-	
 	public int getPageStart() {
 		return (page-1)*perPageNum;
 	}

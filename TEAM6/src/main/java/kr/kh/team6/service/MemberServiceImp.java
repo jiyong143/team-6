@@ -196,7 +196,6 @@ public class MemberServiceImp implements MemberService {
 		return null;
 	}
 	
-	
 	//비번 정규표현식
 	@Override
 	public boolean checkPwRegex(String me_pw) {
@@ -224,13 +223,7 @@ public class MemberServiceImp implements MemberService {
 		}
 		return memberDao.countName(id,name);
 	}
-	@Override
-	public int comparePhone(String id, String phone) {
-		if(id==null||phone==null) {
-			return  1 ;
-		}
-		return memberDao.countPhone(id,phone);
-	}
+	 
 	@Override
 	public int compareEmail(String id, String email) {
 		if(id==null||email==null) {
@@ -245,5 +238,15 @@ public class MemberServiceImp implements MemberService {
 		}
 		return memberDao.updateMember(id,pw,phone,address,name,email);
 	}
+	 
 	
+	@Override
+	public int comparePhone(String id, String phone) {
+		if(id==null||phone==null) {
+			return  1 ;
+		}
+		return memberDao.countPhone(id,phone);
+	}
+	
+
 }
