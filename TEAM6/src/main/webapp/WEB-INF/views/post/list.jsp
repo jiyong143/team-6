@@ -7,6 +7,15 @@
 <meta charset="UTF-8">
 <title>게시판</title>
 <style type="text/css">
+.search-container{
+	margin-bottom: 10px;
+}
+.select-box{
+padding: 10px;
+ background-color: white;
+ border: 1px solid white;
+}
+
 .body-group {
 	padding: 100px;
 	margin-left: 150px;

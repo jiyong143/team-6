@@ -301,13 +301,13 @@ nav a:hover {
       <div class="category" id="category">
          <div class="category-box">
             <c:forEach items="${categoryList}" var="category">
-               <hr>
                <h3>${category.ca_title}</h3>
                <div class="board-list">
                   <c:forEach items="${category.getBoardInCategory()}" var="board">
                      <c:url var="url" value="/post/list">
                         <c:param name="bNum" value="${board.bo_num}" />
                      </c:url>
+                     <hr>
                      <h5>
                         <li><a href="${url}">${board.bo_title}</a></li>
                      </h5>
