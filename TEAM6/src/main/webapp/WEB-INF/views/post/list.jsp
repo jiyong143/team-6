@@ -324,7 +324,7 @@
 	<form action="<c:url value="/post/list"/>">
 			<input type="hidden" name="bNum" value="${board.bo_num}">
 			<div class="search-container">
-				<select name="type">
+				<select name="type" class="select-box">
 					<option value="all"
 						<c:if test='${pm.cri.type == "all"}'>selected</c:if>>전체</option>
 					<option value="title"

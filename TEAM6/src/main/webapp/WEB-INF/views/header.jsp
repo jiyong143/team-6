@@ -7,6 +7,14 @@
 <meta charset="UTF-8">
 <title>header</title>
 <style type="text/css">
+
+.select-box{
+	outline-style:none;
+	padding: 10px;
+	background-color: white;
+	border: 1px solid white;
+}
+
 a {
    color: black;
    text-decoration: none;
@@ -283,7 +291,7 @@ nav a:hover {
 <body>
    <div class="logo">
       <h1>
-         <a href='<c:url value="/" />'>ssss 힘</a>
+         <a href='<c:url value="/" />'>What do you want to ask?</a>
       </h1>
    </div>
    <nav class="category-container">
