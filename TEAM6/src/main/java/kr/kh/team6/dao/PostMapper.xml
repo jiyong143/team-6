@@ -107,5 +107,4 @@
 	select * from post where po_title like concat('%',#{search},'%') order by po_num desc
 	 </select>
 	
-	
 </mapper>

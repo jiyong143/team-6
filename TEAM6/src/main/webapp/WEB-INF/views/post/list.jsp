@@ -76,7 +76,7 @@
                 <c:param name="bNum" value="${board.bo_num}"/>
             </c:url>
             <a class="page-link" href="${prevUrl}">이전</a>
-       </li>
+        </li>
       </c:if>
       <c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
         <li class="page-item <c:if test="${pm.cri.page==i }">active</c:if>">

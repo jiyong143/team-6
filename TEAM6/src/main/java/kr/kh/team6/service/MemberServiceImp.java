@@ -196,6 +196,12 @@ public class MemberServiceImp implements MemberService {
 		return null;
 	}
 	
+	//아이디 중복 체크
+	@Override
+	public boolean idCheck(String id) {
+		MemberVO member = memberDao.selectIdCheck(id);
+		return member == null;
+	} 
 	//비번 정규표현식
 	@Override
 	public boolean checkPwRegex(String me_pw) {

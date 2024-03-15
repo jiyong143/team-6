@@ -22,12 +22,11 @@ import kr.kh.team6.service.PostServiceImp;
 @WebServlet("/post/list")
 public class PostListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private PostService postService = new PostServiceImp();
-	BoardService boardService = new BoardServiceImp();
+	private PostService postService = new PostServiceImp()
+  BoardService boardService = new BoardServiceImp();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		// 세션에서 회원 정보를 가져온다
 		MemberVO user = (MemberVO) request.getSession().getAttribute("user");
 		if (user == null) {
