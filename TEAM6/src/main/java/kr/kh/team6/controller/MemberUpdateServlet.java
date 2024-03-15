@@ -34,11 +34,7 @@ public class MemberUpdateServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String address = request.getParameter("address");
 		String id = request.getParameter("id");
-		String oName = request.getParameter("oName");
-		String oPhone = request.getParameter("oPhone");
-		String oEmail = request.getParameter("oEmail"); // 변수명 앞에 o 들어가면 old
 		
-
 		// 비번이 비번확인과 다르거나 정규표현식 안맞을 때
 		if(!pw.equals(pw2)||!memberService.checkPwRegex(pw)) {
 			request.setAttribute("mag", "비번과 비번 확인이 다르거나 형식에 맞지 않는 비번입니다.");

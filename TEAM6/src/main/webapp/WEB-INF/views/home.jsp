@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>국민의 힘</title>
+<title>메인 페이지</title>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -19,18 +19,17 @@
 
 <div class="logo">
 		<h1>
-			<a href="<c:url value="/"/>">국민의 힘</a>
+			<a href="<c:url value="/"/>">카페</a>
 		</h1>
 	</div>
 	
-	
-	<form action="<c:url value="/search"/>">
+	<form action="<c:url value="/"/>"> 
 		<div class="search-container">
 			<input type="text" placeholder="제목 검색..." name="search">
 			<button type="submit"></button>
 		</div>
 	</form>
-	<c:if test="${postList.size()!=0}">
+	<c:if test="${postList.size()!=0}">  
 	<h5>'${count} 개' 의 게시글이 조회됐습니다.</h5>
 	</c:if>
 	<br>
@@ -65,8 +64,6 @@
     </tbody>
   </table>
 	
-
-
 <c:if test="${user ne null}">
 <div class="container mt-3">
   <div class="card">

@@ -103,9 +103,8 @@
 			po_num = #{post.po_num}
 	</update>
 	
-	<select id="selectPostsInSearch" resultType="kr.kh.team6.model.vo.PostVO"> 
-	select * from post where po_title like concat('%',#{search},'%') order by po_num desc
-	 </select>
-	
-	
+	 
+	 <select id="selectSearchPostList" resultType="kr.kh.team6.model.vo.PostVO">
+	  select * from post where po_title like concat('%', #{search}, '%') order by po_num desc
+	  </select>
 </mapper>

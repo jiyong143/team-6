@@ -31,8 +31,8 @@ public interface PostDAO {
 	ArrayList<BoardVO> selectBoardList();
 
 	boolean updatePost(@Param("post")PostVO post);
-	
-	ArrayList<PostVO> selectPostsInSearch(@Param("search")String search);
+
+	ArrayList<PostVO> selectSearchPostList(@Param("search")String search);
 
 
 }
