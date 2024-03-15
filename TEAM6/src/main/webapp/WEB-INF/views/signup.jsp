@@ -246,7 +246,7 @@ nav a:hover {
 	padding: 20px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	text-align: center;
-	max-width: 400px;
+	max-width: 1000px;
 	margin: 0 auto 100px;
 }
 
@@ -294,38 +294,38 @@ nav a:hover {
 	<h1>회원가입</h1>
 	<form action="<c:url value="/signup"/>" method="post">
 		<div class="sign">
-			<label for="id" class="form-label">아이디(영문,숫자 조합 최소6자~최대8자):</label>
+			<label for="id" class="form-label">아이디(영문,숫자 조합 최소6자~최대8자)</label>
 			<input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
 		</div>
 		<div class="sign">
-			<label for="pw" class="form-label">비번(특수문자(!@#$)와 영어,숫자 조합 최소8자~최대 14자) :</label>
+			<label for="pw" class="form-label">비번(특수문자(!@#$)와 영어,숫자 조합 최소8자~최대 14자)</label>
 			<input type="password" class="form-control" id="pw" placeholder="Enter pw" name="pw">
 		</div>
 		<div class="sign">
-			<label for="pw2" class="form-label">비번확인:</label>
+			<label for="pw2" class="form-label">비번확인</label>
 			<input type="password" class="form-control" id="pw2" placeholder="Enter pw2" name="pw2">
 		</div>
 		<div class="sign">
-			<label for="birth" class="form-label">생년월일(주민등록 앞 6자리):</label>
+			<label for="birth" class="form-label">생년월일(주민등록 앞 6자리)</label>
 			<input type="text" class="form-control" id="birth" placeholder="Enter birth" name="birth">
 		</div>
 		<div class="sign">
-			<label for="name" class="form-label">닉네임(최대 5글자):</label>
+			<label for="name" class="form-label">닉네임(최대 5글자)</label>
 			<input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
 		</div>
 		<div class="sign">
-			<label for="phone" class="form-label">전화번호("-"제외한 번호 형식):</label>
+			<label for="phone" class="form-label">전화번호("-"제외한 번호 형식)</label>
 			<input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone">
 		</div>
 		<div class="sign">
-			<label for="email" class="form-label">이메일(이메일 형식):</label>
+			<label for="email" class="form-label">이메일(이메일 형식)</label>
 			<input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
 		</div>
 		<div class="sign">
-			<label for="address" class="form-label">주소(양식 : OO시 OO구 OO동):</label>
+			<label for="address" class="form-label">주소(양식 : OO시 OO구 OO동)</label>
 			<input type="text" class="form-control" id="address" placeholder="Enter address" name="address">
 		</div>
-		<button type="submit" class="btn btn-outline-success col-12">Sign up</button>
+		<button type="submit" class="btn btn-outline-success col-12">회원가입</button>
 	</form>
 </div>
 
