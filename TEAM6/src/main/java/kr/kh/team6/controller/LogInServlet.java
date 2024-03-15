@@ -35,8 +35,8 @@ public class LogInServlet extends HttpServlet {
 			// 세션에 로그인한 회원의 정보를 저장해서 유지시킨다
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			//정경호 추가 : 로그인한 회원이 관리자라면 관리자 정보를 세션에 저장
-			if ("admin".equals(user.getMe_authority())) {
+			// 정경호 추가 : 로그인한 회원이 관리자라면 관리자 정보를 세션에 저장
+			if (user.getMe_authority().equals("admin")) {
 				session.setAttribute("admin", user);
 			}
 		} else {

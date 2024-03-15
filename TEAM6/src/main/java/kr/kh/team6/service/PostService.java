@@ -32,4 +32,8 @@ public interface PostService {
 	
 	ArrayList<PostVO> getSearchPostList(String search);
 
+	ArrayList<PostVO> getPostsInSearch(String search);
+
+	ArrayList<PostVO> getSearchPostList(String search);
+
 }

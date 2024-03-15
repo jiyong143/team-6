@@ -15,11 +15,13 @@ public interface BoardDAO {
 
 	ArrayList<CategoryVO> selectCategoryList();
 
-	BoardVO selectBoard(@Param("bo_num")int bo_num);
+	BoardVO selectBoard(@Param("num")int num);
 
 	boolean deleteBoard(@Param("num")int num);
 
 	boolean updateBoard(@Param("board")BoardVO board);
+
+	String selectBoardName(@Param("po_bo_num")int po_bo_num);
 	
 
 	

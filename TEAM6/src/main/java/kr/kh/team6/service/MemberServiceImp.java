@@ -245,6 +245,58 @@ public class MemberServiceImp implements MemberService {
 		return memberDao.updateMember(id,pw,phone,address,name,email);
 	}
 	
-
+	//휴대폰번호 정규표현식
+	@Override
+	public boolean checkPhoneRegex(String phone) {
+		String regexPhone = "^[0-9]{11}$";
+		if(phone == null) {			
+			return false;
+		}
+		return Pattern.matches(regexPhone, phone);
+	}
 	
+	@Override
+	public int comparePhone(String id, String phone) {
+		if(id==null||phone==null) {
+			return  1 ;
+		}
+		return memberDao.countPhone(id,phone);
+	}
+	
+	//이메일 정규표현식
+	@Override
+	public boolean checkEmailRegex(String email) {
+		String regexEmail = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
+		if(email == null) {			
+			return false;
+		}
+		return Pattern.matches(regexEmail, email);
+	}
+	
+	@Override
+	public int compareEmail(String id, String email) {
+		if(id==null||email==null) {
+			return 1;
+		}
+		return memberDao.countEmail(id,email);
+		
+	}
+	//주소 정규표현식
+	@Override
+	public boolean checkAddressRegex(String address) {
+		String regexAddress = "([가-힣])+(시) +([가-힣])+(구) +([가-힣])+(동)";
+		if(address == null) {
+			return false;			
+		}
+		return Pattern.matches(regexAddress, address);
+	}
+	@Override
+	public boolean updateMember(String id, String pw, String phone, String address, String name, String email) {
+		if(id==null||pw==null||phone==null||address==null||name==null||email==null) {
+			return false;
+		}
+		return memberDao.updateMember(id,pw,phone,address,name,email);
+	}
+	
+
 }

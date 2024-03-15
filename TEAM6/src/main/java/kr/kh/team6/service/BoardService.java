@@ -16,8 +16,9 @@ public interface BoardService {
 
 	boolean deleteBoard(int num, MemberVO user);
 
-	BoardVO getBoard(int bo_num);
+	BoardVO getBoard(int num);
 
-	boolean updateBoard(BoardVO board, MemberVO admin);
+	boolean updateBoard(BoardVO board, MemberVO user);
+
 
 }
