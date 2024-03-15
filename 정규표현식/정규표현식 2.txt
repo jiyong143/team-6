@@ -1,0 +1,52 @@
+function validate() {
+	var id = document.forms["regForm"]["id"];
+	var pw = document.forms["regForm"]["pw"];
+	var pw2 = document.forms["regForm"]["pw2"];
+	var birth = document.forms["regForm"]["birth"];
+	var name = document.forms["regForm"]["name"];
+	var phone = document.forms["regForm"]["phone"];
+	var email = document.forms["regForm"]["email"];
+	var address = document.forms["regForm"]["address"];
+	
+	if(id.value === "") {
+		window.alert("id를 입력하세요.");
+		id.focus();
+		return false;
+	}
+	if(pw.value === "") {
+		window.alert("pw를 입력하세요.");
+		pw.focus();
+		return false;
+	}
+	if (pw.value !== pw2.value) {
+	    window.alert("Passwords must match.");
+	    pw2.focus();
+	    return false;
+	  }
+	if(birth.value === "") {
+		window.alert("birth를 입력하세요.");
+		birth.focus();
+		return false;
+	}
+	if(name.value === "") {
+		window.alert("name를 입력하세요.");
+		name.focus();
+		return false;
+	}
+	if(phone.value === "") {
+		window.alert("phone를 입력하세요.");
+		phone.focus();
+		return false;
+	}
+	if(email.value === "") {
+		window.alert("email를 입력하세요.");
+		email.focus();
+		return false;
+	}
+	if(address.value === "") {
+		window.alert("address를 입력하세요.");
+		address.focus();
+		return false;
+	}
+	return true;
+}
