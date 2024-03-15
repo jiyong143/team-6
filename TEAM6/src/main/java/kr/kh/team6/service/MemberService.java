@@ -19,8 +19,6 @@ public interface MemberService {
 	
 	boolean checkNameRegex(String me_name);
 
-	boolean idCheck(String id);
-
 	int compareName(String id, String name);
 
 	boolean checkPhoneRegex(String phone);
@@ -34,6 +32,5 @@ public interface MemberService {
 	boolean checkAddressRegex(String address);
 
 	boolean updateMember(String id, String pw, String phone, String address, String name, String email);
-
 	
 }
