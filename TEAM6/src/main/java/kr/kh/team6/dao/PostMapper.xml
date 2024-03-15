@@ -50,8 +50,8 @@
 
 	<!-- 추가 -->
 	<insert id="insertPost">
-	   insert into post(po_title,po_content,po_bo_num,po_me_id) 
-	   values(#{post.po_title},#{post.po_content},#{post.po_bo_num},#{post.po_me_id})
+	   insert into post(po_title,po_content,po_date,po_bo_num,po_me_id) 
+	   values(#{post.po_title},#{post.po_content},now(),#{post.po_bo_num},#{post.po_me_id})
 	</insert>
 
 	<!-- 조회 -->

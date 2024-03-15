@@ -17,7 +17,7 @@ public class CategoryVO {
 	
 	// 카테고리에 대해 그것에 있는 모든 게시판을 가져오는 메서드
 	
-   CategoryService categoryService = new CategoryServiceImp();
+	CategoryService categoryService = new CategoryServiceImp();
 	
 	public ArrayList <BoardVO> getBoardInCategory(){
 		return categoryService.getBoardInCategory(this.ca_num); 
@@ -29,5 +29,3 @@ public class CategoryVO {
 	}
 
 }
-
-

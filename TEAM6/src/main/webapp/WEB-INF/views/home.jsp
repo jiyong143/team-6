@@ -13,70 +13,63 @@
 </style>
 </head>
 <body>
-   <jsp:include page="/WEB-INF/views/header.jsp" />
-   <div class="search-container">
-      <form action="<c:url value="/"/>">
-         <input type="text" placeholder="검색..." name="search"
-            value="${search}">
-         <button type="submit"></button>
-      </form>
-   </div>
-   <div class="recent-posts">
-      <c:if test="${list.size()!=0 }">
-         <h2 style="text-align: center;">최근 게시글</h2>
-      </c:if>
-      <ul>
-         <li><c:choose>
-               <c:when test="${list.size() != 0}">
-                  <table class="table table-hover" style="margin: 0 auto;">
-                     <!-- 테이블을 중앙에 배치 -->
-                     <tr>
-                        <th style="text-align: center; width: 25%;">게시판</th>
-                        <th style="text-align: center; width: 25%;">제목</th>
-                        <th style="text-align: center; width: 25%;">아이디</th>
-                        <th style="text-align: center; width: 25%">날짜</th>
-                     </tr>
-                     <c:forEach items="${list}" var="post">
-                        <tr>
-                            <td style="text-align: center;"><c:url var="boardUrl"
-                                 value="/post/list">
-                                 <c:param name="bNum" value="${post.getBoard().bo_num}" />
-                              </c:url> <a href="${boardUrl}">▶${post.getBoard().bo_title}</a></td> 
-                           <td style="text-align: center;"><c:url var="detailUrl"
-                                 value="/post/detail">
-                                 <c:param name="num" value="${post.po_num}" />
-                              </c:url> <a href="${detailUrl}">${post.po_title}</a></td>
-                           <td style="text-align: center;">${post.po_me_id}</td>
-                           <td style="text-align: center;">${post.changeDate()}</td>
-                        </tr>
-                     </c:forEach>
-                  </table>
-               </c:when>
+	<jsp:include page="/WEB-INF/views/header.jsp" />
+	<div class="search-container">
+		<form action="<c:url value="/"/>">
+			<input type="text" placeholder="검색..." name="search"
+				value="${search}">
+			<button type="submit"></button>
+		</form>
+	</div>
+	<div class="recent-posts">
+		<c:if test="${list.size()!=0 }">
+			<h2 style="text-align: center;">최근 게시글</h2>
+		</c:if>
+		<ul>
+			<li><c:choose>
+					<c:when test="${list.size() != 0}">
+						<table class="table table-hover" style="margin: 0 auto;">
+							<!-- 테이블을 중앙에 배치 -->
+							<tr>
+								<th style="text-align: center; width: 25%;">게시판</th>
+								<th style="text-align: center; width: 25%;">제목</th>
+								<th style="text-align: center; width: 25%;">아이디</th>
+								<th style="text-align: center; width: 25%">날짜</th>
+							</tr>
+							<c:forEach items="${list}" var="post">
+								<tr>
+									 <td style="text-align: center;"><c:url var="boardUrl"
+											value="/post/list">
+											<c:param name="bNum" value="${post.getBoard().bo_num}" />
+										</c:url> <a href="${boardUrl}">▶${post.getBoard().bo_title}</a></td> 
+									<td style="text-align: center;"><c:url var="detailUrl"
+											value="/post/detail">
+											<c:param name="num" value="${post.po_num}" />
+										</c:url> <a href="${detailUrl}">${post.po_title}</a></td>
+									<td style="text-align: center;">${post.po_me_id}</td>
+									<td style="text-align: center;">${post.changeDate()}</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</c:when>
 
-               <c:otherwise>
-                  <tr>
-                     <th>
-                        <h4 style="text-align: center;">게시글이 없습니다.</h4>
-                     </th>
-                  </tr>
-               </c:otherwise>
+					<c:otherwise>
+						<tr>
+							<th>
+								<h4 style="text-align: center;">게시글이 없습니다.</h4>
+							</th>
+						</tr>
+					</c:otherwise>
 
-            </c:choose></li>
-      </ul>
-   </div>
-   <!-- 왼쪽,오른쪽 박스 / 검색창 / 검색창 호버시 게시글 나옴 -->
-   <script>
-      function toggleCategory() {
-         var category = document.getElementById("category");
-         category.classList.toggle("open");
-      }
-
-      // 검색창 요소를 가져옴
-      var searchInput = document
-            .querySelector('.search-container input[type=text]');
-
-      // 카테고리 토글 버튼 요소 가져오기
-      var categoryToggle = document.querySelector('.category-toggle');
+				</c:choose></li>
+		</ul>
+	</div>
+	<!-- 왼쪽,오른쪽 박스 / 검색창 / 검색창 호버시 게시글 나옴 -->
+	<script>
+		function toggleCategory() {
+			var category = document.getElementById("category");
+			category.classList.toggle("open");
+		}
 
       // 카테고리 토글 버튼에 클릭 이벤트 리스너 추가
       categoryToggle.addEventListener('click', function() {
@@ -102,8 +95,10 @@
 
       var rightBox = document.querySelector('.right-box');
 
-      // 오른쪽 박스 가져오기
-      var rightBox = document.querySelector('.right-box');
+		/* 	// 최근 게시글 리스트에서 마우스가 벗어나면 숨김
+			recentPosts.addEventListener('mouseleave', function() {
+				recentPosts.style.display = 'none';
+			}); */
 
       // 닫기 버튼 가져오기
       var closeButton = document.querySelector('.close-button');
@@ -132,6 +127,13 @@
 
       const categoryItems = document.querySelectorAll('.category li');
    </script>
+
+			// 숨겨져 있는 상태에서는 보이는 상태로, 보이는 상태에서는 숨겨져 있는 상태로
+			isHidden = !isHidden;
+		});
+
+		const categoryItems = document.querySelectorAll('.category li');
+	</script>
 
 </body>
 </html>
