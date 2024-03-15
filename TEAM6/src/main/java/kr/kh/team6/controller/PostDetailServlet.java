@@ -32,8 +32,7 @@ public class PostDetailServlet extends HttpServlet {
 			request.setAttribute("msg", "로그인이 필요한 서비스입니다.");
 			request.setAttribute("url", "login");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
-		} else {
-		
+		}else {
 		// 화면에서 보낸 게시글 번호를 가져옴 
 		int num;
 		try {

@@ -26,4 +26,6 @@
 	<update id="updateMember">
 	  update member set me_pw =#{pw}, me_phone = #{phone} , me_address=#{address}, me_name=#{name}, me_email=#{email} where me_id=#{id}
 	</update>
+	
+	
 </mapper>

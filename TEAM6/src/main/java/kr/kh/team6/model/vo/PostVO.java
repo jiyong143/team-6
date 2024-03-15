@@ -83,10 +83,5 @@ public class PostVO {
 	public String gapTime() {
 		
 	}*/
-				
-
-
-	
-	
 	
 }
