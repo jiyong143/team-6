@@ -19,13 +19,13 @@
 			<a href="<c:url value="/"/>">카페</a>
 		</h1>
 	</div>
-	<form action="<c:url value="/search"/>">
+	<form action="<c:url value="/"/>"> 
 		<div class="search-container">
 			<input type="text" placeholder="제목 검색..." name="search">
 			<button type="submit"></button>
 		</div>
 	</form>
-	<c:if test="${postList.size()!=0}">
+	<c:if test="${postList.size()!=0}">  
 	<h5>'${count} 개' 의 게시글이 조회됐습니다.</h5>
 	</c:if>
 	<br>
