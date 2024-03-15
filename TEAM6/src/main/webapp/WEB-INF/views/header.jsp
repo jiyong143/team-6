@@ -283,7 +283,7 @@ nav a:hover {
 <body>
    <div class="logo">
       <h1>
-         <a href='<c:url value="/" />'>ssss 힘</a>
+         <a href='<c:url value="/" />'>What do you want to ask?</a>
       </h1>
    </div>
    <nav class="category-container">

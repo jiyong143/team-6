@@ -16,7 +16,7 @@
    <jsp:include page="/WEB-INF/views/header.jsp" />
    <div class="search-container">
       <form action="<c:url value="/"/>">
-         <input type="text" placeholder="검색..." name="search"
+         <input type="text" placeholder="Ask here" name="search"
             value="${search}">
          <button type="submit"></button>
       </form>
