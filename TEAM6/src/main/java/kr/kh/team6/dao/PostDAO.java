@@ -36,7 +36,6 @@ public interface PostDAO {
 
 	int selectCount(@Param("cri")Criteria cri);
 
-	ArrayList<PostVO> selectSearchPostList(@Param("search")String search);
 
 
 }
