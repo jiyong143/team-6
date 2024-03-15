@@ -34,9 +34,7 @@ public class CategoryListServlet extends HttpServlet {
 		}
 
 		ArrayList<CategoryVO> list = categoryService.getCategoryList();
-
 		request.setAttribute("list", list);// 화면에 전송
-
 		request.getRequestDispatcher("/WEB-INF/views/category/list.jsp").forward(request, response);
 	}
 }
