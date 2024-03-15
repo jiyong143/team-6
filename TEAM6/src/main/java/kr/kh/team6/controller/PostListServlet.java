@@ -22,8 +22,8 @@ import kr.kh.team6.service.PostServiceImp;
 @WebServlet("/post/list")
 public class PostListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private PostService postService = new PostServiceImp()
-  BoardService boardService = new BoardServiceImp();
+	private PostService postService = new PostServiceImp();
+    private BoardService boardService = new BoardServiceImp();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
