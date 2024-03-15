@@ -22,11 +22,11 @@ import kr.kh.team6.service.PostServiceImp;
 @WebServlet("/post/list")
 public class PostListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private PostService postService = new PostServiceImp(); 
-	BoardService boardService = new BoardServiceImp();
-    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	private PostService postService = new PostServiceImp()
+  BoardService boardService = new BoardServiceImp();
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// 세션에서 회원 정보를 가져온다
 		MemberVO user = (MemberVO) request.getSession().getAttribute("user");
 		if (user == null) {
@@ -43,9 +43,9 @@ public class PostListServlet extends HttpServlet {
 			} catch (Exception e) {
 				page = 1;
 			}
-			Criteria cri = new Criteria(page,2,type,search);
-			int bo_num =Integer.parseInt(request.getParameter("bNum"));
-			// 게시판 자체를 가져온다 
+			Criteria cri = new Criteria(page, 2, type, search);
+			int bo_num = Integer.parseInt(request.getParameter("bNum"));
+			// 게시판 자체를 가져온다
 			BoardVO board = boardService.getBoard(bo_num);
 			request.setAttribute("board", board);
 			request.setAttribute("bo_num", bo_num);

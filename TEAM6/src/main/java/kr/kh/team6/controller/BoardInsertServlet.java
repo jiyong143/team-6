@@ -15,8 +15,6 @@ import kr.kh.team6.model.vo.CategoryVO;
 import kr.kh.team6.model.vo.MemberVO;
 import kr.kh.team6.service.BoardService;
 import kr.kh.team6.service.BoardServiceImp;
-import kr.kh.team6.service.MemberService;
-import kr.kh.team6.service.MemberServiceImp;
 
 @WebServlet("/board/insert")
 public class BoardInsertServlet extends HttpServlet {

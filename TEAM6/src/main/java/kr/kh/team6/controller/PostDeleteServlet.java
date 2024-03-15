@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.team6.model.vo.BoardVO;
 import kr.kh.team6.model.vo.MemberVO;
-import kr.kh.team6.model.vo.PostVO;
 import kr.kh.team6.service.BoardService;
 import kr.kh.team6.service.BoardServiceImp;
 import kr.kh.team6.service.CommentService;

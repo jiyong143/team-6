@@ -11,17 +11,14 @@
 </head>
 <body>
    <div class="container">
-	<form action="<c:url value="/post/update"/>" method="post">
-	<input type="hidden" name = "oName" value="${user.me_name}">
-	<input type="hidden" name = "oPhone" value="${user.me_phone}">
-	<input type="hidden" name = "oEmail" value="${user.me_email}">
+	<form action="<c:url value="/member/update"/>" method="post">
 		<h1>개인 정보 수정</h1>
 		<div class="mb-3 mt-3">
 		    <label for="id" class="form-label">아이디 :</label>
 		    <input type="text" class="form-control" id="id" name="id" value="${user.me_id}" readonly>
 		</div>
 		<div class="mb-3 mt-3">
-		    <label for="pw" class="form-label">새 비밀번호 :</label>
+		    <label for="pw" class="form-label">새 비밀번호(특수문자(!@#$)와 영어,숫자 조합 최소8자~최대 14자) :</label>
 		    <input type="password" class="form-control" id="pw" name="pw">
 		</div>
 		<div class="mb-3 mt-3">
@@ -33,15 +30,15 @@
 		    <input type="text" class="form-control" id="birth" name="birth" value="${user.me_birth}" readonly>
 		</div>
 		<div class="mb-3 mt-3">
-		    <label for="name" class="form-label">새 닉네임 :</label>
+		    <label for="name" class="form-label">새 닉네임(최대 5글자) :</label>
 		    <input type="text" class="form-control" id="name" name="name" value="${user.me_name}" placeholder="Enter new nickname">
 		</div>
 		<div class="mb-3 mt-3">
-			<label for="phone" class="form-label">새 전화번호("-"제외한 번호):</label>
+			<label for="phone" class="form-label">새 전화번호("-"제외한 번호 형식):</label>
 			<input type="text" class="form-control" id="phone" placeholder="Enter new phone" name="phone" value="${user.me_phone}">
 		</div>
 		<div class="mb-3 mt-3">
-			<label for="email" class="form-label">새 이메일:</label>
+			<label for="email" class="form-label">새 이메일(이메일 형식):</label>
 			<input type="email" class="form-control" id="email" placeholder="Enter new  email" name="email" value="${user.me_email}">
 		</div>
 		<div class="mb-3 mt-3">
