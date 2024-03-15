@@ -6,8 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <!-- jquery validation -->
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
@@ -262,7 +260,7 @@ nav a:hover {
 	font-weight: bold;
 }
 
-.sign input[type="text"], .sign input[type="password"] {
+.sign input[type="text"], .sign input[type="password"], .sign input[type="email"] {
 	width: 100%;
 	padding: 10px;
 	margin-bottom: 10px;
