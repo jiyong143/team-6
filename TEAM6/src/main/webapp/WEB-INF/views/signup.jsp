@@ -8,6 +8,9 @@
 <title>회원가입</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jquery validation -->
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
@@ -18,11 +21,6 @@
 			<label for="id" class="form-label">아이디(영문,숫자 조합 최소6자~최대8자):</label>
 			<input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
 		</div>
-		<!-- 		
-		<div class="mb-3 mt-3">		
-			<button type="button" id="idCheck" class="btn btn-outline-success col-12">아이디 중복 확인</button>
-		</div>
-		 -->
 		<div class="mb-3 mt-3">
 			<label for="pw" class="form-label">비번(특수문자(!@#$)와 영어,숫자 조합 최소8자~최대 14자) :</label>
 			<input type="password" class="form-control" id="pw" placeholder="Enter pw" name="pw">
@@ -54,40 +52,88 @@
 		<button type="submit" class="btn btn-outline-success col-12">Sign up</button>
 	</form>
 </div>
-<!-- 
-<script src="//code.jquery.com/jquery-3.6.1.js"></script>
+
 <script type="text/javascript">
-	let flag = false;
-	$("#idCheck").click(function(){
-		let id = $("[name=id]").val();
-		fetch(`<c:url value="/id/check"/>?id=\${id}`)
-		.then(response=>response.text())
-		.then(data => {
-			if(data == "true") {
-				alert("사용 가능한 아이디입니다.");
-				flag = true;
-			}
-			else if(data != null) {
-				alert("아이디를 입력하세요.");
-			}
-			else {
-				alert("이미 사용 중인 아이디입니다.");
-			}
-		})
-		.catch(error => console.error("Error", error));
-	});
-	$("[name=id]").change(function(){
-		flag = false;
-	});
-	//등록 전, 중복 확인을 안하면 돌려보냄
-	$("form").submit(function(){
-		//정규표현식 구현
-		if(!flag) {
-			alert("아이디 중복 확인을 하세요.");
-			return false;
+$("form").validate({
+	//규칙
+	rules : {
+		id : {
+			required : true, //message
+			regex : /[a-zA-Z0-9]{6,8}$/ //\w : 영어 대소문자 + 숫자
+		},
+		pw : {
+			required : true,
+			regex : /^[a-zA-Z0-9!@#$]{8,14}$/
+		},
+		pw2 : {
+			equalTo : pw //name이 아닌 id를 써 줌
+		},
+		email : {
+			required : true,
+			email : true
+		},
+		birth : {
+			required : true,
+			regex : /^[0-9]{6}$/
+		},
+		name : {
+			required : true,
+			regex : /^[ㄱ-힣]{1,5}$/
+		},
+		phone : {
+			required : true,
+			regex : /^[0-9]{11}$/
+		},
+		address : {
+			required : true,
+			regex : /^([가-힣])+(시) +([가-힣])+(구) +([가-힣])+(동)$/
 		}
-	});
+	},
+	//규칙에 대한 메세지
+	messages : {
+		id : {
+			required : "필수 항목입니다.", //message
+			regex : "아이디는 숫자, 영문 6~8자 입니다."
+		},
+		pw : {
+			required : "필수 항목입니다.",
+			regex : "비번은 숫자, 영문, !@#$ 8~14자 입니다."
+		},
+		pw2 : {
+			equalTo : "비밀번호와 일치하지 않습니다."
+		},
+		email : {
+			required : "필수 항목입니다.",
+			email : "@를 붙여주세요."
+		},
+		birth : {
+			required : "필수 항목입니다.",
+			regex : "주민번호 앞 6자리를 적어주세요."
+		},
+		name : {
+			required : "필수 항목입니다.",
+			regex : "이름은 최대 5자 가능합니다."
+		},
+		phone : {
+			required : "필수 항목입니다.",
+			regex : "-제외한 11자리를 적어주세요."
+		},
+		address : {
+			required : "필수 항목입니다.",
+			regex : "양식은 OO시 OO구 OO동 입니다."
+		}
+	}
+});
+
+$.validator.addMethod(
+	"regex",
+	function (value, element, regexp) {
+		var re = RegExp(regexp);
+		return this.optional(element) || re.test(value);
+	},
+	"정규표현식에 맞지 않습니다."
+)
 </script>
- -->
+
 </body>
 </html>
