@@ -38,13 +38,14 @@ public class MainServlet extends HttpServlet {
 		// 검색어를 가져옴
 		String search = request.getParameter("search");
 
-		// 게시판들을 모두 가져온다
+		// 왼쪽 토글 : 게시판들을 모두 가져온다
 		ArrayList<BoardVO> bList = boardService.getBoardList();
 		// 게시판을 포함하는 카테고리들의 번호로 구성된 리스트를 만든다
 		List<Integer> list = new ArrayList<Integer>();
 		for (BoardVO board : bList) {
 			list.add(board.getBo_ca_num());
 		}
+		
 		// 위 리스트 중복 제거
 		Set<Integer> set = new HashSet<>(list);
 		List<Integer> cNumList = new ArrayList<>(set);
