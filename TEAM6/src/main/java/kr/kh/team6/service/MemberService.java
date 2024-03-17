@@ -1,5 +1,7 @@
 package kr.kh.team6.service;
 
+import java.util.ArrayList;
+
 import kr.kh.team6.model.dto.LoginDTO;
 import kr.kh.team6.model.vo.MemberVO;
 
@@ -32,5 +34,7 @@ public interface MemberService {
 	boolean checkAddressRegex(String address);
 
 	boolean updateMember(String id, String pw, String phone, String address, String name, String email);
+
+	ArrayList<MemberVO> getMemberList();
 	
 }

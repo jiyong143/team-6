@@ -2,6 +2,7 @@ package kr.kh.team6.service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 import org.apache.ibatis.io.Resources;
@@ -246,6 +247,10 @@ public class MemberServiceImp implements MemberService {
 			return  1 ;
 		}
 		return memberDao.countPhone(id,phone);
+	}
+	@Override
+	public ArrayList<MemberVO> getMemberList() {
+		return memberDao.selectMemberList();
 	}
 	
 	 

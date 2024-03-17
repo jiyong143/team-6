@@ -103,52 +103,6 @@ ALTER TABLE `member` ADD CONSTRAINT `FK_memberState_TO_member_1` FOREIGN KEY (
 REFERENCES `memberState` (
 	`ms_state`
 );
-
-ALTER TABLE `webcafe`.`board` 
-DROP FOREIGN KEY `FK_category_TO_board_1`;
-ALTER TABLE `webcafe`.`board` 
-ADD CONSTRAINT `FK_category_TO_board_1`
-  FOREIGN KEY (`bo_ca_num`)
-  REFERENCES `webcafe`.`category` (`ca_num`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE;
-
-
-ALTER TABLE `webcafe`.`post` 
-DROP FOREIGN KEY `FK_member_TO_post_1`;
-ALTER TABLE `webcafe`.`post` 
-ADD CONSTRAINT `FK_member_TO_post_1`
-  FOREIGN KEY (`po_me_id`)
-  REFERENCES `webcafe`.`member` (`me_id`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE;
-
-ALTER TABLE `webcafe`.`post` 
-DROP FOREIGN KEY `FK_board_TO_post_1`;
-ALTER TABLE `webcafe`.`post` 
-ADD CONSTRAINT `FK_board_TO_post_1`
-  FOREIGN KEY (`po_bo_num`)
-  REFERENCES `webcafe`.`board` (`bo_num`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE;
-
-ALTER TABLE `community`.`comment` 
-DROP FOREIGN KEY `FK_board_TO_comment_1`;
-ALTER TABLE `community`.`comment` 
-ADD CONSTRAINT `FK_board_TO_comment_1`
-  FOREIGN KEY (`cm_bo_num`)
-  REFERENCES `community`.`board` (`bo_num`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE;
-
-ALTER TABLE `community`.`comment` 
-DROP FOREIGN KEY `FK_member_TO_comment_1`;
-ALTER TABLE `community`.`comment` 
-ADD CONSTRAINT `FK_member_TO_comment_1`
-  FOREIGN KEY (`cm_me_id`)
-  REFERENCES `community`.`member` (`me_id`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE;
  
  INSERT INTO MEMBERSTATE VALUES('이용중'), ('기간정지'), ('영구정지'), ('탈퇴');
 insert into member values('admin',970307,'wkdrn002@naver.com',01044071418,'admin','서울시','정경호','이용중','admin');

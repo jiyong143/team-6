@@ -27,7 +27,7 @@
 
 	<select id="selectBoardList" resultMap="BoardMap">
 		SELECT * FROM BOARD ORDER
-		BY BO_NUM DESC
+		BY BO_NUM 
 	</select>
 
 	<select id="selectCategory"

@@ -34,5 +34,6 @@
 			<button class="btn btn-outline-warning col-12">게시판 수정</button>
 		</form>
 	</div>
+	<!--  -->
 </body>
 </html>
