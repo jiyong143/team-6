@@ -33,11 +33,11 @@ public class AdminMemberDeleteServlet extends HttpServlet {
 		boolean res = memberService.deleteMember(me_id, user);
 		if (res ||!user.getMe_authority("admin")) {
 			request.setAttribute("msg", "회원을 탈퇴 시켰습니다.");
-			request.setAttribute("url", "admin/post");
+			request.setAttribute("url", "admin/member");
 		}
 		else {
 			request.setAttribute("msg", "회원을 탈퇴 시키지 못했습니다.");
-			request.setAttribute("url", "admin/post?me_id=" + me_id);
+			request.setAttribute("url", "admin/member?me_id=" + me_id);
 		}
 		// message.jsp 화면을 전송
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);

@@ -249,8 +249,7 @@ h2, h3 {
 .lbox-group, .rbox-group {
 	display: flex;
 	gap: 20px;
-	margin-bottom:20px;
-	
+	margin-bottom: 20px;
 }
 
 .lbox, .rbox {
@@ -260,6 +259,9 @@ h2, h3 {
 	transition: box-shadow 0.3s ease;
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 0.1);
 	white-space: nowrap;
+	max-height: 370px;
+	text-overflow: ellipsis;
+	overflow: hidden;  
 }
 
 /* 호버 효과와 그림자 효과 */

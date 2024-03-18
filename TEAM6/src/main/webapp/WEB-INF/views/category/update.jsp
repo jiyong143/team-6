@@ -314,14 +314,15 @@ nav a:hover {
 	max-width: 100%;
 }
 /* 인풋 필드 스타일 */
-.form-label {
+.label {
 	display: block;
 	margin-bottom: 10px;
 	font-size: 16px;
 	color: #333;
+	margin-top: 10px;
 }
 
-.form-control {
+.input {
 	width: 100%;
 	padding: 10px;
 	font-size: 16px;
@@ -332,8 +333,9 @@ nav a:hover {
 
 /* 버튼 스타일 */
 button[type="submit"] {
+	margin-top: 10px;
 	padding: 12px 24px;
-	background-color: rgba(141, 102, 18, 0.5); 
+	background-color: rgba(141, 102, 18, 0.5);
 	color: #333;
 	border: none;
 	border-radius: 5px;
@@ -343,8 +345,12 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-	background-color:rgba(141, 102, 18, 2); 
+	background-color: rgba(141, 102, 18, 2);
 	color: #fff;
+}
+
+.board-postList:hover {
+	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 </style>
 </head>
@@ -359,8 +365,8 @@ button[type="submit"]:hover {
 						value="${category.ca_num}">
 					<br>
 					<div class="post-insert">
-						<label for="ca_title" class="form-label">카테고리 명</label> <input
-							type="text" class="form-control" id="ca_title"
+						<label for="ca_title" class="label">카테고리 명</label> <input
+							type="text" class="input" id="ca_title"
 							placeholder="카테고리 명을 입력하세요..." name="ca_title"
 							value="${category.ca_title}">
 						<button type="submit">카테고리 수정</button>

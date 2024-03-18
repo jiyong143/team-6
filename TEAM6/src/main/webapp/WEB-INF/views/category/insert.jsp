@@ -331,6 +331,7 @@ nav a:hover {
 }
 /* 버튼 스타일 */
 button[type="submit"] {
+	margin-top:10px;
 	padding: 12px 24px;
 	background-color: rgba(141, 102, 18, 0.5);
 	color: #333;
@@ -344,6 +345,9 @@ button[type="submit"] {
 button[type="submit"]:hover {
 	background-color: rgba(141, 102, 18, 2);
 	color: #fff;
+}
+.board-postList:hover {
+	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 </style>
 
