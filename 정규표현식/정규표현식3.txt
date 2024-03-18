@@ -1,0 +1,55 @@
+$(document).ready(function () {
+	$("form").submit(function() {
+		var id = $("#id").val();
+		var pw = $("#pw").val();
+		var pw2 = $("#pw2").val();
+		var birth = $("#birth").val();
+		var name = $("#name").val();
+		var phone = $("#phone").val();
+		var email = $("#email").val();
+		var address = $("#address").val();
+		
+		if(id === ''){
+            alert("아이디는 영문,숫자 6자~8자를 입력하세요.");
+            id.focus();
+            return false;
+        }
+        if(pw === ''){
+              alert("비밀번호는 특수문자(!@#$)와 영어,숫자 8자~14자를 입력하세요.");
+              pw.focus();
+            return false;
+        }
+        if(pw !== pw2){
+             alert("비밀번호와 일치하지 않습니다.");
+             pw2.focus();
+            return false;
+        }
+        if(birth === ''){
+            alert("생년월일은 주민등록 앞 6자리를 입력하세요.");
+            birth.focus();
+            return false;
+        }
+        if(name === ''){
+            alert("이름은 한글 1~5글자 입력하세요.");
+            name.focus();
+            return false;
+        }
+        if(phone === ''){
+            alert("휴대번호는 "-"제외한 번호 형식을 입력하세요.");
+            phone.focus();
+            return false;
+        }
+        if(email === ''){
+            alert("이메일 형식을 맞춰주세요.");
+            email.focus();
+            return false;
+        }
+        if(address === ''){
+            alert("주소 양식을 맞춰서 입력해주세요.(양식 : OO시 OO구 OO동)");
+            address.focus();
+            return false;
+        }
+          return true;
+          
+	});
+});
