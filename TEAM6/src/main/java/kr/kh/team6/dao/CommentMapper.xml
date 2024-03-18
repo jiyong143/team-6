@@ -8,7 +8,7 @@
      values(#{comment.co_content},#{comment.co_po_num},#{comment.co_me_id})
   </insert>
   <select id="selectComments" resultType="kr.kh.team6.model.vo.CommentVO">
-     select * from comment where co_po_num=#{num}
+     select * from comment where co_po_num=#{num} order by co_num desc
   </select>
   
   <delete id="deleteComment">

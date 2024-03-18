@@ -40,6 +40,9 @@ public class CommentInsertServlet extends HttpServlet {
 		}catch(Exception e) {
 			num=0;
 		}
+	    
+		int bNum = Integer.parseInt(request.getParameter("bNum"));
+		String bName = request.getParameter("bName");
 		 String content = request.getParameter("content"); // 댓글 작성한 내용
 		 // 댓글 작성자의 아이디 가져오기
 		 MemberVO user =(MemberVO) request.getSession().getAttribute("user");
@@ -52,7 +55,7 @@ public class CommentInsertServlet extends HttpServlet {
 			}else {
 			 request.setAttribute("msg", "댓글을 등록 못했습니다.");
 			}
-		     request.setAttribute("url", "post/detail?num="+num); // 이거 post/detail인데 게시글 번호가 num이게 수정
+		     request.setAttribute("url", "/post/detail?num="+num + "&bNum=" + bNum + "&bName=" + bName);
 			 request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);	
 	}
 }
