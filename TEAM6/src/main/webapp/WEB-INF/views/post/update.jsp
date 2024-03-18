@@ -18,7 +18,7 @@
 		<input type="hidden" name="bNum" value="${post.po_bo_num}">
 		<div class="mb-3 mt-3">
 		    <label for="title" class="form-label">제목:</label>
-		    <input type="text" class="form-control" id="title" name="title" value="${post.po_title}" placeholder="제목을 입력하세요.">
+		    <input type="text" class="form-control" id="title" name="title" value="${post.po_title}" placeholder="Enter new title">
 		</div>
 		<div class="mb-3 mt-3">
 		    <label for="writer" class="form-label">작성자 아이디:</label>
@@ -30,7 +30,7 @@
 	   </div>
 		<div class="mb-3 mt-3">
 		    <label for="content" class="form-label">내용:</label>
-		    <textarea rows="10" class="form-control" id="content" name="content" placeholder="내용을 입력하세요.">${post.po_content}</textarea>
+		    <textarea rows="10" class="form-control" id="content" name="content" placeholder="Enter new content">${post.po_content}</textarea>
 		</div>
 		<!-- 첨부파일 ERD cloud에 첨부파일(file) 추가하면 주석해제		
 		<div class="mb-3 mt-3" id="attachment">

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import kr.kh.team6.model.vo.BoardVO;
 import kr.kh.team6.model.vo.MemberVO;
 import kr.kh.team6.model.vo.PostVO;
+import kr.kh.team6.service.BoardService;
+import kr.kh.team6.service.BoardServiceImp;
 import kr.kh.team6.service.PostService;
 import kr.kh.team6.service.PostServiceImp;
 
@@ -26,6 +27,7 @@ import kr.kh.team6.service.PostServiceImp;
 public class PostUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PostService postService = new PostServiceImp();
+	private BoardService boardService = new BoardServiceImp();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1. 게시글을 가져와서 화면에 전달
@@ -56,6 +58,11 @@ public class PostUpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		if(user==null) {
+			request.setAttribute("msg", "로그인이 필요한 서비스입니다.");
+			request.setAttribute("url", "login");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+		}else {
 		
 		//화면에서 전송한 게시글 번호, 제목, 내용을 가져옴
 		int num;
@@ -69,7 +76,8 @@ public class PostUpdateServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		int bNum = Integer.parseInt(request.getParameter("bNum"));
-		
+		BoardVO board = boardService.getBoard(bNum);
+		String bName = board.getBo_title();
 		
 		//게시글 객체로 생성
 		PostVO post = new PostVO(num, title, content,bNum);
@@ -78,11 +86,12 @@ public class PostUpdateServlet extends HttpServlet {
 		boolean res = postService.updatePost(post, user);
 		if(res) {
 			request.setAttribute("msg", "수정을 성공했습니다.");
+			request.setAttribute("url", "post/detail?num="+num +"&bNum=" + bNum + "&bName=" + bName);
 		}
 		else {
 			request.setAttribute("msg", "수정을 실패했습니다.");
-		}
-		request.setAttribute("url", "post/detail?num="+num);			
+			request.setAttribute("url", "post/update?num=" + num);
+		}		
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		
 		/* ERD cloud에서 첨부파일(file) 구현 시 주석 해제
@@ -105,6 +114,7 @@ public class PostUpdateServlet extends HttpServlet {
 		}
 		*/
 		
+	}
 	}
 
 }

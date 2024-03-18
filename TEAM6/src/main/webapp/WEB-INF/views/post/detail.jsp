@@ -320,10 +320,13 @@
                 <h3>${post.po_title } </h3>
                 <h6>${post.po_me_id}(${name})</h6>
                 <h6>${post.changeDate()}</h6>
+                <c:if test="${post.po_me_id eq user.me_id }">
+                 <a href="<c:url value="/post/update?num=${post.po_num}"/>" class="btn btn-outline-success">게시글 수정</a> 
+                 <a href = "<c:url value="/post/delete?num=${post.po_num}&bNum=${post.po_bo_num}"/>" class= "btn btn-outline-danger">게시글 삭제</a>
+                </c:if>
                 <table>
                 <div class="hr"></div> 
                 <h6>${post.po_content}</h6>
-                
                     <div class="hr"></div>    
                     <div class="comment-insert">  
                         <label for="#">댓글</label>
