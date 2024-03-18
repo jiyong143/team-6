@@ -233,10 +233,8 @@ public class MemberServiceImp implements MemberService {
 	}
 	@Override
 	public boolean updateMember(String id, String pw, String phone, String address, String name, String email) {
-		if(id==null||pw==null||phone==null||address==null||name==null||email==null) {
-			return false;
-		}
-		return memberDao.updateMember(id,pw,phone,address,name,email);
+		
+		 return memberDao.updateMember(id,pw,phone,address,name,email);
 	}
 	 
 	

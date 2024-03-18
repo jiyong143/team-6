@@ -323,7 +323,7 @@ nav a:hover {
          <p>${user.me_authority}</p>
          <c:choose>
             <c:when test='${!user.getMe_authority().equals("admin")}'>
-               <a href="/mypage.html">내정보 관리</a>
+               <a href="<c:url value="/member/update"/>">내정보 관리</a>
             </c:when>
             <c:when test='${user.getMe_authority().equals("admin")}'>
                <a href="/mypage.html">커뮤니티 관리</a>

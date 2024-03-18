@@ -309,36 +309,42 @@
 		</tbody>
 	</table>
 </div> --%>
-<!-- 정경호 프론트 코드 -->
+<!-- 정경호 프론트 코드 --> 
  <div class="body-group">
         <div class="board-box">
-            <h2><a href="#">${board.bo_title}</a></h2>
+            <h2><a href="<c:url value="/post/list"/>?bNum=${bNum}">${bName}</a></h2>
         </div>
         <br>
-        <form action="/Test/post.html"> <!-- 여기에  댓글 등록 하는 링크 -->
+        <form action="<c:url value="/comment/insert"/>" method="post"> <!-- 여기에  댓글 등록 하는 링크 -->
             <div class="board-postList">
-                <h3>***게시판</h3>
+                <h3>${post.po_title } </h3>
+                <h6>${post.po_me_id}(${name})</h6>
+                <h6>${post.changeDate()}</h6>
                 <table>
-                    <div class="hr"></div>
-                    <div class="post-insert">
-                        <label for="title">제목</label>
-                        <input type="text" id="title" name="title" class="title" value="${post.po_title }" readonly>
-                    </div>
-                    <div class="post-insert">
-                        <label for="#">내용</label>
-                        <textarea rows="15" id="content" name="content" class="content" readonly></textarea>
-                    </div>
-                    <div class="comment-insert">
+                <div class="hr"></div> 
+                <h6>${post.po_content}</h6>
+                
+                    <div class="hr"></div>    
+                    <div class="comment-insert">  
                         <label for="#">댓글</label>
                         <div class="btn-button">
-                            <textarea id="comment" name="comment" class="comment"></textarea>
-                            <button>등록하기</button>
+                            <input type="hidden" name="num" value="${post.po_num }">
+                            <input type="hidden" name="bNum" value="${bNum}">
+                            <input type="hidden" name="bName" value="${bName}">   
+                            <textarea  rows="1" id="content" name="content" class="content"></textarea>
+                            <button>등록</button>  
                         </div>
                         <br>
                         <div class="hr"></div>
                         <div class="comment-list">
-                            <span class="writer">작성자</span>
-                            <p>댓글내용입니다</p>
+                        <c:forEach items="${comments}" var="comment">
+                            <span class="writer">${comment.co_me_id}</span>
+                            <p>${comment.co_content}</p>
+                        <div class="hr"></div>
+                        </c:forEach>
+                         <c:if test="${comments.size() == 0 }">
+						  <h4 class="text-center">등록된 댓글이 없습니다.</h4>
+						 </c:if>
                         </div>
                     </div>
                 </table>

@@ -37,6 +37,10 @@ public class PostDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		String bName= request.getParameter("bName");
+		request.setAttribute("bName", bName);
+		int bNum =Integer.parseInt( request.getParameter("bNum"));
+		request.setAttribute("bNum", bNum);
 		// 게시판들을 모두 가져온다
 		String search = request.getParameter("search");
 
