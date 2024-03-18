@@ -158,7 +158,7 @@ public class MemberServiceImp implements MemberService {
 	
 	
 	//아이디 정규표현식
-	private boolean checkIdRegex(String me_id) {
+	public boolean checkIdRegex(String me_id) {
 		String regexId = "^[a-zA-Z0-9]{6,8}$";
 		if(me_id == null) {
 			return false;
@@ -244,6 +244,17 @@ public class MemberServiceImp implements MemberService {
 			return  1 ;
 		}
 		return memberDao.countPhone(id,phone);
+	}
+	
+	@Override
+	public boolean checkDuplicateId(MemberVO member, String id) {
+		MemberVO dbMember = memberDao.selectDBMember(member.getMe_id());
+		
+		if(dbMember.equals(id)) {
+			System.out.println("중복된 아이디");
+			return false;
+		}
+		return true;
 	}
 	
 

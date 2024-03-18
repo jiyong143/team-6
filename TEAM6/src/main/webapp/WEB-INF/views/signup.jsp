@@ -348,7 +348,7 @@ $(document).ready(function () {
 		var address = $("#address").val();
 		
 		if(id === ''){
-            alert("아이디는 영문,숫자 6자~8자를 입력하세요.");
+            alert("아이디가 중복되거나, 영문과 숫자 6자~8자를 입력하세요.");
             id.focus();
             return false;
         }

@@ -32,5 +32,9 @@ public interface MemberService {
 	boolean checkAddressRegex(String address);
 
 	boolean updateMember(String id, String pw, String phone, String address, String name, String email);
+
+	boolean checkIdRegex(String id);
+
+	boolean checkDuplicateId(MemberVO member, String id);
 	
 }

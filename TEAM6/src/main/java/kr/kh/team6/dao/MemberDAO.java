@@ -23,5 +23,7 @@ public interface MemberDAO {
 	boolean updateMember(@Param("id") String id, @Param("pw") String pw, @Param("phone") String phone,
 			@Param("address") String address, @Param("name") String name, @Param("email") String email);
 
+	MemberVO selectDBMember(@Param("me_id") String me_id);
+
 
 }
