@@ -334,24 +334,6 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
-<%-- <div class="container">
-    <form action="<c:url value="/post/insert"/>" method="post">
-    <input type="hidden" name="bNum" value="${bNum}">
-    <input type="hidden" name="bName" value="${bName}">
-         <h1>"${bName}" 게시판에 게시글 등록</h1>
-         <div class="mb-3 mt-3">
-			<label for="title" class="form-label">제목</label>
-			<input type="text" class="form-control" id="title" placeholder="제목" name="title">
-		</div>
-		<div class="mb-3 mt-3">
-			<label for="content" class="form-label">내용</label>
-			<textarea rows="20" class="form-control" id="content" placeholder="내용" name="content"></textarea>
-		</div>
-		<br>
-		<button type="submit" class="btn btn-outline-success col-12">등록하기</button>
-    </form> 
-</div> --%>
-<!--  -->
 <div class="body-group">
         <div class="board-box">
             <h1>${bName}</h1>

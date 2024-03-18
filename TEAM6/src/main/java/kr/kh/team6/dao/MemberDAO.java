@@ -27,5 +27,7 @@ public interface MemberDAO {
 
 	ArrayList<MemberVO> selectMemberList();
 
+	boolean deleteMember(@Param("me_id")String me_id);
+
 
 }

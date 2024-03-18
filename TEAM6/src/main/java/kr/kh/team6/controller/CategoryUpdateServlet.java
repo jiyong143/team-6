@@ -31,19 +31,19 @@ public class CategoryUpdateServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}
 
+		String ca_title = request.getParameter("ca_title");
 		int num;
 		try {
 			num = Integer.parseInt(request.getParameter("ca_num"));
 		} catch (Exception e) {
 			num = 0;
 		}
-		
-		String ca_title = request.getParameter("ca_title");
-		CategoryVO category = categoryService.getCategory(num,ca_title);
-		request.setAttribute("category", category);
 
+		CategoryVO category = categoryService.getCategory(num,ca_title);
 		ArrayList<CategoryVO> list = categoryService.getCategoryList();
 		request.setAttribute("list", list);
+		request.setAttribute("category", category);
+		
 		request.getRequestDispatcher("/WEB-INF/views/category/update.jsp").forward(request, response);
 	}
 
@@ -52,13 +52,13 @@ public class CategoryUpdateServlet extends HttpServlet {
 
 		MemberVO admin = (MemberVO) request.getSession().getAttribute("admin");
 
+		String ca_title = request.getParameter("ca_title");
 		int num;
 		try {
 			num = Integer.parseInt(request.getParameter("ca_num"));
 		} catch (Exception e) {
 			num = 0;
 		}
-		String ca_title = request.getParameter("ca_title");
 		CategoryVO category = new CategoryVO(num, ca_title);
 		boolean res = categoryService.updateCategory(category, admin);
 		if (res) {

@@ -8,10 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.team6.model.vo.MemberVO;
+import kr.kh.team6.service.MemberService;
+import kr.kh.team6.service.MemberServiceImp;
+import kr.kh.team6.service.PostService;
+import kr.kh.team6.service.PostServiceImp;
 
 @WebServlet("/admin/delete")
 public class AdminMemberDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	MemberService memberService = new MemberServiceImp();
+	
        
 //   멤버 딜리트 코드 작성하기  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,22 +28,16 @@ public class AdminMemberDeleteServlet extends HttpServlet {
 			request.setAttribute("url", "/");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}
+		String me_id = request.getParameter("me_id");
 		
-		
-		int num;
-		try {
-			num = Integer.parseInt(request.getParameter("num"));
-		} catch (Exception e) {
-			num = 0;
-		}
-		boolean res = categoryService.deleteCategory(num, user);
+		boolean res = memberService.deleteMember(me_id, user);
 		if (res ||!user.getMe_authority("admin")) {
-			request.setAttribute("msg", "카테고리를 삭제했습니다.");
-			request.setAttribute("url", "category/list");
+			request.setAttribute("msg", "회원을 탈퇴 시켰습니다.");
+			request.setAttribute("url", "admin/post");
 		}
 		else {
-			request.setAttribute("msg", "카테고리를 삭제하지 못했습니다.");
-			request.setAttribute("url", "category/list?num=" + num);
+			request.setAttribute("msg", "회원을 탈퇴 시키지 못했습니다.");
+			request.setAttribute("url", "admin/post?me_id=" + me_id);
 		}
 		// message.jsp 화면을 전송
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);

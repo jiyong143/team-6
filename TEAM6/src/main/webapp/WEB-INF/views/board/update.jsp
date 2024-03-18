@@ -6,11 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 수정</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+ 
+ 
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
@@ -22,7 +19,7 @@
 				<label for="bo_ca_num" class="form-label">카테고리</label> <select
 					class="form-control" id="bo_ca_num" name="bo_ca_num">
 					<c:forEach items="${list}" var="category">
-						<option value="${category.ca_num }">${category.ca_title}</option>
+						<option value="${category.ca_num}">${category.ca_title}</option>
 					</c:forEach>
 				</select>
 			</div>

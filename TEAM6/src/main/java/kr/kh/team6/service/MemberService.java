@@ -36,5 +36,7 @@ public interface MemberService {
 	boolean updateMember(String id, String pw, String phone, String address, String name, String email);
 
 	ArrayList<MemberVO> getMemberList();
+
+	boolean deleteMember(String me_id, MemberVO user);
 	
 }

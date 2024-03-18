@@ -141,5 +141,10 @@ public class PostServiceImp implements PostService{
 		return  postDao.selectAllPostList();
 	}
 
+	@Override
+	public ArrayList<PostVO> adminDeletePost(int po_num) {
+		return postDao.adminDeletePost(po_num);
+	}
+
 	
 }

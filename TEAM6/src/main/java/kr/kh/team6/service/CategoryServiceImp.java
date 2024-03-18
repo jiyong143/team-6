@@ -58,18 +58,18 @@ public class CategoryServiceImp implements CategoryService {
 
 	@Override
 	public CategoryVO getCategory(int num, String ca_title) {
-		return categoryDAO.seleteCategory(num,ca_title);
+		return categoryDAO.selecteCategory(num,ca_title);
 	}
 
 	@Override
 	public boolean updateCategory(CategoryVO category, MemberVO admin) {
-		if (admin == null || category == null) {
+		if (admin == null) {
 			return false;
 		}
-		if (!admin.getMe_authority().equals("admin") || !checkString(category.getCa_title())) {
+		if (!admin.getMe_authority().equals("admin")){
 			return false;
 		}
-		CategoryVO dbCategory = categoryDAO.selectGetCategory(category.getCa_num());
+		CategoryVO dbCategory = categoryDAO.selectGetCategory(category);
 		if (dbCategory == null) {
 			return false;
 		}

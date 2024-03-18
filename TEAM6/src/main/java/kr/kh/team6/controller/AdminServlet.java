@@ -53,7 +53,6 @@ public class AdminServlet extends HttpServlet {
 		//member리스트
 		ArrayList<MemberVO> memberList = memberService.getMemberList();
 		int memberCount = memberList.size();
-		System.out.println(memberCount);
 		//board
 		request.setAttribute("boardList", boardList);// 화면에 전송
 		//category
@@ -62,7 +61,7 @@ public class AdminServlet extends HttpServlet {
 		request.setAttribute("postList", postList);
 		//member
 		request.setAttribute("memberList", memberList);
-		
+		//member count
 		request.setAttribute("memberCount", memberCount);
 		/* 카테고리 서비스에서 리스트 가져오는 코드 /* 게시판 서비스에서 리스트 가져오는 코드 /* 게시글 서비스에서 리스트 가져오는 코드 /*
 		 * 멤버 서비스에서 리스트 가져오는 코드 작성 전체 회원수

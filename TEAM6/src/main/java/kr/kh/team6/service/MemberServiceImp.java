@@ -252,6 +252,14 @@ public class MemberServiceImp implements MemberService {
 	public ArrayList<MemberVO> getMemberList() {
 		return memberDao.selectMemberList();
 	}
+	@Override
+	public boolean deleteMember(String me_id, MemberVO user) {
+		if(user == null || me_id.length() == 0 || me_id.isEmpty()) {
+			return false;
+		}
+		
+		return memberDao.deleteMember(me_id);
+	}
 	
 	 
  

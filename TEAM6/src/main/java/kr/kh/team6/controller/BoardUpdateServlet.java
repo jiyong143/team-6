@@ -23,24 +23,24 @@ public class BoardUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		int num;
-		try {
-			num = Integer.parseInt(request.getParameter("num"));
-		} catch (Exception e) {
-			num = 0;
-		}
-		BoardVO board = boardService.getBoard(num);
-		request.setAttribute("board", board);
-
 		MemberVO user = (MemberVO) request.getSession().getAttribute("user");
-		if (board == null ||!user.getMe_authority("admin")) {
+		if (!user.getMe_authority("admin")) {
 			request.setAttribute("msg", "관리자 권한이 필요합니다. 관리자로 로그인 후 다시 시도하세요");
 			request.setAttribute("url", "/");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 			return;
 		}
-
+		int num;
+		try {
+			num = Integer.parseInt(request.getParameter("bo_num"));
+		} catch (Exception e) {
+			num = 0;
+		}
+		BoardVO board = boardService.getBoard(num);
+		System.out.println("두겟num"+num);
+		System.out.println("두겟board"+board);
 		ArrayList<CategoryVO> list = boardService.getCategoryList();
+		request.setAttribute("board", board);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/WEB-INF/views/board/update.jsp").forward(request, response);
 	}
@@ -52,14 +52,18 @@ public class BoardUpdateServlet extends HttpServlet {
 
 		int num, category;
 		try {
-			num = Integer.parseInt(request.getParameter("num"));
-			category = Integer.parseInt(request.getParameter("category"));
+			num = Integer.parseInt(request.getParameter("bo_num"));
+			category = Integer.parseInt(request.getParameter("bo_ca_num"));
 		} catch (Exception e) {
 			num = 0;
 			category = 0;
 		}
-		String title = request.getParameter("title");
+		String title = request.getParameter("bo_title");
 		BoardVO board = new BoardVO(num, title, category);
+		System.out.println("두포num"+num);
+		System.out.println("두포board"+board);
+		System.out.println("두포category"+category);
+		System.out.println("두포title"+title);
 		boolean res = boardService.updateBoard(board, user);
 		if (res) {
 			request.setAttribute("msg", "게시판을 수정했습니다.");

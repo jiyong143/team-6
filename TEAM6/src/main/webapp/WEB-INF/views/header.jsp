@@ -182,6 +182,7 @@ nav a:hover {
 }
 
 .copyright {
+	z-index:9999;
    background-color: #ffffff;
    text-align: center;
    margin-top: 20px;
@@ -285,6 +286,12 @@ nav a:hover {
    text-decoration: none;
    border: 1px solid black;
 }
+.a{
+background-color: rgba(141, 102, 18, 0.5);
+color: white;
+
+}
+
 </style>
 </head>
 <body>
@@ -331,13 +338,13 @@ nav a:hover {
          <p>${user.me_authority}</p>
          <c:choose>
             <c:when test='${!user.getMe_authority().equals("admin")}'>
-               <a href='<c:url value="/member/update" />'>내정보 관리</a>
+               <a class="a"href='<c:url value="/member/update" />'>내정보 관리</a>
             </c:when>
             <c:when test='${user.getMe_authority().equals("admin")}'>
-               <a href='<c:url value="/admin/manager"/>'>커뮤니티 관리</a>
+               <a class="a" href='<c:url value="/admin/manager"/>'>커뮤니티 관리</a>
             </c:when>
          </c:choose>
-         <a href='<c:url value="/logout"/>'>로그아웃</a>
+         <a  class="a" href='<c:url value="/logout"/>'>로그아웃</a>
       </c:if>
       <c:if test="${user == null }">
          <h4>환영합니다.</h4>

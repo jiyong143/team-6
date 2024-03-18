@@ -10,14 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.team6.model.vo.MemberVO;
-import kr.kh.team6.service.MemberService;
-import kr.kh.team6.service.MemberServiceImp;
+import kr.kh.team6.model.vo.PostVO;
+import kr.kh.team6.service.PostService;
+import kr.kh.team6.service.PostServiceImp;
 
- //멤버리스트 출력하는 코드 작성
-@WebServlet("/admin/member")
-public class AdminMemberListServlet extends HttpServlet {
+/**
+ * Servlet implementation class AdminPostDeleteServlet
+ */
+@WebServlet("/admin/postdelete")
+public class AdminPostDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       private MemberService memberService = new MemberServiceImp();
+		PostService postService = new PostServiceImp();
+       
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MemberVO user = (MemberVO) request.getSession().getAttribute("admin");
@@ -27,18 +31,12 @@ public class AdminMemberListServlet extends HttpServlet {
 			request.setAttribute("url", "/");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}
-		ArrayList<MemberVO> memberList = memberService.getMemberList();
-		int memberCount = memberList.size();
+		int po_num = Integer.parseInt(request.getParameter("po_num"));
 		
-		request.setAttribute("memberList", memberList);
+		ArrayList<PostVO> postList = postService.adminDeletePost(po_num);
 		
-		request.setAttribute("memberCount", memberCount);
-		//수정해야함
-		//member
-		request.setAttribute("memberList", memberList);
-		//member count
-		request.setAttribute("memberCount", memberCount);
-		request.getRequestDispatcher("/WEB-INF/views/admin/member.jsp").forward(request, response);
+		request.setAttribute("postList", postList);
+		request.getRequestDispatcher("/WEB-INF/views/admin/postdelete.jsp").forward(request, response);
 	}
 
 	/**
