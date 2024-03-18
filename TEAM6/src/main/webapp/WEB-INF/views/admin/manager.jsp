@@ -289,7 +289,7 @@ h2, h3 {
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${categoryList}" var="category">
+								<c:forEach items="${caList}" var="category">
 									<tr>
 										<td colspan="2">${category.ca_num}</td>
 										<td colspan="2">${category.ca_title}</td>
