@@ -314,7 +314,7 @@ margin-top: 20px;
 					<div class="comment-list">
 						<c:forEach items="${comments}" var="comment">
 							<span class="writer">${comment.co_me_id}</span>
-							<p>${comment.co_content}</p>
+							<p class="p">${comment.co_content}</p>
 							<div class="hr"></div>
 						</c:forEach>
 						<c:if test="${comments.size() == 0 }">
