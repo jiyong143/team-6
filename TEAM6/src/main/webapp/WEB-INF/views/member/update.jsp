@@ -337,11 +337,12 @@
             </div>
             <div class="signup">
                <label for="pw" >새 비밀번호(특수문자(!@#$)와 영어,숫자 조합 최소8자~최대 14자) :</label>
-		    <input type="password"  id="pw" name="pw">
+
+		    <input type="password"  id="pw" name="pw" placeholder="Enter new password">
             </div>
             <div class="signup">
                  <label for="pw2">새 비밀번호 재입력 :</label>
-		   		 <input type="password" id="pw2" name="pw2">
+		   		 <input type="password" id="pw2" name="pw2" placeholder="Enter new password again">
             </div>
             <div class="signup">
                 <label for="birth" >생년월일(주민등록 앞 6자리) : </label>
@@ -365,15 +366,14 @@
             </div>
             <div class="signup">
              	<label for="authority">권한 : </label>
-				<input type="text" id="authority" placeholder="Enter new  authority" name="authority" value="${user.me_authority}">
+				<input type="text" id="authority" placeholder="Enter new  authority" name="authority" value="${user.me_authority}" readonly>
             </div>
             <div class="signup">
              	<label for="state">상태 : </label>
-				<input type="text" id="state" placeholder="Enter new  state" name="state" value="${user.me_ms_state}">
+				<input type="text" id="state" placeholder="Enter new  state" name="state" value="${user.me_ms_state}" readonly>
             </div>
             <button type="submit">Update</button>
         </form>
-
     </div>
     
     

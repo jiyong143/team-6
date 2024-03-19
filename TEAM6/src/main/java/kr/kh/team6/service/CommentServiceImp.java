@@ -33,6 +33,7 @@ public class CommentServiceImp implements CommentService {
 	public boolean insertComment(CommentVO comment) {
 		if(comment==null|| 
 		   comment.getCo_content()==null||
+		   comment.getCo_content().length()==0||
 		   comment.getCo_me_id()==null||
 		   comment.getCo_po_num()==0) {
 			return false;

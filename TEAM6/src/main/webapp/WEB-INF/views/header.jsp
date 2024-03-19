@@ -297,7 +297,6 @@ nav a:hover {
 </style>
 </head>
 <body>
-<body>
 	<div class="logo">
 		<h1>
 			<a href='<c:url value="/" />'>What do you want to ask?</a>

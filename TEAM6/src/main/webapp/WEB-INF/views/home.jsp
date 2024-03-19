@@ -6,10 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>메인 페이지</title>
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
 <style type="text/css">
- 
 </style>
 </head>
 <body>
@@ -45,6 +42,8 @@
                            <td style="text-align: center;"><c:url var="detailUrl"
                                  value="/post/detail">
                                  <c:param name="num" value="${post.po_num}" />
+                                 <c:param name="bNum" value="${post.getBoard().bo_num}" />
+                                 <c:param name="bName" value="${post.getBoard().bo_title}" />
                               </c:url> <a href="${detailUrl}">${post.po_title}</a></td>
                            <td style="text-align: center;">${post.po_me_id}</td>
                            <td style="text-align: center;">${post.changeDate()}</td>

@@ -294,7 +294,9 @@ padding: 10px;
 								<td>${post.po_num}</td>
 								<td><c:url var="url" value="/post/detail">
 										<c:param name="num" value="${post.po_num}" />
-									</c:url> <a href="${url}">${post.po_title}</a></td>
+										<c:param name="bName" value="${board.bo_title}"/>
+										<c:param name="bNum" value="${board.bo_num }"/>
+									</c:url> <a href="${url}">${post.po_title}</a></td> 
 								<td><a href="<c:url value=""/>">${post.po_me_id}</a></td>
 								<td>${post.changeDate()}</td>
 								<td>${post.po_views}</td>
