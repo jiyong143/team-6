@@ -30,6 +30,11 @@ public class PostUpdateServlet extends HttpServlet {
 	private BoardService boardService = new BoardServiceImp();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 게시판 이름 전달 
+		String bName = request.getParameter("bName");
+		int bNum = Integer.parseInt(request.getParameter("bNum"));
+		request.setAttribute("bName", bName);
+		request.setAttribute("bNum", bNum);
 		//1. 게시글을 가져와서 화면에 전달
 		//화면에서 전송한 게시글 번호를 가져옴
 		int num;

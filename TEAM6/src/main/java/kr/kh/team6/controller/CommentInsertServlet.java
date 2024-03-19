@@ -56,6 +56,6 @@ public class CommentInsertServlet extends HttpServlet {
 			 request.setAttribute("msg", "댓글을 등록 못했습니다.");
 			}
 		     request.setAttribute("url", "/post/detail?num="+num + "&bNum=" + bNum + "&bName=" + bName);
-			 request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);	
-	}
+				request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+			}
 }

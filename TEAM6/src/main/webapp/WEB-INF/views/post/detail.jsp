@@ -238,7 +238,6 @@
         }
 
     </style>
-
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
@@ -251,17 +250,16 @@
         <form action="<c:url value="/comment/insert"/>" method="post">
             <div class="board-postList">
             	<label>
-            	<h3>제목 : ${post.po_title }</h3> <span><h5 style="text-align: right;">날짜 :${post.changeDate()}</h5></span>
+            	<h3>제목 :${post.po_title }</h3> <span><h5 style="text-align: right;">날짜 :${post.changeDate()}</h5></span>
             	<h5 style="text-align: right;">작성자 :${post.po_me_id}(${name})
             	</h5>
-            	
             	</label>
                 <c:if test="${post.po_me_id eq user.me_id }">
-                 <a href="<c:url value="/post/update?num=${post.po_num}"/>" class=" ">게시글 수정</a> 
-                 <a href = "<c:url value="/post/delete?num=${post.po_num}&bNum=${post.po_bo_num}"/>" class= " ">게시글 삭제</a>
+                 <a href="<c:url value="/post/update?num=${post.po_num}&bName=${bName}&bNum=${bNum}"/>" class="">게시글 수정</a> 
+                 <a href = "<c:url value="/post/delete?num=${post.po_num}&bNum=${post.po_bo_num}"/>" class= "">게시글 삭제</a>
                 </c:if>
                 <table>
-                <div class="hr"></div> 
+                <div class="hr"></div> <h5 style="text-align: right;">조회수 : ${post.po_views}</h5>
                 <input  class="inputinput" type="text" readonly="readonly" style="outline-style: none;" value="${post.po_content}">
                     <div class="hr"></div>    
                     <div class="comment-insert">  
@@ -270,9 +268,13 @@
                             <input type="hidden" name="num" value="${post.po_num }">
                             <input type="hidden" name="bNum" value="${bNum}">
                             <input type="hidden" name="bName" value="${bName}">   
-                            <textarea  rows="1" id="content" name="content" class="content" placeholder="Enter comment"></textarea>
-                            <button type="submit">등록</button>  
+                            <textarea  rows="1" id="content" name="content" class="textarea-comment" placeholder="Enter comment"></textarea>
+                            <button type="submit" class="btn-comment-insert">등록</button>  
                         </div>
+                        <span>
+                       <%--  <a href='<c:url value="/"/>' class="btn-comment-del">삭제</a>
+                        <a href='<c:url value="/"/>' class="btn-comment-update">수정</a> --%>
+                        </span>
                         <br>
                         <div class="hr"></div>
                         <div class="comment-list">
@@ -292,8 +294,6 @@
     </div>
 
 <!--  -->
-
-
  <script>
         function toggleCategory() {
             var category = document.getElementById("category");
@@ -348,5 +348,241 @@
         });
 
     </script>
+<<!-- 댓글 리스트 조회 -->
+<script type="text/javascript">
+//댓글 페이지 정보를 가지고 있는 객체를 선언
+let cri = {
+	page : 1,
+	search : "${board.bo_num}"
+}
+
+getCommentList(cri);
+
+function getCommentList(cri){
+	$.ajax({
+		async : true,
+		url : '<c:url value="/comment/list"/>', 
+		type : 'post', 
+		data : JSON.stringify(cri),
+		//서버로 보낼 데이터 타입
+		contentType : "application/json; charset=utf-8",
+		//서버에서 보낸 데이터의 타입
+		dataType : "json", 
+		success : function (data){
+			displayCommentList(data.list);
+			displayCommentPagination(data.pm);
+			$('.comment-total').text(data.pm.totalCount);
+		}, 
+		error : function(jqXHR, textStatus, errorThrown){
+
+		}
+	});
+}
+
+function displayCommentList(list){
+	let str = '';
+	if(list == null || list.length == 0){
+		str = '<h3>등록된 댓글이 없습니다.</h3>';
+		$('.box-comment-list').html(str);
+		return;
+	}
+	for(item of list){
+		let boxBtns = 
+			`<span class="box-btn float-right">
+				<button class="btn btn-outline-danger btn-comment-del" 
+					data-num="\${item.cm_num}">삭제</button>
+				<button class="btn btn-outline-danger btn-comment-update" 
+					data-num="\${item.cm_num}">수정</button>
+			</span>`;
+		let btns = '${user.me_id}' == item.cm_me_id ? boxBtns : '';  
+		str += 
+		`
+			<div class="box-comment row">
+				<div class="col-3">\${item.cm_me_id}</div>
+				<div class="col-9 clearfix input-group">
+					<span class="text-comment">\${item.cm_content}</span>
+					\${btns}
+				</div>
+			</div>
+		`
+	}
+	$('.box-comment-list').html(str);
+}
+function displayCommentPagination(pm){
+    
+	let str = '';
+	if(pm.prev){
+		str += `
+		<li class="page-item">
+			<a class="page-link" href="javascript:void(0);" data-page="\${pm.startPage - 1}">이전</a>
+		</li>`;		
+	}
+	for(let i = pm.startPage; i<= pm.endPage; i++){
+		let active = pm.cri.page == i ? 'active' : '';
+		str += `
+		<li class="page-item \${active}">
+			<a class="page-link" href="javascript:void(0);" data-page="\${i}">\${i}</a>
+		</li>`;	
+	}
+	
+	if(pm.next){
+		str += `
+		<li class="page-item">
+			<a class="page-link" href="javascript:void(0);" data-page="\${pm.endPage + 1}">다음</a>
+		</li>`;	
+	}
+	$('.box-pagination>ul').html(str);
+}
+$(document).on('click','.box-pagination .page-link',function(){
+	cri.page = $(this).data('page');
+	getCommentList(cri);
+});
+</script>
+<!-- 댓글 등록 -->
+<script type="text/javascript">
+//댓글 등록 버튼의 클릭 이벤트를 등록
+$(".btn-comment-insert").click(function(){
+	//로그인 확인
+	if(!checkLogin()){
+		return;
+	}
+	
+	//서버에 보낼 데이터를 생성 => 댓글 등록을 위한 정보 => 댓글 내용, 게시글 번호
+	let comment = {
+		cm_content : $('.textarea-comment').val(),
+		cm_bo_num : '${board.bo_num}'
+	}
+	
+	//내용이 비어있으면 내용을 입력하라고 알림
+	if(comment.cm_content.length == 0){
+		alert('댓글 내용을 작성하세요.');
+		return;
+	}
+	
+	//서버에 데이터를 전송
+	$.ajax({
+		async : true,
+		url : '<c:url value="/comment/insert"/>', 
+		type : 'post', 
+		data : JSON.stringify(comment), 
+		contentType : "application/json; charset=utf-8",
+		dataType : "json", 
+		success : function (data){
+			if(data.result){
+				alert('댓글을 등록했습니다.');
+				$('.textarea-comment').val('');
+				cri.page = 1;
+				getCommentList(cri);
+			}else{
+				alert('댓글을 등록하지 못했습니다.');
+			}
+		}, 
+		error : function(xhr, textStatus, errorThrown){
+			console.log(xhr);
+			console.log(textStatus);
+		}
+	});
+});
+
+function checkLogin(){
+	//로그인 했을 때
+	if('${user.me_id}' != ''){
+		return true;
+	}
+	//안했을 때
+	if(confirm("로그인이 필요한 기능입니다.\n로그인 페이지로 이동하겠습니까?")){
+		location.href = '<c:url value="/login"/>';
+	}
+	return false;
+}
+
+</script>
+<!-- 댓글 삭제 -->
+<script type="text/javascript">
+//댓글 삭제 버튼 클릭시 alert(1)이 실행되도록 작성
+$(document).on('click', '.btn-comment-del', function(){
+	//서버로 보낼 데이터 생성
+	let comment = {
+		cm_num : $(this).data('num')
+	}
+	//서버로 데이터를 전송
+	$.ajax({
+		async : true,
+		url : '<c:url value="/comment/delete"/>', 
+		type : 'post', 
+		data : JSON.stringify(comment), 
+		contentType : "application/json; charset=utf-8",
+		dataType : "json", 
+		success : function (data){
+			if(data.result){
+				alert('댓글을 삭제했습니다.');
+				getCommentList(cri);
+			}else{
+				alert('댓글을 삭제하지 못했습니다.');
+			}
+		}, 
+		error : function(jqXHR, textStatus, errorThrown){
+
+		}
+	});	
+});
+</script>
+<!-- 댓글 수정  -->
+<script type="text/javascript">
+$(document).on('click', '.btn-comment-update', function(){
+	initComment();
+	let contentBox = $(this).parents(".box-comment").find(".text-comment");
+	//댓글을 수정할 수 있는 textarea로 변경
+	let content = contentBox.text();
+	let str = 
+	`<textarea class="form-control">\${content}</textarea>`;
+	contentBox.after(str);
+	contentBox.hide();
+	
+	//수정/삭제버튼을 감추고
+	$(this).parents(".box-comment").find('.box-btn').hide();
+	
+	//수정 완료 버튼을 추가
+	let cm_num = $(this).data("num");
+	str = `<button class="btn btn-outline-warning btn-complete" data-num="\${cm_num}">수정 완료</button>`;
+	$(this).parents(".box-comment").find('.box-btn').after(str);
+});
+
+$(document).on('click', '.btn-complete', function(){
+	//전송할 데이터를 생성=>댓글 수정 => 댓글 번호, [댓글 내용],
+	let comment = {
+		cm_content : $('.box-comment').find('textarea').val(),
+		cm_num : $(this).data("num")
+	}
+	
+	//서버에 ajax로 데이터를 전송 후 처리
+	$.ajax({
+		async : true, 
+		url : '<c:url value="/comment/update"/>', 
+		type : 'post', 
+		data : JSON.stringify(comment), 
+		contentType : "application/json; charset=utf-8",
+		dataType : "json", 
+		success : function (data){
+			if(data.result){
+				alert('댓글을 수정했습니다.');
+				getCommentList(cri);
+			}else{
+				alert('댓글을 수정하지 못했습니다.');
+			}
+		}, 
+		error : function(jqXHR, textStatus, errorThrown){
+
+		}
+	});
+})
+//수정 버튼을 누른 상태에서 다른 수정버튼을 누르면 기존에 누른 댓글을 원상태로 돌려주는 함수
+function initComment(){
+	$('.btn-complete').remove();
+	$('.box-comment').find('textarea').remove();
+	$('.box-btn').show();
+	$('.text-comment').show();
+}
+</script>
 </body>
 </html>
