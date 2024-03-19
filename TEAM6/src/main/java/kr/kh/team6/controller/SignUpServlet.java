@@ -60,16 +60,18 @@ public class SignUpServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
+		String pw2 = request.getParameter("pw2");
+		String name = request.getParameter("name");
 		String phone = request.getParameter("phone");
 		String address = request.getParameter("address");
-		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String birth = request.getParameter("birth");
 
-		MemberVO member = new MemberVO(id, pw, phone, address, name, email, birth);
-
-		if (memberService.signup(member)) {
-			// 회원가입에 성공하면 메인 페이지로 이동
+		MemberVO member = new MemberVO(id, pw, name, phone, address, email, birth);
+		
+		//모두 입력했을 시
+		if(memberService.signup(member)) {
+			//회원가입에 성공하면 메인 페이지로 이동
 			request.setAttribute("msg", "회원가입에 성공했습니다.");
 			request.setAttribute("url", "");
 		} else {

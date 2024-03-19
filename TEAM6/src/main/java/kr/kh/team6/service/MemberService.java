@@ -35,6 +35,10 @@ public interface MemberService {
 
 	boolean updateMember(String id, String pw, String phone, String address, String name, String email);
 
+	boolean checkIdRegex(String id);
+
+	boolean checkDuplicateId(MemberVO member, String id);
+  
 	ArrayList<MemberVO> getMemberList();
 
 	boolean deleteMember(String me_id, MemberVO user);
