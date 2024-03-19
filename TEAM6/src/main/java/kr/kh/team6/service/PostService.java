@@ -33,5 +33,9 @@ public interface PostService {
 
 	ArrayList<PostVO> getPostsInSearch(String search);
 
+	ArrayList<PostVO> getAllPostList();
+
+	ArrayList<PostVO> adminDeletePost(int po_num);
+
 
 }

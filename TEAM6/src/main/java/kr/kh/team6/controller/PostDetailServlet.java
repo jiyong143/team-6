@@ -29,6 +29,7 @@ import kr.kh.team6.service.PostServiceImp;
 @WebServlet("/post/detail")
 public class PostDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	private PostService postService = new PostServiceImp();
 	private CommentService commentService = new CommentServiceImp();
 	private BoardService boardService = new BoardServiceImp();
@@ -41,6 +42,7 @@ public class PostDetailServlet extends HttpServlet {
 		request.setAttribute("bName", bName);
 		int bNum =Integer.parseInt( request.getParameter("bNum"));
 		request.setAttribute("bNum", bNum);
+    
 		// 게시판들을 모두 가져온다
 		String search = request.getParameter("search");
 
