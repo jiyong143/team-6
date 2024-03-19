@@ -228,6 +228,12 @@
             min-height: 50px;
             max-height: 50px;
         }
+        
+        .container1{
+        max-width : 1200px;
+        margin : 0 auto;
+        width : 100%;
+        }
 
     </style>
 
@@ -238,7 +244,7 @@
 
 <!-- 최지용 프론트 코드 -->
 
-<div class="container">
+<div class="container1">
    <%--   <h1>게시글 상세</h1>
      <div>
        <div >
@@ -315,7 +321,7 @@
             <h2><a href="<c:url value="/post/list"/>?bNum=${bNum}">${bName}</a></h2>
         </div>
         <br>
-        <form action="<c:url value="/comment/insert"/>" method="post"> <!-- 여기에  댓글 등록 하는 링크 -->
+        <form action="<c:url value="/comment/insert"/>" method="post">
             <div class="board-postList">
                 <h3>${post.po_title } </h3>
                 <h6>${post.po_me_id}(${name})</h6>
@@ -329,13 +335,13 @@
                 <h6>${post.po_content}</h6>
                     <div class="hr"></div>    
                     <div class="comment-insert">  
-                        <label for="#">댓글</label>
+                        <label for="content">댓글</label>
                         <div class="btn-button">
                             <input type="hidden" name="num" value="${post.po_num }">
                             <input type="hidden" name="bNum" value="${bNum}">
                             <input type="hidden" name="bName" value="${bName}">   
-                            <textarea  rows="1" id="content" name="content" class="content"></textarea>
-                            <button>등록</button>  
+                            <textarea  rows="1" id="content" name="content" class="content" placeholder="Enter comment"></textarea>
+                            <button type="submit">등록</button>  
                         </div>
                         <br>
                         <div class="hr"></div>

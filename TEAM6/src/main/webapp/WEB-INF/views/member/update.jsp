@@ -332,43 +332,43 @@
      <h1>개인 정보 수정</h1>
         <form name="join_form" id="join_form" method="post" action="<c:url value="/member/update"/>">
             <div class="signup">
-                  <label for="id" >아이디 :</label>
+                  <label for="id" >아이디</label>
 		    <input type="text" id="id" name="id" value="${user.me_id}" readonly>
             </div>
             <div class="signup">
-               <label for="pw" >새 비밀번호(특수문자(!@#$)와 영어,숫자 조합 최소8자~최대 14자) :</label>
+               <label for="pw" >새 비밀번호(특수문자(!@#$)와 영어,숫자 조합 최소8자~최대 14자)</label>
 		    <input type="password"  id="pw" name="pw" placeholder="Enter new password">
             </div>
             <div class="signup">
-                 <label for="pw2">새 비밀번호 재입력 :</label>
+                 <label for="pw2">새 비밀번호 재입력</label>
 		   		 <input type="password" id="pw2" name="pw2" placeholder="Enter new password again">
             </div>
             <div class="signup">
-                <label for="birth" >생년월일(주민등록 앞 6자리) : </label>
+                <label for="birth" >생년월일(주민등록 앞 6자리)</label>
 		    	<input type="text" id="birth" name="birth" value="${user.me_birth}" readonly>
             </div>
             <div class="signup">
-                <label for="name" >새 닉네임(최대 5글자) :</label>
+                <label for="name" >새 닉네임(최대 5글자)</label>
 		    <input type="text" id="name" name="name" value="${user.me_name}" placeholder="Enter new nickname">
             </div>
             <div class="signup">
-               <label for="phone"  >새 전화번호("-"제외한 번호 형식):</label>
+               <label for="phone"  >새 전화번호("-"제외한 번호 형식)</label>
 			<input type="text"  id="phone" placeholder="Enter new phone" name="phone" value="${user.me_phone}">
             </div>
             <div class="signup">
-             	<label for="email">새 이메일(이메일 형식):</label>
+             	<label for="email">새 이메일(이메일 형식)</label>
 				<input type="email" id="email" placeholder="Enter new  email" name="email" value="${user.me_email}">
             </div>
             <div class="signup">
-             	<label for="address">새 주소(양식 : OO시 OO구 OO동):</label>
+             	<label for="address">새 주소(양식 : OO시 OO구 OO동)</label>
 				<input type="text" id="address" placeholder="Enter new  address" name="address" value="${user.me_address}">
             </div>
             <div class="signup">
-             	<label for="authority">권한 : </label>
+             	<label for="authority">권한</label>
 				<input type="text" id="authority" placeholder="Enter new  authority" name="authority" value="${user.me_authority}" readonly>
             </div>
             <div class="signup">
-             	<label for="state">상태 : </label>
+             	<label for="state">상태</label>
 				<input type="text" id="state" placeholder="Enter new  state" name="state" value="${user.me_ms_state}" readonly>
             </div>
             <button type="submit">Update</button>
