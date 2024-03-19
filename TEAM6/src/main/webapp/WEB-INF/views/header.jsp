@@ -298,6 +298,14 @@ nav a:hover {
     width: 100px; 
     height: 100px; 
 }
+textarea {
+	 font-size: 24px;
+	   font-family: "Arial", sans-serif; 
+}
+.p{
+	 font-size: 18px;
+	   font-family: "Arial", sans-serif; 
+}
 </style>
 </head>
 <body>
