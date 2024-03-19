@@ -20,7 +20,7 @@
    </div>
    <div class="recent-posts">
       <c:if test="${list.size()!=0 }">
-         <h2 style="text-align: center;">최근 게시글</h2>
+         <h2 style="text-align: center;">※최근 게시글※</h2>
       </c:if>
       <ul>
          <li><c:choose>
@@ -29,8 +29,8 @@
                      <!-- 테이블을 중앙에 배치 -->
                      <tr>
                         <th style="text-align: center; width: 25%;">게시판</th>
-                        <th style="text-align: center; width: 25%;">제목</th>
-                        <th style="text-align: center; width: 25%;">아이디</th>
+                        <th style="text-align: center; width: 30%;">제목</th>
+                        <th style="text-align: center; width: 20%;">아이디</th>
                         <th style="text-align: center; width: 25%">날짜</th>
                      </tr>
                      <c:forEach items="${list}" var="post">
@@ -49,6 +49,7 @@
                            <td style="text-align: center;">${post.changeDate()}</td>
                         </tr>
                      </c:forEach>
+                     <hr>
                   </table>
                </c:when>
 

@@ -1,5 +1,7 @@
 package kr.kh.team6.service;
 
+import java.util.ArrayList;
+
 import kr.kh.team6.model.dto.LoginDTO;
 import kr.kh.team6.model.vo.MemberVO;
 
@@ -36,5 +38,9 @@ public interface MemberService {
 	boolean checkIdRegex(String id);
 
 	boolean checkDuplicateId(MemberVO member, String id);
+  
+	ArrayList<MemberVO> getMemberList();
+
+	boolean deleteMember(String me_id, MemberVO user);
 	
 }

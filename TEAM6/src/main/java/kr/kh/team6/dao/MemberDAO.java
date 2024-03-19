@@ -1,5 +1,7 @@
 package kr.kh.team6.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.annotations.Param;
 
 import kr.kh.team6.model.vo.MemberVO;
@@ -24,6 +26,11 @@ public interface MemberDAO {
 			@Param("address") String address, @Param("name") String name, @Param("email") String email);
 
 	MemberVO selectDBMember(@Param("me_id") String me_id);
+
+	ArrayList<MemberVO> selectMemberList();
+
+	boolean deleteMember(@Param("me_id")String me_id);
+
 
 
 }

@@ -337,6 +337,7 @@
             </div>
             <div class="signup">
                <label for="pw" >새 비밀번호(특수문자(!@#$)와 영어,숫자 조합 최소8자~최대 14자) :</label>
+
 		    <input type="password"  id="pw" name="pw" placeholder="Enter new password">
             </div>
             <div class="signup">

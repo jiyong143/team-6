@@ -22,6 +22,8 @@ public interface BoardDAO {
 	boolean updateBoard(@Param("board")BoardVO board);
 
 	String selectBoardName(@Param("po_bo_num")int po_bo_num);
+
+	BoardVO selectAllBoard(@Param("bo")BoardVO board);
 	
 
 	

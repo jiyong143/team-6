@@ -35,8 +35,7 @@ public class PostServiceImp implements PostService{
  
 	@Override
 	public ArrayList <PostVO> getPostList(Criteria cri, int bo_num) {
-		System.out.println(bo_num + "서블릿");
-		System.out.println(cri + "서블릿");
+	 
 		return postDao.selectPostList(cri, bo_num);
 		
 	}
@@ -134,6 +133,17 @@ public class PostServiceImp implements PostService{
 	public ArrayList<PostVO> getPostsInSearch(String search) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public ArrayList<PostVO> getAllPostList() {
+		
+		return  postDao.selectAllPostList();
+	}
+
+	@Override
+	public ArrayList<PostVO> adminDeletePost(int po_num) {
+		return postDao.adminDeletePost(po_num);
 	}
 
 	
