@@ -1,19 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>ê²Œì‹œíŒ</title>
+<meta charset="EUC-KR">
+<title>°Ô½Ã±Û °ü¸®</title>
 <style type="text/css">
-.search-container{
+.search-container {
 	margin-bottom: 10px;
 }
-.select-box{
-padding: 10px;
- background-color: white;
- border: 1px solid white;
+
+.select-box {
+	padding: 10px;
+	background-color: white;
+	border: 1px solid white;
 }
 
 .body-group {
@@ -41,11 +42,11 @@ padding: 10px;
 
 .logo a {
 	color: inherit;
-	/* ìƒì†ëœ í…ìŠ¤íŠ¸ ìƒ‰ìƒ ì‚¬ìš© */
+	/* »ó¼ÓµÈ ÅØ½ºÆ® »ö»ó »ç¿ë */
 	text-decoration: none;
-	/* ë°‘ì¤„ ì œê±° */
+	/* ¹ØÁÙ Á¦°Å */
 	font-size: 36px;
-	/* ë¡œê³  í…ìŠ¤íŠ¸ í¬ê¸° ëŠ˜ë¦¬ê¸° */
+	/* ·Î°í ÅØ½ºÆ® Å©±â ´Ã¸®±â */
 }
 
 .login {
@@ -56,9 +57,9 @@ padding: 10px;
 
 .login a {
 	color: inherit;
-	/* ê¸°ë³¸ í…ìŠ¤íŠ¸ ìƒ‰ìœ¼ë¡œ ì„¤ì • */
+	/* ±âº» ÅØ½ºÆ® »öÀ¸·Î ¼³Á¤ */
 	text-decoration: none;
-	/* ë°‘ì¤„ ì œê±° */
+	/* ¹ØÁÙ Á¦°Å */
 }
 
 .recent-posts {
@@ -128,31 +129,31 @@ padding: 10px;
 	background-color: rgba(141, 102, 18, 0.5);
 }
 
-/* ë²ˆí˜¸ ì…€ ìŠ¤íƒ€ì¼ */
+/* ¹øÈ£ ¼¿ ½ºÅ¸ÀÏ */
 .board-postList td:nth-child(1), .board-postList th:nth-child(1) {
 	width: 5%;
 	text-align: center;
 }
 
-/* ê²Œì‹œê¸€ ëª… ì…€ ìŠ¤íƒ€ì¼ */
+/* °Ô½Ã±Û ¸í ¼¿ ½ºÅ¸ÀÏ */
 .board-postList td:nth-child(2), .board-postList th:nth-child(2) {
 	text-align: center;
 	width: 30%;
 }
 
-/* ì‘ì„±ì ì…€ ìŠ¤íƒ€ì¼ */
+/* ÀÛ¼ºÀÚ ¼¿ ½ºÅ¸ÀÏ */
 .board-postList td:nth-child(3), .board-postList th:nth-child(3) {
 	text-align: center;
 	width: 10%;
 }
 
-/* ë‚ ì§œ ì…€ ìŠ¤íƒ€ì¼ */
+/* ³¯Â¥ ¼¿ ½ºÅ¸ÀÏ */
 .board-postList td:nth-child(4), .board-postList th:nth-child(4) {
 	width: 15%;
 	text-align: center;
 }
 
-/* ì¡°íšŒìˆ˜ ì…€ ìŠ¤íƒ€ì¼ */
+/* Á¶È¸¼ö ¼¿ ½ºÅ¸ÀÏ */
 .board-postList td:nth-child(5), .board-postList th:nth-child(5) {
 	width: 10%;
 	text-align: center;
@@ -244,169 +245,127 @@ padding: 10px;
 	background-color: rgba(141, 102, 18, 1);
 }
 
+.btn {
+	padding: 12px 24px;
+	background-color: rgba(141, 102, 18, 0.5);
+	color: #333;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s;
+}
 
+.btn:hover {
+	background-color: rgba(141, 102, 18, 2);
+	color: #fff;
+}
+
+.board-postList:hover {
+	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
+}
 </style>
+
+
+
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
-	<form action="<c:url value="/post/list"/>">
-			<input type="hidden" name="bNum" value="${board.bo_num}">
-			<div class="search-container">
-				<select name="type" class="select-box">
-					<option value="all"
-						<c:if test='${pm.cri.type == "all"}'>selected</c:if>>ì „ì²´</option>
-					<option value="title"
-						<c:if test='${pm.cri.type == "title"}'>selected</c:if>>ì œëª©</option>
-					<option value="writer"
-						<c:if test='${pm.cri.type == "writer"}'>selected</c:if>>ì‘ì„±ì</option>
-				</select> <input type="text" placeholder="ê²€ìƒ‰. . ."
-					name="search" value="${pm.cri.search}">
-				<button type="submit"></button>
-			</div>
-		</form>
 	<div class="body-group">
-		<div class="board-box">
-			<h2>${board.bo_title}</h2>
-		</div>
 		<br>
 		<form action="<c:url value="/post/insert"/>" method="post">
 			<div class="board-postList">
-				<h3>
-					ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ <a
-						href="<c:url value='/post/insert'/>?bNum=${board.bo_num}&bName=${board.bo_title}"
-						class="write-button">ê¸€ì“°ê¸°</a>
-				</h3>
-
+				<h2>°Ô½Ã±Û ¸®½ºÆ®</h2>
 				<div class="hr"></div>
 				<table>
 					<thead>
 						<tr>
-							<th>ë²ˆí˜¸</th>
-							<th>ì œëª©</th>
-							<th>ì‘ì„±ì</th>
-							<th>ì‘ì„±ì¼</th>
-							<th>ì¡°íšŒìˆ˜</th>
+							<th>¹øÈ£</th>
+							<th>°Ô½Ã±Û</th>
+							<th>ÀÛ¼ºÀÚ</th>
+							<th>³¯Â¥</th>
+							<th>±âÅ¸</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${postList}" var="post">
 							<tr>
-								<td>${post.po_num}</td>
-								<td><c:url var="url" value="/post/detail">
-										<c:param name="num" value="${post.po_num}" />
-										<c:param name="bName" value="${board.bo_title}"/>
-										<c:param name="bNum" value="${board.bo_num }"/>
-									</c:url> <a href="${url}">${post.po_title}</a></td> 
-								<td><a href="<c:url value=""/>">${post.po_me_id}</a></td>
-								<td>${post.changeDate()}</td>
-								<td>${post.po_views}</td>
+								<td>${post.po_num }</td>
+								<td>${post.po_title}</td>
+								<td>${post.po_me_id}</td>
+								<td>${post.po_date}</td>
+								<td><a class="btn write-button"
+									href="<c:url value="/admin/postdelete?po_num=${post.po_num}"/>">
+										»èÁ¦ </a></td>
 							</tr>
 						</c:forEach>
-						<c:if test="${empty postList}">
-							<tr>
-								<td colspan="5">
-									<h3 class="text-center">ë“±ë¡ëœ ê²Œì‹œê¸€ì´ ì—†ìŠµë‹ˆë‹¤.</h3>
-								</td>
-							</tr>
-						</c:if>
 					</tbody>
 				</table>
 			</div>
 		</form>
-
-		<ul class="pagination">
-			<c:if test="${pm.prev}">
-				<li><c:url var="prevUrl" value="/post/list">
-						<c:param name="type" value="${pm.cri.type}" />
-						<c:param name="search" value="${pm.cri.search}" />
-						<c:param name="page" value="${pm.startPage-1}" />
-						<c:param name="bNum" value="${board.bo_num}" />
-					</c:url> <a class="page-link pagination" href="${prevUrl}">ì´ì „</a></li>
-			</c:if>
-			<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
-				<li <c:if test="${pm.cri.page==i}">class="active"</c:if>><c:url
-						var="page" value="/post/list">
-						<c:param name="type" value="${pm.cri.type}" />
-						<c:param name="search" value="${pm.cri.search}" />
-						<c:param name="page" value="${i}" />
-						<c:param name="bNum" value="${board.bo_num}" />
-					</c:url> <a class="page-link pagination" href="${page}">${i}</a></li>
-			</c:forEach>
-			<c:if test="${pm.next}">
-				<li><c:url var="nextUrl" value="/post/list">
-						<c:param name="type" value="${pm.cri.type}" />
-						<c:param name="search" value="${pm.cri.search}" />
-						<c:param name="page" value="${pm.endPage+1}" />
-						<c:param name="bNum" value="${board.bo_num}" />
-					</c:url> <a class="page-link pagination" href="${nextUrl}">ë‹¤ìŒ</a></li>
-			</c:if>
-		</ul>
 	</div>
-
-
-	<!-- ì™¼ìª½,ì˜¤ë¥¸ìª½ ë°•ìŠ¤ / ê²€ìƒ‰ì°½ / ê²€ìƒ‰ì°½ í˜¸ë²„ì‹œ ê²Œì‹œê¸€ ë‚˜ì˜´ -->
 	<script>
 		function toggleCategory() {
 			var category = document.getElementById("category");
 			category.classList.toggle("open");
 		}
 
-		// ê²€ìƒ‰ì°½ ìš”ì†Œë¥¼ ê°€ì ¸ì˜´
+		// °Ë»öÃ¢ ¿ä¼Ò¸¦ °¡Á®¿È
 		var searchInput = document
 				.querySelector('.search-container input[type=text]');
 
-		// ì¹´í…Œê³ ë¦¬ í† ê¸€ ë²„íŠ¼ ìš”ì†Œ ê°€ì ¸ì˜¤ê¸°
+		// Ä«Å×°í¸® Åä±Û ¹öÆ° ¿ä¼Ò °¡Á®¿À±â
 		var categoryToggle = document.querySelector('.category-toggle');
 
-		// ì¹´í…Œê³ ë¦¬ í† ê¸€ ë²„íŠ¼ì— í´ë¦­ ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆ ì¶”ê°€
+		// Ä«Å×°í¸® Åä±Û ¹öÆ°¿¡ Å¬¸¯ ÀÌº¥Æ® ¸®½º³Ê Ãß°¡
 		categoryToggle.addEventListener('click', function() {
-			// í´ë¦­ ì‹œ clicked í´ë˜ìŠ¤ë¥¼ í† ê¸€í•˜ì—¬ ìŠ¤íƒ€ì¼ ë³€ê²½
+			// Å¬¸¯ ½Ã clicked Å¬·¡½º¸¦ Åä±ÛÇÏ¿© ½ºÅ¸ÀÏ º¯°æ
 			this.classList.toggle('clicked');
 		});
 
-		// ê²€ìƒ‰ì°½ ìš”ì†Œ ê°€ì ¸ì˜¤ê¸°
+		// °Ë»öÃ¢ ¿ä¼Ò °¡Á®¿À±â
 		var searchContainer = document.querySelector('.search-container');
 
-		// ìµœê·¼ ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ ìš”ì†Œ ê°€ì ¸ì˜¤ê¸°
-			var recentPosts = document.querySelector('.recent-posts');
+		// ÃÖ±Ù °Ô½Ã±Û ¸®½ºÆ® ¿ä¼Ò °¡Á®¿À±â
+		var recentPosts = document.querySelector('.recent-posts');
 
-			// ê²€ìƒ‰ì°½ì— ë§ˆìš°ìŠ¤ë¥¼ ì˜¬ë¦¬ë©´ ìµœê·¼ ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ë¥¼ í‘œì‹œ
-			/*searchContainer.addEventListener('mouseenter', function() {
-				recentPosts.style.display = 'block';
-			}); */
+		// °Ë»öÃ¢¿¡ ¸¶¿ì½º¸¦ ¿Ã¸®¸é ÃÖ±Ù °Ô½Ã±Û ¸®½ºÆ®¸¦ Ç¥½Ã
+		/*searchContainer.addEventListener('mouseenter', function() {
+			recentPosts.style.display = 'block';
+		}); */
 
-		// ìµœê·¼ ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ì—ì„œ ë§ˆìš°ìŠ¤ê°€ ë²—ì–´ë‚˜ë©´ ìˆ¨ê¹€
+		// ÃÖ±Ù °Ô½Ã±Û ¸®½ºÆ®¿¡¼­ ¸¶¿ì½º°¡ ¹ş¾î³ª¸é ¼û±è
 		/*	recentPosts.addEventListener('mouseleave', function() {
 				recentPosts.style.display = 'none';
 			});  */
 
 		var rightBox = document.querySelector('.right-box');
 
-		// ì˜¤ë¥¸ìª½ ë°•ìŠ¤ ê°€ì ¸ì˜¤ê¸°
+		// ¿À¸¥ÂÊ ¹Ú½º °¡Á®¿À±â
 		var rightBox = document.querySelector('.right-box');
 
-		// ë‹«ê¸° ë²„íŠ¼ ê°€ì ¸ì˜¤ê¸°
+		// ´İ±â ¹öÆ° °¡Á®¿À±â
 		var closeButton = document.querySelector('.close-button');
 
-		// ì˜¤ë¥¸ìª½ ë°•ìŠ¤ê°€ ìˆ¨ê²¨ì ¸ ìˆëŠ”ì§€ ì—¬ë¶€ë¥¼ ì €ì¥í•˜ëŠ” ë³€ìˆ˜
+		// ¿À¸¥ÂÊ ¹Ú½º°¡ ¼û°ÜÁ® ÀÖ´ÂÁö ¿©ºÎ¸¦ ÀúÀåÇÏ´Â º¯¼ö
 		var isHidden = true;
 
-		// ë²„íŠ¼ í´ë¦­ ì´ë²¤íŠ¸ì— í•¨ìˆ˜ ì—°ê²°
+		// ¹öÆ° Å¬¸¯ ÀÌº¥Æ®¿¡ ÇÔ¼ö ¿¬°á
 		closeButton.addEventListener('click', function() {
-			// ì˜¤ë¥¸ìª½ ë°•ìŠ¤ê°€ ìˆ¨ê²¨ì ¸ ìˆë‹¤ë©´
+			// ¿À¸¥ÂÊ ¹Ú½º°¡ ¼û°ÜÁ® ÀÖ´Ù¸é
 			if (isHidden) {
-				// ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì´ë™í•˜ì—¬ ë³´ì´ëŠ” ì• ë‹ˆë©”ì´ì…˜ íš¨ê³¼ ì¶”ê°€
+				// ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿ÇÏ¿© º¸ÀÌ´Â ¾Ö´Ï¸ŞÀÌ¼Ç È¿°ú Ãß°¡
 				rightBox.style.transition = 'right 0.3s ease';
-				// ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì´ë™í•˜ì—¬ ë³´ì„
+				// ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿ÇÏ¿© º¸ÀÓ
 				rightBox.style.right = '0';
 			} else {
-				// ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì´ë™í•˜ì—¬ ì‚¬ë¼ì§€ëŠ” ì• ë‹ˆë©”ì´ì…˜ íš¨ê³¼ ì¶”ê°€
+				// ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿ÇÏ¿© »ç¶óÁö´Â ¾Ö´Ï¸ŞÀÌ¼Ç È¿°ú Ãß°¡
 				rightBox.style.transition = 'right 0.3s ease';
-				// ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì´ë™í•˜ì—¬ ì‚¬ë¼ì§
-				rightBox.style.right = '-300px'; // ì˜¤ë¥¸ìª½ ë°•ìŠ¤ì˜ ë„ˆë¹„ë§Œí¼ ì´ë™
+				// ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿ÇÏ¿© »ç¶óÁü
+				rightBox.style.right = '-300px'; // ¿À¸¥ÂÊ ¹Ú½ºÀÇ ³Êºñ¸¸Å­ ÀÌµ¿
 			}
 
-			// ìˆ¨ê²¨ì ¸ ìˆëŠ” ìƒíƒœì—ì„œëŠ” ë³´ì´ëŠ” ìƒíƒœë¡œ, ë³´ì´ëŠ” ìƒíƒœì—ì„œëŠ” ìˆ¨ê²¨ì ¸ ìˆëŠ” ìƒíƒœë¡œ
+			// ¼û°ÜÁ® ÀÖ´Â »óÅÂ¿¡¼­´Â º¸ÀÌ´Â »óÅÂ·Î, º¸ÀÌ´Â »óÅÂ¿¡¼­´Â ¼û°ÜÁ® ÀÖ´Â »óÅÂ·Î
 			isHidden = !isHidden;
 		});
 
