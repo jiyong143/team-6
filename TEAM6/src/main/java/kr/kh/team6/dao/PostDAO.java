@@ -37,7 +37,7 @@ public interface PostDAO {
 
 	ArrayList<PostVO> selectAllPostList();
 
-	ArrayList<PostVO> adminDeletePost(@Param("po_num")int po_num);
+	boolean adminDeletePost(@Param("po_num")int po_num);
 
 
 

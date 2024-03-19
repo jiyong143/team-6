@@ -142,7 +142,10 @@ public class PostServiceImp implements PostService{
 	}
 
 	@Override
-	public ArrayList<PostVO> adminDeletePost(int po_num) {
+	public boolean adminDeletePost(int po_num) {
+		if(po_num == 0) {
+			return false;
+		}
 		return postDao.adminDeletePost(po_num);
 	}
 

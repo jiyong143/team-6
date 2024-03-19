@@ -35,7 +35,7 @@ public interface PostService {
 
 	ArrayList<PostVO> getAllPostList();
 
-	ArrayList<PostVO> adminDeletePost(int po_num);
+	boolean adminDeletePost(int po_num);
 
 
 }
