@@ -34,6 +34,7 @@ public class PostListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		// 게시판들을 모두 가져온다
 		ArrayList<BoardVO> bList = boardService.getBoardList();
 		// 게시판을 포함하는 카테고리들의 번호로 구성된 리스트를 만든다
@@ -82,6 +83,10 @@ public class PostListServlet extends HttpServlet {
 			request.setAttribute("pm", pm);
 			request.getRequestDispatcher("/WEB-INF/views/post/list.jsp").forward(request, response);
 		}
+		boolean adminPost = (user.getMe_authority().equals("admin"));
+
+		request.setAttribute("adminPost", adminPost);
+		
 
 	}
 

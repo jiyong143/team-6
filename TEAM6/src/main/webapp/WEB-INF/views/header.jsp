@@ -13,6 +13,9 @@
 	background-color: white;
 	border: 1px solid white;
 }
+tr>td:hover{
+   box-shadow: inset 2px 2px 4px rgba(141, 102, 18, 1.2);
+}
 
 a {
 	color: black;

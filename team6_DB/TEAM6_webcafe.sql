@@ -103,6 +103,13 @@ ALTER TABLE `member` ADD CONSTRAINT `FK_memberState_TO_member_1` FOREIGN KEY (
 REFERENCES `memberState` (
 	`ms_state`
 );
+
+ 
+ 
+ ALTER TABLE board AUTO_INCREMENT = 1;
+ ALTER TABLE member AUTO_INCREMENT = 1;
+ ALTER TABLE category AUTO_INCREMENT = 1;
+ ALTER TABLE comment AUTO_INCREMENT = 1;
  
  INSERT INTO MEMBERSTATE VALUES('이용중'), ('기간정지'), ('영구정지'), ('탈퇴');
 insert into member values('admin',970307,'wkdrn002@naver.com',01044071418,'admin','서울시','정경호','이용중','admin');
