@@ -229,10 +229,12 @@
             max-height: 50px;
         }
         
-        .container1{
-        max-width : 1200px;
-        margin : 0 auto;
-        width : 100%;
+        .inputinput{
+        border:1px solid white;
+        width: 100%;
+        height : 300px;
+        outline-style: none;
+        
         }
 
     </style>
@@ -240,81 +242,6 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
-
-
-<!-- 최지용 프론트 코드 -->
-
-<div class="container1">
-   <%--   <h1>게시글 상세</h1>
-     <div>
-       <div >
-			<label for="title" class="form-label">제목:</label>
-			<input type="text" class="form-control" id="title" name="title" readonly value="${post.po_title }">
-	   </div>
-	   <div >
-			<label for="id" >작성자 아이디:</label>
-			<input type="text"  id="id" name="id"  readonly value="${post.po_me_id }">
-	   </div>
-	   <div class="mb-3 mt-3">
-			<label for="name" class="form-label">작성자 닉네임:</label>
-			<input type="text" class="form-control" id="name" name="name"  readonly value="${name}">
-	   </div>
-	   <div class="mb-3 mt-3">
-			<label for="date" class="form-label">작성일자:</label>
-			<input type="text" class="form-control" id="date" name="date" readonly value="${post.changeDate()}">
-	   </div>
-	   <div class="mb-3 mt-3">
-			<label for="view" class="form-label">조회수:</label>
-			<input type="text" class="form-control" id="view" name="view" readonly value="${post.po_views }">
-	   </div>
-	   <div class="mb-3 mt-3">
-			<label for="content" class="form-label">내용:</label>
-			<textarea rows="10"  class="form-control" id="content" name="content" readonly >${post.po_content }</textarea>
-	   </div>
-	   <a href = "<c:url value="/post/list?bNum=${post.po_bo_num}"/>" class="btn btn-outline-dark">목록으로</a>
-	   <c:if test="${post.po_me_id == user.me_id}"> <!-- 내가 작성한 게시글일 때만 삭제 버튼과 수정 버튼이 생기도록 -->
-	      <a href="<c:url value="/post/update?num=${post.po_num}"/>" class="btn btn-outline-success">게시글 수정</a>
-	      <a href = "<c:url value="/post/delete?num=${post.po_num}&bNum=${post.po_bo_num}"/>" class= "btn btn-outline-danger">게시글 삭제</a>
-	   </c:if>
-	   <a href = "<c:url value="/comment/insert?num=${num}"/>" class= "btn btn-outline-danger">댓글 작성</a>
-     </div>
-     <!-- 댓글 시작 -->
-     <br>
-     <h4>댓글</h4>
-     <br>
-     <table class="table table-hover">
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>내용</th>
-				<th>작성자 아이디</th>
-				<th>비고</th>
-			</tr>
-		</thead>
-		<tbody>
-            <c:forEach items="${comments}" var="comment">
-				<tr>
-					<td>${comment.co_num}</td>
-					<td>${comment.co_content}</td>
-					<td>${comment.co_me_id}</td>
-					<td>
-					<c:if test="${user.me_id==comment.co_me_id}">
-			             <a href = "<c:url value="/comment/delete?cNum=${comment.co_num}"/>" class= "btn btn-outline-danger">댓글 삭제</a>
-			             <a href = "<c:url value="/comment/update?cNum=${comment.co_num}"/>" class= "btn btn-outline-danger">댓글 수정</a>
-					</c:if>
-					</td>
-				</tr>
-			</c:forEach>
-			<c:if test="${comments.size() == 0 }">
-				<tr>
-					<th colspan="3">
-						<h4 class="text-center">등록된 댓글이 없습니다.</h4>
-					</th>
-				</tr>
-			</c:if>
-		</tbody>
-	</table>
-</div> --%>
 <!-- 정경호 프론트 코드 --> 
  <div class="body-group">
         <div class="board-box">
@@ -323,16 +250,19 @@
         <br>
         <form action="<c:url value="/comment/insert"/>" method="post">
             <div class="board-postList">
-                <h3>${post.po_title } </h3>
-                <h6>${post.po_me_id}(${name})</h6>
-                <h6>${post.changeDate()}</h6>
+            	<label>
+            	<h3>제목 : ${post.po_title }</h3> <span><h5 style="text-align: right;">날짜 :${post.changeDate()}</h5></span>
+            	<h5 style="text-align: right;">작성자 :${post.po_me_id}(${name})
+            	</h5>
+            	
+            	</label>
                 <c:if test="${post.po_me_id eq user.me_id }">
-                 <a href="<c:url value="/post/update?num=${post.po_num}"/>" class="btn btn-outline-success">게시글 수정</a> 
-                 <a href = "<c:url value="/post/delete?num=${post.po_num}&bNum=${post.po_bo_num}"/>" class= "btn btn-outline-danger">게시글 삭제</a>
+                 <a href="<c:url value="/post/update?num=${post.po_num}"/>" class=" ">게시글 수정</a> 
+                 <a href = "<c:url value="/post/delete?num=${post.po_num}&bNum=${post.po_bo_num}"/>" class= " ">게시글 삭제</a>
                 </c:if>
                 <table>
                 <div class="hr"></div> 
-                <h6>${post.po_content}</h6>
+                <input  class="inputinput" type="text" readonly="readonly" style="outline-style: none;" value="${post.po_content}">
                     <div class="hr"></div>    
                     <div class="comment-insert">  
                         <label for="content">댓글</label>
