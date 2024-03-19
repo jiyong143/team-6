@@ -1,0 +1,95 @@
+		//입력하지 않은 것이 하나라도 있을 시
+		if(id == null || id.length() == 0
+		|| pw == null || pw.length() == 0 
+		|| pw2 == null || pw2.length() == 0 
+		|| name == null || name.length() == 0
+		|| phone == null || phone.length() == 0
+		|| address == null || address.length() == 0
+		|| email == null || email.length() == 0
+		|| birth == null || birth.length() == 0) {
+			request.setAttribute("msg", "필수 항목들을 모두 입력해주세요.");
+			request.setAttribute("url","signup");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+			return;
+		}
+		
+		//아이디 정규표현식 체크
+		if(!memberService.checkIdRegex(id)) {
+			request.setAttribute("msg", "아이디는 영문 대·소문자, 숫자 6~8자만 사용가능합니다.111");
+			request.setAttribute("url", "signup");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+			return;
+		}
+		
+		//아이디 중복
+		if(!memberService.checkDuplicateId(member, id)) {
+			request.setAttribute("msg", "이미 사용 중인 아이디 입니다.");
+			request.setAttribute("url", "signup");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+			return;
+		}
+		
+		//비번 정규표현식 체크
+		if(!memberService.checkPwRegex(pw)) {
+			request.setAttribute("msg", "비밀번호는 영문 대·소문자, 숫자, 특수기호(!@#$) 8~14자만 사용가능합니다.");
+			request.setAttribute("url", "signup");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+			return;
+		}
+		
+		//비번과 비번확인이 일치하지 않을 때
+		if(!pw.equals(pw2)) {
+			request.setAttribute("msg", "입력했던 비밀번호와 일치하지 않습니다.");
+			request.setAttribute("url", "signup");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+			return;
+		}
+		
+		//이름 정규표현식 체크
+		if(!memberService.checkNameRegex(name)) {	
+			request.setAttribute("msg", "이름은 한글로 최소 1자 ~ 최대 5자 까지 가능합니다.");
+			request.setAttribute("url", "signup");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+			return;
+		}	
+		
+		//닉네임 중복 체크
+		if(memberService.compareName(id, name) == 1) {
+			request.setAttribute("msg", "중복된 닉네임 입니다.");
+			request.setAttribute("url", "signup");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+			return;
+		}
+		
+		// 전화번호 정규표현식 체크
+		if(!memberService.checkPhoneRegex(phone)) {
+			request.setAttribute("msg", "전화번호는 -를 제외한 11자리를 입력하세요.");
+			request.setAttribute("url", "signup");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+			return;
+		}
+		
+		//전화번호 중복 체크
+		if(memberService.comparePhone(id, phone) == 1) {
+			request.setAttribute("msg", "중복된 전화번호 입니다.");
+			request.setAttribute("url", "signup");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+			return;
+		}
+		
+		// 이메일 정규표현식 체크
+		if(!memberService.checkEmailRegex(email)) {
+			request.setAttribute("msg", "이메일은 최대 30자 까지 가능합니다.");
+			request.setAttribute("url", "signup");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+			return;
+		}
+		
+		//주소 양식 체크
+		if(!memberService.checkAddressRegex(address)) {
+			request.setAttribute("msg", "주소를 올바르게 입력하세요. 예시) 양식 : OO시 OO구 OO동");
+			request.setAttribute("url", "signup");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+			return;
+		}
+		

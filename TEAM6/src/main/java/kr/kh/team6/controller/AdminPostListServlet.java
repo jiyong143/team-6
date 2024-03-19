@@ -16,23 +16,27 @@ import javax.servlet.http.HttpSession;
 import kr.kh.team6.model.vo.BoardVO;
 import kr.kh.team6.model.vo.CategoryVO;
 import kr.kh.team6.model.vo.MemberVO;
+import kr.kh.team6.model.vo.PostVO;
 import kr.kh.team6.service.BoardService;
 import kr.kh.team6.service.BoardServiceImp;
 import kr.kh.team6.service.CategoryService;
 import kr.kh.team6.service.CategoryServiceImp;
+import kr.kh.team6.service.PostService;
+import kr.kh.team6.service.PostServiceImp;
 
-@WebServlet("/board/list")
-public class BoardListServlet extends HttpServlet {
+@WebServlet("/admin/post")
+public class AdminPostListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private PostService postService = new PostServiceImp();
 	private BoardService boardService = new BoardServiceImp();
 	private CategoryService categoryService = new CategoryServiceImp();
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO) session.getAttribute("admin");
 
-		if (user == null ||!user.getMe_authority().equals("admin")) {
+		if (user == null || !user.getMe_authority().equals("admin")) {
 			request.setAttribute("msg", "관리자 권한이 필요합니다. 관리자로 로그인 후 다시 시도하세요");
 			request.setAttribute("url", "/");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
@@ -55,15 +59,14 @@ public class BoardListServlet extends HttpServlet {
 		}
 		// 검색어를 주고 게시글 리스트를 가져옴
 		request.setAttribute("categoryList", categoryList);
+		ArrayList<PostVO> postList = postService.getAllPostList();
+		request.setAttribute("postList", postList);
+		request.getRequestDispatcher("/WEB-INF/views/admin/post.jsp").forward(request, response);
+	}
 
-		
-	
-		ArrayList<BoardVO> list2 = boardService.getBoardList();
-		
-		request.setAttribute("list", list2);//화면에 전송
-		
-		request.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(request, response);
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }

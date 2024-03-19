@@ -5,15 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판</title>
+<title>관리자 페이지</title>
+<jsp:include page="/WEB-INF/views/header.jsp" />
 <style type="text/css">
-.search-container{
-	margin-bottom: 10px;
-}
-.select-box{
-padding: 10px;
- background-color: white;
- border: 1px solid white;
+.select-box {
+	padding: 10px;
+	background-color: white;
+	border: 1px solid white;
 }
 
 .body-group {
@@ -244,107 +242,150 @@ padding: 10px;
 	background-color: rgba(141, 102, 18, 1);
 }
 
+h2, h3 {
+	text-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
+}
+/* 리스트 박스 스타일 */
+.lbox-group, .rbox-group {
+	display: flex;
+	gap: 20px;
+	margin-bottom: 20px;
+}
 
+.lbox, .rbox {
+	background-color: #fff;
+	border-radius: 8px;
+	padding: 20px;
+	transition: box-shadow 0.3s ease;
+	box-shadow: 0px 0px 20px rgba(141, 102, 18, 0.1);
+	white-space: nowrap;
+	max-height: 370px;
+	text-overflow: ellipsis;
+	overflow: hidden;  
+}
+
+/* 호버 효과와 그림자 효과 */
+.lbox:hover, .rbox:hover {
+	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
+}
 </style>
+
 </head>
+
 <body>
-	<jsp:include page="/WEB-INF/views/header.jsp" />
-	<form action="<c:url value="/post/list"/>">
-			<input type="hidden" name="bNum" value="${board.bo_num}">
-			<div class="search-container">
-				<select name="type" class="select-box">
-					<option value="all"
-						<c:if test='${pm.cri.type == "all"}'>selected</c:if>>전체</option>
-					<option value="title"
-						<c:if test='${pm.cri.type == "title"}'>selected</c:if>>제목</option>
-					<option value="writer"
-						<c:if test='${pm.cri.type == "writer"}'>selected</c:if>>작성자</option>
-				</select> <input type="text" placeholder="검색. . ."
-					name="search" value="${pm.cri.search}">
-				<button type="submit"></button>
-			</div>
-		</form>
 	<div class="body-group">
-		<div class="board-box">
-			<h2>${board.bo_title}</h2>
-		</div>
-		<br>
-		<form action="<c:url value="/post/insert"/>" method="post">
-			<div class="board-postList">
-				<h3>
-					게시글 리스트 <a
-						href="<c:url value='/post/insert'/>?bNum=${board.bo_num}&bName=${board.bo_title}"
-						class="write-button">글쓰기</a>
-				</h3>
+		<form action=<c:url value="/admin/manger"/>>
+			<div>
+				<!-- lbox 묶음 -->
+				<div class="lbox-group">
+					<div class="lbox">
+						<table>
+							<thead>
+								<h2>카테고리 리스트</h2>
+								<tr>
+									<th colspan="2">번호</th>
+									<th colspan="2">카테고리</th>
 
-				<div class="hr"></div>
-				<table>
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>작성일</th>
-							<th>조회수</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${postList}" var="post">
-							<tr>
-								<td>${post.po_num}</td>
-								<td><c:url var="url" value="/post/detail">
-										<c:param name="num" value="${post.po_num}" />
-										<c:param name="bName" value="${board.bo_title}"/>
-										<c:param name="bNum" value="${board.bo_num }"/>
-									</c:url> <a href="${url}">${post.po_title}</a></td> 
-								<td><a href="<c:url value=""/>">${post.po_me_id}</a></td>
-								<td>${post.changeDate()}</td>
-								<td>${post.po_views}</td>
-							</tr>
-						</c:forEach>
-						<c:if test="${empty postList}">
-							<tr>
-								<td colspan="5">
-									<h3 class="text-center">등록된 게시글이 없습니다.</h3>
-								</td>
-							</tr>
-						</c:if>
-					</tbody>
-				</table>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${caList}" var="category">
+									<tr>
+										<td colspan="2">${category.ca_num}</td>
+										<td colspan="2">${category.ca_title}</td>
+										<td></td>
+
+									</tr>
+								</c:forEach>
+								<a href="<c:url value="/category/list"/>" class="write-button">카테고리
+									관리</a>
+							</tbody>
+						</table>
+					</div>
+					<div class="lbox">
+						<table>
+							<thead>
+								<h2>게시판 리스트</h2>
+								<tr>
+									<th>번호</th>
+									<th>게시판</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${boardList}" var="board">
+									<tr>
+										<td>${board.bo_num }</td>
+										<td>${board.bo_title}</td>
+									</tr>
+								</c:forEach>
+								<a href="<c:url value="/board/list"/>" class="write-button">게시판관리</a>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- lbox묶음 끝 -->
+
+				<!-- rbox 묶음  -->
+				<div class="rbox-group">
+					<div class="rbox">
+						<table>
+							<thead>
+								<h2>게시글 리스트</h2>
+								<tr>
+									<th colspan="2">번호</th>
+									<th colspan="2">게시글</th>
+									<th colspan="2">작성자</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${postList}" var="post">
+									<tr>
+										<td colspan="2">${post.po_num }</td>
+										<td colspan="2">${post.po_title}</td>
+										<td colspan="2">${post.po_me_id}</td>
+									</tr>
+								</c:forEach>
+								<a href="<c:url value="/admin/post"/>" class="write-button">게시글
+									관리</a>
+							</tbody>
+						</table>
+					</div>
+					<div class="rbox">
+						<table>
+							<thead>
+								<h2>회원 리스트</h2>
+								<h3>전체회원수 : ${memberCount}</h3>
+								<tr>
+									<th colspan="2">아이디</th>
+									<th colspan="2">이름</th>
+									<th colspan="2">생년월일</th>
+									<th colspan="2">권한</th>
+									<th colspan="2">상태</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${memberList}" var="member">
+									<tr>
+										<td colspan="2">${member.me_id }</td>
+										<td colspan="2">${member.me_name }</td>
+										<td colspan="2">${member.me_birth}</td>
+										<td colspan="2">${member.me_authority}</td>
+										<td colspan="2">${member.me_ms_state}</td>
+									</tr>
+								</c:forEach>
+								<a href="<c:url value="/admin/member"/>" class="write-button">회원
+									관리</a>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- rbox 묶음 끝 -->
 			</div>
 		</form>
-
-		<ul class="pagination">
-			<c:if test="${pm.prev}">
-				<li><c:url var="prevUrl" value="/post/list">
-						<c:param name="type" value="${pm.cri.type}" />
-						<c:param name="search" value="${pm.cri.search}" />
-						<c:param name="page" value="${pm.startPage-1}" />
-						<c:param name="bNum" value="${board.bo_num}" />
-					</c:url> <a class="page-link pagination" href="${prevUrl}">이전</a></li>
-			</c:if>
-			<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
-				<li <c:if test="${pm.cri.page==i}">class="active"</c:if>><c:url
-						var="page" value="/post/list">
-						<c:param name="type" value="${pm.cri.type}" />
-						<c:param name="search" value="${pm.cri.search}" />
-						<c:param name="page" value="${i}" />
-						<c:param name="bNum" value="${board.bo_num}" />
-					</c:url> <a class="page-link pagination" href="${page}">${i}</a></li>
-			</c:forEach>
-			<c:if test="${pm.next}">
-				<li><c:url var="nextUrl" value="/post/list">
-						<c:param name="type" value="${pm.cri.type}" />
-						<c:param name="search" value="${pm.cri.search}" />
-						<c:param name="page" value="${pm.endPage+1}" />
-						<c:param name="bNum" value="${board.bo_num}" />
-					</c:url> <a class="page-link pagination" href="${nextUrl}">다음</a></li>
-			</c:if>
-		</ul>
 	</div>
-
-
-	<!-- 왼쪽,오른쪽 박스 / 검색창 / 검색창 호버시 게시글 나옴 -->
 	<script>
 		function toggleCategory() {
 			var category = document.getElementById("category");
@@ -364,21 +405,21 @@ padding: 10px;
 			this.classList.toggle('clicked');
 		});
 
-		// 검색창 요소 가져오기
-		var searchContainer = document.querySelector('.search-container');
+		/*      // 검색창 요소 가져오기
+		     var searchContainer = document.querySelector('.search-container');
 
-		// 최근 게시글 리스트 요소 가져오기
-			var recentPosts = document.querySelector('.recent-posts');
+		     // 최근 게시글 리스트 요소 가져오기
+		     var recentPosts = document.querySelector('.recent-posts');
 
-			// 검색창에 마우스를 올리면 최근 게시글 리스트를 표시
-			/*searchContainer.addEventListener('mouseenter', function() {
-				recentPosts.style.display = 'block';
-			}); */
+		     // 검색창에 마우스를 올리면 최근 게시글 리스트를 표시
+		     searchContainer.addEventListener('mouseenter', function() {
+		        recentPosts.style.display = 'block';
+		     }); */
 
-		// 최근 게시글 리스트에서 마우스가 벗어나면 숨김
-		/*	recentPosts.addEventListener('mouseleave', function() {
-				recentPosts.style.display = 'none';
-			});  */
+		/*    // 최근 게시글 리스트에서 마우스가 벗어나면 숨김
+		   recentPosts.addEventListener('mouseleave', function() {
+		      recentPosts.style.display = 'none';
+		   }); */
 
 		var rightBox = document.querySelector('.right-box');
 
@@ -412,5 +453,7 @@ padding: 10px;
 
 		const categoryItems = document.querySelectorAll('.category li');
 	</script>
+
+
 </body>
 </html>

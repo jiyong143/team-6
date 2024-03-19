@@ -87,6 +87,8 @@ public class BoardServiceImp implements BoardService {
 			return false;
 		}
 		BoardVO dbBoard = boardDao.selectBoard(board.getBo_num());
+		System.out.println("서비스임프 디비보드:" +dbBoard);
+		System.out.println("서비스임프 보드:" +board);
 		if (dbBoard == null) {
 			return false;
 		}
