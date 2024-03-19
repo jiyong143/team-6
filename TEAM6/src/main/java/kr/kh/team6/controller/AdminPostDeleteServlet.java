@@ -33,15 +33,20 @@ public class AdminPostDeleteServlet extends HttpServlet {
 		}
 		int po_num = Integer.parseInt(request.getParameter("po_num"));
 		
-		ArrayList<PostVO> postList = postService.adminDeletePost(po_num);
+		boolean res = postService.adminDeletePost(po_num);
 		
-		request.setAttribute("postList", postList);
-		request.getRequestDispatcher("/WEB-INF/views/admin/postdelete.jsp").forward(request, response);
+		if (res) {
+			request.setAttribute("msg", "게시물을 삭제 했습니다.");
+			request.setAttribute("url", "admin/post");
+		}
+		else {
+			request.setAttribute("msg", "게시물을 삭제하지 못했습니다..");
+			request.setAttribute("url", "admin/post?po_num=" + po_num);
+		}
+		
+		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
