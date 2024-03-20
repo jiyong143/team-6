@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>게시글 관리</title>
+<title>What do you want to ask? - 게시글 관리</title>
 <style type="text/css">
 .search-container {
 	margin-bottom: 10px;

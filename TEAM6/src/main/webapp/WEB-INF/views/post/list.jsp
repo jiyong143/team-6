@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판</title>
+<title>What do you want to ask? - 게시글 목록</title>
 <style type="text/css">
 .search-container{
 	margin-bottom: 10px;

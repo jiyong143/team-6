@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>message</title> <!-- 알림창으로 팝업 후 원하는 페이지로 이동 -->
+<title>What do you want to ask? - 메세지</title> <!-- 알림창으로 팝업 후 원하는 페이지로 이동 -->
 </head>
 <body>
 	<script type="text/javascript">

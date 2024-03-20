@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>What do you want to ask? - 회원 관리</title>
 
 <style type="text/css">
 .search-container {
