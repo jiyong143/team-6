@@ -256,8 +256,8 @@ margin-top: 20px;
 .input-input {
       white-space: pre-wrap; /* 자동으로 줄 바꿈되도록 설정 */
     border: 1px solid white;
-    min-width:1300px;
-    max-width:1300px;
+    min-width:1250px;
+    max-width:1250px;
     min-height: 400px;
     max-height: 400px;
     outline-style: none;
@@ -325,10 +325,6 @@ margin-top: 20px;
 			</div>
 		</form>
 	</div>
-
-	<!--  -->
-
-
 	<script>
 		function toggleCategory() {
 			var category = document.getElementById("category");
