@@ -281,6 +281,10 @@
                         <c:forEach items="${comments}" var="comment">
                             <span class="writer">${comment.co_me_id}</span>
                             <p>${comment.co_content}</p>
+                             <c:if test="${comment.co_me_id eq user.me_id }">
+                                <a href="<c:url value="/comment/update?bName=${bName}&bNum=${bNum}&cNum=${comment.co_num }"/>" class="">댓글 수정</a> 
+                                <a href = "<c:url value="/comment/delete?num=${post.po_num}&bNum=${post.po_bo_num}"/>" class= "">댓글 삭제</a>
+                             </c:if>      
                         <div class="hr"></div>
                         </c:forEach>
                          <c:if test="${comments.size() == 0 }">

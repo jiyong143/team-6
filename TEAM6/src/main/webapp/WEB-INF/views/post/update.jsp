@@ -337,7 +337,7 @@
 		<input type="hidden" name="num" value="${post.po_num}">
 		<input type="hidden" name="bNum" value="${post.po_bo_num}">
         <div class="board-box">
-            <h2>${bName}</h2>
+            <h2><a href="<c:url value="/post/list"/>?bNum=${bNum}">${bName}</a></h2>
         </div>
         <br>
 		<form action="<c:url value="/post/update"/>" method="post">

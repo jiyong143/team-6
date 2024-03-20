@@ -269,6 +269,13 @@ public class MemberServiceImp implements MemberService {
 		}
 		return true;
 	}
+	@Override
+	public MemberVO getMember(String id) {
+		if(id==null) {
+			return null;
+		}
+		return memberDao.selectMember(id);
+	}
 	
 
 }
