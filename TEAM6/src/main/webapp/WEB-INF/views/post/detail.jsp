@@ -290,7 +290,7 @@ margin-top: 20px;
 				
 				</label>
 				<c:if test="${post.po_me_id eq user.me_id }">
-					<a href="<c:url value="/post/update?num=${post.po_num}"/>"
+					<a href="<c:url value="/post/update?num=${post.po_num}&bNum=${bNum}&bName=${bName}"/>"
 						class="btn">게시글 수정</a>
 					<a
 						href="<c:url value="/post/delete?num=${post.po_num}&bNum=${post.po_bo_num}"/>"
@@ -316,6 +316,12 @@ margin-top: 20px;
 						<c:forEach items="${comments}" var="comment">
 							<span class="writer">${comment.co_me_id}</span>
 							<p class="p">${comment.co_content}</p>
+							<c:if test="${comment.co_me_id eq user.me_id }">
+					          <a href="<c:url value="/comment/update?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>" class="btn">댓글 수정</a>
+					          <a href="<c:url value="/comment/delete?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>" class="btn">댓글 삭제</a>
+				            </c:if>
+							
+							
 							<div class="hr"></div>
 						</c:forEach>
 						<c:if test="${comments.size() == 0 }">
