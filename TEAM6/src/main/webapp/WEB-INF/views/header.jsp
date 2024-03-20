@@ -294,6 +294,18 @@ nav a:hover {
 	background-color: rgba(141, 102, 18, 0.5);
 	color: white;
 }
+.profile-image {
+    width: 100px; 
+    height: 100px; 
+}
+textarea {
+	 font-size: 24px;
+	   font-family: "Arial", sans-serif; 
+}
+.p{
+	 font-size: 18px;
+	   font-family: "Arial", sans-serif; 
+}
 </style>
 </head>
 <body>
@@ -332,6 +344,14 @@ nav a:hover {
 	</button>
 	<div class="right-box">
 		<c:if test="${user != null }">
+			<c:choose>
+				<c:when test='${!user.getMe_authority().equals("admin")}'>
+					<img src="https://cdns.iconmonstr.com/wp-content/releases/preview/2016/240/iconmonstr-generation-9.png" alt="프로필 사진" class="profile-image">
+				</c:when>
+				<c:when test='${user.getMe_authority().equals("admin")}'>
+					<img src="https://cdns.iconmonstr.com/wp-content/releases/preview/2015/240/iconmonstr-crown-5.png" alt="프로필 사진" class="profile-image">
+				</c:when>
+			</c:choose>
 			<h3>${user.me_name}</h3>
 			<h4>${user.me_id}</h4>
 			<p>${user.me_email}</p>

@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 상세</title>
+<title>게시글 상세</title> 
   <style>
 
         .body-group {
-            padding: 100px;
+            padding: 100px; 
             margin-left: 150px;
             margin-right: 150px;
             padding-bottom: 150px;

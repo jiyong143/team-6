@@ -243,6 +243,12 @@ padding: 10px;
 .write-button:hover {
 	background-color: rgba(141, 102, 18, 1);
 }
+.admin-post {
+    background-color: lightyellow;  
+}
+tr>td:hover{
+   box-shadow: inset 2px 2px 4px rgba(141, 102, 18, 1.2);
+}
 
 
 </style>
@@ -290,10 +296,10 @@ padding: 10px;
 					</thead>
 					<tbody>
 						<c:forEach items="${postList}" var="post">
-							<tr>
+							<tr id="post_${post.po_num}" data-author="${post.po_me_id}">
 								<td>${post.po_num}</td>
 								<td><c:url var="url" value="/post/detail">
-										<c:param name="num" value="${post.po_num}" />
+										<c:param name="num" value="${post.po_num-1}" />
 										<c:param name="bName" value="${board.bo_title}"/>
 										<c:param name="bNum" value="${board.bo_num }"/>
 									</c:url> <a href="${url}">${post.po_title}</a></td> 
@@ -412,5 +418,16 @@ padding: 10px;
 
 		const categoryItems = document.querySelectorAll('.category li');
 	</script>
+	
+	<script>
+    // 관리자가 작성한 글인지 여부를 확인하고, 클래스를 추가
+    var rows = document.querySelectorAll("[id^='post_']");
+    rows.forEach(function(row) {
+        var author = row.getAttribute("data-author");
+        if (author === "admin") {
+            row.classList.add("admin-post");
+        }
+    });
+</script>
 </body>
 </html>
