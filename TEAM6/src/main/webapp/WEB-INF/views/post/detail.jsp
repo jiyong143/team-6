@@ -267,6 +267,11 @@ margin-top: 20px;
     box-sizing: border-box; /* 내부 여백이 요소의 크기에 포함되도록 설정 */
 }
 
+.abtn:hover{
+      text-decoration : underline;
+      color : red;}
+      
+      
     </style>
 </head>
 <body>
@@ -315,8 +320,8 @@ margin-top: 20px;
 							<span class="writer">${comment.co_me_id}</span>
 							<p class="p">${comment.co_content}</p>
 							<c:if test="${comment.co_me_id eq user.me_id }">
-					          <a href="<c:url value="/comment/update?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>" class="btn">댓글 수정</a>
-					          <a href="<c:url value="/comment/delete?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>" class="btn">댓글 삭제</a>
+					          <a href="<c:url value="/comment/update?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>" class="abtn">댓글 수정</a>
+					          <a href="<c:url value="/comment/delete?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>" class="abtn">댓글 삭제</a>
 				            </c:if>
 							
 							
