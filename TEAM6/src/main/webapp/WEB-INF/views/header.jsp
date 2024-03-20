@@ -311,7 +311,7 @@ textarea {
 <body>
 	<div class="logo">
 		<h1>
-			<a href='<c:url value="/" />'>What do you want to ask?</a>
+			<a href='<c:url value="/" />'>What Do You Want To Ask?</a>
 		</h1>
 	</div>
 	<nav class="category-container">
