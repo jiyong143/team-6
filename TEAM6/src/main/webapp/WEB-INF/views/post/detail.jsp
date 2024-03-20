@@ -300,7 +300,6 @@ margin-top: 20px;
 						href="<c:url value="/post/delete?num=${post.po_num}&bNum=${post.po_bo_num}"/>"
 						class="btn">게시글 삭제</a>
 				</c:if>
-
 				<div class="hr gr"></div>
 					<h5 style="text-align: right;">조회수 : ${post.po_views}</h5>	
 				<textarea class="input-input"  readonly="readonly" >${post.po_content}</textarea>
