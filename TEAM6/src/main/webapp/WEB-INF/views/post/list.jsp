@@ -299,7 +299,7 @@ tr>td:hover{
 							<tr id="post_${post.po_num}" data-author="${post.po_me_id}">
 								<td>${post.po_num}</td>
 								<td><c:url var="url" value="/post/detail">
-										<c:param name="num" value="${post.po_num-1}" />
+										<c:param name="num" value="${post.po_num}" />
 										<c:param name="bName" value="${board.bo_title}"/>
 										<c:param name="bNum" value="${board.bo_num }"/>
 									</c:url> <a href="${url}">${post.po_title}</a></td> 
