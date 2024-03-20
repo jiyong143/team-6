@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>What do you want to ask? - 회원 관리</title>
-
+<title>게시글 관리</title>
 <style type="text/css">
 .search-container {
 	margin-bottom: 10px;
@@ -266,45 +265,37 @@
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 </style>
-
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
 	<div class="body-group">
 		<br>
-		<form action="<c:url value="/admin/delete"/>" method="post">
 			<div class="board-postList">
-				<h2>회원 리스트</h2>
-
+				<h2>댓글 리스트</h2>
 				<div class="hr"></div>
 				<table>
 					<thead>
 						<tr>
-							<th>이름</th>
-							<th>아이디</th>
-							<th>생년월일</th>
-							<th>권한</th>
-							<th>상태</th>
+							<th>번호</th>
+							<th>댓글</th>
+							<th>작성자</th>
 							<th>기타</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${memberList}" var="member">
+						<c:forEach items="${commentList}" var="comment">
 							<tr>
-								<td>${member.me_name }</td>
-								<td>${member.me_id}</td>
-								<td>${member.me_birth}</td>
-								<td>${member.me_authority}</td>
-								<td>${member.me_ms_state}</td>
-								<td><a style="text-align: center;" class="btn write-button"
-									href='<c:url value="/admin/delete?me_id=${member.me_id}"/>'>회원탈퇴</a></td>
+								<td>${comment.co_num }</td>
+								<td>${comment.co_content}</td>
+								<td>${comment.co_me_id}</td>
+								<td><a class="btn write-button"
+									href="<c:url value="/admin/commentdelete?co_num=${comment.co_num}"/>">
+										삭제 </a></td>
 							</tr>
 						</c:forEach>
-
 					</tbody>
 				</table>
 			</div>
-		</form>
 	</div>
 	<script>
 		function toggleCategory() {
@@ -373,6 +364,5 @@
 
 		const categoryItems = document.querySelectorAll('.category li');
 	</script>
-
 </body>
 </html>

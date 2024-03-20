@@ -11,16 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.team6.model.vo.MemberVO;
 import kr.kh.team6.model.vo.PostVO;
+import kr.kh.team6.service.CommentService;
+import kr.kh.team6.service.CommentServiceImp;
 import kr.kh.team6.service.PostService;
 import kr.kh.team6.service.PostServiceImp;
 
-/**
- * Servlet implementation class AdminPostDeleteServlet
- */
-@WebServlet("/admin/postdelete")
-public class AdminPostDeleteServlet extends HttpServlet {
+@WebServlet("/admin/commentdelete")
+public class AdminCommentDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	PostService postService = new PostServiceImp();
+	private CommentService commentService = new CommentServiceImp();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -31,17 +30,17 @@ public class AdminPostDeleteServlet extends HttpServlet {
 			request.setAttribute("url", "/");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}
-		int po_num = Integer.parseInt(request.getParameter("po_num"));
+		int co_num = Integer.parseInt(request.getParameter("co_num"));
 		
-		boolean res = postService.adminDeletePost(po_num);
+		boolean res = commentService.adminDeleteComment(co_num);
 		
 		if (res) {
-			request.setAttribute("msg", "게시물을 삭제 했습니다.");
-			request.setAttribute("url", "admin/post");
+			request.setAttribute("msg", "댓글을 삭제 했습니다.");
+			request.setAttribute("url", "admin/comment");
 		}
 		else {
-			request.setAttribute("msg", "게시물을 삭제하지 못했습니다..");
-			request.setAttribute("url", "admin/post?po_num=" + po_num);
+			request.setAttribute("msg", "댓글을 삭제하지 못했습니다..");
+			request.setAttribute("url", "admin/comment?po_num=" + co_num);
 		}
 		
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);

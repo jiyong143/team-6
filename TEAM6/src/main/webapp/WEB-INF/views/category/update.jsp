@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>카테고리 수정</title>
+<title>What do you want to ask? - 카테고리 수정</title>
 <style type="text/css">
 a {
 	color: #333;

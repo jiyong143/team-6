@@ -42,5 +42,7 @@ public interface MemberService {
 	ArrayList<MemberVO> getMemberList();
 
 	boolean deleteMember(String me_id, MemberVO user);
+
+	MemberVO getMember(String id);
 	
 }

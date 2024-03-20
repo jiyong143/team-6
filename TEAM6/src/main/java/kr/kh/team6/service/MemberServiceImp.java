@@ -93,12 +93,14 @@ public class MemberServiceImp implements MemberService {
 		//이름은 TEXT인데, 최대 5글자
 		if(!checkNameRegex(memberVO.getMe_name())) {
 			System.out.println("이름은 한글로 최대 5자 까지 가능합니다.");
+			System.out.println(memberVO.getMe_name());
 			return false;
 		}
 		
 		//전화번호 11자 고정 CHAR(11)
 		if(!checkPhoneRegex(memberVO.getMe_phone())) {
 			System.out.println("전화번호는 -를 제외한 11자리를 입력하세요.");
+			System.out.println(memberVO.getMe_phone());
 			return false;
 		}
 		
@@ -268,6 +270,13 @@ public class MemberServiceImp implements MemberService {
 			return false;
 		}
 		return true;
+	}
+	@Override
+	public MemberVO getMember(String id) {
+		if(id==null) {
+			return null;
+		}
+		return memberDao.selectMember(id);
 	}
 	
 

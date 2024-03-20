@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 상세</title>
+<title>What do you want to ask? - 게시글 상세</title>
 <style>
 .body-group {
 	padding: 100px;
@@ -207,6 +207,7 @@
 	box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
 }
 
+
 .comment-list span {
 	box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
 	border: 1px solid #ddd;
@@ -254,10 +255,10 @@
 margin-top: 20px;
 }
 .input-input {
-      white-space: pre-wrap; /* 자동으로 줄 바꿈되도록 설정 */
+     white-space: pre-wrap; /* 자동으로 줄 바꿈되도록 설정 */
     border: 1px solid white;
-    min-width:1300px;
-    max-width:1300px;
+    min-width:1250px;
+    max-width:1250px;
     min-height: 400px;
     max-height: 400px;
     outline-style: none;
@@ -266,8 +267,11 @@ margin-top: 20px;
     padding: 5px; /* 내부 여백 추가 */
     box-sizing: border-box; /* 내부 여백이 요소의 크기에 포함되도록 설정 */
 }
+.abtn:hover{
+	text-decoration: underline;
+	color:  rgba(141, 102, 18, 0.6);
+}
 </style>
-
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
@@ -289,13 +293,12 @@ margin-top: 20px;
 				
 				</label>
 				<c:if test="${post.po_me_id eq user.me_id }">
-					<a href="<c:url value="/post/update?num=${post.po_num}"/>"
+					<a href="<c:url value="/post/update?num=${post.po_num}&bNum=${bNum}&bName=${bName}"/>"
 						class="btn">게시글 수정</a>
 					<a
 						href="<c:url value="/post/delete?num=${post.po_num}&bNum=${post.po_bo_num}"/>"
 						class="btn">게시글 삭제</a>
 				</c:if>
-
 				<div class="hr gr"></div>
 					<h5 style="text-align: right;">조회수 : ${post.po_views}</h5>	
 				<textarea class="input-input"  readonly="readonly" >${post.po_content}</textarea>
@@ -305,9 +308,10 @@ margin-top: 20px;
 						<input type="hidden" name="num" value="${post.po_num }"> <input
 							type="hidden" name="bNum" value="${bNum}"> <input
 							type="hidden" name="bName" value="${bName}">
-						<textarea rows="1" id="content" name="content" class="content"
+						<textarea style="border-radius:10px;"
+						rows="1" id="content" name="content" class="content"
 							placeholder="Enter comment"></textarea>
-						<button type="submit">등록</button>
+						<button type="submit" style="width: 13%;">등록</button>
 					</div>
 					<br>
 					<div class="hr"></div>
@@ -315,6 +319,12 @@ margin-top: 20px;
 						<c:forEach items="${comments}" var="comment">
 							<span class="writer">${comment.co_me_id}</span>
 							<p class="p">${comment.co_content}</p>
+							<c:if test="${comment.co_me_id eq user.me_id }">
+					          <a href="<c:url value="/comment/update?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>" class="abtn">수정</a>
+					          <a href="<c:url value="/comment/delete?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>" class="abtn">삭제</a>
+				            </c:if>
+							
+							
 							<div class="hr"></div>
 						</c:forEach>
 						<c:if test="${comments.size() == 0 }">
@@ -325,9 +335,6 @@ margin-top: 20px;
 			</div>
 		</form>
 	</div>
-
-	<!--  -->
-
 
 	<script>
 		function toggleCategory() {

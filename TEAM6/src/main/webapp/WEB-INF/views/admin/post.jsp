@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>게시글 관리</title>
+<title>What do you want to ask? - 게시글 관리</title>
 <style type="text/css">
 .search-container {
 	margin-bottom: 10px;
@@ -293,7 +293,7 @@
 								<td>${post.po_num }</td>
 								<td>${post.po_title}</td>
 								<td>${post.po_me_id}</td>
-								<td>${post.po_date}</td>
+								<td>${post.changeDate()}</td>
 								<td><a class="btn write-button"
 									href="<c:url value="/admin/postdelete?po_num=${post.po_num}"/>">
 										삭제 </a></td>

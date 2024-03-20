@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 페이지</title>
+<title>What do you want to ask? - 관리자 페이지(커뮤니티 관리)</title>
 <jsp:include page="/WEB-INF/views/header.jsp" />
 <style type="text/css">
 .select-box {
@@ -268,6 +268,17 @@ h2, h3 {
 .lbox:hover, .rbox:hover {
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
+
+.date{
+    font-size: 45px; 
+    color: rgb(255, 255, 255);  /* 흰색 */
+}
+.time{
+	text-align:center;
+    font-size: 50px;
+    font-weight: bold;
+    color: rgba(141, 102, 18, 1);
+}
 </style>
 
 </head>
@@ -282,6 +293,7 @@ h2, h3 {
 						<table>
 							<thead>
 								<h2>카테고리 리스트</h2>
+								<h3>전체 카테고리 수 : ${categoryCount}</h3>
 								<tr>
 									<th colspan="2">번호</th>
 									<th colspan="2">카테고리</th>
@@ -306,6 +318,7 @@ h2, h3 {
 						<table>
 							<thead>
 								<h2>게시판 리스트</h2>
+								<h3>전체 게시판 수 : ${boardCount}</h3>
 								<tr>
 									<th>번호</th>
 									<th>게시판</th>
@@ -323,6 +336,34 @@ h2, h3 {
 							</tbody>
 						</table>
 					</div>
+					<div class="lbox">
+						<table>
+							<thead>
+								<h2>댓글 리스트</h2>
+								<h3>전체 댓글 수 : ${commentCount}</h3>
+								<tr>
+									<th>번호</th>
+									<th>내용</th>
+									<th>작성자</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${commentList}" var="comment">
+									<tr>
+										<td>${comment.co_num }</td>
+										<td>${comment.co_content}</td>
+										<td>${comment.co_me_id}</td>
+									</tr>
+								</c:forEach>
+								<a href="<c:url value="/admin/comment"/>" class="write-button">댓글관리</a>
+							</tbody>
+						</table>
+					</div>
+					<div class="lbox" style="width: 400px; height: 200px;">
+						 <div class="date" id="date"></div>
+						 <div class="time" id="time"></div>
+					</div>
 				</div>
 				<!-- lbox묶음 끝 -->
 
@@ -332,6 +373,7 @@ h2, h3 {
 						<table>
 							<thead>
 								<h2>게시글 리스트</h2>
+								<h3>전체 게시글수 : ${postCount}</h3>
 								<tr>
 									<th colspan="2">번호</th>
 									<th colspan="2">게시글</th>
@@ -356,7 +398,7 @@ h2, h3 {
 						<table>
 							<thead>
 								<h2>회원 리스트</h2>
-								<h3>전체회원수 : ${memberCount}</h3>
+								<h3>전체 회원수 : ${memberCount}</h3>
 								<tr>
 									<th colspan="2">아이디</th>
 									<th colspan="2">이름</th>
@@ -453,7 +495,30 @@ h2, h3 {
 
 		const categoryItems = document.querySelectorAll('.category li');
 	</script>
-
+<script type="text/javascript">
+function setClock(){
+    var dateInfo = new Date(); 
+    var hour = modifyNumber(dateInfo.getHours());
+    var min = modifyNumber(dateInfo.getMinutes());
+    var sec = modifyNumber(dateInfo.getSeconds());
+    var year = dateInfo.getFullYear();
+    var month = dateInfo.getMonth()+1; //monthIndex를 반환해주기 때문에 1을 더해준다.
+    var date = dateInfo.getDate();
+    document.getElementById("time").innerHTML = hour + ":" + min  + ":" + sec;
+    document.getElementById("date").innerHTML = year + "년 " + month + "월 " + date + "일";
+}
+function modifyNumber(time){
+    if(parseInt(time)<10){
+        return "0"+ time;
+    }
+    else
+        return time;
+}
+window.onload = function(){
+    setClock();
+    setInterval(setClock,1000); //1초마다 setClock 함수 실행
+}
+</script>
 
 </body>
 </html>
