@@ -20,5 +20,9 @@ public interface CommentService {
 
 	void deleteComments(int num);
 
+	ArrayList<CommentVO> getCommentList();
+
+	boolean adminDeleteComment(int co_num);
+
 
 }
