@@ -424,7 +424,7 @@ tr>td:hover{
     var rows = document.querySelectorAll("[id^='post_']");
     rows.forEach(function(row) {
         var author = row.getAttribute("data-author");
-        if (author === "admin") {
+        if (author === "admin"||author === "admin123") {
             row.classList.add("admin-post");
         }
     });
