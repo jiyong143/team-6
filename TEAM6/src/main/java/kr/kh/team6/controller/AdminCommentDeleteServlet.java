@@ -36,7 +36,7 @@ public class AdminCommentDeleteServlet extends HttpServlet {
 		
 		if (res) {
 			request.setAttribute("msg", "댓글을 삭제 했습니다.");
-			request.setAttribute("url", "admin/post");
+			request.setAttribute("url", "admin/comment");
 		}
 		else {
 			request.setAttribute("msg", "댓글을 삭제하지 못했습니다..");

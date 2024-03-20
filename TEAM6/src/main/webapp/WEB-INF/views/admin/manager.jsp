@@ -282,6 +282,7 @@ h2, h3 {
 						<table>
 							<thead>
 								<h2>카테고리 리스트</h2>
+								<h3>전체 카테고리 수 : ${categoryCount}</h3>
 								<tr>
 									<th colspan="2">번호</th>
 									<th colspan="2">카테고리</th>
@@ -306,6 +307,7 @@ h2, h3 {
 						<table>
 							<thead>
 								<h2>게시판 리스트</h2>
+								<h3>전체 게시판 수 : ${boardCount}</h3>
 								<tr>
 									<th>번호</th>
 									<th>게시판</th>
@@ -327,6 +329,7 @@ h2, h3 {
 						<table>
 							<thead>
 								<h2>댓글 리스트</h2>
+								<h3>전체 댓글 수 : ${commentCount}</h3>
 								<tr>
 									<th>번호</th>
 									<th>내용</th>
@@ -355,6 +358,7 @@ h2, h3 {
 						<table>
 							<thead>
 								<h2>게시글 리스트</h2>
+								<h3>전체 게시글수 : ${postCount}</h3>
 								<tr>
 									<th colspan="2">번호</th>
 									<th colspan="2">게시글</th>
@@ -379,7 +383,7 @@ h2, h3 {
 						<table>
 							<thead>
 								<h2>회원 리스트</h2>
-								<h3>전체회원수 : ${memberCount}</h3>
+								<h3>전체 회원수 : ${memberCount}</h3>
 								<tr>
 									<th colspan="2">아이디</th>
 									<th colspan="2">이름</th>

@@ -61,7 +61,18 @@ public class AdminServlet extends HttpServlet {
 		ArrayList<MemberVO> memberList = memberService.getMemberList();
 		// comment리스트
 		ArrayList<CommentVO> commentList = commentService.getCommentList();
+		//전체 회원수
 		int memberCount = memberList.size();
+		//전체 카테고리수
+		int categoryCount = caList.size();
+		//전체 게시판수
+		int boardCount = boardList.size();
+		//전체 게시글수
+		int postCount = postList.size();
+		//전체 댓글수
+		int commentCount = commentList.size();
+		
+		
 		// board
 		request.setAttribute("boardList", boardList);// 화면에 전송
 		// category
@@ -70,10 +81,16 @@ public class AdminServlet extends HttpServlet {
 		request.setAttribute("postList", postList);
 		// member
 		request.setAttribute("memberList", memberList);
-		// member count
-		request.setAttribute("memberCount", memberCount);
 		// comment
 		request.setAttribute("commentList", commentList);
+		
+		//총 배열 수 
+		// member count
+		request.setAttribute("memberCount", memberCount);
+		request.setAttribute("categoryCount", categoryCount);
+		request.setAttribute("boardCount", boardCount);
+		request.setAttribute("postCount", postCount);
+		request.setAttribute("commentCount", commentCount);
 		/*
 		 * 카테고리 서비스에서 리스트 가져오는 코드 /* 게시판 서비스에서 리스트 가져오는 코드 /* 게시글 서비스에서 리스트 가져오는 코드 /*
 		 * 멤버 서비스에서 리스트 가져오는 코드 작성 전체 회원수

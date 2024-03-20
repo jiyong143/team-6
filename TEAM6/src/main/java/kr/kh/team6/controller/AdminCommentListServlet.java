@@ -67,7 +67,7 @@ public class AdminCommentListServlet extends HttpServlet {
 		request.setAttribute("categoryList", categoryList);
 		ArrayList<CommentVO> commentList = commentService.getCommentList();
 		request.setAttribute("commentList", commentList);
-		request.getRequestDispatcher("/WEB-INF/views/admin/post.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/admin/comment.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
