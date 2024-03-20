@@ -22,5 +22,9 @@ public interface CommentDAO {
 
 	void deleteComments(@Param("num")int num);
 
+	ArrayList<CommentVO> selectCommentList();
+
+	boolean deleteAdminComment(@Param("co_num")int co_num);
+
 	
 }
