@@ -276,5 +276,54 @@
                  </div>
 		</form>     
 </div>
+ <script>
+ function toggleCategory() {
+		var category = document.getElementById("category");
+		category.classList.toggle("open");
+	}
+
+	// 카테고리 토글 버튼 요소 가져오기
+	var categoryToggle = document.querySelector('.category-toggle');
+
+	// 카테고리 토글 버튼에 클릭 이벤트 리스너 추가
+	categoryToggle.addEventListener('click', function() {
+		// 클릭 시 clicked 클래스를 토글하여 스타일 변경
+		this.classList.toggle('clicked');
+	});
+
+	// 최근 게시글 리스트 요소 가져오기
+	var recentPosts = document.querySelector('.recent-posts');
+
+	var rightBox = document.querySelector('.right-box');
+
+	// 오른쪽 박스 가져오기
+	var rightBox = document.querySelector('.right-box');
+
+	// 닫기 버튼 가져오기
+	var closeButton = document.querySelector('.close-button');
+
+	// 오른쪽 박스가 숨겨져 있는지 여부를 저장하는 변수
+	var isHidden = true;
+
+	// 버튼 클릭 이벤트에 함수 연결
+	closeButton.addEventListener('click', function() {
+		// 오른쪽 박스가 숨겨져 있다면
+		if (isHidden) {
+			// 오른쪽으로 이동하여 보이는 애니메이션 효과 추가
+			rightBox.style.transition = 'right 0.3s ease';
+			// 오른쪽으로 이동하여 보임
+			rightBox.style.right = '0';
+		} else {
+			// 오른쪽으로 이동하여 사라지는 애니메이션 효과 추가
+			rightBox.style.transition = 'right 0.3s ease';
+			// 오른쪽으로 이동하여 사라짐
+			rightBox.style.right = '-300px'; // 오른쪽 박스의 너비만큼 이동
+		}
+
+		// 숨겨져 있는 상태에서는 보이는 상태로, 보이는 상태에서는 숨겨져 있는 상태로
+		isHidden = !isHidden;
+	});
+</script>
+
 </body>
 </html>
