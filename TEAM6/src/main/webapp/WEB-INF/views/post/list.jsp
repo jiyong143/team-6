@@ -7,19 +7,25 @@
 <meta charset="UTF-8">
 <title>What do you want to ask? - 게시글 목록</title>
 <style type="text/css">
-.search-container{
+.search-container {
 	margin-bottom: 10px;
 }
-.select-box{
-padding: 10px;
- background-color: white;
- border: 1px solid white;
+
+.select-box {
+	padding: 10px;
+	background-color: white;
+	border: 1px solid white;
 }
 
 .body-group {
 	padding: 100px;
 	margin-left: 150px;
 	margin-right: 150px;
+}
+
+.board-box:hover,
+.board-postList:hover {
+	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 
 .category-toggle.open span:nth-child(1) {
@@ -243,33 +249,34 @@ padding: 10px;
 .write-button:hover {
 	background-color: rgba(141, 102, 18, 1);
 }
+
 .admin-post {
-    background-color: lightyellow;  
-}
-tr>td:hover{
-   box-shadow: inset 2px 2px 4px rgba(141, 102, 18, 1.2);
+	background-color: lightyellow;
 }
 
-
+tr>td:hover {
+	box-shadow: inset 2px 2px 4px rgba(141, 102, 18, 1.2);
+}
 </style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
 	<form action="<c:url value="/post/list"/>">
-			<input type="hidden" name="bNum" value="${board.bo_num}">
-			<div class="search-container">
-				<select name="type" class="select-box">
-					<option value="all"
-						<c:if test='${pm.cri.type == "all"}'>selected</c:if>>전체</option>
-					<option value="title"
-						<c:if test='${pm.cri.type == "title"}'>selected</c:if>>제목</option>
-					<option value="writer"
-						<c:if test='${pm.cri.type == "writer"}'>selected</c:if>>작성자</option>
-				</select> <input type="text" placeholder="검색. . ."
-					name="search" value="${pm.cri.search}">
-				<button type="submit"></button>
-			</div>
-		</form>
+		<input type="hidden" name="bNum" value="${board.bo_num}">
+		<div class="search-container">
+			<select name="type" class="select-box">
+				<option value="all"
+					<c:if test='${pm.cri.type == "all"}'>selected</c:if>>전체</option>
+				<option value="title"
+					<c:if test='${pm.cri.type == "title"}'>selected</c:if>>제목</option>
+				<option value="writer"
+					<c:if test='${pm.cri.type == "writer"}'>selected</c:if>>작성자</option>
+			</select> <input type="text" placeholder="검색. . ." name="search"
+				value="${pm.cri.search}">
+			<button type="submit"></button>
+		</div>
+		<br>
+	</form>
 	<div class="body-group">
 		<div class="board-box">
 			<h2>${board.bo_title}</h2>
@@ -300,9 +307,9 @@ tr>td:hover{
 								<td>${post.po_num}</td>
 								<td><c:url var="url" value="/post/detail">
 										<c:param name="num" value="${post.po_num}" />
-										<c:param name="bName" value="${board.bo_title}"/>
-										<c:param name="bNum" value="${board.bo_num }"/>
-									</c:url> <a href="${url}">${post.po_title}</a></td> 
+										<c:param name="bName" value="${board.bo_title}" />
+										<c:param name="bNum" value="${board.bo_num }" />
+									</c:url> <a href="${url}">${post.po_title}</a></td>
 								<td><a href="<c:url value=""/>">${post.po_me_id}</a></td>
 								<td>${post.changeDate()}</td>
 								<td>${post.po_views}</td>
@@ -374,12 +381,12 @@ tr>td:hover{
 		var searchContainer = document.querySelector('.search-container');
 
 		// 최근 게시글 리스트 요소 가져오기
-			var recentPosts = document.querySelector('.recent-posts');
+		var recentPosts = document.querySelector('.recent-posts');
 
-			// 검색창에 마우스를 올리면 최근 게시글 리스트를 표시
-			/*searchContainer.addEventListener('mouseenter', function() {
-				recentPosts.style.display = 'block';
-			}); */
+		// 검색창에 마우스를 올리면 최근 게시글 리스트를 표시
+		/*searchContainer.addEventListener('mouseenter', function() {
+			recentPosts.style.display = 'block';
+		}); */
 
 		// 최근 게시글 리스트에서 마우스가 벗어나면 숨김
 		/*	recentPosts.addEventListener('mouseleave', function() {
@@ -418,16 +425,16 @@ tr>td:hover{
 
 		const categoryItems = document.querySelectorAll('.category li');
 	</script>
-	
+
 	<script>
-    // 관리자가 작성한 글인지 여부를 확인하고, 클래스를 추가
-    var rows = document.querySelectorAll("[id^='post_']");
-    rows.forEach(function(row) {
-        var author = row.getAttribute("data-author");
-        if (author === "admin"||author === "admin123") {
-            row.classList.add("admin-post");
-        }
-    });
-</script>
+		// 관리자가 작성한 글인지 여부를 확인하고, 클래스를 추가
+		var rows = document.querySelectorAll("[id^='post_']");
+		rows.forEach(function(row) {
+			var author = row.getAttribute("data-author");
+			if (author === "admin" || author === "admin123") {
+				row.classList.add("admin-post");
+			}
+		});
+	</script>
 </body>
 </html>
