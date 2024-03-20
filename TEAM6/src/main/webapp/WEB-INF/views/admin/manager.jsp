@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 페이지</title>
+<title>What do you want to ask? - 관리자 페이지(커뮤니티 관리)</title>
 <jsp:include page="/WEB-INF/views/header.jsp" />
 <style type="text/css">
 .select-box {

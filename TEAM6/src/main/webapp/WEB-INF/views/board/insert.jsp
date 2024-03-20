@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 등록</title>
+<title>What do you want to ask? - 게시판 등록</title>
 <style>
 a {
 	color: #333;

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인 페이지</title>
+<title>What do you want to ask? - 메인 페이지</title>
 <style type="text/css">
 </style>
 </head>

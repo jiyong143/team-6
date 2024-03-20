@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 수정</title>
+<title>What do you want to ask? - 게시판 수정</title>
 <style type="text/css">
 a {
 	color: #333;

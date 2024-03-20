@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>댓글 수정</title>
+<title>What do you want to ask? - 댓글 수정</title>
 <style>
         .body-group {
             padding: 100px;
