@@ -61,14 +61,13 @@ public class SignUpServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String pw2 = request.getParameter("pw2");
-		String birth = request.getParameter("birth");
-		String name = request.getParameter("me_name");
-		String phone = request.getParameter("me_phone");
-		String email = request.getParameter("email");
+		String phone = request.getParameter("phone");
 		String address = request.getParameter("address");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String birth = request.getParameter("birth");
 		
-
-		MemberVO member = new MemberVO(id, pw,birth, name,phone,email,address);
+		MemberVO member = new MemberVO(id, pw, phone, address, name, email, birth);
 		
 		//모두 입력했을 시
 		if(memberService.signup(member)) {
