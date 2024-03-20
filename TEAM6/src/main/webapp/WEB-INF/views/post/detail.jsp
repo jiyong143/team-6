@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 상세</title>
+<title>What do you want to ask? - 게시글 상세</title>
 <style>
 .body-group {
 	padding: 100px;

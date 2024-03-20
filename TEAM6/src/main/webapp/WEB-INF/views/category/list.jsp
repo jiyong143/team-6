@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>카테고리 리스트</title>
+<title>What do you want to ask? - 카테고리 목록</title>
 <style type="text/css">
 .search-container {
 	margin-bottom: 10px;

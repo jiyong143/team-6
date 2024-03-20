@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>개인 정보 수정</title>
+<title>What do you want to ask? - 개인 정보 수정</title>
 
  <style>
         h1 {

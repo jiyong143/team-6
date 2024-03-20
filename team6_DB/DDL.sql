@@ -95,7 +95,7 @@ REFERENCES `member` (
 	`me_id`
 );
 
-ALTER TABLE `member` ADD CONSTRAINT `FK_memberState_TO_member_1` FOREIGN KEY (
+ALTER TABLE `member` ADD CONSTRAINT `FK_memberState_boardTO_member_1` FOREIGN KEY (
 	`me_ms_state`
 )
 REFERENCES `memberState` (
