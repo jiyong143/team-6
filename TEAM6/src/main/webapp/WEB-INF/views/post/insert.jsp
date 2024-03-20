@@ -336,7 +336,7 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="body-group">
         <div class="board-box">
-            <h1>${bName}</h1>
+            <h2><a href="<c:url value="/post/list"/>?bNum=${bNum}">${bName}</a></h2>
         </div>
         <br>
 		<form action="<c:url value="/post/insert"/>" method="post">
