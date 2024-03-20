@@ -81,8 +81,7 @@ public class PostUpdateServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		int bNum = Integer.parseInt(request.getParameter("bNum"));
-		BoardVO board = boardService.getBoard(bNum);
-		String bName = board.getBo_title();
+		String bName = request.getParameter("bName");
 		
 		//게시글 객체로 생성
 		PostVO post = new PostVO(num, title, content,bNum);
@@ -95,7 +94,7 @@ public class PostUpdateServlet extends HttpServlet {
 		}
 		else {
 			request.setAttribute("msg", "수정을 실패했습니다.");
-			request.setAttribute("url", "post/update?num=" + num);
+			request.setAttribute("url", "post/update?num=" + num +"&bNum=" + bNum + "&bName=" + bName);
 		}		
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		

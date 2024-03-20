@@ -56,7 +56,6 @@ public class CommentUpdateServlet extends HttpServlet {
 		request.setAttribute("name", name);
 		request.setAttribute("post", post);
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-		
 		if(comment == null
 				|| !comment.getCo_me_id().equals(user.getMe_id())) {
 					//다르면 게시글 상세로 보내고, 작성자가 아닙니다라고 메세지를 띄움
