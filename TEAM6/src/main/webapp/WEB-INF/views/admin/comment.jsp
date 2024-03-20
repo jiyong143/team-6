@@ -265,15 +265,11 @@
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 </style>
-
-
-
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
 	<div class="body-group">
 		<br>
-		<form action="<c:url value="/post/insert"/>" method="post">
 			<div class="board-postList">
 				<h2>´ñ±Û ¸®½ºÆ®</h2>
 				<div class="hr"></div>
@@ -300,7 +296,6 @@
 					</tbody>
 				</table>
 			</div>
-		</form>
 	</div>
 	<script>
 		function toggleCategory() {
