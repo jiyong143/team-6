@@ -235,6 +235,14 @@
         outline-style: none;
         
         }
+        .textarea-comment{
+        	border-radius:10px;
+        	width: 84%;
+        }
+        .btn{
+        width: 15%;
+        background-color: rgba(141, 102, 18, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -256,6 +264,7 @@
                   <input  class="inputinput" type="text" readonly="readonly" style="outline-style: none;" value="${post.po_content}"> 
                 </table>
            </div>
+           <br>
         <label for="content">댓글</label>
                  <div class="btn-button">
                         <input type="hidden" name="cNum" value="${comment.co_num }">
@@ -263,7 +272,7 @@
                         <input type="hidden" name="bNum" value="${bNum}">
                         <input type="hidden" name="bName" value="${bName}">   
                         <textarea  rows="1" id="content" name="content" class="textarea-comment" placeholder="Update comment">${comment.co_content}</textarea>
-                        <button type="submit" class="btn-comment-insert">수정</button>  
+                        <button type="submit" class="btn">수정</button>  
                  </div>
 		</form>     
 </div>

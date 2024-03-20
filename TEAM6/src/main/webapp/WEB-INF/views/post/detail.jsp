@@ -308,9 +308,10 @@ margin-top: 20px;
 						<input type="hidden" name="num" value="${post.po_num }"> <input
 							type="hidden" name="bNum" value="${bNum}"> <input
 							type="hidden" name="bName" value="${bName}">
-						<textarea rows="1" id="content" name="content" class="content"
+						<textarea style="border-radius:10px;"
+						rows="1" id="content" name="content" class="content"
 							placeholder="Enter comment"></textarea>
-						<button type="submit">등록</button>
+						<button type="submit" style="width: 13%;">등록</button>
 					</div>
 					<br>
 					<div class="hr"></div>
