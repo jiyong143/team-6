@@ -330,7 +330,7 @@
     </style>
 </head>
 <body> 
-<jsp:include page="/WEB-INF/views/header.jsp"/>
+   <jsp:include page="/WEB-INF/views/header.jsp" />
   	  <div class="signup-group" style="padding: 100px;">
   	  
      <h2>개인 정보 수정</h2>
@@ -382,35 +382,32 @@
     
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-    <script>
-        function toggleCategory() {
-            var category = document.getElementById("category");
-            category.classList.toggle("open");
-        }
+   <script type="text/javascript">
 
-        var searchInput = document.querySelector('.search-container input[type=text]');
+function toggleCategory() {
+	var category = document.getElementById("category");
+	category.classList.toggle("open");
+}
 
-        var categoryToggle = document.querySelector('.category-toggle');
+var searchInput = document.querySelector('.search-container input[type=text]');
 
-        categoryToggle.addEventListener('click', function () {
-            this.classList.toggle('clicked');
-        });
-        
-        
+var categoryToggle = document.querySelector('.category-toggle');
 
+categoryToggle.addEventListener('click', function() {
+	// 클릭 시 토글
+	this.classList.toggle('clicked');
+});
 
+var rightBox = document.querySelector('.right-box');
+var closeButton = document.querySelector('.close-button');
+var isHidden = true;
 
-        var rightBox = document.querySelector('.right-box');
-        var closeButton = document.querySelector('.close-button');
-        var isHidden = true;
-
-        closeButton.addEventListener('click', function () {
-            rightBox.style.transition = 'right 0.3s ease';
-            rightBox.style.right = isHidden ? '0' : '-300px';
-            this.classList.toggle('click');
-            isHidden = !isHidden;
-        });
-
-    </script>
+closeButton.addEventListener('click', function () {
+    rightBox.style.transition = 'right 0.3s ease';
+    rightBox.style.right = isHidden ? '0' : '-300px';
+    this.classList.toggle('click');
+    isHidden = !isHidden;
+});
+</script>
 </body>
 </html>
