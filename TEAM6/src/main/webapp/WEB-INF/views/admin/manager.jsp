@@ -323,6 +323,29 @@ h2, h3 {
 							</tbody>
 						</table>
 					</div>
+					<div class="lbox">
+						<table>
+							<thead>
+								<h2>댓글 리스트</h2>
+								<tr>
+									<th>번호</th>
+									<th>내용</th>
+									<th>작성자</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${commentList}" var="comment">
+									<tr>
+										<td>${comment.co_num }</td>
+										<td>${comment.co_content}</td>
+										<td>${comment.co_me_id}</td>
+									</tr>
+								</c:forEach>
+								<a href="<c:url value="/admin/comment"/>" class="write-button">댓글관리</a>
+							</tbody>
+						</table>
+					</div>
 				</div>
 				<!-- lbox묶음 끝 -->
 

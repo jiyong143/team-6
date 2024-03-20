@@ -86,4 +86,17 @@ public class CommentServiceImp implements CommentService {
 		
 	}
 
+	@Override
+	public ArrayList<CommentVO> getCommentList() {
+		return commentDao.selectCommentList();
+	}
+
+	@Override
+	public boolean adminDeleteComment(int co_num) {
+		if(co_num == 0) {
+			return false;
+		}
+		return commentDao.deleteAdminComment(co_num);
+	}
+
 }
