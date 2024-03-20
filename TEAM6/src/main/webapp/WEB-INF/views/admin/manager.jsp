@@ -268,6 +268,16 @@ h2, h3 {
 .lbox:hover, .rbox:hover {
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
+
+.date{
+    font-size: 45px; 
+    color: rgb(255, 255, 255);  /* 흰색 */
+}
+.time{
+    font-size: 100px;
+    font-weight: bold;
+    color: rgba(141, 102, 18, 1);
+}
 </style>
 
 </head>
@@ -348,6 +358,10 @@ h2, h3 {
 								<a href="<c:url value="/admin/comment"/>" class="write-button">댓글관리</a>
 							</tbody>
 						</table>
+					</div>
+					<div class="lbox" style="width: 40%;">
+						 <div class="date" id="date"></div>
+						 <div class="time" id="time"></div>
 					</div>
 				</div>
 				<!-- lbox묶음 끝 -->
@@ -480,7 +494,30 @@ h2, h3 {
 
 		const categoryItems = document.querySelectorAll('.category li');
 	</script>
-
+<script type="text/javascript">
+function setClock(){
+    var dateInfo = new Date(); 
+    var hour = modifyNumber(dateInfo.getHours());
+    var min = modifyNumber(dateInfo.getMinutes());
+    var sec = modifyNumber(dateInfo.getSeconds());
+    var year = dateInfo.getFullYear();
+    var month = dateInfo.getMonth()+1; //monthIndex를 반환해주기 때문에 1을 더해준다.
+    var date = dateInfo.getDate();
+    document.getElementById("time").innerHTML = hour + ":" + min  + ":" + sec;
+    document.getElementById("date").innerHTML = year + "년 " + month + "월 " + date + "일";
+}
+function modifyNumber(time){
+    if(parseInt(time)<10){
+        return "0"+ time;
+    }
+    else
+        return time;
+}
+window.onload = function(){
+    setClock();
+    setInterval(setClock,1000); //1초마다 setClock 함수 실행
+}
+</script>
 
 </body>
 </html>
