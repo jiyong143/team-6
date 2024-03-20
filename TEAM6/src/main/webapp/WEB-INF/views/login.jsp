@@ -356,11 +356,12 @@ nav a:hover {
 		var closeButton = document.querySelector('.close-button');
 		var isHidden = true;
 
-		closeButton.addEventListener('click', function() {
-			rightBox.style.transition = 'right 0.3s ease';
-			rightBox.style.right = isHidden ? '0' : '-300px';
-			isHidden = !isHidden;
-		});
+		 closeButton.addEventListener('click', function () {
+	            rightBox.style.transition = 'right 0.3s ease';
+	            rightBox.style.right = isHidden ? '0' : '-300px';
+	            this.classList.toggle('click');
+	            isHidden = !isHidden;
+	        });
 	</script>
 
 </body>

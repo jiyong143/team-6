@@ -19,7 +19,7 @@ a {
 	text-decoration: none;
 }
 
-h2,h3 {
+h2, h3 {
 	text-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
 }
 
@@ -170,7 +170,7 @@ nav a:hover {
 
 .search-container button {
 	position: relative;
-	padding: 20px 25px;
+	padding: 25px 30px;
 	background-color: white;
 	color: #fff;
 	border: none;
@@ -183,6 +183,7 @@ nav a:hover {
 	background-repeat: no-repeat;
 	background-position: center;
 }
+ 
 
 .copyright {
 	z-index: 9999;
@@ -221,7 +222,6 @@ nav a:hover {
 	z-index: 1;
 	overflow-y: auto;
 	padding: 10px;
-	display: none;
 }
 
 .recent-posts ul {
@@ -268,6 +268,10 @@ nav a:hover {
 	z-index: 1;
 	/* 다른 요소 위에 표시되도록 설정 */
 }
+.close-button.click{
+box-shadow: inset 1px 1px 1px 1px black;
+
+}
 
 .close-button {
 	position: fixed;
@@ -277,11 +281,12 @@ nav a:hover {
 	background-color: white;
 	z-index: 9999;
 	border: 0.5px solid white;
+	height: 40px;
 }
 
 .close-button img {
 	width: 30px;
-	height: auto;
+	height: 30px;
 }
 
 .right-box a {
@@ -290,28 +295,56 @@ nav a:hover {
 	border: 1px solid black;
 }
 
-.a {
+.ab {
 	background-color: rgba(141, 102, 18, 0.5);
 	color: white;
+	padding: 5px; /* 패딩을 추가하여 버튼 크기 조정 */
+	display: inline-block; /* 인라인 블록 요소로 변환하여 다른 요소와 가로 정렬 */
+	text-decoration: none; /* 기본 링크 텍스트 스타일 제거 */
+	cursor: pointer; /* 마우스를 올리면 커서를 포인터로 변경 */
+	border-radius: 5px; /* 버튼을 둥글게 만들기 위한 border-radius 속성 추가 */
+	border: 1px solid white;
 }
+
+.ab:hover {
+	background-color: rgba(141, 102, 18, 0.7); /* 호버 시 색상 변경 */
+}
+
 .profile-image {
-    width: 100px; 
-    height: 100px; 
+	width: 100px;
+	height: 100px;
 }
+
 textarea {
-	 font-size: 24px;
-	   font-family: "Arial", sans-serif; 
+	font-size: 24px;
+	font-family: "Arial", sans-serif;
 }
-.p{
-	 font-size: 18px;
-	   font-family: "Arial", sans-serif; 
+
+.p {
+	font-size: 18px;
+	font-family: "Arial", sans-serif;
 }
+
+tr>td:hover {
+	box-shadow: inset 2px 2px 4px rgba(141, 102, 18, 1.2);
+}
+
+.header:hover {
+	text-shadow: 2px 2px 4px rgba(141, 102, 18, 1.5);
+}
+
+.home-join:hover {
+	text-decoration: underline;
+	color: rgba(141, 102, 18, 0.6);
+}
+
 </style>
 </head>
 <body>
 	<div class="logo">
 		<h1>
-			<a href='<c:url value="/" />'>What Do You Want To Ask?</a>
+			<a href='<c:url value="/" />' class="header">What Do You Want To
+				Ask?</a>
 		</h1>
 	</div>
 	<nav class="category-container">
@@ -339,17 +372,21 @@ textarea {
 	</nav>
 	<button class="close-button">
 		<img
-			src="data:image/png;base64,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"
+			src="https://cdns.iconmonstr.com/wp-content/releases/preview/2012/240/iconmonstr-user-7.png"
 			alt="버튼이미지">
 	</button>
 	<div class="right-box">
 		<c:if test="${user != null }">
 			<c:choose>
 				<c:when test='${!user.getMe_authority().equals("admin")}'>
-					<img src="https://cdns.iconmonstr.com/wp-content/releases/preview/2016/240/iconmonstr-generation-9.png" alt="프로필 사진" class="profile-image">
+					<img
+						src="https://cdns.iconmonstr.com/wp-content/releases/preview/2016/240/iconmonstr-generation-9.png"
+						alt="프로필 사진" class="profile-image">
 				</c:when>
 				<c:when test='${user.getMe_authority().equals("admin")}'>
-					<img src="https://cdns.iconmonstr.com/wp-content/releases/preview/2015/240/iconmonstr-crown-5.png" alt="프로필 사진" class="profile-image">
+					<img
+						src="https://cdns.iconmonstr.com/wp-content/releases/preview/2015/240/iconmonstr-crown-5.png"
+						alt="프로필 사진" class="profile-image">
 				</c:when>
 			</c:choose>
 			<h3>${user.me_name}</h3>
@@ -358,13 +395,13 @@ textarea {
 			<p>${user.me_authority}</p>
 			<c:choose>
 				<c:when test='${!user.getMe_authority().equals("admin")}'>
-					<a class="a" href='<c:url value="/member/update" />'>내정보 관리</a>
+					<a class="ab" href='<c:url value="/member/update" />'>내 정보 수정</a>
 				</c:when>
 				<c:when test='${user.getMe_authority().equals("admin")}'>
-					<a class="a" href='<c:url value="/admin/manager"/>'>커뮤니티 관리</a>
+					<a class="ab" href='<c:url value="/admin/manager"/>'>커뮤니티 관리</a>
 				</c:when>
 			</c:choose>
-			<a class="a" href='<c:url value="/logout"/>'>로그아웃</a>
+			<a class="ab" href='<c:url value="/logout"/>'>로그아웃</a>
 		</c:if>
 		<c:if test="${user == null }">
 			<h4>환영합니다.</h4>
@@ -374,8 +411,8 @@ textarea {
 
 	<div class="login-box">
 		<c:if test="${user == null }">
-			<a href='<c:url value="/login" />'>로그인</a> | <a
-				href='<c:url value="/signup" />'>회원가입</a>
+			<a class="home-join" href='<c:url value="/login" />'>로그인</a> | <a
+				class="home-join" href='<c:url value="/signup" />'>회원가입</a>
 		</c:if>
 	</div>
 
@@ -387,5 +424,6 @@ textarea {
 	</div>
 
 	<!-- 왼쪽,오른쪽 박스 / 검색창 / 검색창 호버시 게시글 나옴 -->
+ 
 </body>
 </html>

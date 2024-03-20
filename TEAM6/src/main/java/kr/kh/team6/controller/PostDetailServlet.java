@@ -26,7 +26,7 @@ import kr.kh.team6.service.CommentServiceImp;
 import kr.kh.team6.service.PostService;
 import kr.kh.team6.service.PostServiceImp;
 
-@WebServlet("/post/detail")
+@WebServlet("/post/*")
 public class PostDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
