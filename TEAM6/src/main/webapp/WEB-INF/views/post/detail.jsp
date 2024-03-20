@@ -255,9 +255,10 @@
 margin-top: 20px;
 }
 .input-input {
-      white-space: pre-wrap; /* 자동으로 줄 바꿈되도록 설정 */
+     white-space: pre-wrap; /* 자동으로 줄 바꿈되도록 설정 */
     border: 1px solid white;
-    max-width:1300px;
+    min-width:1250px;
+    max-width:1250px;
     min-height: 400px;
     max-height: 400px;
     outline-style: none;
@@ -265,6 +266,10 @@ margin-top: 20px;
     line-height: normal; /* 줄 간격을 기본값으로 설정 */
     padding: 5px; /* 내부 여백 추가 */
     box-sizing: border-box; /* 내부 여백이 요소의 크기에 포함되도록 설정 */
+}
+.abtn:hover{
+	text-decoration: underline;
+	color: red;
 }
 
     </style>
@@ -315,8 +320,8 @@ margin-top: 20px;
 							<span class="writer">${comment.co_me_id}</span>
 							<p class="p">${comment.co_content}</p>
 							<c:if test="${comment.co_me_id eq user.me_id }">
-					          <a href="<c:url value="/comment/update?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>" class="btn">댓글 수정</a>
-					          <a href="<c:url value="/comment/delete?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>" class="btn">댓글 삭제</a>
+					          <a href="<c:url value="/comment/update?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>" class="abtn">댓글 수정</a>
+					          <a href="<c:url value="/comment/delete?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>" class="abtn">댓글 삭제</a>
 				            </c:if>
 							
 							
