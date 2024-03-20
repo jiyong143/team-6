@@ -10,16 +10,29 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.team6.model.vo.CommentVO;
 import kr.kh.team6.model.vo.MemberVO;
+import kr.kh.team6.model.vo.PostVO;
 import kr.kh.team6.service.CommentService;
 import kr.kh.team6.service.CommentServiceImp;
+import kr.kh.team6.service.MemberService;
+import kr.kh.team6.service.MemberServiceImp;
+import kr.kh.team6.service.PostService;
+import kr.kh.team6.service.PostServiceImp;
 
 
 @WebServlet("/comment/update")
 public class CommentUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private CommentService commentService = new CommentServiceImp();
+    private PostService postService = new PostServiceImp();
+    private MemberService memberService = new MemberServiceImp();
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String bName = request.getParameter("bName");
+		int bNum = Integer.parseInt(request.getParameter("bNum"));
+		request.setAttribute("bName", bName);
+		request.setAttribute("bNum", bNum);
+		
 		
 		int cNum;
 		try {
@@ -34,10 +47,15 @@ public class CommentUpdateServlet extends HttpServlet {
 		request.setAttribute("comment", comment);
 		// 댓글의 게시글 번호 가져옴
 		int pNum = comment.getCo_po_num();
-	
 		request.setAttribute("pNum", pNum);
-		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		
+		PostVO post = postService.getPost(pNum);
+		String id= post.getPo_me_id();
+		MemberVO member = memberService.getMember(id);
+		String name = member.getMe_name();
+		request.setAttribute("name", name);
+		request.setAttribute("post", post);
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		if(comment == null
 				|| !comment.getCo_me_id().equals(user.getMe_id())) {
 					//다르면 게시글 상세로 보내고, 작성자가 아닙니다라고 메세지를 띄움
@@ -57,12 +75,20 @@ public class CommentUpdateServlet extends HttpServlet {
 		int pNum = Integer.parseInt(request.getParameter("pNum"));
 		String content = request.getParameter("content");
 		
+		String bName = request.getParameter("bName");
+		int bNum = Integer.parseInt(request.getParameter("bNum"));
+		
+		request.setAttribute("bName", bName);
+		request.setAttribute("bNum", bNum);
+		
 		if(commentService.updateComment(cNum,content)) {
 			request.setAttribute("msg", "댓글을 수정했습니다.");
-		}else {
+			request.setAttribute("url", "post/detail?num="+pNum + "&bNum=" + bNum + "&bName=" + bName);	
+		}else { 
 			request.setAttribute("msg", "댓글 수정을 실패했습니다.");
+			request.setAttribute("url", "comment/update?bNum=" + bNum + "&cNum=" + cNum + "&bName=" + bName);
 		}
-		request.setAttribute("url", "post/detail?num="+pNum);			
+		
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}
 

@@ -65,7 +65,7 @@ public class CommentServiceImp implements CommentService {
 
 	@Override
 	public boolean updateComment(int cNum, String content) {
-		if(cNum==0||content==null) {
+		if(cNum==0||content==null||content.length()==0) {
 			return false;
 		}
 			return commentDao.updateComment(cNum,content); 
