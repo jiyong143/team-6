@@ -293,7 +293,7 @@
 								<td>${post.po_num }</td>
 								<td>${post.po_title}</td>
 								<td>${post.po_me_id}</td>
-								<td>${post.po_date}</td>
+								<td>${post.changeDate()}</td>
 								<td><a class="btn write-button"
 									href="<c:url value="/admin/postdelete?po_num=${post.po_num}"/>">
 										ªË¡¶ </a></td>
