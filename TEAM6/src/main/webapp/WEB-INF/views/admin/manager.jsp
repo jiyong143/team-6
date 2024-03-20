@@ -274,7 +274,8 @@ h2, h3 {
     color: rgb(255, 255, 255);  /* 흰색 */
 }
 .time{
-    font-size: 100px;
+	text-align:center;
+    font-size: 50px;
     font-weight: bold;
     color: rgba(141, 102, 18, 1);
 }
@@ -359,7 +360,7 @@ h2, h3 {
 							</tbody>
 						</table>
 					</div>
-					<div class="lbox" style="width: 40%;">
+					<div class="lbox" style="width: 400px; height: 200px;">
 						 <div class="date" id="date"></div>
 						 <div class="time" id="time"></div>
 					</div>
