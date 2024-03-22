@@ -403,7 +403,7 @@ tr>td:hover {
 			</c:choose>
 			<a class="ab" href='<c:url value="/logout"/>'>로그아웃</a>
 			<hr>
-			<a class="ab" style="width: 100%;text-align: center;" href='<c:url value="/member/post"/>'>내 게시글 조회</a>
+			<a class="ab" style="width: 100%;text-align: center; margin-bottom: 5px;" href='<c:url value="/member/post"/>'>내 게시글 조회</a>
 			<a class="ab" style="width: 100%;text-align: center;" href='<c:url value="/member/comment"/>'>내 댓글 조회</a>
 			
 		</c:if>
