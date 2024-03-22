@@ -279,24 +279,63 @@
 				<thead>
 					<tr>
 						<th>댓글번호</th>
-						<th>게시글제목</th>
 						<th>댓글내용</th>
+						<th>게시글제목</th>
 						<th>작성자</th>
 
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${commentList}" var="comment">
-						<tr>
-							<td>${comment.co_num }</td>
-							<td>${comment.post.po_title }</td>
-							<td>${comment.co_content}</td>
-							<td>${comment.co_me_id}</td>
-						</tr>
+						<c:if test="${user.getMe_id().equals(comment.co_me_id)}">
+							<tr>
+								<td>${comment.co_num }</td>
+								<td>${comment.co_content}</td>
+								<td>${comment.post.po_title}</td>
+								<td>${comment.co_me_id}</td>
+							</tr>
+						</c:if>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 	</div>
+
+
+	<script>
+		function toggleCategory() {
+			var category = document.getElementById("category");
+			category.classList.toggle("open");
+		}
+
+		// 검색창 요소를 가져옴
+		var searchInput = document
+				.querySelector('.search-container input[type=text]');
+
+		// 카테고리 토글 버튼 요소 가져오기
+		var categoryToggle = document.querySelector('.category-toggle');
+
+		// 카테고리 토글 버튼에 클릭 이벤트 리스너 추가
+		categoryToggle.addEventListener('click', function() {
+			// 클릭 시 clicked 클래스를 토글하여 스타일 변경
+			this.classList.toggle('clicked');
+		});
+
+		// 검색창 요소 가져오기
+		var searchContainer = document.querySelector('.search-container');
+		var recentPosts = document.querySelector('.recent-posts');
+		var rightBox = document.querySelector('.right-box');
+		var closeButton = document.querySelector('.close-button');
+		var isHidden = true;
+
+		closeButton.addEventListener('click', function() {
+			rightBox.style.transition = 'right 0.3s ease';
+			rightBox.style.right = isHidden ? '0' : '-300px';
+			this.classList.toggle('click');
+			isHidden = !isHidden;
+		});
+	</script>
+
+
 </body>
 </html>
