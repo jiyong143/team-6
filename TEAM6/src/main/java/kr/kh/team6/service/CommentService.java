@@ -3,6 +3,7 @@ package kr.kh.team6.service;
 import java.util.ArrayList;
 
 import kr.kh.team6.model.vo.CommentVO;
+import kr.kh.team6.model.vo.PostVO;
 
 public interface CommentService {
 
@@ -23,6 +24,10 @@ public interface CommentService {
 	ArrayList<CommentVO> getCommentList();
 
 	boolean adminDeleteComment(int co_num);
+
+	ArrayList<CommentVO> allCommentList(int co_num);
+
+	ArrayList<PostVO> selectPost(int co_po_num);
 
 
 }

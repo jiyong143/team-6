@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Param;
 
 import kr.kh.team6.model.vo.CommentVO;
+import kr.kh.team6.model.vo.PostVO;
 
 public interface CommentDAO {
 
@@ -25,6 +26,10 @@ public interface CommentDAO {
 	ArrayList<CommentVO> selectCommentList();
 
 	boolean deleteAdminComment(@Param("co_num")int co_num);
+
+	ArrayList<CommentVO> allCommentList(@Param("co_num")int co_num);
+
+	ArrayList<PostVO> selectPost(@Param("po_co_num")int co_po_num);
 
 	
 }
