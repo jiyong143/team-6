@@ -298,7 +298,7 @@ box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 				<label>
 					<h3 style="margin-top: 50px;">제목 : ${post.po_title }</h3>
 					<h5 style="text-align: right;">날짜 : ${post.changeDate()}</h5>
-					<h5 style="text-align: right;">작성자 : ${post.po_me_id}
+					<h5 style="text-align: right;">작성자 :<a href='<c:url value="/member/info?me_id=${post.po_me_id}"/>'> ${post.po_me_id}</a>
 						(${name})</h5>
 
 				</label>
