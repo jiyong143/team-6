@@ -4,15 +4,16 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.team6.dao.CommentDAO">
 
-	<resultMap type="kr.kh.team6.model.vo.CommentVO" id="CommentMap">
+	<resultMap type="kr.kh.team6.model.vo.CommentVO"
+		id="CommentMap">
 		<id property="co_num" column="co_num" />
-		<result property="co_contnet" column="co_contnet" />
+		<result property="co_content" column="co_content" />
 		<result property="co_po_num" column="co_po_num" />
 		<result property="co_me_id" column="co_me_id" />
-		<collection property="post" ofType="kr.kh.team6.model.vo.PostVO" column="co_po_num"
-			select="selectPost"/>
+		<collection property="post"
+			ofType="kr.kh.team6.model.vo.PostVO" column="co_po_num"
+			select="selectPost" />
 	</resultMap>
-	 
 
 
 	<insert id="insertComment">
@@ -24,15 +25,16 @@
 		select * from comment where co_po_num=#{num} order by
 		co_num desc
 	</select>
-	
+
 	<select id="selectPost" resultType="kr.kh.team6.model.vo.PostVO">
-		select * from post where po_num = #{po_co_num}
+		select * from post where
+		po_num = #{po_co_num}
 	</select>
-	
 
 	<delete id="deleteComment">
 		delete from comment where co_num=#{cNum}
 	</delete>
+
 	<delete id="deleteAdminComment">
 		delete from comment where co_num=#{co_num}
 	</delete>
@@ -56,24 +58,22 @@
 		delete from comment where co_po_num=#{num}
 	</delete>
 
-	<select id="selectCommentList"
-		resultMap="CommentMap">
+	<select id="selectCommentList" resultMap="CommentMap">
 		select * from comment
 	</select>
 
-	<select id="allCommentList"
-		resultMap="CommentMap">
-		select * from 
-			comment 
-		join 
-			post 
-		on 
-			po_num = co_po_num 
+	<select id="allCommentList" resultMap="CommentMap">
+		select * from
+		comment
 		join
-			board 
-		on 
-			bo_num = po_bo_num 
-		where 
-			co_num= #{co_num}
+		post
+		on
+		po_num = co_po_num
+		join
+		board
+		on
+		bo_num = po_bo_num
+		where
+		co_num= #{co_num}
 	</select>
 </mapper>
