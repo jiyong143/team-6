@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.team6.dao.CommentDAO;
 import kr.kh.team6.model.vo.CommentVO;
+import kr.kh.team6.model.vo.PostVO;
 
 public class CommentServiceImp implements CommentService {
 	
@@ -97,6 +98,17 @@ public class CommentServiceImp implements CommentService {
 			return false;
 		}
 		return commentDao.deleteAdminComment(co_num);
+	}
+
+	@Override
+	public ArrayList<CommentVO> allCommentList(int co_num) {
+		return commentDao.allCommentList(co_num);
+	}
+
+	@Override
+	public ArrayList<PostVO> selectPost(int co_po_num) {
+		// TODO Auto-generated method stub
+		return commentDao.selectPost(co_po_num);
 	}
 
 }

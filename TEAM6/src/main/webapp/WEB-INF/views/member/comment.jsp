@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>What do you want to ask? - ê²Œì‹œíŒ ëª©ë¡</title>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
 <style type="text/css">
 .search-container {
 	margin-bottom: 10px;
@@ -42,11 +43,11 @@
 
 .logo a {
 	color: inherit;
-	/* ìƒì†ëœ í…ìŠ¤íŠ¸ ìƒ‰ìƒ ì‚¬ìš© */
+	/* »ó¼ÓµÈ ÅØ½ºÆ® »ö»ó »ç¿ë */
 	text-decoration: none;
-	/* ë°‘ì¤„ ì œê±° */
+	/* ¹ØÁÙ Á¦°Å */
 	font-size: 36px;
-	/* ë¡œê³  í…ìŠ¤íŠ¸ í¬ê¸° ëŠ˜ë¦¬ê¸° */
+	/* ·Î°í ÅØ½ºÆ® Å©±â ´Ã¸®±â */
 }
 
 .login {
@@ -57,9 +58,9 @@
 
 .login a {
 	color: inherit;
-	/* ê¸°ë³¸ í…ìŠ¤íŠ¸ ìƒ‰ìœ¼ë¡œ ì„¤ì • */
+	/* ±âº» ÅØ½ºÆ® »öÀ¸·Î ¼³Á¤ */
 	text-decoration: none;
-	/* ë°‘ì¤„ ì œê±° */
+	/* ¹ØÁÙ Á¦°Å */
 }
 
 .recent-posts {
@@ -129,31 +130,31 @@
 	background-color: rgba(141, 102, 18, 0.5);
 }
 
-/* ë²ˆí˜¸ ì…€ ìŠ¤íƒ€ì¼ */
+/* ¹øÈ£ ¼¿ ½ºÅ¸ÀÏ */
 .board-postList td:nth-child(1), .board-postList th:nth-child(1) {
 	width: 5%;
 	text-align: center;
 }
 
-/* ê²Œì‹œê¸€ ëª… ì…€ ìŠ¤íƒ€ì¼ */
+/* °Ô½Ã±Û ¸í ¼¿ ½ºÅ¸ÀÏ */
 .board-postList td:nth-child(2), .board-postList th:nth-child(2) {
 	text-align: center;
 	width: 30%;
 }
 
-/* ì‘ì„±ì ì…€ ìŠ¤íƒ€ì¼ */
+/* ÀÛ¼ºÀÚ ¼¿ ½ºÅ¸ÀÏ */
 .board-postList td:nth-child(3), .board-postList th:nth-child(3) {
 	text-align: center;
 	width: 10%;
 }
 
-/* ë‚ ì§œ ì…€ ìŠ¤íƒ€ì¼ */
+/* ³¯Â¥ ¼¿ ½ºÅ¸ÀÏ */
 .board-postList td:nth-child(4), .board-postList th:nth-child(4) {
 	width: 15%;
 	text-align: center;
 }
 
-/* ì¡°íšŒìˆ˜ ì…€ ìŠ¤íƒ€ì¼ */
+/* Á¶È¸¼ö ¼¿ ½ºÅ¸ÀÏ */
 .board-postList td:nth-child(5), .board-postList th:nth-child(5) {
 	width: 10%;
 	text-align: center;
@@ -266,80 +267,75 @@
 }
 </style>
 
-
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
 	<div class="body-group">
 		<br>
-		<form action="<c:url value="/post/insert"/>" method="post">
-			<div class="board-postList">
-				<h3>ê²Œì‹œíŒ ë¦¬ìŠ¤íŠ¸</h3>
+		<div class="board-postList">
+			<h2>´ñ±Û ¸®½ºÆ®</h2>
+			<div class="hr"></div>
+			<table>
+				<thead>
+					<tr>
+						<th>´ñ±Û¹øÈ£</th>
+						<th>´ñ±Û³»¿ë</th>
+						<th>°Ô½Ã±ÛÁ¦¸ñ</th>
+						<th>ÀÛ¼ºÀÚ</th>
 
-				<div class="hr"></div>
-				<table>
-					<thead>
-						<tr>
-							<th colspan="2">ë²ˆí˜¸</th>
-							<th colspan="2">ê²Œì‹œíŒ</th>
-							<th colspan="6">ê¸°íƒ€</th>
-
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${list}" var="board">
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${commentList}" var="comment">
+						<c:if test="${user.getMe_id().equals(comment.co_me_id)}">
 							<tr>
-								<td colspan="2">${board.bo_num }</td>
-								<td colspan="2"><a href="#">${board.bo_title}</a></td>
-								<td><a class="btn write-button"
-									href="
-									<c:url value="/board/update?bo_num=${board.bo_num}"/>">ìˆ˜ì •
-								</a></td>
-								<td><a class="btn write-button"
-									href="
-									<c:url value="/board/delete?num=${board.bo_num}"/>">ì‚­ì œ</a></td>
+								<td>${comment.co_num }</td>
+								<td>${comment.co_content}</td>
+								<td>${comment.post.po_title}</td>
+								<td>${comment.co_me_id}</td>
 							</tr>
-						</c:forEach>
-						<td colspan="10" style="outline-style: none;"><a
-							href="<c:url value="/board/insert"/>" class="btn write-button">ê²Œì‹œíŒ
-								ì¶”ê°€</a></td>
-					</tbody>
-				</table>
-			</div>
-		</form>
+						</c:if>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
+
+
 	<script>
 		function toggleCategory() {
 			var category = document.getElementById("category");
 			category.classList.toggle("open");
 		}
 
-		// ê²€ìƒ‰ì°½ ìš”ì†Œë¥¼ ê°€ì ¸ì˜´
+		// °Ë»öÃ¢ ¿ä¼Ò¸¦ °¡Á®¿È
 		var searchInput = document
 				.querySelector('.search-container input[type=text]');
 
-		// ì¹´í…Œê³ ë¦¬ í† ê¸€ ë²„íŠ¼ ìš”ì†Œ ê°€ì ¸ì˜¤ê¸°
+		// Ä«Å×°í¸® Åä±Û ¹öÆ° ¿ä¼Ò °¡Á®¿À±â
 		var categoryToggle = document.querySelector('.category-toggle');
 
-		// ì¹´í…Œê³ ë¦¬ í† ê¸€ ë²„íŠ¼ì— í´ë¦­ ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆ ì¶”ê°€
+		// Ä«Å×°í¸® Åä±Û ¹öÆ°¿¡ Å¬¸¯ ÀÌº¥Æ® ¸®½º³Ê Ãß°¡
 		categoryToggle.addEventListener('click', function() {
-			// í´ë¦­ ì‹œ clicked í´ë˜ìŠ¤ë¥¼ í† ê¸€í•˜ì—¬ ìŠ¤íƒ€ì¼ ë³€ê²½
+			// Å¬¸¯ ½Ã clicked Å¬·¡½º¸¦ Åä±ÛÇÏ¿© ½ºÅ¸ÀÏ º¯°æ
 			this.classList.toggle('clicked');
 		});
 
-		// ê²€ìƒ‰ì°½ ìš”ì†Œ ê°€ì ¸ì˜¤ê¸°
+		// °Ë»öÃ¢ ¿ä¼Ò °¡Á®¿À±â
 		var searchContainer = document.querySelector('.search-container');
 		var recentPosts = document.querySelector('.recent-posts');
 		var rightBox = document.querySelector('.right-box');
 		var closeButton = document.querySelector('.close-button');
 		var isHidden = true;
 
-		 closeButton.addEventListener('click', function () {
-	            rightBox.style.transition = 'right 0.3s ease';
-	            rightBox.style.right = isHidden ? '0' : '-300px';
-	            this.classList.toggle('click');
-	            isHidden = !isHidden;
-	        });
+		closeButton.addEventListener('click', function() {
+			rightBox.style.transition = 'right 0.3s ease';
+			rightBox.style.right = isHidden ? '0' : '-300px';
+			this.classList.toggle('click');
+			isHidden = !isHidden;
+		});
 	</script>
+
+
 </body>
 </html>

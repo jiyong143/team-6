@@ -249,7 +249,7 @@ nav a:hover {
 .right-box {
 	position: fixed;
 	/* 화면에 고정 */
-	top: 30%;
+	top: 40%;
 	right: -300px;
 	/* 화면 오른쪽에서 0px 떨어진 위치 */
 	transform: translateY(-50%);
@@ -402,6 +402,10 @@ tr>td:hover {
 				</c:when>
 			</c:choose>
 			<a class="ab" href='<c:url value="/logout"/>'>로그아웃</a>
+			<hr>
+			<a class="ab" style="width: 100%;text-align: center;" href='<c:url value="/member/post"/>'>내 게시글 조회</a>
+			<a class="ab" style="width: 100%;text-align: center;" href='<c:url value="/member/comment"/>'>내 댓글 조회</a>
+			
 		</c:if>
 		<c:if test="${user == null }">
 			<h4>환영합니다.</h4>
