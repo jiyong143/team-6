@@ -67,7 +67,7 @@ public class SignUpServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String birth = request.getParameter("birth");
 		
-		MemberVO member = new MemberVO(id, pw, phone, address, name, email, birth);
+		MemberVO member = new MemberVO(id, pw, birth,name,phone,email, address);
 		
 		//모두 입력했을 시
 		if(memberService.signup(member)) {
