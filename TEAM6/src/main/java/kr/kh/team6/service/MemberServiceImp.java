@@ -76,6 +76,7 @@ public class MemberServiceImp implements MemberService {
 		//비번 정규표현식 체크
 		if(!checkPwRegex(memberVO.getMe_pw())) {
 			System.out.println("영문 대·소문자, 숫자, 특수기호(!@#$) 8~14자만 사용가능합니다.");
+			System.out.println(memberVO.getMe_pw());
 			return false;
 		}
 		
@@ -109,12 +110,14 @@ public class MemberServiceImp implements MemberService {
 		//이메일은 이메일 형식으로만 가능 최대 30자 VARCAHR(30)
 		if(!checkEmailRegex(memberVO.getMe_email())) {
 			System.out.println("이메일은 최대 30자 까지 가능합니다.");
+			System.out.println(memberVO.getMe_email());
 			return false;
 		}
 		
 		//주소는 TEXT인데, 최대 50글자/ ex) 양식 : OO시 OO구 OO동
 		if(!checkAddressRegex(memberVO.getMe_address())) {
 			System.out.println("주소를 올바르게 입력하세요. 예시) 양식 : OO시 OO구 OO동");
+			System.out.println(memberVO.getMe_address());
 			return false;
 		}
 		
@@ -214,7 +217,7 @@ public class MemberServiceImp implements MemberService {
 	
 	@Override
 	public boolean checkNameRegex(String me_name) {
-		String regexName = "^[ㄱ-힣]{1,5}$";
+		String regexName = "^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{1,5}$";
 		if(me_name == null) {
 			return false;
 		}
