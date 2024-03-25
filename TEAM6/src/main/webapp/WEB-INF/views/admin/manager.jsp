@@ -15,6 +15,7 @@
 }
 
 .body-group {
+	width: 100%;
 	padding: 100px;
 	margin-left: 150px;
 	margin-right: 150px;
@@ -250,6 +251,7 @@ h2, h3 {
 	display: flex;
 	gap: 20px;
 	margin-bottom: 20px;
+	width: 100%;
 }
 
 .lbox, .rbox {
@@ -259,9 +261,11 @@ h2, h3 {
 	transition: box-shadow 0.3s ease;
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 0.1);
 	white-space: nowrap;
-	max-height: 370px;
+	max-height: 25%;
+	max-width:25%;
+	min-width:25%;
 	text-overflow: ellipsis;
-	overflow: hidden;  
+	overflow: hidden;
 }
 
 /* 호버 효과와 그림자 효과 */
@@ -269,15 +273,16 @@ h2, h3 {
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 
-.date{
-    font-size: 45px; 
-    color: rgb(255, 255, 255);  /* 흰색 */
+.date {
+	font-size: 45px;
+	color: rgb(255, 255, 255); /* 흰색 */
 }
-.time{
-	text-align:center;
-    font-size: 50px;
-    font-weight: bold;
-    color: rgba(141, 102, 18, 1);
+
+.time {
+	text-align: center;
+	font-size: 50px;
+	font-weight: bold;
+	color: rgba(141, 102, 18, 1);
 }
 </style>
 
@@ -361,8 +366,8 @@ h2, h3 {
 						</table>
 					</div>
 					<div class="lbox" style="width: 400px; height: 200px;">
-						 <div class="date" id="date"></div>
-						 <div class="time" id="time"></div>
+						<div class="date" id="date"></div>
+						<div class="time" id="time"></div>
 					</div>
 				</div>
 				<!-- lbox묶음 끝 -->
@@ -474,40 +479,41 @@ h2, h3 {
 		// 오른쪽 박스가 숨겨져 있는지 여부를 저장하는 변수
 		var isHidden = true;
 
-		 closeButton.addEventListener('click', function () {
-	            rightBox.style.transition = 'right 0.3s ease';
-	            rightBox.style.right = isHidden ? '0' : '-300px';
-	            this.classList.toggle('click');
-	            isHidden = !isHidden;
-	        });
+		closeButton.addEventListener('click', function() {
+			rightBox.style.transition = 'right 0.3s ease';
+			rightBox.style.right = isHidden ? '0' : '-300px';
+			this.classList.toggle('click');
+			isHidden = !isHidden;
+		});
 	</script>
-	
-	
-	
-<script type="text/javascript">
-function setClock(){
-    var dateInfo = new Date(); 
-    var hour = modifyNumber(dateInfo.getHours());
-    var min = modifyNumber(dateInfo.getMinutes());
-    var sec = modifyNumber(dateInfo.getSeconds());
-    var year = dateInfo.getFullYear();
-    var month = dateInfo.getMonth()+1; //monthIndex를 반환해주기 때문에 1을 더해준다.
-    var date = dateInfo.getDate();
-    document.getElementById("time").innerHTML = hour + ":" + min  + ":" + sec;
-    document.getElementById("date").innerHTML = year + "년 " + month + "월 " + date + "일";
-}
-function modifyNumber(time){
-    if(parseInt(time)<10){
-        return "0"+ time;
-    }
-    else
-        return time;
-}
-window.onload = function(){
-    setClock();
-    setInterval(setClock,1000); //1초마다 setClock 함수 실행
-}
-</script>
+
+
+
+	<script type="text/javascript">
+		function setClock() {
+			var dateInfo = new Date();
+			var hour = modifyNumber(dateInfo.getHours());
+			var min = modifyNumber(dateInfo.getMinutes());
+			var sec = modifyNumber(dateInfo.getSeconds());
+			var year = dateInfo.getFullYear();
+			var month = dateInfo.getMonth() + 1; //monthIndex를 반환해주기 때문에 1을 더해준다.
+			var date = dateInfo.getDate();
+			document.getElementById("time").innerHTML = hour + ":" + min + ":"
+					+ sec;
+			document.getElementById("date").innerHTML = year + "년 " + month
+					+ "월 " + date + "일";
+		}
+		function modifyNumber(time) {
+			if (parseInt(time) < 10) {
+				return "0" + time;
+			} else
+				return time;
+		}
+		window.onload = function() {
+			setClock();
+			setInterval(setClock, 1000); //1초마다 setClock 함수 실행
+		}
+	</script>
 
 </body>
 </html>

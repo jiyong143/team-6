@@ -262,17 +262,17 @@ box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 
 .input-input {
-	white-space: pre-wrap; /* 자동으로 줄 바꿈되도록 설정 */
+	white-space: pre-wrap; 
 	border: 1px solid white;
-	min-width: 1250px;
-	max-width: 1250px;
-	min-height: 400px;
-	max-height: 400px;
+	min-width: 100%;
+	max-width: 100%;
+	min-height: 500px;
+	max-height: 500px;
 	outline-style: none;
 	vertical-align: top;
-	line-height: normal; /* 줄 간격을 기본값으로 설정 */
-	padding: 5px; /* 내부 여백 추가 */
-	box-sizing: border-box; /* 내부 여백이 요소의 크기에 포함되도록 설정 */
+	line-height: normal; 
+	padding: 5px; 
+	box-sizing: border-box;
 }
 
 .abtn:hover {
