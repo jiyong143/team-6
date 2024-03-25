@@ -62,6 +62,7 @@ public class MemberServiceImp implements MemberService {
 		//아이디 정규표현식 체크
 		if(!checkIdRegex(memberVO.getMe_id())) {
 			System.out.println("영문 대·소문자, 숫자 6~8자만 사용가능합니다.");
+			System.out.println(memberVO.getMe_id());
 			return false;
 		}
 		
@@ -87,6 +88,7 @@ public class MemberServiceImp implements MemberService {
 		//생년월일은 6자 고정 INT
 		if(!checkBirthRegex(memberVO.getMe_birth())) {
 			System.out.println("생년월일은 주민번호 앞 6자리를 입력하세요.");
+			System.out.println(memberVO.getMe_birth());
 			return false;
 		}
 		
