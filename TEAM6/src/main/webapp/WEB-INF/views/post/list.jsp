@@ -18,7 +18,8 @@
 }
 
 .body-group {
-	margin-top: 37px; padding : 100px;
+	margin-top: 37px;
+	padding: 100px;
 	margin-left: 150px;
 	margin-right: 150px;
 	padding: 100px;
@@ -257,6 +258,15 @@
 tr>td:hover {
 	box-shadow: inset 2px 2px 4px rgba(141, 102, 18, 1.2);
 }
+
+.title-short {
+	text-align: left; white-space : nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 200px;
+	display: block;
+	white-space: nowrap;
+}
 </style>
 </head>
 <body>
@@ -312,7 +322,7 @@ tr>td:hover {
 										<c:param name="me_id" value="${post.po_me_id}" />
 										<c:param name="bName" value="${board.bo_title}" />
 										<c:param name="bNum" value="${board.bo_num }" />
-									</c:url> <a href="${url}">${post.po_title}</a></td>
+									</c:url> <a class="title-short" href="${url}">${post.po_title}</a></td>
 								<td><a href="<c:url value=""/>">${post.po_me_id}</a></td>
 								<td>${post.changeDate()}</td>
 								<td>${post.po_views}</td>
