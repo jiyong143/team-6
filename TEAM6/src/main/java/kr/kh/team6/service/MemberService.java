@@ -11,8 +11,6 @@ public interface MemberService {
 
 	boolean signup(MemberVO memberVO);
 
-//	MemberVO getAuthority(String admin);
-
 	boolean getAuthority(boolean admin);
 
 	MemberVO getMember(LoginDTO loginDTO);

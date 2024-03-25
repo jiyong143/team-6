@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>What do you want to ask? - 게시글 목록</title>
+<title>Insert title here</title>
+
 <style type="text/css">
 .search-container {
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 
 .select-box {
@@ -18,14 +19,9 @@
 }
 
 .body-group {
-	margin-top: 37px; padding : 100px;
+	padding: 100px;
 	margin-left: 150px;
 	margin-right: 150px;
-	padding: 100px;
-}
-
-.board-box:hover, .board-postList:hover {
-	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 
 .category-toggle.open span:nth-child(1) {
@@ -250,117 +246,62 @@
 	background-color: rgba(141, 102, 18, 1);
 }
 
-.admin-post {
-	background-color: lightyellow;
+.btn {
+	padding: 12px 24px;
+	background-color: rgba(141, 102, 18, 0.5);
+	color: #333;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s;
 }
 
-tr>td:hover {
-	box-shadow: inset 2px 2px 4px rgba(141, 102, 18, 1.2);
+.btn:hover {
+	background-color: rgba(141, 102, 18, 2);
+	color: #fff;
+}
+
+.board-postList:hover {
+	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 </style>
+
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
-	<form action="<c:url value="/post/list"/>">
-		<input type="hidden" name="bNum" value="${board.bo_num}">
-		<div class="search-container">
-			<select name="type" class="select-box">
-				<option value="all"
-					<c:if test='${pm.cri.type == "all"}'>selected</c:if>>전체</option>
-				<option value="title"
-					<c:if test='${pm.cri.type == "title"}'>selected</c:if>>제목</option>
-				<option value="writer"
-					<c:if test='${pm.cri.type == "writer"}'>selected</c:if>>작성자</option>
-			</select> <input type="text" placeholder="검색. . ." name="search"
-				value="${pm.cri.search}">
-			<button type="submit"></button>
-		</div>
-		<br>
-	</form>
 	<div class="body-group">
-		<div class="board-box">
-			<h2>
-				<a href="<c:url value="/"/>">${board.bo_title}</a>
-			</h2>
-		</div>
 		<br>
-		<form action="<c:url value="/post/insert"/>" method="post">
-			<div class="board-postList">
-				<h3>
-					게시글 리스트 <a
-						href="<c:url value='/post/insert'/>?bNum=${board.bo_num}&bName=${board.bo_title}"
-						class="write-button">글쓰기</a>
-				</h3>
+		<div class="board-postList">
+			<h2>댓글 리스트</h2>
+			<div class="hr"></div>
+			<table>
+				<thead>
+					<tr>
+						<th>댓글번호</th>
+						<th>댓글내용</th>
+						<th>게시글제목</th>
+						<th>작성자</th>
 
-				<div class="hr"></div>
-				<table>
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>작성일</th>
-							<th>조회수</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${postList}" var="post">
-							<tr id="post_${post.po_num}" data-author="${post.po_me_id}">
-								<td>${post.po_num}</td>
-								<td><c:url var="url" value="/post/detail">
-										<c:param name="num" value="${post.po_num}" />
-										<c:param name="me_id" value="${post.po_me_id}" />
-										<c:param name="bName" value="${board.bo_title}" />
-										<c:param name="bNum" value="${board.bo_num }" />
-									</c:url> <a href="${url}">${post.po_title}</a></td>
-								<td><a href="<c:url value=""/>">${post.po_me_id}</a></td>
-								<td>${post.changeDate()}</td>
-								<td>${post.po_views}</td>
-							</tr>
-						</c:forEach>
-						<c:if test="${empty postList}">
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${commentList}" var="comment">
+						<c:if test="${user.getMe_id().equals(comment.co_me_id)}">
 							<tr>
-								<td colspan="5">
-									<h3 class="text-center">등록된 게시글이 없습니다.</h3>
-								</td>
+								<td>${comment.co_num }</td>
+								<td>${comment.co_content}</td>
+								<td><a href="<c:url value="/post/detail?num=${comment.co_po_num}&bNum=${comment.post.po_bo_num}&bName=${comment.post.board.bo_title}"/>">${comment.post.po_title}</a></td>
+								<td>${comment.co_me_id}</td>
 							</tr>
 						</c:if>
-					</tbody>
-				</table>
-			</div>
-		</form>
-
-		<ul class="pagination">
-			<c:if test="${pm.prev}">
-				<li><c:url var="prevUrl" value="/post/list">
-						<c:param name="type" value="${pm.cri.type}" />
-						<c:param name="search" value="${pm.cri.search}" />
-						<c:param name="page" value="${pm.startPage-1}" />
-						<c:param name="bNum" value="${board.bo_num}" />
-					</c:url> <a class="page-link pagination" href="${prevUrl}">이전</a></li>
-			</c:if>
-			<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
-				<li <c:if test="${pm.cri.page==i}">class="active"</c:if>><c:url
-						var="page" value="/post/list">
-						<c:param name="type" value="${pm.cri.type}" />
-						<c:param name="search" value="${pm.cri.search}" />
-						<c:param name="page" value="${i}" />
-						<c:param name="bNum" value="${board.bo_num}" />
-					</c:url> <a class="page-link pagination" href="${page}">${i}</a></li>
-			</c:forEach>
-			<c:if test="${pm.next}">
-				<li><c:url var="nextUrl" value="/post/list">
-						<c:param name="type" value="${pm.cri.type}" />
-						<c:param name="search" value="${pm.cri.search}" />
-						<c:param name="page" value="${pm.endPage+1}" />
-						<c:param name="bNum" value="${board.bo_num}" />
-					</c:url> <a class="page-link pagination" href="${nextUrl}">다음</a></li>
-			</c:if>
-		</ul>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
 
 
-	<!-- 왼쪽,오른쪽 박스 / 검색창 / 검색창 호버시 게시글 나옴 -->
 	<script>
 		function toggleCategory() {
 			var category = document.getElementById("category");
@@ -382,29 +323,9 @@ tr>td:hover {
 
 		// 검색창 요소 가져오기
 		var searchContainer = document.querySelector('.search-container');
-
-		// 최근 게시글 리스트 요소 가져오기
 		var recentPosts = document.querySelector('.recent-posts');
-
-		// 검색창에 마우스를 올리면 최근 게시글 리스트를 표시
-		/*searchContainer.addEventListener('mouseenter', function() {
-			recentPosts.style.display = 'block';
-		}); */
-
-		// 최근 게시글 리스트에서 마우스가 벗어나면 숨김
-		/*	recentPosts.addEventListener('mouseleave', function() {
-				recentPosts.style.display = 'none';
-			});  */
-
 		var rightBox = document.querySelector('.right-box');
-
-		// 오른쪽 박스 가져오기
-		var rightBox = document.querySelector('.right-box');
-
-		// 닫기 버튼 가져오기
 		var closeButton = document.querySelector('.close-button');
-
-		// 오른쪽 박스가 숨겨져 있는지 여부를 저장하는 변수
 		var isHidden = true;
 
 		closeButton.addEventListener('click', function() {
@@ -415,15 +336,6 @@ tr>td:hover {
 		});
 	</script>
 
-	<script>
-		// 관리자가 작성한 글인지 여부를 확인하고, 클래스를 추가
-		var rows = document.querySelectorAll("[id^='post_']");
-		rows.forEach(function(row) {
-			var author = row.getAttribute("data-author");
-			if (author === "admin" || author === "admin123") {
-				row.classList.add("admin-post");
-			}
-		});
-	</script>
+
 </body>
 </html>

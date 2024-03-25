@@ -5,12 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>What do you want to ask? - 게시글 목록</title>
+<title>What do you want to ask? - 관리자 페이지(커뮤니티 관리)</title>
+<jsp:include page="/WEB-INF/views/header.jsp" />
 <style type="text/css">
-.search-container {
-	margin-bottom: 30px;
-}
-
 .select-box {
 	padding: 10px;
 	background-color: white;
@@ -18,14 +15,9 @@
 }
 
 .body-group {
-	margin-top: 37px; padding : 100px;
+	padding: 100px;
 	margin-left: 150px;
 	margin-right: 150px;
-	padding: 100px;
-}
-
-.board-box:hover, .board-postList:hover {
-	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 
 .category-toggle.open span:nth-child(1) {
@@ -250,117 +242,75 @@
 	background-color: rgba(141, 102, 18, 1);
 }
 
-.admin-post {
-	background-color: lightyellow;
+h2, h3 {
+	text-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
+}
+/* 리스트 박스 스타일 */
+.lbox-group, .rbox-group {
+	display: flex;
+	gap: 20px;
+	margin-bottom: 20px;
 }
 
-tr>td:hover {
-	box-shadow: inset 2px 2px 4px rgba(141, 102, 18, 1.2);
+.lbox, .rbox {
+	background-color: #fff;
+	border-radius: 8px;
+	padding: 20px;
+	transition: box-shadow 0.3s ease;
+	box-shadow: 0px 0px 20px rgba(141, 102, 18, 0.1);
+	white-space: nowrap;
+	max-height: 370px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+/* 호버 효과와 그림자 효과 */
+.lbox:hover, .rbox:hover {
+	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
+}
+
+.date {
+	font-size: 45px;
+	color: rgb(255, 255, 255); /* 흰색 */
+}
+
+.time {
+	text-align: center;
+	font-size: 50px;
+	font-weight: bold;
+	color: rgba(141, 102, 18, 1);
 }
 </style>
+
 </head>
+
 <body>
-	<jsp:include page="/WEB-INF/views/header.jsp" />
-	<form action="<c:url value="/post/list"/>">
-		<input type="hidden" name="bNum" value="${board.bo_num}">
-		<div class="search-container">
-			<select name="type" class="select-box">
-				<option value="all"
-					<c:if test='${pm.cri.type == "all"}'>selected</c:if>>전체</option>
-				<option value="title"
-					<c:if test='${pm.cri.type == "title"}'>selected</c:if>>제목</option>
-				<option value="writer"
-					<c:if test='${pm.cri.type == "writer"}'>selected</c:if>>작성자</option>
-			</select> <input type="text" placeholder="검색. . ." name="search"
-				value="${pm.cri.search}">
-			<button type="submit"></button>
-		</div>
-		<br>
-	</form>
 	<div class="body-group">
-		<div class="board-box">
-			<h2>
-				<a href="<c:url value="/"/>">${board.bo_title}</a>
-			</h2>
+		<div class="rbox">
+			<table>
+				<thead>
+					<h2>회원 정보</h2>
+					<tr>
+						<th colspan="2">아이디</th>
+						<th colspan="2">이름</th>
+						<th colspan="2">생년월일</th>
+						<th colspan="2">권한</th>
+						<th colspan="2">상태</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="2">${member.me_id }</td>
+						<td colspan="2">${member.me_name }</td>
+						<td colspan="2">${member.me_birth}</td>
+						<td colspan="2">${member.me_authority}</td>
+						<td colspan="2">${member.me_ms_state}</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-		<br>
-		<form action="<c:url value="/post/insert"/>" method="post">
-			<div class="board-postList">
-				<h3>
-					게시글 리스트 <a
-						href="<c:url value='/post/insert'/>?bNum=${board.bo_num}&bName=${board.bo_title}"
-						class="write-button">글쓰기</a>
-				</h3>
-
-				<div class="hr"></div>
-				<table>
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>작성일</th>
-							<th>조회수</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${postList}" var="post">
-							<tr id="post_${post.po_num}" data-author="${post.po_me_id}">
-								<td>${post.po_num}</td>
-								<td><c:url var="url" value="/post/detail">
-										<c:param name="num" value="${post.po_num}" />
-										<c:param name="me_id" value="${post.po_me_id}" />
-										<c:param name="bName" value="${board.bo_title}" />
-										<c:param name="bNum" value="${board.bo_num }" />
-									</c:url> <a href="${url}">${post.po_title}</a></td>
-								<td><a href="<c:url value=""/>">${post.po_me_id}</a></td>
-								<td>${post.changeDate()}</td>
-								<td>${post.po_views}</td>
-							</tr>
-						</c:forEach>
-						<c:if test="${empty postList}">
-							<tr>
-								<td colspan="5">
-									<h3 class="text-center">등록된 게시글이 없습니다.</h3>
-								</td>
-							</tr>
-						</c:if>
-					</tbody>
-				</table>
-			</div>
-		</form>
-
-		<ul class="pagination">
-			<c:if test="${pm.prev}">
-				<li><c:url var="prevUrl" value="/post/list">
-						<c:param name="type" value="${pm.cri.type}" />
-						<c:param name="search" value="${pm.cri.search}" />
-						<c:param name="page" value="${pm.startPage-1}" />
-						<c:param name="bNum" value="${board.bo_num}" />
-					</c:url> <a class="page-link pagination" href="${prevUrl}">이전</a></li>
-			</c:if>
-			<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
-				<li <c:if test="${pm.cri.page==i}">class="active"</c:if>><c:url
-						var="page" value="/post/list">
-						<c:param name="type" value="${pm.cri.type}" />
-						<c:param name="search" value="${pm.cri.search}" />
-						<c:param name="page" value="${i}" />
-						<c:param name="bNum" value="${board.bo_num}" />
-					</c:url> <a class="page-link pagination" href="${page}">${i}</a></li>
-			</c:forEach>
-			<c:if test="${pm.next}">
-				<li><c:url var="nextUrl" value="/post/list">
-						<c:param name="type" value="${pm.cri.type}" />
-						<c:param name="search" value="${pm.cri.search}" />
-						<c:param name="page" value="${pm.endPage+1}" />
-						<c:param name="bNum" value="${board.bo_num}" />
-					</c:url> <a class="page-link pagination" href="${nextUrl}">다음</a></li>
-			</c:if>
-		</ul>
 	</div>
-
-
-	<!-- 왼쪽,오른쪽 박스 / 검색창 / 검색창 호버시 게시글 나옴 -->
 	<script>
 		function toggleCategory() {
 			var category = document.getElementById("category");
@@ -380,21 +330,21 @@ tr>td:hover {
 			this.classList.toggle('clicked');
 		});
 
-		// 검색창 요소 가져오기
-		var searchContainer = document.querySelector('.search-container');
+		/*      // 검색창 요소 가져오기
+		     var searchContainer = document.querySelector('.search-container');
 
-		// 최근 게시글 리스트 요소 가져오기
-		var recentPosts = document.querySelector('.recent-posts');
+		     // 최근 게시글 리스트 요소 가져오기
+		     var recentPosts = document.querySelector('.recent-posts');
 
-		// 검색창에 마우스를 올리면 최근 게시글 리스트를 표시
-		/*searchContainer.addEventListener('mouseenter', function() {
-			recentPosts.style.display = 'block';
-		}); */
+		     // 검색창에 마우스를 올리면 최근 게시글 리스트를 표시
+		     searchContainer.addEventListener('mouseenter', function() {
+		        recentPosts.style.display = 'block';
+		     }); */
 
-		// 최근 게시글 리스트에서 마우스가 벗어나면 숨김
-		/*	recentPosts.addEventListener('mouseleave', function() {
-				recentPosts.style.display = 'none';
-			});  */
+		/*    // 최근 게시글 리스트에서 마우스가 벗어나면 숨김
+		   recentPosts.addEventListener('mouseleave', function() {
+		      recentPosts.style.display = 'none';
+		   }); */
 
 		var rightBox = document.querySelector('.right-box');
 
@@ -415,15 +365,33 @@ tr>td:hover {
 		});
 	</script>
 
-	<script>
-		// 관리자가 작성한 글인지 여부를 확인하고, 클래스를 추가
-		var rows = document.querySelectorAll("[id^='post_']");
-		rows.forEach(function(row) {
-			var author = row.getAttribute("data-author");
-			if (author === "admin" || author === "admin123") {
-				row.classList.add("admin-post");
-			}
-		});
+
+
+	<script type="text/javascript">
+		function setClock() {
+			var dateInfo = new Date();
+			var hour = modifyNumber(dateInfo.getHours());
+			var min = modifyNumber(dateInfo.getMinutes());
+			var sec = modifyNumber(dateInfo.getSeconds());
+			var year = dateInfo.getFullYear();
+			var month = dateInfo.getMonth() + 1; //monthIndex를 반환해주기 때문에 1을 더해준다.
+			var date = dateInfo.getDate();
+			document.getElementById("time").innerHTML = hour + ":" + min + ":"
+					+ sec;
+			document.getElementById("date").innerHTML = year + "년 " + month
+					+ "월 " + date + "일";
+		}
+		function modifyNumber(time) {
+			if (parseInt(time) < 10) {
+				return "0" + time;
+			} else
+				return time;
+		}
+		window.onload = function() {
+			setClock();
+			setInterval(setClock, 1000); //1초마다 setClock 함수 실행
+		}
 	</script>
+
 </body>
 </html>

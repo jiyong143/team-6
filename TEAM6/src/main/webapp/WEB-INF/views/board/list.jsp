@@ -329,29 +329,9 @@
 
 		// 검색창 요소 가져오기
 		var searchContainer = document.querySelector('.search-container');
-
-		// 최근 게시글 리스트 요소 가져오기
 		var recentPosts = document.querySelector('.recent-posts');
-
-		// 검색창에 마우스를 올리면 최근 게시글 리스트를 표시
-		/*searchContainer.addEventListener('mouseenter', function() {
-			recentPosts.style.display = 'block';
-		}); */
-
-		// 최근 게시글 리스트에서 마우스가 벗어나면 숨김
-		/*	recentPosts.addEventListener('mouseleave', function() {
-				recentPosts.style.display = 'none';
-			});  */
-
 		var rightBox = document.querySelector('.right-box');
-
-		// 오른쪽 박스 가져오기
-		var rightBox = document.querySelector('.right-box');
-
-		// 닫기 버튼 가져오기
 		var closeButton = document.querySelector('.close-button');
-
-		// 오른쪽 박스가 숨겨져 있는지 여부를 저장하는 변수
 		var isHidden = true;
 
 		 closeButton.addEventListener('click', function () {
