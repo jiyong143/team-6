@@ -391,8 +391,8 @@ button[type="submit"]:hover {
 				<table>
 					<h2>게시판 수정</h2>
 					<input type="hidden" name="bo_num" value="${board.bo_num}">
-					<label for="bo_ca_num">카테고리</label>
-					<select id="bo_ca_num" name="bo_ca_num">
+					<label for="bo_ca_num" style="display: none;">카테고리</label>
+					<select id="bo_ca_num" name="bo_ca_num" style="display: none;">
 						<c:forEach items="${list}" var="category">
 							<option value="${category.ca_num}">${category.ca_title} ▶카테고리</option>
 						</c:forEach>
@@ -400,8 +400,7 @@ button[type="submit"]:hover {
 					<br>
 					<div class="post-insert">
 						<label for="bo_title" class="label">게시판명</label> <input type="text" class="input"
-							id="bo_title" placeholder="게시판 명을 입력하세요 . . ." name="bo_title"
-							value="${board.bo_title}">
+							id="bo_title" placeholder="${board.bo_title}" name="bo_title">
 						<button type="submit">카테고리 수정</button>
 					</div>
 				</table>
@@ -455,25 +454,12 @@ button[type="submit"]:hover {
 		var isHidden = true;
 
 		// 버튼 클릭 이벤트에 함수 연결
-		closeButton.addEventListener('click', function() {
-			// 오른쪽 박스가 숨겨져 있다면
-			if (isHidden) {
-				// 오른쪽으로 이동하여 보이는 애니메이션 효과 추가
-				rightBox.style.transition = 'right 0.3s ease';
-				// 오른쪽으로 이동하여 보임
-				rightBox.style.right = '0';
-			} else {
-				// 오른쪽으로 이동하여 사라지는 애니메이션 효과 추가
-				rightBox.style.transition = 'right 0.3s ease';
-				// 오른쪽으로 이동하여 사라짐
-				rightBox.style.right = '-300px'; // 오른쪽 박스의 너비만큼 이동
-			}
-
-			// 숨겨져 있는 상태에서는 보이는 상태로, 보이는 상태에서는 숨겨져 있는 상태로
-			isHidden = !isHidden;
-		});
-
-		const categoryItems = document.querySelectorAll('.category li');
+		 closeButton.addEventListener('click', function () {
+            rightBox.style.transition = 'right 0.3s ease';
+            rightBox.style.right = isHidden ? '0' : '-300px';
+            this.classList.toggle('click');
+            isHidden = !isHidden;
+        });
 	</script>
 
 </body>

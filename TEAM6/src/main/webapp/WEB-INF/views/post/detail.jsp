@@ -108,6 +108,12 @@
 	width: 150px;
 	padding-left: 20px;
 }
+.board-box:hover{
+box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
+}
+.board-postList:hover{
+box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
+}
 
 .board-postList table {
 	width: 100%;
@@ -207,7 +213,6 @@
 	box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
 }
 
-
 .comment-list span {
 	box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
 	border: 1px solid #ddd;
@@ -251,26 +256,31 @@
 	background-color: rgba(141, 102, 18, 2);
 	color: #fff;
 }
+
 .gr {
-margin-top: 20px;
+	margin-top: 20px;
 }
+
 .input-input {
-     white-space: pre-wrap; /* 자동으로 줄 바꿈되도록 설정 */
-    border: 1px solid white;
-    min-width:1250px;
-    max-width:1250px;
-    min-height: 400px;
-    max-height: 400px;
-    outline-style: none;
-    vertical-align: top; 
-    line-height: normal; /* 줄 간격을 기본값으로 설정 */
-    padding: 5px; /* 내부 여백 추가 */
-    box-sizing: border-box; /* 내부 여백이 요소의 크기에 포함되도록 설정 */
+	white-space: pre-wrap; /* 자동으로 줄 바꿈되도록 설정 */
+	border: 1px solid white;
+	min-width: 1250px;
+	max-width: 1250px;
+	min-height: 400px;
+	max-height: 400px;
+	outline-style: none;
+	vertical-align: top;
+	line-height: normal; /* 줄 간격을 기본값으로 설정 */
+	padding: 5px; /* 내부 여백 추가 */
+	box-sizing: border-box; /* 내부 여백이 요소의 크기에 포함되도록 설정 */
 }
-.abtn:hover{
+
+.abtn:hover {
 	text-decoration: underline;
-	color:  rgba(141, 102, 18, 0.6);
+	color: rgba(141, 102, 18, 0.6);
 }
+
+
 </style>
 </head>
 <body>
@@ -288,29 +298,29 @@ margin-top: 20px;
 				<label>
 					<h3 style="margin-top: 50px;">제목 : ${post.po_title }</h3>
 					<h5 style="text-align: right;">날짜 : ${post.changeDate()}</h5>
-					<h5 style="text-align: right;">작성자 : ${post.po_me_id}
+					<h5 style="text-align: right;">작성자 :<a href='<c:url value="/member/info?me_id=${post.po_me_id}"/>'> ${post.po_me_id}</a>
 						(${name})</h5>
-				
+
 				</label>
 				<c:if test="${post.po_me_id eq user.me_id }">
-					<a href="<c:url value="/post/update?num=${post.po_num}&bNum=${bNum}&bName=${bName}"/>"
+					<a
+						href="<c:url value="/post/update?num=${post.po_num}&bNum=${bNum}&bName=${bName}"/>"
 						class="btn">게시글 수정</a>
 					<a
 						href="<c:url value="/post/delete?num=${post.po_num}&bNum=${post.po_bo_num}"/>"
 						class="btn">게시글 삭제</a>
 				</c:if>
 				<div class="hr gr"></div>
-					<h5 style="text-align: right;">조회수 : ${post.po_views}</h5>	
-				<textarea class="input-input"  readonly="readonly" >${post.po_content}</textarea>
+				<h5 style="text-align: right;">조회수 : ${post.po_views}</h5>
+				<textarea class="input-input" readonly="readonly">${post.po_content}</textarea>
 				<div class="comment-insert">
 					<label for="content">댓글</label>
 					<div class="btn-button">
 						<input type="hidden" name="num" value="${post.po_num }"> <input
 							type="hidden" name="bNum" value="${bNum}"> <input
 							type="hidden" name="bName" value="${bName}">
-						<textarea style="border-radius:10px;"
-						rows="1" id="content" name="content" class="content"
-							placeholder="Enter comment"></textarea>
+						<textarea style="border-radius: 10px;" rows="1" id="content"
+							name="content" class="content" placeholder="Enter comment"></textarea>
 						<button type="submit" style="width: 13%;">등록</button>
 					</div>
 					<br>
@@ -320,11 +330,15 @@ margin-top: 20px;
 							<span class="writer">${comment.co_me_id}</span>
 							<p class="p">${comment.co_content}</p>
 							<c:if test="${comment.co_me_id eq user.me_id }">
-					          <a href="<c:url value="/comment/update?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>" class="abtn">수정</a>
-					          <a href="<c:url value="/comment/delete?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>" class="abtn">삭제</a>
-				            </c:if>
-							
-							
+								<a
+									href="<c:url value="/comment/update?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>"
+									class="abtn">수정</a>
+								<a
+									href="<c:url value="/comment/delete?cNum=${comment.co_num}&bNum=${bNum}&bName=${bName}"/>"
+									class="abtn">삭제</a>
+							</c:if>
+
+
 							<div class="hr"></div>
 						</c:forEach>
 						<c:if test="${comments.size() == 0 }">
@@ -366,23 +380,12 @@ margin-top: 20px;
 		var isHidden = true;
 
 		// 버튼 클릭 이벤트에 함수 연결
-		closeButton.addEventListener('click', function() {
-			// 오른쪽 박스가 숨겨져 있다면
-			if (isHidden) {
-				// 오른쪽으로 이동하여 보이는 애니메이션 효과 추가
-				rightBox.style.transition = 'right 0.3s ease';
-				// 오른쪽으로 이동하여 보임
-				rightBox.style.right = '0';
-			} else {
-				// 오른쪽으로 이동하여 사라지는 애니메이션 효과 추가
-				rightBox.style.transition = 'right 0.3s ease';
-				// 오른쪽으로 이동하여 사라짐
-				rightBox.style.right = '-300px'; // 오른쪽 박스의 너비만큼 이동
-			}
-
-			// 숨겨져 있는 상태에서는 보이는 상태로, 보이는 상태에서는 숨겨져 있는 상태로
-			isHidden = !isHidden;
-		});
+	 closeButton.addEventListener('click', function () {
+            rightBox.style.transition = 'right 0.3s ease';
+            rightBox.style.right = isHidden ? '0' : '-300px';
+            this.classList.toggle('click');
+            isHidden = !isHidden;
+        });
 	</script>
 </body>
 </html>

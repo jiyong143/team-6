@@ -1,17 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>What do you want to ask? - È¸¿ø °ü¸®</title>
-
+<meta charset="UTF-8">
+<title>What do you want to ask? - ê´€ë¦¬ì í˜ì´ì§€(ì»¤ë®¤ë‹ˆí‹° ê´€ë¦¬)</title>
+<jsp:include page="/WEB-INF/views/header.jsp" />
 <style type="text/css">
-.search-container {
-	margin-bottom: 10px;
-}
-
 .select-box {
 	padding: 10px;
 	background-color: white;
@@ -43,11 +39,11 @@
 
 .logo a {
 	color: inherit;
-	/* »ó¼ÓµÈ ÅØ½ºÆ® »ö»ó »ç¿ë */
+	/* ìƒì†ëœ í…ìŠ¤íŠ¸ ìƒ‰ìƒ ì‚¬ìš© */
 	text-decoration: none;
-	/* ¹ØÁÙ Á¦°Å */
+	/* ë°‘ì¤„ ì œê±° */
 	font-size: 36px;
-	/* ·Î°í ÅØ½ºÆ® Å©±â ´Ã¸®±â */
+	/* ë¡œê³  í…ìŠ¤íŠ¸ í¬ê¸° ëŠ˜ë¦¬ê¸° */
 }
 
 .login {
@@ -58,9 +54,9 @@
 
 .login a {
 	color: inherit;
-	/* ±âº» ÅØ½ºÆ® »öÀ¸·Î ¼³Á¤ */
+	/* ê¸°ë³¸ í…ìŠ¤íŠ¸ ìƒ‰ìœ¼ë¡œ ì„¤ì • */
 	text-decoration: none;
-	/* ¹ØÁÙ Á¦°Å */
+	/* ë°‘ì¤„ ì œê±° */
 }
 
 .recent-posts {
@@ -130,31 +126,31 @@
 	background-color: rgba(141, 102, 18, 0.5);
 }
 
-/* ¹øÈ£ ¼¿ ½ºÅ¸ÀÏ */
+/* ë²ˆí˜¸ ì…€ ìŠ¤íƒ€ì¼ */
 .board-postList td:nth-child(1), .board-postList th:nth-child(1) {
 	width: 5%;
 	text-align: center;
 }
 
-/* °Ô½Ã±Û ¸í ¼¿ ½ºÅ¸ÀÏ */
+/* ê²Œì‹œê¸€ ëª… ì…€ ìŠ¤íƒ€ì¼ */
 .board-postList td:nth-child(2), .board-postList th:nth-child(2) {
 	text-align: center;
 	width: 30%;
 }
 
-/* ÀÛ¼ºÀÚ ¼¿ ½ºÅ¸ÀÏ */
+/* ì‘ì„±ì ì…€ ìŠ¤íƒ€ì¼ */
 .board-postList td:nth-child(3), .board-postList th:nth-child(3) {
 	text-align: center;
 	width: 10%;
 }
 
-/* ³¯Â¥ ¼¿ ½ºÅ¸ÀÏ */
+/* ë‚ ì§œ ì…€ ìŠ¤íƒ€ì¼ */
 .board-postList td:nth-child(4), .board-postList th:nth-child(4) {
 	width: 15%;
 	text-align: center;
 }
 
-/* Á¶È¸¼ö ¼¿ ½ºÅ¸ÀÏ */
+/* ì¡°íšŒìˆ˜ ì…€ ìŠ¤íƒ€ì¼ */
 .board-postList td:nth-child(5), .board-postList th:nth-child(5) {
 	width: 10%;
 	text-align: center;
@@ -246,65 +242,74 @@
 	background-color: rgba(141, 102, 18, 1);
 }
 
-.btn {
-	padding: 12px 24px;
-	background-color: rgba(141, 102, 18, 0.5);
-	color: #333;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 16px;
-	transition: background-color 0.3s;
+h2, h3 {
+	text-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
+}
+/* ë¦¬ìŠ¤íŠ¸ ë°•ìŠ¤ ìŠ¤íƒ€ì¼ */
+.lbox-group, .rbox-group {
+	display: flex;
+	gap: 20px;
+	margin-bottom: 20px;
 }
 
-.btn:hover {
-	background-color: rgba(141, 102, 18, 2);
-	color: #fff;
+.lbox, .rbox {
+	background-color: #fff;
+	border-radius: 8px;
+	padding: 20px;
+	transition: box-shadow 0.3s ease;
+	box-shadow: 0px 0px 20px rgba(141, 102, 18, 0.1);
+	white-space: nowrap;
+	max-height: 370px;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
-.board-postList:hover {
+/* í˜¸ë²„ íš¨ê³¼ì™€ ê·¸ë¦¼ì íš¨ê³¼ */
+.lbox:hover, .rbox:hover {
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
+}
+
+.date {
+	font-size: 45px;
+	color: rgb(255, 255, 255); /* í°ìƒ‰ */
+}
+
+.time {
+	text-align: center;
+	font-size: 50px;
+	font-weight: bold;
+	color: rgba(141, 102, 18, 1);
 }
 </style>
 
 </head>
+
 <body>
-	<jsp:include page="/WEB-INF/views/header.jsp" />
 	<div class="body-group">
-		<br>
-		<form action="<c:url value="/admin/delete"/>" method="post">
-			<div class="board-postList">
-				<h2>È¸¿ø ¸®½ºÆ®</h2>
+		<div class="rbox">
+			<table>
+				<thead>
+					<h2>íšŒì› ì •ë³´</h2>
+					<tr>
+						<th colspan="2">ì•„ì´ë””</th>
+						<th colspan="2">ì´ë¦„</th>
+						<th colspan="2">ìƒë…„ì›”ì¼</th>
+						<th colspan="2">ê¶Œí•œ</th>
+						<th colspan="2">ìƒíƒœ</th>
 
-				<div class="hr"></div>
-				<table>
-					<thead>
-						<tr>
-							<th>ÀÌ¸§</th>
-							<th>¾ÆÀÌµğ</th>
-							<th>»ı³â¿ùÀÏ</th>
-							<th>±ÇÇÑ</th>
-							<th>»óÅÂ</th>
-							<th>±âÅ¸</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${memberList}" var="member">
-							<tr>
-								<td>${member.me_name }</td>
-								<td>${member.me_id}</td>
-								<td>${member.me_birth}</td>
-								<td>${member.me_authority}</td>
-								<td>${member.me_ms_state}</td>
-								<td><a style="text-align: center;" class="btn write-button"
-									href='<c:url value="/admin/delete?me_id=${member.me_id}"/>'>È¸¿øÅ»Åğ</a></td>
-							</tr>
-						</c:forEach>
-
-					</tbody>
-				</table>
-			</div>
-		</form>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="2">${member.me_id }</td>
+						<td colspan="2">${member.me_name }</td>
+						<td colspan="2">${member.me_birth}</td>
+						<td colspan="2">${member.me_authority}</td>
+						<td colspan="2">${member.me_ms_state}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 	<script>
 		function toggleCategory() {
@@ -312,52 +317,80 @@
 			category.classList.toggle("open");
 		}
 
-		// °Ë»öÃ¢ ¿ä¼Ò¸¦ °¡Á®¿È
+		// ê²€ìƒ‰ì°½ ìš”ì†Œë¥¼ ê°€ì ¸ì˜´
 		var searchInput = document
 				.querySelector('.search-container input[type=text]');
 
-		// Ä«Å×°í¸® Åä±Û ¹öÆ° ¿ä¼Ò °¡Á®¿À±â
+		// ì¹´í…Œê³ ë¦¬ í† ê¸€ ë²„íŠ¼ ìš”ì†Œ ê°€ì ¸ì˜¤ê¸°
 		var categoryToggle = document.querySelector('.category-toggle');
 
-		// Ä«Å×°í¸® Åä±Û ¹öÆ°¿¡ Å¬¸¯ ÀÌº¥Æ® ¸®½º³Ê Ãß°¡
+		// ì¹´í…Œê³ ë¦¬ í† ê¸€ ë²„íŠ¼ì— í´ë¦­ ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆ ì¶”ê°€
 		categoryToggle.addEventListener('click', function() {
-			// Å¬¸¯ ½Ã clicked Å¬·¡½º¸¦ Åä±ÛÇÏ¿© ½ºÅ¸ÀÏ º¯°æ
+			// í´ë¦­ ì‹œ clicked í´ë˜ìŠ¤ë¥¼ í† ê¸€í•˜ì—¬ ìŠ¤íƒ€ì¼ ë³€ê²½
 			this.classList.toggle('clicked');
 		});
 
-		// °Ë»öÃ¢ ¿ä¼Ò °¡Á®¿À±â
-		var searchContainer = document.querySelector('.search-container');
+		/*      // ê²€ìƒ‰ì°½ ìš”ì†Œ ê°€ì ¸ì˜¤ê¸°
+		     var searchContainer = document.querySelector('.search-container');
 
-		// ÃÖ±Ù °Ô½Ã±Û ¸®½ºÆ® ¿ä¼Ò °¡Á®¿À±â
-		var recentPosts = document.querySelector('.recent-posts');
+		     // ìµœê·¼ ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ ìš”ì†Œ ê°€ì ¸ì˜¤ê¸°
+		     var recentPosts = document.querySelector('.recent-posts');
 
-		// °Ë»öÃ¢¿¡ ¸¶¿ì½º¸¦ ¿Ã¸®¸é ÃÖ±Ù °Ô½Ã±Û ¸®½ºÆ®¸¦ Ç¥½Ã
-		/*searchContainer.addEventListener('mouseenter', function() {
-			recentPosts.style.display = 'block';
-		}); */
+		     // ê²€ìƒ‰ì°½ì— ë§ˆìš°ìŠ¤ë¥¼ ì˜¬ë¦¬ë©´ ìµœê·¼ ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ë¥¼ í‘œì‹œ
+		     searchContainer.addEventListener('mouseenter', function() {
+		        recentPosts.style.display = 'block';
+		     }); */
 
-		// ÃÖ±Ù °Ô½Ã±Û ¸®½ºÆ®¿¡¼­ ¸¶¿ì½º°¡ ¹ş¾î³ª¸é ¼û±è
-		/*	recentPosts.addEventListener('mouseleave', function() {
-				recentPosts.style.display = 'none';
-			});  */
+		/*    // ìµœê·¼ ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ì—ì„œ ë§ˆìš°ìŠ¤ê°€ ë²—ì–´ë‚˜ë©´ ìˆ¨ê¹€
+		   recentPosts.addEventListener('mouseleave', function() {
+		      recentPosts.style.display = 'none';
+		   }); */
 
 		var rightBox = document.querySelector('.right-box');
 
-		// ¿À¸¥ÂÊ ¹Ú½º °¡Á®¿À±â
+		// ì˜¤ë¥¸ìª½ ë°•ìŠ¤ ê°€ì ¸ì˜¤ê¸°
 		var rightBox = document.querySelector('.right-box');
 
-		// ´İ±â ¹öÆ° °¡Á®¿À±â
+		// ë‹«ê¸° ë²„íŠ¼ ê°€ì ¸ì˜¤ê¸°
 		var closeButton = document.querySelector('.close-button');
 
-		// ¿À¸¥ÂÊ ¹Ú½º°¡ ¼û°ÜÁ® ÀÖ´ÂÁö ¿©ºÎ¸¦ ÀúÀåÇÏ´Â º¯¼ö
+		// ì˜¤ë¥¸ìª½ ë°•ìŠ¤ê°€ ìˆ¨ê²¨ì ¸ ìˆëŠ”ì§€ ì—¬ë¶€ë¥¼ ì €ì¥í•˜ëŠ” ë³€ìˆ˜
 		var isHidden = true;
 
-		 closeButton.addEventListener('click', function () {
-	            rightBox.style.transition = 'right 0.3s ease';
-	            rightBox.style.right = isHidden ? '0' : '-300px';
-	            this.classList.toggle('click');
-	            isHidden = !isHidden;
-	        });
+		closeButton.addEventListener('click', function() {
+			rightBox.style.transition = 'right 0.3s ease';
+			rightBox.style.right = isHidden ? '0' : '-300px';
+			this.classList.toggle('click');
+			isHidden = !isHidden;
+		});
+	</script>
+
+
+
+	<script type="text/javascript">
+		function setClock() {
+			var dateInfo = new Date();
+			var hour = modifyNumber(dateInfo.getHours());
+			var min = modifyNumber(dateInfo.getMinutes());
+			var sec = modifyNumber(dateInfo.getSeconds());
+			var year = dateInfo.getFullYear();
+			var month = dateInfo.getMonth() + 1; //monthIndexë¥¼ ë°˜í™˜í•´ì£¼ê¸° ë•Œë¬¸ì— 1ì„ ë”í•´ì¤€ë‹¤.
+			var date = dateInfo.getDate();
+			document.getElementById("time").innerHTML = hour + ":" + min + ":"
+					+ sec;
+			document.getElementById("date").innerHTML = year + "ë…„ " + month
+					+ "ì›” " + date + "ì¼";
+		}
+		function modifyNumber(time) {
+			if (parseInt(time) < 10) {
+				return "0" + time;
+			} else
+				return time;
+		}
+		window.onload = function() {
+			setClock();
+			setInterval(setClock, 1000); //1ì´ˆë§ˆë‹¤ setClock í•¨ìˆ˜ ì‹¤í–‰
+		}
 	</script>
 
 </body>

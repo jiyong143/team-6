@@ -324,12 +324,16 @@
         }
 
         input:focus{outline: unset !important;}
+        .signup-group:hover{
+        box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
+        }
     </style>
 </head>
 <body> 
-<jsp:include page="/WEB-INF/views/header.jsp"/>
-  	  <div class="signup-group">
-     <h1>개인 정보 수정</h1>
+   <jsp:include page="/WEB-INF/views/header.jsp" />
+  	  <div class="signup-group" style="padding: 100px;">
+  	  
+     <h2>개인 정보 수정</h2>
         <form name="join_form" id="join_form" method="post" action="<c:url value="/member/update"/>">
             <div class="signup">
                   <label for="id" >아이디</label>
@@ -337,11 +341,11 @@
             </div>
             <div class="signup">
                <label for="pw" >새 비밀번호(특수문자(!@#$)와 영어,숫자 조합 최소8자~최대 14자)</label>
-		    <input type="password"  id="pw" name="pw" placeholder="Enter new password">
+		    <input type="password"  id="pw" name="pw" placeholder="Enter new password" required="required">
             </div>
             <div class="signup">
                  <label for="pw2">새 비밀번호 재입력</label>
-		   		 <input type="password" id="pw2" name="pw2" placeholder="Enter new password again">
+		   		 <input type="password" id="pw2" name="pw2" placeholder="Enter new password again" required="required">
             </div>
             <div class="signup">
                 <label for="birth" >생년월일(주민등록 앞 6자리)</label>
@@ -349,19 +353,19 @@
             </div>
             <div class="signup">
                 <label for="name" >새 닉네임(최대 5글자)</label>
-		    <input type="text" id="name" name="name" value="${user.me_name}" placeholder="Enter new nickname">
+		    <input type="text" id="name" name="name" value="${user.me_name}" placeholder="${user.me_name}">
             </div>
             <div class="signup">
                <label for="phone"  >새 전화번호("-"제외한 번호 형식)</label>
-			<input type="text"  id="phone" placeholder="Enter new phone" name="phone" value="${user.me_phone}">
+			<input type="text"  id="phone" placeholder="{user.me_phone}" name="phone" value="${user.me_phone}">
             </div>
             <div class="signup">
              	<label for="email">새 이메일(이메일 형식)</label>
-				<input type="email" id="email" placeholder="Enter new  email" name="email" value="${user.me_email}">
+				<input type="email" id="email" placeholder="${user.me_email}" name="email" value="${user.me_email}">
             </div>
             <div class="signup">
              	<label for="address">새 주소(양식 : OO시 OO구 OO동)</label>
-				<input type="text" id="address" placeholder="Enter new  address" name="address" value="${user.me_address}">
+				<input type="text" id="address" placeholder="${user.me_address}" name="address" value="${user.me_address}">
             </div>
             <div class="signup">
              	<label for="authority">권한</label>
@@ -378,104 +382,32 @@
     
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-    <script>
-       /*  $(document).ready(function () {
-            jQuery.validator.addMethod("pwcheck", function (value, element) {
-                return this.optional(element) || $('#pw').val() === $('#pw2').val();
-            }, "비밀번호가 일치하지 않습니다.");
+   <script type="text/javascript">
 
-            $("#join_form").validate({
-                rules: {
-                    name: "required",
-                    id: "required",
-                    pw: {
-                        required: true,
-                        minlength: 5
-                    },
-                    pw2: {
-                        required: true,
-                        minlength: 5,
-                        pwcheck: true
-                    },
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                    phone: "required",
-                    address: "required"
-                },
-                messages: {
-                    name: "이름을 입력하세요",
-                    id: "아이디를 입력하세요",
-                    pw: {
-                        required: "비밀번호를 입력하세요",
-                        minlength: "비밀번호는 5자 이상이어야 합니다"
-                    },
-                    pw2: {
-                        required: "비밀번호 확인을 입력하세요",
-                        minlength: "비밀번호는 5자 이상이어야 합니다",
-                        pwcheck: "비밀번호가 일치하지 않습니다"
-                    },
-                    email: {
-                        required: "이메일 주소를 입력하세요",
-                        email: "유효한 이메일 주소를 입력하세요"
-                    },
-                    phone: "핸드폰 번호를 입력하세요",
-                    address: "주소를 입력하세요"
-                },
-                errorElement: "div",
-                errorClass: "error-message",
-                highlight: function(element, errorClass, validClass) {
-                    $(element).addClass("error-border shake");
-                    $(`label[for=${element.id}]`).addClass("error-text");
-                },
-                unhighlight: function(element, errorClass, validClass) {
-                    $(element).removeClass("error-border shake");
-                    $(`label[for=${element.id}]`).removeClass("error-text");
-                },
-                errorPlacement: function(error, element) {
-                    error.insertAfter(element);
-                },
-                submitHandler: function(form) {
-                    if (confirm('가입하시겠습니까?')) {
-                        form.submit();
-                    } else {
-                        // 아무것도 실행 안함
-                    }
-                }
-            });
-        }); */
+function toggleCategory() {
+	var category = document.getElementById("category");
+	category.classList.toggle("open");
+}
 
+var searchInput = document.querySelector('.search-container input[type=text]');
 
-        function toggleCategory() {
-            var category = document.getElementById("category");
-            category.classList.toggle("open");
-        }
+var categoryToggle = document.querySelector('.category-toggle');
 
-        // 검색창 요소를 가져옴
-        var searchInput = document.querySelector('.search-container input[type=text]');
+categoryToggle.addEventListener('click', function() {
+	// 클릭 시 토글
+	this.classList.toggle('clicked');
+});
 
-        // 카테고리 토글 버튼 요소 가져오기
-        var categoryToggle = document.querySelector('.category-toggle');
+var rightBox = document.querySelector('.right-box');
+var closeButton = document.querySelector('.close-button');
+var isHidden = true;
 
-        // 카테고리 토글 버튼에 클릭 이벤트 리스너 추가
-        categoryToggle.addEventListener('click', function () {
-            // 클릭 시 clicked 클래스를 토글하여 스타일 변경
-            this.classList.toggle('clicked');
-        });
-
-
-
-        var rightBox = document.querySelector('.right-box');
-        var closeButton = document.querySelector('.close-button');
-        var isHidden = true;
-
-        closeButton.addEventListener('click', function () {
-            rightBox.style.transition = 'right 0.3s ease';
-            rightBox.style.right = isHidden ? '0' : '-300px';
-            isHidden = !isHidden;
-        });
-
-    </script>
+closeButton.addEventListener('click', function () {
+    rightBox.style.transition = 'right 0.3s ease';
+    rightBox.style.right = isHidden ? '0' : '-300px';
+    this.classList.toggle('click');
+    isHidden = !isHidden;
+});
+</script>
 </body>
 </html>

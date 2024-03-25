@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>What do you want to ask? - È¸¿ø °ü¸®</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 
 <style type="text/css">
 .search-container {
@@ -43,11 +43,11 @@
 
 .logo a {
 	color: inherit;
-	/* »ó¼ÓµÈ ÅØ½ºÆ® »ö»ó »ç¿ë */
+	/* ìƒì†ëœ í…ìŠ¤íŠ¸ ìƒ‰ìƒ ì‚¬ìš© */
 	text-decoration: none;
-	/* ¹ØÁÙ Á¦°Å */
+	/* ë°‘ì¤„ ì œê±° */
 	font-size: 36px;
-	/* ·Î°í ÅØ½ºÆ® Å©±â ´Ã¸®±â */
+	/* ë¡œê³  í…ìŠ¤íŠ¸ í¬ê¸° ëŠ˜ë¦¬ê¸° */
 }
 
 .login {
@@ -58,9 +58,9 @@
 
 .login a {
 	color: inherit;
-	/* ±âº» ÅØ½ºÆ® »öÀ¸·Î ¼³Á¤ */
+	/* ê¸°ë³¸ í…ìŠ¤íŠ¸ ìƒ‰ìœ¼ë¡œ ì„¤ì • */
 	text-decoration: none;
-	/* ¹ØÁÙ Á¦°Å */
+	/* ë°‘ì¤„ ì œê±° */
 }
 
 .recent-posts {
@@ -130,31 +130,31 @@
 	background-color: rgba(141, 102, 18, 0.5);
 }
 
-/* ¹øÈ£ ¼¿ ½ºÅ¸ÀÏ */
+/* ë²ˆí˜¸ ì…€ ìŠ¤íƒ€ì¼ */
 .board-postList td:nth-child(1), .board-postList th:nth-child(1) {
 	width: 5%;
 	text-align: center;
 }
 
-/* °Ô½Ã±Û ¸í ¼¿ ½ºÅ¸ÀÏ */
+/* ê²Œì‹œê¸€ ëª… ì…€ ìŠ¤íƒ€ì¼ */
 .board-postList td:nth-child(2), .board-postList th:nth-child(2) {
 	text-align: center;
 	width: 30%;
 }
 
-/* ÀÛ¼ºÀÚ ¼¿ ½ºÅ¸ÀÏ */
+/* ì‘ì„±ì ì…€ ìŠ¤íƒ€ì¼ */
 .board-postList td:nth-child(3), .board-postList th:nth-child(3) {
 	text-align: center;
 	width: 10%;
 }
 
-/* ³¯Â¥ ¼¿ ½ºÅ¸ÀÏ */
+/* ë‚ ì§œ ì…€ ìŠ¤íƒ€ì¼ */
 .board-postList td:nth-child(4), .board-postList th:nth-child(4) {
 	width: 15%;
 	text-align: center;
 }
 
-/* Á¶È¸¼ö ¼¿ ½ºÅ¸ÀÏ */
+/* ì¡°íšŒìˆ˜ ì…€ ìŠ¤íƒ€ì¼ */
 .board-postList td:nth-child(5), .board-postList th:nth-child(5) {
 	width: 10%;
 	text-align: center;
@@ -272,93 +272,70 @@
 	<jsp:include page="/WEB-INF/views/header.jsp" />
 	<div class="body-group">
 		<br>
-		<form action="<c:url value="/admin/delete"/>" method="post">
-			<div class="board-postList">
-				<h2>È¸¿ø ¸®½ºÆ®</h2>
+		<div class="board-postList">
+			<h2>ëŒ“ê¸€ ë¦¬ìŠ¤íŠ¸</h2>
+			<div class="hr"></div>
+			<table>
+				<thead>
+					<tr>
+						<th>ëŒ“ê¸€ë²ˆí˜¸</th>
+						<th>ëŒ“ê¸€ë‚´ìš©</th>
+						<th>ê²Œì‹œê¸€ì œëª©</th>
+						<th>ì‘ì„±ì</th>
 
-				<div class="hr"></div>
-				<table>
-					<thead>
-						<tr>
-							<th>ÀÌ¸§</th>
-							<th>¾ÆÀÌµğ</th>
-							<th>»ı³â¿ùÀÏ</th>
-							<th>±ÇÇÑ</th>
-							<th>»óÅÂ</th>
-							<th>±âÅ¸</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${memberList}" var="member">
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${commentList}" var="comment">
+						<c:if test="${user.getMe_id().equals(comment.co_me_id)}">
 							<tr>
-								<td>${member.me_name }</td>
-								<td>${member.me_id}</td>
-								<td>${member.me_birth}</td>
-								<td>${member.me_authority}</td>
-								<td>${member.me_ms_state}</td>
-								<td><a style="text-align: center;" class="btn write-button"
-									href='<c:url value="/admin/delete?me_id=${member.me_id}"/>'>È¸¿øÅ»Åğ</a></td>
+								<td>${comment.co_num }</td>
+								<td>${comment.co_content}</td>
+								<td><a href="<c:url value="/post/detail?num=${comment.co_po_num}&bNum=${comment.post.po_bo_num}&bName=${comment.post.board.bo_title}"/>">${comment.post.po_title}</a></td>
+								<td>${comment.co_me_id}</td>
 							</tr>
-						</c:forEach>
-
-					</tbody>
-				</table>
-			</div>
-		</form>
+						</c:if>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
+
+
 	<script>
 		function toggleCategory() {
 			var category = document.getElementById("category");
 			category.classList.toggle("open");
 		}
 
-		// °Ë»öÃ¢ ¿ä¼Ò¸¦ °¡Á®¿È
+		// ê²€ìƒ‰ì°½ ìš”ì†Œë¥¼ ê°€ì ¸ì˜´
 		var searchInput = document
 				.querySelector('.search-container input[type=text]');
 
-		// Ä«Å×°í¸® Åä±Û ¹öÆ° ¿ä¼Ò °¡Á®¿À±â
+		// ì¹´í…Œê³ ë¦¬ í† ê¸€ ë²„íŠ¼ ìš”ì†Œ ê°€ì ¸ì˜¤ê¸°
 		var categoryToggle = document.querySelector('.category-toggle');
 
-		// Ä«Å×°í¸® Åä±Û ¹öÆ°¿¡ Å¬¸¯ ÀÌº¥Æ® ¸®½º³Ê Ãß°¡
+		// ì¹´í…Œê³ ë¦¬ í† ê¸€ ë²„íŠ¼ì— í´ë¦­ ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆ ì¶”ê°€
 		categoryToggle.addEventListener('click', function() {
-			// Å¬¸¯ ½Ã clicked Å¬·¡½º¸¦ Åä±ÛÇÏ¿© ½ºÅ¸ÀÏ º¯°æ
+			// í´ë¦­ ì‹œ clicked í´ë˜ìŠ¤ë¥¼ í† ê¸€í•˜ì—¬ ìŠ¤íƒ€ì¼ ë³€ê²½
 			this.classList.toggle('clicked');
 		});
 
-		// °Ë»öÃ¢ ¿ä¼Ò °¡Á®¿À±â
+		// ê²€ìƒ‰ì°½ ìš”ì†Œ ê°€ì ¸ì˜¤ê¸°
 		var searchContainer = document.querySelector('.search-container');
-
-		// ÃÖ±Ù °Ô½Ã±Û ¸®½ºÆ® ¿ä¼Ò °¡Á®¿À±â
 		var recentPosts = document.querySelector('.recent-posts');
-
-		// °Ë»öÃ¢¿¡ ¸¶¿ì½º¸¦ ¿Ã¸®¸é ÃÖ±Ù °Ô½Ã±Û ¸®½ºÆ®¸¦ Ç¥½Ã
-		/*searchContainer.addEventListener('mouseenter', function() {
-			recentPosts.style.display = 'block';
-		}); */
-
-		// ÃÖ±Ù °Ô½Ã±Û ¸®½ºÆ®¿¡¼­ ¸¶¿ì½º°¡ ¹ş¾î³ª¸é ¼û±è
-		/*	recentPosts.addEventListener('mouseleave', function() {
-				recentPosts.style.display = 'none';
-			});  */
-
 		var rightBox = document.querySelector('.right-box');
-
-		// ¿À¸¥ÂÊ ¹Ú½º °¡Á®¿À±â
-		var rightBox = document.querySelector('.right-box');
-
-		// ´İ±â ¹öÆ° °¡Á®¿À±â
 		var closeButton = document.querySelector('.close-button');
-
-		// ¿À¸¥ÂÊ ¹Ú½º°¡ ¼û°ÜÁ® ÀÖ´ÂÁö ¿©ºÎ¸¦ ÀúÀåÇÏ´Â º¯¼ö
 		var isHidden = true;
 
-		 closeButton.addEventListener('click', function () {
-	            rightBox.style.transition = 'right 0.3s ease';
-	            rightBox.style.right = isHidden ? '0' : '-300px';
-	            this.classList.toggle('click');
-	            isHidden = !isHidden;
-	        });
+		closeButton.addEventListener('click', function() {
+			rightBox.style.transition = 'right 0.3s ease';
+			rightBox.style.right = isHidden ? '0' : '-300px';
+			this.classList.toggle('click');
+			isHidden = !isHidden;
+		});
 	</script>
+
 
 </body>
 </html>

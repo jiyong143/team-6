@@ -274,7 +274,8 @@ h2, h3 {
     color: rgb(255, 255, 255);  /* 흰색 */
 }
 .time{
-    font-size: 100px;
+	text-align:center;
+    font-size: 50px;
     font-weight: bold;
     color: rgba(141, 102, 18, 1);
 }
@@ -359,7 +360,7 @@ h2, h3 {
 							</tbody>
 						</table>
 					</div>
-					<div class="lbox" style="width: 40%;">
+					<div class="lbox" style="width: 400px; height: 200px;">
 						 <div class="date" id="date"></div>
 						 <div class="time" id="time"></div>
 					</div>
@@ -473,27 +474,16 @@ h2, h3 {
 		// 오른쪽 박스가 숨겨져 있는지 여부를 저장하는 변수
 		var isHidden = true;
 
-		// 버튼 클릭 이벤트에 함수 연결
-		closeButton.addEventListener('click', function() {
-			// 오른쪽 박스가 숨겨져 있다면
-			if (isHidden) {
-				// 오른쪽으로 이동하여 보이는 애니메이션 효과 추가
-				rightBox.style.transition = 'right 0.3s ease';
-				// 오른쪽으로 이동하여 보임
-				rightBox.style.right = '0';
-			} else {
-				// 오른쪽으로 이동하여 사라지는 애니메이션 효과 추가
-				rightBox.style.transition = 'right 0.3s ease';
-				// 오른쪽으로 이동하여 사라짐
-				rightBox.style.right = '-300px'; // 오른쪽 박스의 너비만큼 이동
-			}
-
-			// 숨겨져 있는 상태에서는 보이는 상태로, 보이는 상태에서는 숨겨져 있는 상태로
-			isHidden = !isHidden;
-		});
-
-		const categoryItems = document.querySelectorAll('.category li');
+		 closeButton.addEventListener('click', function () {
+	            rightBox.style.transition = 'right 0.3s ease';
+	            rightBox.style.right = isHidden ? '0' : '-300px';
+	            this.classList.toggle('click');
+	            isHidden = !isHidden;
+	        });
 	</script>
+	
+	
+	
 <script type="text/javascript">
 function setClock(){
     var dateInfo = new Date(); 

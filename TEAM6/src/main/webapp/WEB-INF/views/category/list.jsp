@@ -432,23 +432,12 @@
 		var isHidden = true;
 
 		// 버튼 클릭 이벤트에 함수 연결
-		closeButton.addEventListener('click', function() {
-			// 오른쪽 박스가 숨겨져 있다면
-			if (isHidden) {
-				// 오른쪽으로 이동하여 보이는 애니메이션 효과 추가
-				rightBox.style.transition = 'right 0.3s ease';
-				// 오른쪽으로 이동하여 보임
-				rightBox.style.right = '0';
-			} else {
-				// 오른쪽으로 이동하여 사라지는 애니메이션 효과 추가
-				rightBox.style.transition = 'right 0.3s ease';
-				// 오른쪽으로 이동하여 사라짐
-				rightBox.style.right = '-300px'; // 오른쪽 박스의 너비만큼 이동
-			}
-
-			// 숨겨져 있는 상태에서는 보이는 상태로, 보이는 상태에서는 숨겨져 있는 상태로
-			isHidden = !isHidden;
-		});
+		 closeButton.addEventListener('click', function () {
+            rightBox.style.transition = 'right 0.3s ease';
+            rightBox.style.right = isHidden ? '0' : '-300px';
+            this.classList.toggle('click');
+            isHidden = !isHidden;
+        });
 
 		const categoryItems = document.querySelectorAll('.category li');
 	</script>

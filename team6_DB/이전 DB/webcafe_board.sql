@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `webcafe` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `webcafe`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: localhost    Database: webcafe
@@ -32,7 +30,7 @@ CREATE TABLE `board` (
   UNIQUE KEY `bo_title` (`bo_title`),
   KEY `FK_category_TO_board_1` (`bo_ca_num`),
   CONSTRAINT `FK_category_TO_board_1` FOREIGN KEY (`bo_ca_num`) REFERENCES `category` (`ca_num`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +39,6 @@ CREATE TABLE `board` (
 
 LOCK TABLES `board` WRITE;
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
-INSERT INTO `board` VALUES (1,'공지사항',1),(2,'에스파',2),(3,'스트레이 키즈',2),(4,'SUV',3),(5,'세단',3),(6,'한식',5),(7,'중식',5),(8,'일식',5),(9,'양식',5),(10,'소프트웨어',4),(11,'하드웨어',4),(12,'프론트엔드',4),(13,'백엔드',4),(14,'정보보안',4);
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-25 10:57:27
+-- Dump completed on 2024-03-06  8:50:46

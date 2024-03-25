@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `webcafe` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `webcafe`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: localhost    Database: webcafe
@@ -28,12 +30,13 @@ CREATE TABLE `member` (
   `me_email` varchar(30) NOT NULL,
   `me_phone` char(11) NOT NULL,
   `me_pw` varchar(14) NOT NULL,
-  `me_address` text NOT NULL,
-  `me_name` text NOT NULL,
-  `me_ms_state` varchar(10) NOT NULL DEFAULT '이용중',
-  `me_authority` varchar(5) NOT NULL DEFAULT 'user',
+  `me_address` varchar(50) NOT NULL,
+  `me_name` varchar(5) NOT NULL,
+  `me_ms_state` varchar(10) NOT NULL,
+  `me_authority` varchar(5) NOT NULL,
   PRIMARY KEY (`me_id`),
-  KEY `FK_memberState_TO_member_1` (`me_ms_state`)
+  KEY `FK_memberState_boardTO_member_1` (`me_ms_state`),
+  CONSTRAINT `FK_memberState_boardTO_member_1` FOREIGN KEY (`me_ms_state`) REFERENCES `memberstate` (`ms_state`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -43,7 +46,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES ('admin123',111111,'admin123@naver.com','01011112222','admin123','서울시 강남구 역삼동','관리자','이용중','admin'),('qwer1234',981009,'qwer1234@naver.com','01021083194','qwer1234','서울시 관악구 신림동','양선진','이용중','user');
+INSERT INTO `member` VALUES ('admin123',10101,'admin123@naver.com','01011110000','admin123','서울시 강남구 역삼동','관리자','이용중','admin'),('asdf1234',991111,'asdf1234@naver.com','01022223333','asdf1234','서울시 강남구 역삼동','김아무개','이용중','user'),('qwer1234',981009,'qwer1234@naver.com','01021083194','qwer1234','서울시 관악구 신림동','양선진','이용중','user'),('zxcv1234',881205,'zxcv1234@naver.com','01011114444','zxcv1234','서울시 마포구 합정동','한국인','이용중','user');
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-06  8:50:46
+-- Dump completed on 2024-03-25 10:57:28

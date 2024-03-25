@@ -289,10 +289,10 @@ nav a:hover {
 	<jsp:include page="/WEB-INF/views/header.jsp" />
 	<div class="login-group">
 		<form action="<c:url value="/login"/>" method="post" id="loginForm">
-			<h1>Log in</h1>
+			<h1 style="margin-top: 0">Log in</h1>
 			<div class="login">
-				<label for="id">ID:</label> <input type="text" id="id"
-					placeholder="Enter id" name="id"> <label for="pw">password:</label>
+				<label style="margin-top: 30px" for="id"></label> <input type="text" id="id"
+					placeholder="Enter id" name="id"> <label for="pw"></label>
 				<input type="password" id="pw" placeholder="Enter pw" name="pw">
 			</div>
 			<button type="submit">Log in</button>
@@ -300,43 +300,6 @@ nav a:hover {
 	</div>
 
 	<script>
-		 /* $(document).ready(function() {
-			$('#loginForm').on('submit', function(e) {
-				e.preventDefault(); // 폼 기본 제출 방지
-
-				var id = $('#id').val();
-				var pw = $('#pw').val();
-
-				if (id == '' || pw == '') {
-					  $('#error-id').text('아이디를 입력하세요.');
-					  $('#error-pw').text('비밀번호를 입력하세요.');
-					return false;
-				}
-
-			 	// AJAX
-				$.ajax({
-					url : '<c:url value="/login"/>',
-					type : 'post',
-					data : {
-						id,
-						pw
-					},
-					success : function(response) {
-						// 로그인 성공
-						if (response.success) {
-							alert('로그인 성공');
-							window.location.href = '<c:url value="/"/>';
-						} else {
-							alert('로그인 실패: ' + response.message);
-						}
-					},
-					error : function(xhr, status, error) {
-						alert('로그인 요청 실패: ' + error);
-					}
-				});
-			});
-		});  */
-
 		function toggleCategory() {
 			var category = document.getElementById("category");
 			category.classList.toggle("open");
@@ -359,6 +322,7 @@ nav a:hover {
 		closeButton.addEventListener('click', function() {
 			rightBox.style.transition = 'right 0.3s ease';
 			rightBox.style.right = isHidden ? '0' : '-300px';
+			this.classList.toggle('click');
 			isHidden = !isHidden;
 		});
 	</script>

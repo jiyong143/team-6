@@ -6,11 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>What do you want to ask? - 회원가입</title>
-<!-- <!-- jquery validation -->
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+ 
 <style>
 h1 {
 	margin-top: 10%;
@@ -313,13 +309,15 @@ nav a:hover {
 		</div>
 		<div class="sign">
 			<label for="me_name" class="form-label">이름</label>
-			<input type="text" class="form-control" id="me_name" placeholder="한글 최소 1 ~ 최대 5글자 입력하세요." name="me_name">
+
+			<input type="text" class="form-control" id="me_name" placeholder="한글 최소 1 ~ 최대 5글자 입력하세요." name="name">
 			<label id="name-error" class="error text-danger" for="me_name"></label>
 		</div>
 		<div class="sign">
 			<label for="me_phone" class="form-label">전화번호</label>
-			<input type="text" class="form-control" id="me_phone" placeholder="-제외한 번호 형식을 입력하세요." name="me_phone">
+			<input type="text" class="form-control" id="me_phone" placeholder="-제외한 번호 형식을 입력하세요." name="phone">
 			<label id="phone-error" class="error text-danger" for="me_phone"></label>
+
 		</div>
 		<div class="sign">
 			<label for="email" class="form-label">이메일</label>
@@ -357,10 +355,11 @@ var rightBox = document.querySelector('.right-box');
 var closeButton = document.querySelector('.close-button');
 var isHidden = true;
 
-closeButton.addEventListener('click', function() {
-	rightBox.style.transition = 'right 0.3s ease';
-	rightBox.style.right = isHidden ? '0' : '-300px';
-	isHidden = !isHidden;
+closeButton.addEventListener('click', function () {
+    rightBox.style.transition = 'right 0.3s ease';
+    rightBox.style.right = isHidden ? '0' : '-300px';
+    this.classList.toggle('click');
+    isHidden = !isHidden;
 });
 </script>
 <script type="text/javascript">
@@ -370,7 +369,7 @@ $(document).ready(function () {
 		var pw = $("#pw").val();
 		var pw2 = $("#pw2").val();
 		var birth = $("#birth").val();
-		var name = $("#me_name").val();
+		var name = $("#name").val();
 		var phone = $("#phone").val();
 		var email = $("#email").val();
 		var address = $("#address").val();
@@ -395,12 +394,12 @@ $(document).ready(function () {
             birth.focus();
             return false;
         }
-        if(me_name === ''){
+        if(name === ''){
             alert("이름은 한글 1~5글자 입력하세요.");
             name.focus();
             return false;
         }
-        if(me_phone === ''){
+        if(phone === ''){
             alert("휴대번호는 "-"제외한 번호 형식을 입력하세요.");
             phone.focus();
             return false;
