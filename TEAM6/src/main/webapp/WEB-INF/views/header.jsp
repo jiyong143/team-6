@@ -392,14 +392,7 @@ tr>td:hover {
 			<h3>${user.me_name}</h3>
 			<h4>${user.me_id}</h4>
 			<p>${user.me_email}</p>
-			<c:choose>
-				<c:when test='${!user.getMe_authority().equals("admin")}'>
-					<p style="border: 1px solid rgba(141, 102, 18, 1.5); background: rgba(141, 102, 18, 1.5);color: white; width: 75px;border-radius: 5px">${user.me_authority}(회원)</p>
-				</c:when>
-				<c:when test='${user.getMe_authority().equals("admin")}'>
-					<p style="border: 1px solid red; background: red;color: white; width: 103px;border-radius: 5px">${user.me_authority}(관리자)</p>
-				</c:when>
-			</c:choose>
+			<p>${user.me_authority}</p>
 			<c:choose>
 				<c:when test='${!user.getMe_authority().equals("admin")}'>
 					<a class="ab" href='<c:url value="/member/update" />'>내 정보 수정</a>
@@ -408,7 +401,7 @@ tr>td:hover {
 					<a class="ab" href='<c:url value="/admin/manager"/>'>커뮤니티 관리</a>
 				</c:when>
 			</c:choose>
-			<a class="ab"  href='<c:url value="/logout"/>'>로그아웃</a>
+			<a class="ab" href='<c:url value="/logout"/>'>로그아웃</a>
 			<hr>
 			<a class="ab" style="width: 100%;text-align: center; margin-bottom: 5px;" href='<c:url value="/member/post"/>'>내 게시글 조회</a>
 			<a class="ab" style="width: 100%;text-align: center;" href='<c:url value="/member/comment"/>'>내 댓글 조회</a>
