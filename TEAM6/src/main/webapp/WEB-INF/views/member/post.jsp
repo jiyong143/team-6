@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
 
 <style type="text/css">
@@ -43,11 +43,11 @@
 
 .logo a {
 	color: inherit;
-	/* ìƒì†ëœ í…ìŠ¤íŠ¸ ìƒ‰ìƒ ì‚¬ìš© */
+	/* »ó¼ÓµÈ ÅØ½ºÆ® »ö»ó »ç¿ë */
 	text-decoration: none;
-	/* ë°‘ì¤„ ì œê±° */
+	/* ¹ØÁÙ Á¦°Å */
 	font-size: 36px;
-	/* ë¡œê³  í…ìŠ¤íŠ¸ í¬ê¸° ëŠ˜ë¦¬ê¸° */
+	/* ·Î°í ÅØ½ºÆ® Å©±â ´Ã¸®±â */
 }
 
 .login {
@@ -58,9 +58,9 @@
 
 .login a {
 	color: inherit;
-	/* ê¸°ë³¸ í…ìŠ¤íŠ¸ ìƒ‰ìœ¼ë¡œ ì„¤ì • */
+	/* ±âº» ÅØ½ºÆ® »öÀ¸·Î ¼³Á¤ */
 	text-decoration: none;
-	/* ë°‘ì¤„ ì œê±° */
+	/* ¹ØÁÙ Á¦°Å */
 }
 
 .recent-posts {
@@ -130,31 +130,31 @@
 	background-color: rgba(141, 102, 18, 0.5);
 }
 
-/* ë²ˆí˜¸ ì…€ ìŠ¤íƒ€ì¼ */
+/* ¹øÈ£ ¼¿ ½ºÅ¸ÀÏ */
 .board-postList td:nth-child(1), .board-postList th:nth-child(1) {
 	width: 5%;
 	text-align: center;
 }
 
-/* ê²Œì‹œê¸€ ëª… ì…€ ìŠ¤íƒ€ì¼ */
+/* °Ô½Ã±Û ¸í ¼¿ ½ºÅ¸ÀÏ */
 .board-postList td:nth-child(2), .board-postList th:nth-child(2) {
 	text-align: center;
 	width: 30%;
 }
 
-/* ì‘ì„±ì ì…€ ìŠ¤íƒ€ì¼ */
+/* ÀÛ¼ºÀÚ ¼¿ ½ºÅ¸ÀÏ */
 .board-postList td:nth-child(3), .board-postList th:nth-child(3) {
 	text-align: center;
 	width: 10%;
 }
 
-/* ë‚ ì§œ ì…€ ìŠ¤íƒ€ì¼ */
+/* ³¯Â¥ ¼¿ ½ºÅ¸ÀÏ */
 .board-postList td:nth-child(4), .board-postList th:nth-child(4) {
 	width: 15%;
 	text-align: center;
 }
 
-/* ì¡°íšŒìˆ˜ ì…€ ìŠ¤íƒ€ì¼ */
+/* Á¶È¸¼ö ¼¿ ½ºÅ¸ÀÏ */
 .board-postList td:nth-child(5), .board-postList th:nth-child(5) {
 	width: 10%;
 	text-align: center;
@@ -276,15 +276,15 @@
 	<div class="body-group">
 		<br>
 		<div class="board-postList">
-			<h2>ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸</h2>
+			<h2>°Ô½Ã±Û ¸®½ºÆ®</h2>
 			<div class="hr"></div>
 			<table>
 				<thead>
 					<tr>
-						<th>ê²Œì‹œê¸€ë²ˆí˜¸</th>
-						<th>ê²Œì‹œê¸€ë‚´ìš©</th>
-						<th>ê²Œì‹œê¸€ì œëª©</th>
-						<th>ì‘ì„±ì</th>
+						<th>°Ô½Ã±Û¹øÈ£</th>
+						<th>°Ô½Ã±Û³»¿ë</th>
+						<th>°Ô½Ã±ÛÁ¦¸ñ</th>
+						<th>ÀÛ¼ºÀÚ</th>
 
 					</tr>
 				</thead>
@@ -293,8 +293,8 @@
 						<c:if test="${user.getMe_id().equals(post.po_me_id)}">
 							<tr>
 								<td>${post.po_num }</td>
+								<td>${post.po_title}</td>
 								<td>${post.po_content}</td>
-								<td><a href="<c:url value="/post/detail?num=${post.po_num}&bNum=${post.po_bo_num}&bName=${post.board.bo_title}"/>">${post.po_title}</a></td>
 								<td>${post.po_me_id}</td>
 							</tr>
 						</c:if>
@@ -311,20 +311,20 @@
 			category.classList.toggle("open");
 		}
 
-		// ê²€ìƒ‰ì°½ ìš”ì†Œë¥¼ ê°€ì ¸ì˜´
+		// °Ë»öÃ¢ ¿ä¼Ò¸¦ °¡Á®¿È
 		var searchInput = document
 				.querySelector('.search-container input[type=text]');
 
-		// ì¹´í…Œê³ ë¦¬ í† ê¸€ ë²„íŠ¼ ìš”ì†Œ ê°€ì ¸ì˜¤ê¸°
+		// Ä«Å×°í¸® Åä±Û ¹öÆ° ¿ä¼Ò °¡Á®¿À±â
 		var categoryToggle = document.querySelector('.category-toggle');
 
-		// ì¹´í…Œê³ ë¦¬ í† ê¸€ ë²„íŠ¼ì— í´ë¦­ ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆ ì¶”ê°€
+		// Ä«Å×°í¸® Åä±Û ¹öÆ°¿¡ Å¬¸¯ ÀÌº¥Æ® ¸®½º³Ê Ãß°¡
 		categoryToggle.addEventListener('click', function() {
-			// í´ë¦­ ì‹œ clicked í´ë˜ìŠ¤ë¥¼ í† ê¸€í•˜ì—¬ ìŠ¤íƒ€ì¼ ë³€ê²½
+			// Å¬¸¯ ½Ã clicked Å¬·¡½º¸¦ Åä±ÛÇÏ¿© ½ºÅ¸ÀÏ º¯°æ
 			this.classList.toggle('clicked');
 		});
 
-		// ê²€ìƒ‰ì°½ ìš”ì†Œ ê°€ì ¸ì˜¤ê¸°
+		// °Ë»öÃ¢ ¿ä¼Ò °¡Á®¿À±â
 		var searchContainer = document.querySelector('.search-container');
 		var recentPosts = document.querySelector('.recent-posts');
 		var rightBox = document.querySelector('.right-box');
@@ -339,7 +339,7 @@
 		});
 	</script>
 	<script>
-		// ê´€ë¦¬ìê°€ ì‘ì„±í•œ ê¸€ì¸ì§€ ì—¬ë¶€ë¥¼ í™•ì¸í•˜ê³ , í´ë˜ìŠ¤ë¥¼ ì¶”ê°€
+		// °ü¸®ÀÚ°¡ ÀÛ¼ºÇÑ ±ÛÀÎÁö ¿©ºÎ¸¦ È®ÀÎÇÏ°í, Å¬·¡½º¸¦ Ãß°¡
 		var rows = document.querySelectorAll("[id^='post_']");
 		rows.forEach(function(row) {
 			var author = row.getAttribute("data-author");
