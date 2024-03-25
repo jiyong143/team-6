@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>What do you want to ask? - 회원가입</title>
- 
+
 <style>
 h1 {
 	margin-top: 10%;
@@ -144,6 +144,10 @@ nav a:hover {
 	/* 밑줄 제거 */
 }
 
+.signup-group:hover {
+	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
+}
+
 .copyright {
 	background-color: #ffffff;
 	text-align: center;
@@ -229,16 +233,14 @@ nav a:hover {
 
 .close-button img {
 	width: 30px;
-	/* 이미지 너비 조정 */
 	height: auto;
-	/* 이미지 높이 자동 조정 */
 }
 
 .signup-group {
 	background-color: #ffffff;
 	border-radius: 8px;
 	padding: 20px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
 	text-align: center;
 	max-width: 1000px;
 	margin: 0 auto 100px;
@@ -256,9 +258,10 @@ nav a:hover {
 	font-weight: bold;
 }
 
-.sign input[type="text"], .sign input[type="password"], .sign input[type="email"] {
+.sign input[type="text"], .sign input[type="password"], .sign input[type="email"]
+	{
 	width: 100%;
-	padding: 10px;
+	padding: 15px;
 	margin-bottom: 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
@@ -283,142 +286,155 @@ nav a:hover {
 </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/header.jsp"/>
-<div class="signup-group">
-	<h1>회원가입</h1>
-	<form action="<c:url value="/signup"/>" method="post" name="regForm" class="form">
-		<div class="sign">
-			<label for="id" class="form-label">아이디</label>
-			<input type="text" class="form-control" id="id" placeholder="영문,숫자 조합 최소6자~최대8자를 입력하세요." name="id">
-			<label id="id-error" class="error text-danger" for="id"></label>
-		</div>
-		<div class="sign">
-			<label for="pw" class="form-label">비번</label>
-			<input type="password" class="form-control" id="pw" placeholder="특수문자(!@#$)와 영어,숫자 조합 최소8자~최대 14자를 입력하세요." name="pw">
-			<label id="pw-error" class="error text-danger" for="pw"></label>
-		</div>
-		<div class="sign">
-			<label for="pw2" class="form-label">비번확인</label>
-			<input type="password" class="form-control" id="pw2" placeholder="비밀번호를 한번 더 입력하세요." name="pw2">
-			<label id="pw2-error" class="error text-danger" for="pw2"></label>
-		</div>
-		<div class="sign">
-			<label for="birth" class="form-label">생년월일</label>
-			<input type="text" class="form-control" id="birth" placeholder="주민등록 앞 6자리를 입력하세요." name="birth">
-			<label id="birth-error" class="error text-danger" for="birth"></label>
-		</div>
-		<div class="sign">
-			<label for="me_name" class="form-label">이름</label>
+	<jsp:include page="/WEB-INF/views/header.jsp" />
+	<div class="signup-group">
+		<h1>회원가입</h1>
+		<form action="<c:url value="/signup"/>" method="post" name="regForm"
+			class="form">
+			<div class="sign">
+				<label for="id" class="form-label" style="margin-top: 70px;">아이디</label>
+				<input type="text" class="form-control" id="id"
+					placeholder="영문,숫자 조합 최소6자~최대8자를 입력하세요." name="id" required>
+				<label id="id-error" class="error text-danger" for="id"></label>
+			</div>
+			<div class="sign">
+				<label for="pw" class="form-label">비밀번호</label> <input
+					type="password" class="form-control" id="pw"
+					placeholder="특수문자(!@#$)와 영어,숫자 조합 최소8자~최대 14자를 입력하세요." name="pw"
+					required> <label id="pw-error" class="error text-danger"
+					for="pw"></label>
+			</div>
+			<div class="sign">
+				<label for="pw2" class="form-label">비밀번호 확인</label> <input
+					type="password" class="form-control" id="pw2"
+					placeholder="비밀번호를 한번 더 입력하세요." name="pw2" required> <label
+					id="pw2-error" class="error text-danger" for="pw2"></label>
+			</div>
+			<div class="sign">
+				<label for="birth" class="form-label">생년월일</label> <input
+					type="text" class="form-control" id="birth"
+					placeholder="주민등록 앞 6자리를 입력하세요." name="birth" required> <label
+					id="birth-error" class="error text-danger" for="birth"></label>
+			</div>
+			<div class="sign">
+				<label for="me_name" class="form-label">이름</label> <input
+					type="text" class="form-control" id="me_name"
+					placeholder="한글 최소 1 ~ 최대 5글자 입력하세요." name="name" required>
+				<label id="name-error" class="error text-danger" for="me_name"></label>
+			</div>
+			<div class="sign">
+				<label for="me_phone" class="form-label">전화번호</label> <input
+					type="text" class="form-control" id="me_phone"
+					placeholder="-제외한 번호 형식을 입력하세요." name="phone" required> <label
+					id="phone-error" class="error text-danger" for="me_phone"></label>
 
-			<input type="text" class="form-control" id="me_name" placeholder="한글 최소 1 ~ 최대 5글자 입력하세요." name="name">
-			<label id="name-error" class="error text-danger" for="me_name"></label>
-		</div>
-		<div class="sign">
-			<label for="me_phone" class="form-label">전화번호</label>
-			<input type="text" class="form-control" id="me_phone" placeholder="-제외한 번호 형식을 입력하세요." name="phone">
-			<label id="phone-error" class="error text-danger" for="me_phone"></label>
+			</div>
+			<div class="sign">
+				<label for="email" class="form-label">이메일</label> <input
+					type="email" class="form-control" id="email"
+					placeholder="이메일을 입력해주세요." name="email" required> <label
+					id="email-error" class="error text-danger" for="email"></label>
+			</div>
+			<div class="sign">
+				<label for="address" class="form-label">주소</label> <input
+					type="text" class="form-control" id="address"
+					placeholder="양식 : OO시 OO구 OO동" name="address" required> <label
+					id="address-error" class="error text-danger" for="address"></label>
+			</div>
+			<button type="submit" class="btn btn-outline-success col-12">회원가입</button>
+		</form>
+	</div>
 
-		</div>
-		<div class="sign">
-			<label for="email" class="form-label">이메일</label>
-			<input type="email" class="form-control" id="email" placeholder="이메일을 입력해주세요." name="email">
-			<label id="email-error" class="error text-danger" for="email"></label>
-		</div>
-		<div class="sign">
-			<label for="address" class="form-label">주소</label>
-			<input type="text" class="form-control" id="address" placeholder="양식 : OO시 OO구 OO동" name="address">
-			<label id="address-error" class="error text-danger" for="address"></label>
-		</div>
-		<button type="submit" class="btn btn-outline-success col-12">회원가입</button>
-	</form>
-</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+		integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script type="text/javascript">
+		function toggleCategory() {
+			var category = document.getElementById("category");
+			category.classList.toggle("open");
+		}
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script type="text/javascript">
+		var searchInput = document
+				.querySelector('.search-container input[type=text]');
 
-function toggleCategory() {
-	var category = document.getElementById("category");
-	category.classList.toggle("open");
-}
+		var categoryToggle = document.querySelector('.category-toggle');
 
-var searchInput = document.querySelector('.search-container input[type=text]');
+		categoryToggle.addEventListener('click', function() {
+			// 클릭 시 토글
+			this.classList.toggle('clicked');
+		});
 
-var categoryToggle = document.querySelector('.category-toggle');
+		var rightBox = document.querySelector('.right-box');
+		var closeButton = document.querySelector('.close-button');
+		var isHidden = true;
 
-categoryToggle.addEventListener('click', function() {
-	// 클릭 시 토글
-	this.classList.toggle('clicked');
-});
+		closeButton.addEventListener('click', function() {
+			rightBox.style.transition = 'right 0.3s ease';
+			rightBox.style.right = isHidden ? '0' : '-300px';
+			this.classList.toggle('click');
+			isHidden = !isHidden;
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".form").submit(function() {
+				var id = $("#id").val();
+				var pw = $("#pw").val();
+				var pw2 = $("#pw2").val();
+				var birth = $("#birth").val();
+				var name = $("#name").val();
+				var phone = $("#phone").val();
+				var email = $("#email").val();
+				var address = $("#address").val();
 
-var rightBox = document.querySelector('.right-box');
-var closeButton = document.querySelector('.close-button');
-var isHidden = true;
+				if (id === '') {
+					alert("아이디가 중복되거나, 영문과 숫자 6자~8자를 입력하세요.");
+					id.focus();
+					return false;
+				}
+				if (pw === '') {
+					alert("비밀번호는 특수문자(!@#$)와 영어,숫자 8자~14자를 입력하세요.");
+					pw.focus();
+					return false;
+				}
+				if (pw !== pw2) {
+					alert("비밀번호와 일치하지 않습니다.");
+					pw2.focus();
+					return false;
+				}
+				if (birth === '') {
+					alert("생년월일은 주민등록 앞 6자리를 입력하세요.");
+					birth.focus();
+					return false;
+				}
+				if (name === '') {
+					alert("이름은 한글 1~5글자 입력하세요.");
+					name.focus();
+					return false;
+				}
+				if (phone === '') {
+					alert("휴대번호는 " - "제외한 번호 형식을 입력하세요.");
+					phone.focus();
+					return false;
+				}
+				if (email === '') {
+					alert("이메일 형식을 맞춰주세요.");
+					email.focus();
+					return false;
+				}
+				if (address === '') {
+					alert("주소 양식을 맞춰서 입력해주세요.(양식 : OO시 OO구 OO동)");
+					address.focus();
+					return false;
+				}
+				return true;
 
-closeButton.addEventListener('click', function () {
-    rightBox.style.transition = 'right 0.3s ease';
-    rightBox.style.right = isHidden ? '0' : '-300px';
-    this.classList.toggle('click');
-    isHidden = !isHidden;
-});
-</script>
-<script type="text/javascript">
-$(document).ready(function () {
-	$(".form").submit(function() {
-		var id = $("#id").val();
-		var pw = $("#pw").val();
-		var pw2 = $("#pw2").val();
-		var birth = $("#birth").val();
-		var name = $("#name").val();
-		var phone = $("#phone").val();
-		var email = $("#email").val();
-		var address = $("#address").val();
-		
-		if(id === ''){
-            alert("아이디가 중복되거나, 영문과 숫자 6자~8자를 입력하세요.");
-            id.focus();
-            return false;
-        }
-        if(pw === ''){
-              alert("비밀번호는 특수문자(!@#$)와 영어,숫자 8자~14자를 입력하세요.");
-              pw.focus();
-            return false;
-        }
-        if(pw !== pw2){
-             alert("비밀번호와 일치하지 않습니다.");
-             pw2.focus();
-            return false;
-        }
-        if(birth === ''){
-            alert("생년월일은 주민등록 앞 6자리를 입력하세요.");
-            birth.focus();
-            return false;
-        }
-        if(name === ''){
-            alert("이름은 한글 1~5글자 입력하세요.");
-            name.focus();
-            return false;
-        }
-        if(phone === ''){
-            alert("휴대번호는 "-"제외한 번호 형식을 입력하세요.");
-            phone.focus();
-            return false;
-        }
-        if(email === ''){
-            alert("이메일 형식을 맞춰주세요.");
-            email.focus();
-            return false;
-        }
-        if(address === ''){
-            alert("주소 양식을 맞춰서 입력해주세요.(양식 : OO시 OO구 OO동)");
-            address.focus();
-            return false;
-        }
-          return true;
-          
-	});
-});
-</script>
+			});
+		});
+	</script>
 </body>
 
 </html>

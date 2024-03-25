@@ -54,7 +54,7 @@ nav a:hover {
 }
 
 .category {
-	position: fixed;
+	position: absolute;
 	top: 70px;
 	left: -400px;
 	width: 200px;
@@ -64,7 +64,7 @@ nav a:hover {
 	border-bottom-right-radius: 15px;
 	padding: 20px;
 	transition: left 0.3s ease;
-	z-index: 1;
+	z-index: 9999;
 	box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
 }
 
@@ -96,7 +96,7 @@ nav a:hover {
 	top: 20px;
 	left: 20px;
 	cursor: pointer;
-	z-index: 999;
+	z-index: 9999;
 	background-color: white;
 	border-radius: 5px;
 	padding: 5px;
@@ -186,7 +186,7 @@ nav a:hover {
  
 
 .copyright {
-	z-index: 9999;
+	z-index: 999;
 	background-color: rgba(0,0,0,0);
 	text-align: center;
 	margin-top: 20px;

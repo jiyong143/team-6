@@ -276,7 +276,7 @@
 	<div class="body-group">
 		<br>
 		<div class="board-postList">
-			<h2>게시글 리스트</h2>
+			<h2>내 게시글</h2>
 			<div class="hr"></div>
 			<table>
 				<thead>

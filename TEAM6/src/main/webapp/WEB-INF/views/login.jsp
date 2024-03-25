@@ -8,8 +8,6 @@
 <title>What do you want to ask? - 로그인</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
 <style>
 h1 {
 	margin-top: 10%;
@@ -240,11 +238,15 @@ nav a:hover {
 .login-group {
 	background-color: #ffffff;
 	border-radius: 8px;
-	padding: 20px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	padding: 70px;
+	box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
 	text-align: center;
 	max-width: 400px;
 	margin: 0 auto 100px;
+}
+
+.login-group:hover {
+	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 
 .login {
@@ -261,16 +263,17 @@ nav a:hover {
 
 .login input[type="text"], .login input[type="password"] {
 	width: 100%;
-	padding: 10px;
+	padding: 15px;
 	margin-bottom: 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	box-sizing: border-box;
+	font-size: 17px;
 }
 
 .login-group button {
-	width: 200px;
-	padding: 10px;
+	width: 100%;
+	padding: 15px;
 	border: none;
 	background-color: rgba(141, 102, 18, 0.5);
 	color: white;
@@ -291,8 +294,8 @@ nav a:hover {
 		<form action="<c:url value="/login"/>" method="post" id="loginForm">
 			<h1 style="margin-top: 0">Log in</h1>
 			<div class="login">
-				<label style="margin-top: 30px" for="id"></label> <input type="text" id="id"
-					placeholder="Enter id" name="id"> <label for="pw"></label>
+				<label style="margin-top: 30px" for="id"></label> <input type="text"
+					id="id" placeholder="Enter id" name="id"> <label for="pw"></label>
 				<input type="password" id="pw" placeholder="Enter pw" name="pw">
 			</div>
 			<button type="submit">Log in</button>
