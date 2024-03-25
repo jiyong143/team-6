@@ -183,11 +183,10 @@ nav a:hover {
 	background-repeat: no-repeat;
 	background-position: center;
 }
- 
 
 .copyright {
 	z-index: 999;
-	background-color: rgba(0,0,0,0);
+	background-color: rgba(0, 0, 0, 0);
 	text-align: center;
 	margin-top: 20px;
 	position: fixed;
@@ -208,7 +207,6 @@ nav a:hover {
 	justify-content: center;
 }
 
-/* 추가된 스타일 */
 .recent-posts {
 	width: 50%;
 	position: fixed;
@@ -248,29 +246,21 @@ nav a:hover {
 
 .right-box {
 	position: fixed;
-	/* 화면에 고정 */
 	top: 40%;
 	right: -300px;
-	/* 화면 오른쪽에서 0px 떨어진 위치 */
 	transform: translateY(-50%);
-	/* 세로 방향으로 중앙 정렬 */
 	width: 200px;
-	/* 너비 설정 */
 	background-color: white;
-	/* 배경색 지정 */
 	padding: 20px;
-	/* 내부 여백 설정 */
 	border: 1px solid #ddd;
 	border-top-left-radius: 15px;
 	border-bottom-left-radius: 15px;
 	box-shadow: -2px 1px 4px 1px rgba(141, 102, 18, 0.5);
-	/* 왼쪽으로 그림자 생성 */
 	z-index: 1;
-	/* 다른 요소 위에 표시되도록 설정 */
 }
-.close-button.click{
-box-shadow: inset 1px 1px 1px 1px black;
 
+.close-button.click {
+	box-shadow: inset 1px 1px 1px 1px black;
 }
 
 .close-button {
@@ -298,16 +288,16 @@ box-shadow: inset 1px 1px 1px 1px black;
 .ab {
 	background-color: rgba(141, 102, 18, 0.5);
 	color: white;
-	padding: 5px; /* 패딩을 추가하여 버튼 크기 조정 */
-	display: inline-block; /* 인라인 블록 요소로 변환하여 다른 요소와 가로 정렬 */
-	text-decoration: none; /* 기본 링크 텍스트 스타일 제거 */
-	cursor: pointer; /* 마우스를 올리면 커서를 포인터로 변경 */
-	border-radius: 5px; /* 버튼을 둥글게 만들기 위한 border-radius 속성 추가 */
+	padding: 5px;
+	display: inline-block;
+	text-decoration: none;
+	cursor: pointer;
+	border-radius: 5px;
 	border: 1px solid white;
 }
 
 .ab:hover {
-	background-color: rgba(141, 102, 18, 0.7); /* 호버 시 색상 변경 */
+	background-color: rgba(141, 102, 18, 0.7);
 }
 
 .profile-image {
@@ -338,6 +328,16 @@ tr>td:hover {
 	color: rgba(141, 102, 18, 0.6);
 }
 
+.text-short {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 120px;
+	display: block;
+	white-space: nowrap;
+}
+tr>th,tr>td{
+text-align: center;
+}
 </style>
 </head>
 <body>
@@ -394,10 +394,12 @@ tr>td:hover {
 			<p>${user.me_email}</p>
 			<c:choose>
 				<c:when test='${!user.getMe_authority().equals("admin")}'>
-					<p style="border: 1px solid rgba(141, 102, 18, 1.5); background: rgba(141, 102, 18, 1.5);color: white; width: 75px;border-radius: 5px">${user.me_authority}(회원)</p>
+					<p
+						style="border: 1px solid rgba(141, 102, 18, 1.5); background: rgba(141, 102, 18, 1.5); color: white; width: 75px; border-radius: 5px">${user.me_authority}(회원)</p>
 				</c:when>
 				<c:when test='${user.getMe_authority().equals("admin")}'>
-					<p style="border: 1px solid red; background: red;color: white; width: 103px;border-radius: 5px">${user.me_authority}(관리자)</p>
+					<p
+						style="border: 1px solid red; background: red; color: white; width: 103px; border-radius: 5px">${user.me_authority}(관리자)</p>
 				</c:when>
 			</c:choose>
 			<c:choose>
@@ -408,11 +410,14 @@ tr>td:hover {
 					<a class="ab" href='<c:url value="/admin/manager"/>'>커뮤니티 관리</a>
 				</c:when>
 			</c:choose>
-			<a class="ab"  href='<c:url value="/logout"/>'>로그아웃</a>
+			<a class="ab" href='<c:url value="/logout"/>'>로그아웃</a>
 			<hr>
-			<a class="ab" style="width: 100%;text-align: center; margin-bottom: 5px;" href='<c:url value="/member/post"/>'>내 게시글 조회</a>
-			<a class="ab" style="width: 100%;text-align: center;" href='<c:url value="/member/comment"/>'>내 댓글 조회</a>
-			
+			<a class="ab"
+				style="width: 100%; text-align: center; margin-bottom: 5px;"
+				href='<c:url value="/member/post"/>'>내 게시글 조회</a>
+			<a class="ab" style="width: 100%; text-align: center;"
+				href='<c:url value="/member/comment"/>'>내 댓글 조회</a>
+
 		</c:if>
 		<c:if test="${user == null }">
 			<h4>환영합니다.</h4>
@@ -435,6 +440,6 @@ tr>td:hover {
 	</div>
 
 	<!-- 왼쪽,오른쪽 박스 / 검색창 / 검색창 호버시 게시글 나옴 -->
- 
+
 </body>
 </html>

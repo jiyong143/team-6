@@ -121,38 +121,32 @@
 	background-color: rgba(141, 102, 18, 0.5);
 }
 
-.board-postList td:nth-child(1), 
-.board-postList th:nth-child(1) {
+.board-postList td:nth-child(1), .board-postList th:nth-child(1) {
 	width: 5%;
 	text-align: center;
 }
 
-.board-postList td:nth-child(2), 
-.board-postList th:nth-child(2) {
+.board-postList td:nth-child(2), .board-postList th:nth-child(2) {
 	text-align: center;
 	width: 30%;
 }
 
-.board-postList td:nth-child(3), 
-.board-postList th:nth-child(3) {
+.board-postList td:nth-child(3), .board-postList th:nth-child(3) {
 	text-align: center;
 	width: 10%;
 }
 
-.board-postList td:nth-child(4), 
-.board-postList th:nth-child(4) {
+.board-postList td:nth-child(4), .board-postList th:nth-child(4) {
 	width: 15%;
 	text-align: center;
 }
 
-.board-postList td:nth-child(5), 
-.board-postList th:nth-child(5) {
+.board-postList td:nth-child(5), .board-postList th:nth-child(5) {
 	width: 10%;
 	text-align: center;
 }
 
-.board-postList th, 
-.board-postList td {
+.board-postList th, .board-postList td {
 	padding: 8px;
 	border: 1px solid rgb(167, 159, 133);
 }
@@ -211,8 +205,7 @@
 	font-weight: bold;
 }
 
-.pagination a, 
-.pagination span {
+.pagination a, .pagination span {
 	padding: 8px 12px;
 	border: 1px solid #ccc;
 	color: #333;
@@ -239,8 +232,7 @@
 	background-color: rgba(141, 102, 18, 1);
 }
 
-h2,
-h3 {
+h2, h3 {
 	text-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
 }
 
@@ -250,29 +242,26 @@ h3 {
 	margin-bottom: 20px;
 }
 
-.lbox,
-.rbox {
+.lbox, .rbox {
 	background-color: #fff;
 	border-radius: 8px;
 	padding: 20px;
 	transition: box-shadow 0.3s ease;
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 0.1);
+	min-height:370px;
 	max-height: 370px;
+	width: 35%;
+}
+
+table tr td {
 	width: 35%;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
 }
-table tr td{
-width: 35%;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-}
-.lbox:hover,
-.rbox:hover {
+
+.lbox:hover, .rbox:hover {
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 
@@ -297,24 +286,22 @@ width: 35%;
 			<div>
 				<!-- lbox 묶음 -->
 				<div class="lbox-group">
-					<div class="lbox">
+					<div class="lbox" style="width: 42%;">
 						<table>
 							<thead>
 								<h2>카테고리 리스트</h2>
 								<h3>전체 카테고리 수 : ${categoryCount}</h3>
 								<tr>
-									<th colspan="2">번호</th>
-									<th colspan="2">카테고리</th>
+									<th >번호</th>
+									<th >카테고리</th>
 
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${caList}" var="category">
 									<tr>
-										<td colspan="2">${category.ca_num}</td>
-										<td colspan="2">${category.ca_title}</td>
-										<td></td>
-
+										<td >${category.ca_num}</td>
+										<td class="text-short" >${category.ca_title}</td>
 									</tr>
 								</c:forEach>
 								<a href="<c:url value="/category/list"/>" class="write-button">카테고리
@@ -337,7 +324,7 @@ width: 35%;
 								<c:forEach items="${boardList}" var="board">
 									<tr>
 										<td>${board.bo_num }</td>
-										<td>${board.bo_title}</td>
+										<td class="text-short">${board.bo_title}</td>
 									</tr>
 								</c:forEach>
 								<a href="<c:url value="/board/list"/>" class="write-button">게시판관리</a>
@@ -360,7 +347,7 @@ width: 35%;
 								<c:forEach items="${commentList}" var="comment">
 									<tr>
 										<td>${comment.co_num }</td>
-										<td>${comment.co_content}</td>
+										<td class="text-short">${comment.co_content}</td>
 										<td>${comment.co_me_id}</td>
 									</tr>
 								</c:forEach>
@@ -383,18 +370,18 @@ width: 35%;
 								<h2>게시글 리스트</h2>
 								<h3>전체 게시글수 : ${postCount}</h3>
 								<tr>
-									<th colspan="2">번호</th>
-									<th colspan="2">게시글</th>
-									<th colspan="2">작성자</th>
+									<th >번호</th>
+									<th >게시글</th>
+									<th >작성자</th>
 
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${postList}" var="post">
 									<tr>
-										<td colspan="2">${post.po_num }</td>
-										<td colspan="2">${post.po_title}</td>
-										<td colspan="2">${post.po_me_id}</td>
+										<td >${post.po_num }</td>
+										<td class="text-short" >${post.po_title}</td>
+										<td >${post.po_me_id}</td>
 									</tr>
 								</c:forEach>
 								<a href="<c:url value="/admin/post"/>" class="write-button">게시글
