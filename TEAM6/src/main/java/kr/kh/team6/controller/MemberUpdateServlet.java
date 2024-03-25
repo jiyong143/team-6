@@ -34,7 +34,7 @@ public class MemberUpdateServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		MemberVO user = (MemberVO) request.getSession().getAttribute("user");
-		if (user == null) {
+		if (user == null) { 
 			request.setAttribute("msg", "로그인이 필요한 서비스입니다.");
 			request.setAttribute("url", "login");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
