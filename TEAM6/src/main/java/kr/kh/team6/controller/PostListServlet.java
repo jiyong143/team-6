@@ -70,7 +70,6 @@ public class PostListServlet extends HttpServlet {
 			}
 			Criteria cri = new Criteria(page, 10, type, search);
 			int bo_num = Integer.parseInt(request.getParameter("bNum"));
-			String me_id = request.getParameter("me_id");
 			// 게시판 자체를 가져온다
 			BoardVO board = boardService.getBoard(bo_num);
 			request.setAttribute("board", board);

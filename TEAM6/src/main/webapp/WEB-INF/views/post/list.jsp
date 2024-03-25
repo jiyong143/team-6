@@ -307,7 +307,6 @@ tr>td:hover {
 								<td>${post.po_num}</td>
 								<td><c:url var="url" value="/post/detail">
 										<c:param name="num" value="${post.po_num}" />
-										<c:param name="me_id" value="${post.po_me_id}" />
 										<c:param name="bName" value="${board.bo_title}" />
 										<c:param name="bNum" value="${board.bo_num }" />
 									</c:url> <a href="${url}">${post.po_title}</a></td>
