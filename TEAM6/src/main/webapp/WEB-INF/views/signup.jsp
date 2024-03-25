@@ -309,6 +309,7 @@ nav a:hover {
 		</div>
 		<div class="sign">
 			<label for="me_name" class="form-label">이름</label>
+
 			<input type="text" class="form-control" id="me_name" placeholder="한글 최소 1 ~ 최대 5글자 입력하세요." name="name">
 			<label id="name-error" class="error text-danger" for="me_name"></label>
 		</div>
@@ -316,6 +317,7 @@ nav a:hover {
 			<label for="me_phone" class="form-label">전화번호</label>
 			<input type="text" class="form-control" id="me_phone" placeholder="-제외한 번호 형식을 입력하세요." name="phone">
 			<label id="phone-error" class="error text-danger" for="me_phone"></label>
+
 		</div>
 		<div class="sign">
 			<label for="email" class="form-label">이메일</label>
@@ -367,7 +369,7 @@ $(document).ready(function () {
 		var pw = $("#pw").val();
 		var pw2 = $("#pw2").val();
 		var birth = $("#birth").val();
-		var name = $("#me_name").val();
+		var name = $("#name").val();
 		var phone = $("#phone").val();
 		var email = $("#email").val();
 		var address = $("#address").val();
@@ -392,12 +394,12 @@ $(document).ready(function () {
             birth.focus();
             return false;
         }
-        if(me_name === ''){
+        if(name === ''){
             alert("이름은 한글 1~5글자 입력하세요.");
             name.focus();
             return false;
         }
-        if(me_phone === ''){
+        if(phone === ''){
             alert("휴대번호는 "-"제외한 번호 형식을 입력하세요.");
             phone.focus();
             return false;
