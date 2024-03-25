@@ -31,24 +31,18 @@ public class AdminCommentDeleteServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}
 		int co_num = Integer.parseInt(request.getParameter("co_num"));
-		
+
 		boolean res = commentService.adminDeleteComment(co_num);
-		
+
 		if (res) {
 			request.setAttribute("msg", "댓글을 삭제 했습니다.");
 			request.setAttribute("url", "admin/comment");
-		}
-		else {
+		} else {
 			request.setAttribute("msg", "댓글을 삭제하지 못했습니다..");
 			request.setAttribute("url", "admin/comment?po_num=" + co_num);
 		}
-		
-		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
-	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}
 
 }
