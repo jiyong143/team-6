@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Param;
 
 import kr.kh.team6.model.vo.MemberVO;
+import kr.kh.team6.model.vo.PostVO;
 
 public interface MemberDAO {
 
@@ -30,6 +31,10 @@ public interface MemberDAO {
 	ArrayList<MemberVO> selectMemberList();
 
 	boolean deleteMember(@Param("me_id")String me_id);
+
+	ArrayList<PostVO> selectPost(@Param("me_id")String id);
+
+	ArrayList<MemberVO> getAdminMemberList();
 
 
 

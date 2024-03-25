@@ -15,7 +15,6 @@
 }
 
 .body-group {
-	width: 100%;
 	padding: 100px;
 	margin-left: 150px;
 	margin-right: 150px;
@@ -40,11 +39,8 @@
 
 .logo a {
 	color: inherit;
-	/* 상속된 텍스트 색상 사용 */
 	text-decoration: none;
-	/* 밑줄 제거 */
 	font-size: 36px;
-	/* 로고 텍스트 크기 늘리기 */
 }
 
 .login {
@@ -55,9 +51,7 @@
 
 .login a {
 	color: inherit;
-	/* 기본 텍스트 색으로 설정 */
 	text-decoration: none;
-	/* 밑줄 제거 */
 }
 
 .recent-posts {
@@ -127,37 +121,38 @@
 	background-color: rgba(141, 102, 18, 0.5);
 }
 
-/* 번호 셀 스타일 */
-.board-postList td:nth-child(1), .board-postList th:nth-child(1) {
+.board-postList td:nth-child(1), 
+.board-postList th:nth-child(1) {
 	width: 5%;
 	text-align: center;
 }
 
-/* 게시글 명 셀 스타일 */
-.board-postList td:nth-child(2), .board-postList th:nth-child(2) {
+.board-postList td:nth-child(2), 
+.board-postList th:nth-child(2) {
 	text-align: center;
 	width: 30%;
 }
 
-/* 작성자 셀 스타일 */
-.board-postList td:nth-child(3), .board-postList th:nth-child(3) {
+.board-postList td:nth-child(3), 
+.board-postList th:nth-child(3) {
 	text-align: center;
 	width: 10%;
 }
 
-/* 날짜 셀 스타일 */
-.board-postList td:nth-child(4), .board-postList th:nth-child(4) {
+.board-postList td:nth-child(4), 
+.board-postList th:nth-child(4) {
 	width: 15%;
 	text-align: center;
 }
 
-/* 조회수 셀 스타일 */
-.board-postList td:nth-child(5), .board-postList th:nth-child(5) {
+.board-postList td:nth-child(5), 
+.board-postList th:nth-child(5) {
 	width: 10%;
 	text-align: center;
 }
 
-.board-postList th, .board-postList td {
+.board-postList th, 
+.board-postList td {
 	padding: 8px;
 	border: 1px solid rgb(167, 159, 133);
 }
@@ -216,7 +211,8 @@
 	font-weight: bold;
 }
 
-.pagination a, .pagination span {
+.pagination a, 
+.pagination span {
 	padding: 8px 12px;
 	border: 1px solid #ccc;
 	color: #333;
@@ -243,39 +239,46 @@
 	background-color: rgba(141, 102, 18, 1);
 }
 
-h2, h3 {
+h2,
+h3 {
 	text-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
 }
-/* 리스트 박스 스타일 */
+
 .lbox-group, .rbox-group {
 	display: flex;
 	gap: 20px;
 	margin-bottom: 20px;
-	width: 100%;
 }
 
-.lbox, .rbox {
+.lbox,
+.rbox {
 	background-color: #fff;
 	border-radius: 8px;
 	padding: 20px;
 	transition: box-shadow 0.3s ease;
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 0.1);
+	max-height: 370px;
+	width: 35%;
 	white-space: nowrap;
-	max-height: 25%;
-	max-width:25%;
-	min-width:25%;
 	text-overflow: ellipsis;
 	overflow: hidden;
+	white-space: nowrap;
 }
-
-/* 호버 효과와 그림자 효과 */
-.lbox:hover, .rbox:hover {
+table tr td{
+width: 35%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.lbox:hover,
+.rbox:hover {
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 
 .date {
 	font-size: 45px;
-	color: rgb(255, 255, 255); /* 흰색 */
+	color: rgb(255, 255, 255);
 }
 
 .time {
@@ -438,46 +441,16 @@ h2, h3 {
 			var category = document.getElementById("category");
 			category.classList.toggle("open");
 		}
-
-		// 검색창 요소를 가져옴
 		var searchInput = document
 				.querySelector('.search-container input[type=text]');
-
-		// 카테고리 토글 버튼 요소 가져오기
 		var categoryToggle = document.querySelector('.category-toggle');
+		var rightBox = document.querySelector('.right-box');
+		var closeButton = document.querySelector('.close-button');
+		var isHidden = true;
 
-		// 카테고리 토글 버튼에 클릭 이벤트 리스너 추가
 		categoryToggle.addEventListener('click', function() {
-			// 클릭 시 clicked 클래스를 토글하여 스타일 변경
 			this.classList.toggle('clicked');
 		});
-
-		/*      // 검색창 요소 가져오기
-		     var searchContainer = document.querySelector('.search-container');
-
-		     // 최근 게시글 리스트 요소 가져오기
-		     var recentPosts = document.querySelector('.recent-posts');
-
-		     // 검색창에 마우스를 올리면 최근 게시글 리스트를 표시
-		     searchContainer.addEventListener('mouseenter', function() {
-		        recentPosts.style.display = 'block';
-		     }); */
-
-		/*    // 최근 게시글 리스트에서 마우스가 벗어나면 숨김
-		   recentPosts.addEventListener('mouseleave', function() {
-		      recentPosts.style.display = 'none';
-		   }); */
-
-		var rightBox = document.querySelector('.right-box');
-
-		// 오른쪽 박스 가져오기
-		var rightBox = document.querySelector('.right-box');
-
-		// 닫기 버튼 가져오기
-		var closeButton = document.querySelector('.close-button');
-
-		// 오른쪽 박스가 숨겨져 있는지 여부를 저장하는 변수
-		var isHidden = true;
 
 		closeButton.addEventListener('click', function() {
 			rightBox.style.transition = 'right 0.3s ease';

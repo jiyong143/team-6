@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import kr.kh.team6.model.dto.LoginDTO;
 import kr.kh.team6.model.vo.MemberVO;
+import kr.kh.team6.model.vo.PostVO;
 
 public interface MemberService {
 
@@ -42,5 +43,9 @@ public interface MemberService {
 	boolean deleteMember(String me_id, MemberVO user);
 
 	MemberVO getMember(String id);
+
+	ArrayList<PostVO> selectPost(String id);
+
+	ArrayList<MemberVO> getAdminMemberList();
 	
 }

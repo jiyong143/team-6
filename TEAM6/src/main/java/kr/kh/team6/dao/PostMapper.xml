@@ -19,6 +19,11 @@
 			select="selectBoard" />
 	</resultMap>
 
+	<select id="getAdminAllPostList"
+		resultType="kr.kh.team6.model.vo.PostVO">
+		select * from post limit 10
+	</select>
+
 	<select id="selectMemberName"
 		resultType="kr.kh.team6.model.vo.MemberVO">
 		select * from member where me_name = #{po_me_name}
@@ -54,7 +59,8 @@
 
 	<!-- 추가 -->
 	<insert id="insertPost">
-		insert into post(po_title,po_content,po_date,po_bo_num,po_me_id)
+		insert into
+		post(po_title,po_content,po_date,po_bo_num,po_me_id)
 		values(#{post.po_title},#{post.po_content},now(),#{post.po_bo_num},#{post.po_me_id})
 	</insert>
 
@@ -80,7 +86,8 @@
 
 
 	<select id="selectPost" resultMap="PostMap">
-		select * from post where po_num = #{num}
+		select * from post where
+		po_num = #{num}
 	</select>
 
 	<select id="selectPostMemberName"
@@ -114,8 +121,9 @@
 
 	<select id="selectSearchPostList"
 		resultType="kr.kh.team6.model.vo.PostVO">
-		select * from post where po_title like concat('%', #{search}, '%') order by
-		po_num 
+		select * from post where po_title like concat('%',
+		#{search}, '%') order by
+		po_num
 	</select>
 
 	<select id="selectAllPostList"

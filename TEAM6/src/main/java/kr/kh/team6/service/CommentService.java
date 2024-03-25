@@ -29,5 +29,7 @@ public interface CommentService {
 
 	ArrayList<PostVO> selectPost(int co_po_num);
 
+	ArrayList<CommentVO> getAdminCommentList();
+
 
 }

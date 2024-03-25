@@ -52,15 +52,15 @@ public class AdminServlet extends HttpServlet {
 		}
 		// 각 기능마다 list 출력하기
 		// category리스트
-		ArrayList<CategoryVO> caList = categoryService.getCategoryList();
+		ArrayList<CategoryVO> caList = categoryService.getAdminCategoryList();
 		// board 리스트
-		ArrayList<BoardVO> boardList = boardService.getBoardList();
+		ArrayList<BoardVO> boardList = boardService.getAdminBoardList();
 		// post리스트
-		ArrayList<PostVO> postList = postService.getAllPostList();
+		ArrayList<PostVO> postList = postService.getAdminAllPostList();
 		// member리스트
-		ArrayList<MemberVO> memberList = memberService.getMemberList();
+		ArrayList<MemberVO> memberList = memberService.getAdminMemberList();
 		// comment리스트
-		ArrayList<CommentVO> commentList = commentService.getCommentList();
+		ArrayList<CommentVO> commentList = commentService.getAdminCommentList();
 		//전체 회원수
 		int memberCount = memberList.size();
 		//전체 카테고리수

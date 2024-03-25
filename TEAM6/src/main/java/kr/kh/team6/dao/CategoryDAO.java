@@ -29,4 +29,6 @@ public interface CategoryDAO {
 
 	boolean updateCategory(@Param("ca")CategoryVO category);
 
+	ArrayList<CategoryVO> getAdminCategoryList();
+
 }

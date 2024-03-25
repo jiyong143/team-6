@@ -22,6 +22,8 @@ public interface CategoryService {
 
 	ArrayList<BoardVO> getBoardInCategory(int ca_num);
 
+	ArrayList<CategoryVO> getAdminCategoryList();
+
 
 	
 	

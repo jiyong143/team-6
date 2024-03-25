@@ -15,6 +15,10 @@
 			select="selectPost" />
 	</resultMap>
 
+	<select id="getAdminCommentList"
+		resultType="kr.kh.team6.model.vo.CommentVO">
+		select * from comment limit 10
+	</select>
 
 	<insert id="insertComment">
 		insert into comment (co_content, co_po_num, co_me_id)
@@ -74,6 +78,7 @@
 		on
 		bo_num = po_bo_num
 		where
-		co_num= #{co_num}
+		co_num=
+		#{co_num}
 	</select>
 </mapper>
