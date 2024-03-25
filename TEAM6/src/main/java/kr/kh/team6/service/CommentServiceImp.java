@@ -111,4 +111,9 @@ public class CommentServiceImp implements CommentService {
 		return commentDao.selectPost(co_po_num);
 	}
 
+	@Override
+	public ArrayList<CommentVO> getAdminCommentList() {
+		return commentDao.getAdminCommentList();
+	}
+
 }

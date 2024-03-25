@@ -13,6 +13,10 @@
 		resultType="kr.kh.team6.model.vo.CategoryVO">
 		SELECT * FROM category
 	</select>
+	
+	<select id="getAdminCategoryList" resultType="kr.kh.team6.model.vo.CategoryVO" >
+		select * from category limit 10
+	</select>
 
 	<select id="selecteCategory"
 		resultType="kr.kh.team6.model.vo.CategoryVO">

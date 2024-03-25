@@ -31,4 +31,6 @@ public interface CommentDAO {
 
 	ArrayList<PostVO> selectPost(@Param("po_co_num") int co_po_num);
 
+	ArrayList<CommentVO> getAdminCommentList();
+
 }

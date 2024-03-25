@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import kr.kh.team6.dao.MemberDAO;
 import kr.kh.team6.model.dto.LoginDTO;
 import kr.kh.team6.model.vo.MemberVO;
+import kr.kh.team6.model.vo.PostVO;
 
 public class MemberServiceImp implements MemberService {
 	
@@ -282,6 +283,14 @@ public class MemberServiceImp implements MemberService {
 			return null;
 		}
 		return memberDao.selectMember(id);
+	}
+	@Override
+	public ArrayList<PostVO> selectPost(String id) {
+		return memberDao.selectPost(id);
+	}
+	@Override
+	public ArrayList<MemberVO> getAdminMemberList() {
+		return memberDao.getAdminMemberList();
 	}
 	
 

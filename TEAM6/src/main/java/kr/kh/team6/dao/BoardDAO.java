@@ -24,6 +24,8 @@ public interface BoardDAO {
 	String selectBoardName(@Param("po_bo_num")int po_bo_num);
 
 	BoardVO selectAllBoard(@Param("bo")BoardVO board);
+
+	ArrayList<BoardVO> getAdminBoardList();
 	
 
 	

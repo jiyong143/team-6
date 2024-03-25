@@ -97,4 +97,9 @@ public class CategoryServiceImp implements CategoryService {
 		return categoryDAO.selectBoardInCategory(ca_num);
 	}
 
+	@Override
+	public ArrayList<CategoryVO> getAdminCategoryList() {
+		return categoryDAO.getAdminCategoryList();
+	}
+
 }
