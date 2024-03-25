@@ -8,7 +8,7 @@
 <title>What do you want to ask? - 게시글 목록</title>
 <style type="text/css">
 .search-container {
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 
 .select-box {
@@ -18,13 +18,13 @@
 }
 
 .body-group {
-	margin-top: 37px; padding : 100px;
+	padding: 100px;
 	margin-left: 150px;
 	margin-right: 150px;
-	padding: 100px;
 }
 
-.board-box:hover, .board-postList:hover {
+.board-box:hover,
+.board-postList:hover {
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 
@@ -279,9 +279,7 @@ tr>td:hover {
 	</form>
 	<div class="body-group">
 		<div class="board-box">
-			<h2>
-				<a href="<c:url value="/"/>">${board.bo_title}</a>
-			</h2>
+			<h2><a href="<c:url value="/"/>">${board.bo_title}</a></h2>
 		</div>
 		<br>
 		<form action="<c:url value="/post/insert"/>" method="post">
@@ -407,12 +405,12 @@ tr>td:hover {
 		// 오른쪽 박스가 숨겨져 있는지 여부를 저장하는 변수
 		var isHidden = true;
 
-		closeButton.addEventListener('click', function() {
-			rightBox.style.transition = 'right 0.3s ease';
-			rightBox.style.right = isHidden ? '0' : '-300px';
-			this.classList.toggle('click');
-			isHidden = !isHidden;
-		});
+		 closeButton.addEventListener('click', function () {
+	            rightBox.style.transition = 'right 0.3s ease';
+	            rightBox.style.right = isHidden ? '0' : '-300px';
+	            this.classList.toggle('click');
+	            isHidden = !isHidden;
+	        });
 	</script>
 
 	<script>
