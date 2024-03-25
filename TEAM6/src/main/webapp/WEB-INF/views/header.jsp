@@ -187,7 +187,7 @@ nav a:hover {
 
 .copyright {
 	z-index: 9999;
-	background-color: #ffffff;
+	background-color: rgba(0,0,0,0);
 	text-align: center;
 	margin-top: 20px;
 	position: fixed;
