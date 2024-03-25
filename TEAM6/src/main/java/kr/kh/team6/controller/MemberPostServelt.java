@@ -29,23 +29,19 @@ public class MemberPostServelt extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}
 		
-		int po_bo_num,po_num;
+		int po_bo_num;
 		try {
 			po_bo_num = Integer.parseInt(request.getParameter("po_bo_num"));
-			po_num = Integer.parseInt(request.getParameter("po_num"));
 		} catch (Exception e) {
 			po_bo_num = 0;
-			po_num = 0;
 		}
-		
-//		ArrayList<BoardVO> board = postService.selectBoard(po_bo_num);
+		ArrayList<BoardVO> board = postService.selectBoard(po_bo_num);
 		ArrayList<PostVO> postList = postService.getAllPostList();
 		
-		request.setAttribute("postList", postList);
-		request.getRequestDispatcher("/WEB-INF/views/member/post.jsp").forward(request, response);
 		
 		
 		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 

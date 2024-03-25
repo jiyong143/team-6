@@ -159,9 +159,6 @@
 	width: 10%;
 	text-align: center;
 }
-.admin-post {
-	background-color: lightyellow;
-}
 
 .board-postList th, .board-postList td {
 	padding: 8px;
@@ -276,26 +273,26 @@
 	<div class="body-group">
 		<br>
 		<div class="board-postList">
-			<h2>게시글 리스트</h2>
+			<h2>댓글 리스트</h2>
 			<div class="hr"></div>
 			<table>
 				<thead>
 					<tr>
-						<th>게시글번호</th>
-						<th>게시글내용</th>
+						<th>댓글번호</th>
+						<th>댓글내용</th>
 						<th>게시글제목</th>
 						<th>작성자</th>
 
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${postList}" var="post">
-						<c:if test="${user.getMe_id().equals(post.po_me_id)}">
+					<c:forEach items="${commentList}" var="comment">
+						<c:if test="${user.getMe_id().equals(comment.co_me_id)}">
 							<tr>
-								<td>${post.po_num }</td>
-								<td>${post.po_title}</td>
-								<td>${post.po_content}</td>
-								<td>${post.po_me_id}</td>
+								<td>${comment.co_num }</td>
+								<td>${comment.co_content}</td>
+								<td>${comment.post.po_title}</td>
+								<td>${comment.co_me_id}</td>
 							</tr>
 						</c:if>
 					</c:forEach>
@@ -336,16 +333,6 @@
 			rightBox.style.right = isHidden ? '0' : '-300px';
 			this.classList.toggle('click');
 			isHidden = !isHidden;
-		});
-	</script>
-	<script>
-		// 관리자가 작성한 글인지 여부를 확인하고, 클래스를 추가
-		var rows = document.querySelectorAll("[id^='post_']");
-		rows.forEach(function(row) {
-			var author = row.getAttribute("data-author");
-			if (author === "admin" || author === "admin123") {
-				row.classList.add("admin-post");
-			}
 		});
 	</script>
 
