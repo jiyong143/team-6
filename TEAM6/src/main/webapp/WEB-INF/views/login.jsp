@@ -295,8 +295,8 @@ nav a:hover {
 			<h1 style="margin-top: 0">Log in</h1>
 			<div class="login">
 				<label style="margin-top: 30px" for="id"></label> <input type="text"
-					id="id" placeholder="Enter id" name="id"> <label for="pw"></label>
-				<input type="password" id="pw" placeholder="Enter pw" name="pw">
+					id="id" placeholder="Enter id" name="id" required="required"> <label for="pw"></label>
+				<input type="password" id="pw" placeholder="Enter pw" name="pw" required="required">
 			</div>
 			<button type="submit">Log in</button>
 		</form>

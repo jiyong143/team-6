@@ -101,12 +101,13 @@
 }
 
 .board-box {
+	text-align: center;
 	border: 1px solid #ddd;
 	transition: left 0.3s ease;
 	box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
 	z-index: 1;
-	width: 150px;
-	padding-left: 20px;
+	width: 13%;
+	padding: 3px;
 }
 
 .board-box:hover {
@@ -302,9 +303,11 @@
 
 				</label>
 				<c:if test="${post.po_me_id eq user.me_id }">
-					<a href="<c:url value="/post/update?num=${post.po_num}&bNum=${bNum}&bName=${bName}"/>"
+					<a
+						href="<c:url value="/post/update?num=${post.po_num}&bNum=${bNum}&bName=${bName}"/>"
 						class="btn">게시글 수정</a>
-					<a href="<c:url value="/post/delete?num=${post.po_num}&bNum=${post.po_bo_num}"/>"
+					<a
+						href="<c:url value="/post/delete?num=${post.po_num}&bNum=${post.po_bo_num}"/>"
 						class="btn">게시글 삭제</a>
 				</c:if>
 				<div class="hr gr"></div>
