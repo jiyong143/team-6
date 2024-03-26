@@ -117,12 +117,13 @@
 }
 
 .board-box {
+	text-align:center;
 	border: 1px solid #ddd;
 	transition: left 0.3s ease;
 	box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
 	z-index: 1;
-	width: 150px;
-	padding-left: 20px;
+	width: 13%;
+	padding: 3px;
 }
 
 .board-postList table {
@@ -267,6 +268,11 @@ tr>td:hover {
 	display: block;
 	white-space: nowrap;
 }
+.link:hover{
+	text-decoration: underline;
+	color: rgba(141, 102, 18, 0.6);
+
+}
 </style>
 </head>
 <body>
@@ -322,7 +328,7 @@ tr>td:hover {
 										<c:param name="me_id" value="${post.po_me_id}" />
 										<c:param name="bName" value="${board.bo_title}" />
 										<c:param name="bNum" value="${board.bo_num }" />
-									</c:url> <a class="title-short" href="${url}">${post.po_title}</a></td>
+									</c:url> <a class="title-short link" href="${url}">${post.po_title}</a></td>
 								<td><a href="<c:url value=""/>">${post.po_me_id}</a></td>
 								<td>${post.changeDate()}</td>
 								<td>${post.po_views}</td>
