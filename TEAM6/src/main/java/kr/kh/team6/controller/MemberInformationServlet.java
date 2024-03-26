@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.team6.model.vo.MemberVO;
+import kr.kh.team6.model.vo.PostVO;
 import kr.kh.team6.service.MemberService;
 import kr.kh.team6.service.MemberServiceImp;
 
@@ -26,6 +27,9 @@ public class MemberInformationServlet extends HttpServlet {
 			request.setAttribute("url", "login");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}
+		String id = request.getParameter("me_id");
+		ArrayList<PostVO>postList = memberService.selectPost(id);
+		
 		ArrayList<MemberVO> memberList = memberService.getMemberList();
 		request.setAttribute("memberList", memberList);
 		request.getRequestDispatcher("/WEB-INF/views/member/info.jsp").forward(request, response);

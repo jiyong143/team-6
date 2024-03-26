@@ -53,6 +53,8 @@ public class MemberPostServelt extends HttpServlet {
 		}
 		request.setAttribute("categoryList", categoryList);
 
+		
+		
 		int po_bo_num, po_num;
 		try {
 			po_bo_num = Integer.parseInt(request.getParameter("po_bo_num"));

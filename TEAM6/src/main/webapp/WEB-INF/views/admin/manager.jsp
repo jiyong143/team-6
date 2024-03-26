@@ -39,11 +39,8 @@
 
 .logo a {
 	color: inherit;
-	/* 상속된 텍스트 색상 사용 */
 	text-decoration: none;
-	/* 밑줄 제거 */
 	font-size: 36px;
-	/* 로고 텍스트 크기 늘리기 */
 }
 
 .login {
@@ -54,9 +51,7 @@
 
 .login a {
 	color: inherit;
-	/* 기본 텍스트 색으로 설정 */
 	text-decoration: none;
-	/* 밑줄 제거 */
 }
 
 .recent-posts {
@@ -126,31 +121,26 @@
 	background-color: rgba(141, 102, 18, 0.5);
 }
 
-/* 번호 셀 스타일 */
 .board-postList td:nth-child(1), .board-postList th:nth-child(1) {
 	width: 5%;
 	text-align: center;
 }
 
-/* 게시글 명 셀 스타일 */
 .board-postList td:nth-child(2), .board-postList th:nth-child(2) {
 	text-align: center;
 	width: 30%;
 }
 
-/* 작성자 셀 스타일 */
 .board-postList td:nth-child(3), .board-postList th:nth-child(3) {
 	text-align: center;
 	width: 10%;
 }
 
-/* 날짜 셀 스타일 */
 .board-postList td:nth-child(4), .board-postList th:nth-child(4) {
 	width: 15%;
 	text-align: center;
 }
 
-/* 조회수 셀 스타일 */
 .board-postList td:nth-child(5), .board-postList th:nth-child(5) {
 	width: 10%;
 	text-align: center;
@@ -245,7 +235,7 @@
 h2, h3 {
 	text-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
 }
-/* 리스트 박스 스타일 */
+
 .lbox-group, .rbox-group {
 	display: flex;
 	gap: 20px;
@@ -258,26 +248,33 @@ h2, h3 {
 	padding: 20px;
 	transition: box-shadow 0.3s ease;
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 0.1);
-	white-space: nowrap;
+	min-height:370px;
 	max-height: 370px;
-	text-overflow: ellipsis;
-	overflow: hidden;  
+	width: 35%;
 }
 
-/* 호버 효과와 그림자 효과 */
+table tr td {
+	width: 35%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
 .lbox:hover, .rbox:hover {
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 
-.date{
-    font-size: 45px; 
-    color: rgb(255, 255, 255);  /* 흰색 */
+.date {
+	font-size: 45px;
+	color: rgb(255, 255, 255);
 }
-.time{
-	text-align:center;
-    font-size: 50px;
-    font-weight: bold;
-    color: rgba(141, 102, 18, 1);
+
+.time {
+	text-align: center;
+	font-size: 50px;
+	font-weight: bold;
+	color: rgba(141, 102, 18, 1);
 }
 </style>
 
@@ -289,24 +286,22 @@ h2, h3 {
 			<div>
 				<!-- lbox 묶음 -->
 				<div class="lbox-group">
-					<div class="lbox">
+					<div class="lbox" style="width: 42%;">
 						<table>
 							<thead>
 								<h2>카테고리 리스트</h2>
 								<h3>전체 카테고리 수 : ${categoryCount}</h3>
 								<tr>
-									<th colspan="2">번호</th>
-									<th colspan="2">카테고리</th>
+									<th >번호</th>
+									<th >카테고리</th>
 
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${caList}" var="category">
 									<tr>
-										<td colspan="2">${category.ca_num}</td>
-										<td colspan="2">${category.ca_title}</td>
-										<td></td>
-
+										<td >${category.ca_num}</td>
+										<td class="text-short" >${category.ca_title}</td>
 									</tr>
 								</c:forEach>
 								<a href="<c:url value="/category/list"/>" class="write-button">카테고리
@@ -329,7 +324,7 @@ h2, h3 {
 								<c:forEach items="${boardList}" var="board">
 									<tr>
 										<td>${board.bo_num }</td>
-										<td>${board.bo_title}</td>
+										<td class="text-short">${board.bo_title}</td>
 									</tr>
 								</c:forEach>
 								<a href="<c:url value="/board/list"/>" class="write-button">게시판관리</a>
@@ -352,7 +347,7 @@ h2, h3 {
 								<c:forEach items="${commentList}" var="comment">
 									<tr>
 										<td>${comment.co_num }</td>
-										<td>${comment.co_content}</td>
+										<td class="text-short">${comment.co_content}</td>
 										<td>${comment.co_me_id}</td>
 									</tr>
 								</c:forEach>
@@ -361,8 +356,8 @@ h2, h3 {
 						</table>
 					</div>
 					<div class="lbox" style="width: 400px; height: 200px;">
-						 <div class="date" id="date"></div>
-						 <div class="time" id="time"></div>
+						<div class="date" id="date"></div>
+						<div class="time" id="time"></div>
 					</div>
 				</div>
 				<!-- lbox묶음 끝 -->
@@ -375,18 +370,18 @@ h2, h3 {
 								<h2>게시글 리스트</h2>
 								<h3>전체 게시글수 : ${postCount}</h3>
 								<tr>
-									<th colspan="2">번호</th>
-									<th colspan="2">게시글</th>
-									<th colspan="2">작성자</th>
+									<th >번호</th>
+									<th >게시글</th>
+									<th >작성자</th>
 
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${postList}" var="post">
 									<tr>
-										<td colspan="2">${post.po_num }</td>
-										<td colspan="2">${post.po_title}</td>
-										<td colspan="2">${post.po_me_id}</td>
+										<td >${post.po_num }</td>
+										<td class="text-short" >${post.po_title}</td>
+										<td >${post.po_me_id}</td>
 									</tr>
 								</c:forEach>
 								<a href="<c:url value="/admin/post"/>" class="write-button">게시글
@@ -433,81 +428,52 @@ h2, h3 {
 			var category = document.getElementById("category");
 			category.classList.toggle("open");
 		}
-
-		// 검색창 요소를 가져옴
 		var searchInput = document
 				.querySelector('.search-container input[type=text]');
-
-		// 카테고리 토글 버튼 요소 가져오기
 		var categoryToggle = document.querySelector('.category-toggle');
+		var rightBox = document.querySelector('.right-box');
+		var closeButton = document.querySelector('.close-button');
+		var isHidden = true;
 
-		// 카테고리 토글 버튼에 클릭 이벤트 리스너 추가
 		categoryToggle.addEventListener('click', function() {
-			// 클릭 시 clicked 클래스를 토글하여 스타일 변경
 			this.classList.toggle('clicked');
 		});
 
-		/*      // 검색창 요소 가져오기
-		     var searchContainer = document.querySelector('.search-container');
-
-		     // 최근 게시글 리스트 요소 가져오기
-		     var recentPosts = document.querySelector('.recent-posts');
-
-		     // 검색창에 마우스를 올리면 최근 게시글 리스트를 표시
-		     searchContainer.addEventListener('mouseenter', function() {
-		        recentPosts.style.display = 'block';
-		     }); */
-
-		/*    // 최근 게시글 리스트에서 마우스가 벗어나면 숨김
-		   recentPosts.addEventListener('mouseleave', function() {
-		      recentPosts.style.display = 'none';
-		   }); */
-
-		var rightBox = document.querySelector('.right-box');
-
-		// 오른쪽 박스 가져오기
-		var rightBox = document.querySelector('.right-box');
-
-		// 닫기 버튼 가져오기
-		var closeButton = document.querySelector('.close-button');
-
-		// 오른쪽 박스가 숨겨져 있는지 여부를 저장하는 변수
-		var isHidden = true;
-
-		 closeButton.addEventListener('click', function () {
-	            rightBox.style.transition = 'right 0.3s ease';
-	            rightBox.style.right = isHidden ? '0' : '-300px';
-	            this.classList.toggle('click');
-	            isHidden = !isHidden;
-	        });
+		closeButton.addEventListener('click', function() {
+			rightBox.style.transition = 'right 0.3s ease';
+			rightBox.style.right = isHidden ? '0' : '-300px';
+			this.classList.toggle('click');
+			isHidden = !isHidden;
+		});
 	</script>
-	
-	
-	
-<script type="text/javascript">
-function setClock(){
-    var dateInfo = new Date(); 
-    var hour = modifyNumber(dateInfo.getHours());
-    var min = modifyNumber(dateInfo.getMinutes());
-    var sec = modifyNumber(dateInfo.getSeconds());
-    var year = dateInfo.getFullYear();
-    var month = dateInfo.getMonth()+1; //monthIndex를 반환해주기 때문에 1을 더해준다.
-    var date = dateInfo.getDate();
-    document.getElementById("time").innerHTML = hour + ":" + min  + ":" + sec;
-    document.getElementById("date").innerHTML = year + "년 " + month + "월 " + date + "일";
-}
-function modifyNumber(time){
-    if(parseInt(time)<10){
-        return "0"+ time;
-    }
-    else
-        return time;
-}
-window.onload = function(){
-    setClock();
-    setInterval(setClock,1000); //1초마다 setClock 함수 실행
-}
-</script>
+
+
+
+	<script type="text/javascript">
+		function setClock() {
+			var dateInfo = new Date();
+			var hour = modifyNumber(dateInfo.getHours());
+			var min = modifyNumber(dateInfo.getMinutes());
+			var sec = modifyNumber(dateInfo.getSeconds());
+			var year = dateInfo.getFullYear();
+			var month = dateInfo.getMonth() + 1; //monthIndex를 반환해주기 때문에 1을 더해준다.
+			var date = dateInfo.getDate();
+			document.getElementById("time").innerHTML = hour + ":" + min + ":"
+					+ sec;
+			document.getElementById("date").innerHTML = year + "년 " + month
+					+ "월 " + date + "일";
+		}
+		function modifyNumber(time) {
+			if (parseInt(time) < 10) {
+				return "0" + time;
+			} else
+				return time;
+		}
+		window.onload = function() {
+			setClock();
+			setInterval(setClock, 1000); //1초마다 setClock 함수 실행
+		}
+	</script>
 
 </body>
 </html>

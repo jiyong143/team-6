@@ -39,6 +39,8 @@ public interface PostDAO {
 
 	boolean adminDeletePost(@Param("po_num")int po_num);
 
+	ArrayList<PostVO> getAdminAllPostList();
+
 
 
 }

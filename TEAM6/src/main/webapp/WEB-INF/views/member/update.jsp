@@ -10,7 +10,7 @@
  <style>
         h1 {
             text-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
-            /* 그림자 추가 */
+            margin-bottom: 10%;
         }
 
         header,
@@ -249,12 +249,10 @@
             background-color: #ffffff;
             border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 2px 2px 4px rgba(141, 102, 18, 0.5);
+			width:50%;
             text-align: center;
-            max-width: 400px;
-            /* 최대 너비 설정 */
             margin: 0 auto 100px;
-            /* 가운데 정렬 */
 
         }
 
@@ -272,7 +270,7 @@
 
         .signup input {
             width: 100%;
-            padding: 10px;
+            padding: 15px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -280,12 +278,12 @@
         }
 
         .signup-group button {
-            width: 200px;
-            padding: 10px;
+            width: 100%;
+            padding: 15px;
             border: none;
             background-color: rgba(141, 102, 18, 0.5);
             color: white;
-            font-size: 16px;
+            font-size: 20px;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -332,8 +330,7 @@
 <body> 
    <jsp:include page="/WEB-INF/views/header.jsp" />
   	  <div class="signup-group" style="padding: 100px;">
-  	  
-     <h2>개인 정보 수정</h2>
+     <h1>개인 정보 수정</h1>
         <form name="join_form" id="join_form" method="post" action="<c:url value="/member/update"/>">
             <div class="signup">
                   <label for="id" >아이디</label>

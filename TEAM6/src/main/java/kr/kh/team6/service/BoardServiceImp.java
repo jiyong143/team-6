@@ -96,6 +96,11 @@ public class BoardServiceImp implements BoardService {
 		return boardDao.updateBoard(board);
 	}
 
+	@Override
+	public ArrayList<BoardVO> getAdminBoardList() {
+		return boardDao.getAdminBoardList();
+	}
+
 	
 	
 }

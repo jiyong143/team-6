@@ -108,11 +108,13 @@
 	width: 150px;
 	padding-left: 20px;
 }
-.board-box:hover{
-box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
+
+.board-box:hover {
+	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
-.board-postList:hover{
-box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
+
+.board-postList:hover {
+	box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 
 .board-postList table {
@@ -262,25 +264,23 @@ box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 }
 
 .input-input {
-	white-space: pre-wrap; /* 자동으로 줄 바꿈되도록 설정 */
+	white-space: pre-wrap;
 	border: 1px solid white;
-	min-width: 1250px;
-	max-width: 1250px;
-	min-height: 400px;
-	max-height: 400px;
+	min-width: 100%;
+	max-width: 100%;
+	min-height: 500px;
+	max-height: 500px;
 	outline-style: none;
 	vertical-align: top;
-	line-height: normal; /* 줄 간격을 기본값으로 설정 */
-	padding: 5px; /* 내부 여백 추가 */
-	box-sizing: border-box; /* 내부 여백이 요소의 크기에 포함되도록 설정 */
+	line-height: normal;
+	padding: 5px;
+	box-sizing: border-box;
 }
 
 .abtn:hover {
 	text-decoration: underline;
 	color: rgba(141, 102, 18, 0.6);
 }
-
-
 </style>
 </head>
 <body>
@@ -298,16 +298,13 @@ box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 				<label>
 					<h3 style="margin-top: 50px;">제목 : ${post.po_title }</h3>
 					<h5 style="text-align: right;">날짜 : ${post.changeDate()}</h5>
-					<h5 style="text-align: right;">작성자 :<a href='<c:url value="/member/info?me_id=${post.po_me_id}"/>'> ${post.po_me_id}</a>
-						(${name})</h5>
+					<h5 style="text-align: right;">작성자 : ${post.po_me_id}(${name})</h5>
 
 				</label>
 				<c:if test="${post.po_me_id eq user.me_id }">
-					<a
-						href="<c:url value="/post/update?num=${post.po_num}&bNum=${bNum}&bName=${bName}"/>"
+					<a href="<c:url value="/post/update?num=${post.po_num}&bNum=${bNum}&bName=${bName}"/>"
 						class="btn">게시글 수정</a>
-					<a
-						href="<c:url value="/post/delete?num=${post.po_num}&bNum=${post.po_bo_num}"/>"
+					<a href="<c:url value="/post/delete?num=${post.po_num}&bNum=${post.po_bo_num}"/>"
 						class="btn">게시글 삭제</a>
 				</c:if>
 				<div class="hr gr"></div>
@@ -380,12 +377,12 @@ box-shadow: 0px 0px 20px rgba(141, 102, 18, 1);
 		var isHidden = true;
 
 		// 버튼 클릭 이벤트에 함수 연결
-	 closeButton.addEventListener('click', function () {
-            rightBox.style.transition = 'right 0.3s ease';
-            rightBox.style.right = isHidden ? '0' : '-300px';
-            this.classList.toggle('click');
-            isHidden = !isHidden;
-        });
+		closeButton.addEventListener('click', function() {
+			rightBox.style.transition = 'right 0.3s ease';
+			rightBox.style.right = isHidden ? '0' : '-300px';
+			this.classList.toggle('click');
+			isHidden = !isHidden;
+		});
 	</script>
 </body>
 </html>

@@ -6,7 +6,10 @@
 	<!-- rusultMap은 클래스 멤버 이름과 테이블의 속성 이름이 다른 경우 맵핑하기위해 사용 property는 클래스 멤버 
 		변수이름, column은 테이블 속성 이름 -->
 
-
+	<select id="getAdminBoardList" resultType="kr.kh.team6.model.vo.BoardVO">
+		select * from board limit 10
+	</select>
+	
 	<insert id="insertBoard">
 		insert into board(bo_title,bo_ca_num)
 		VALUES
