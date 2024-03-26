@@ -248,9 +248,9 @@ h2, h3 {
 	padding: 20px;
 	transition: box-shadow 0.3s ease;
 	box-shadow: 0px 0px 20px rgba(141, 102, 18, 0.1);
-	min-height:370px;
-	max-height: 370px;
-	width: 35%;
+	min-height: 450px;
+	max-height: 450px;
+	width: 45%;
 }
 
 table tr td {
@@ -266,8 +266,11 @@ table tr td {
 }
 
 .date {
-	font-size: 45px;
-	color: rgb(255, 255, 255);
+	color: rgba(141, 102, 18, 1);
+	font-size: 25px;
+	margin-bottom: 40px;
+	margin-top: 90px;
+	text-align: center;
 }
 
 .time {
@@ -292,16 +295,16 @@ table tr td {
 								<h2>카테고리 리스트</h2>
 								<h3>전체 카테고리 수 : ${categoryCount}</h3>
 								<tr>
-									<th >번호</th>
-									<th >카테고리</th>
+									<th>번호</th>
+									<th>카테고리</th>
 
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${caList}" var="category">
 									<tr>
-										<td >${category.ca_num}</td>
-										<td class="text-short" >${category.ca_title}</td>
+										<td>${category.ca_num}</td>
+										<td class="text-short">${category.ca_title}</td>
 									</tr>
 								</c:forEach>
 								<a href="<c:url value="/category/list"/>" class="write-button">카테고리
@@ -331,7 +334,7 @@ table tr td {
 							</tbody>
 						</table>
 					</div>
-					<div class="lbox">
+					<div class="lbox" style="width: 50%">
 						<table>
 							<thead>
 								<h2>댓글 리스트</h2>
@@ -355,7 +358,7 @@ table tr td {
 							</tbody>
 						</table>
 					</div>
-					<div class="lbox" style="width: 400px; height: 200px;">
+					<div class="lbox">
 						<div class="date" id="date"></div>
 						<div class="time" id="time"></div>
 					</div>
@@ -370,18 +373,18 @@ table tr td {
 								<h2>게시글 리스트</h2>
 								<h3>전체 게시글수 : ${postCount}</h3>
 								<tr>
-									<th >번호</th>
-									<th >게시글</th>
-									<th >작성자</th>
+									<th>번호</th>
+									<th>게시글</th>
+									<th>작성자</th>
 
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${postList}" var="post">
 									<tr>
-										<td >${post.po_num }</td>
-										<td class="text-short" >${post.po_title}</td>
-										<td >${post.po_me_id}</td>
+										<td>${post.po_num }</td>
+										<td class="text-short">${post.po_title}</td>
+										<td>${post.po_me_id}</td>
 									</tr>
 								</c:forEach>
 								<a href="<c:url value="/admin/post"/>" class="write-button">게시글
