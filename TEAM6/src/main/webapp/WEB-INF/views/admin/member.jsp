@@ -280,7 +280,7 @@
 				<table>
 					<thead>
 						<tr>
-							<th>이름</th>
+							<th style="width: 100px">이름</th>
 							<th>아이디</th>
 							<th>생년월일</th>
 							<th>권한</th>
@@ -291,7 +291,7 @@
 					<tbody>
 						<c:forEach items="${memberList}" var="member">
 							<tr>
-								<td>${member.me_name }</td>
+								<td style="width: 100px">${member.me_name }</td>
 								<td>${member.me_id}</td>
 								<td>${member.me_birth}</td>
 								<td>${member.me_authority}</td>
